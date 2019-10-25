@@ -4,9 +4,15 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+//GENERAL
+import { NavbarComponent } from './components/general/navbar/navbar.component';
+import { SidebarComponent } from './components/general/sidebar/sidebar.component';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavbarComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
