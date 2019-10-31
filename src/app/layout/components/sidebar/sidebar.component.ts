@@ -11,6 +11,9 @@ export class SidebarComponent implements OnInit {
     isActive: boolean;
     collapsed: boolean;
     showMenu: string;
+    showModulos: string[];
+    showModulosOp: string[];
+
     pushRightClass: string;
 
     @Output() collapsedEvent = new EventEmitter<boolean>();
@@ -32,6 +35,8 @@ export class SidebarComponent implements OnInit {
         this.collapsed = false;
         this.showMenu = '';
         this.pushRightClass = 'push-right';
+        this.showModulos = ['', '', '', '', '', '', '', ''];
+        this.showModulosOp = ['md01','md02','md03', 'md04', 'md05','md06','md07', 'md08'];
     }
 
 
@@ -44,6 +49,16 @@ export class SidebarComponent implements OnInit {
             this.showMenu = '0';
         } else {
             this.showMenu = element;
+        }
+    }
+
+    addExpandModulos(element: any) {
+        for(let i = 0; i < this.showModulos.length; i++){
+            if (element === this.showModulos[i]) {
+                this.showModulos[i] = '0';
+            } else {
+                this.showModulos[i] = element;
+            }
         }
     }
 
