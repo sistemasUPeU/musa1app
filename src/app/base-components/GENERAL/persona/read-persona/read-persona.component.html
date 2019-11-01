@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-xl-12">
+    <h2 class="page-header">
+        Persona
+    </h2>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Apellido Paterno</th>
+          <th>Apellido Materno</th>
+          <th>Nro Documento</th>
+          <th>Celular</th>
+          <th colspan="2">Opcion</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let persona of (personas$ | async) as personas">
+          <td>{{persona.NOMBRE_PERSONA}}</td>
+          <td>{{persona.APELLIDO_PATERNO}}</td>
+          <td>{{persona.APELLIDO_MATERNO}}</td>
+          <td>{{persona.NRO_DOCUMENTO}}</td>
+          <td>{{persona.CELULAR}}</td>
+          <td><button class="btn btn-warning fa fa-pencil" (click)="Editar(persona)"></button></td>
+          <td><button class="btn btn-danger fa fa-trash" (click)="Eliminar(persona)"></button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
