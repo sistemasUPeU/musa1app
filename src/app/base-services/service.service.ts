@@ -24,10 +24,10 @@ export class ServiceService {
     return this.http.post<Persona>(this.personas + 'add',persona);
   }
   updatePersona(persona: Persona){
-    return this.http.put<Persona>(this.personas + persona.ID_PERSONA, persona);
+    return this.http.put<Persona>(this.personas + persona.id_persona, persona);
   }
   deletePersona(persona: Persona){
-    return this.http.delete<Persona>(this.personas + persona.ID_PERSONA);
+    return this.http.delete<Persona>(this.personas + persona.id_persona);
   }
   getTipoDocumento(): Observable<TipoDocumento[]>{
     return this.http.get<TipoDocumento[]>(this.tipoDocumento);

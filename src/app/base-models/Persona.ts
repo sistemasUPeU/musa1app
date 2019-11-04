@@ -1,5 +1,5 @@
 export class Persona {
-    ID_PERSONA:        number;
+    id_persona:        number;
     nombre_persona:    string;
     apellido_paterno:  string;
     apellido_materno:  string;
@@ -7,3 +7,4 @@ export class Persona {
     celular:           string;
     id_tipo_documento: number;
 }
+

@@ -15,6 +15,7 @@ import { map } from "rxjs/operators";
 export class PersonaComponent implements OnInit {
   selectedTipoDoc: number = null;
   persona: Persona = new Persona();
+  per: Persona = new Persona();
   listPeople: Persona[] = [];
   tipodoc: TipoDocumento = new TipoDocumento();
   listTipoDoc: TipoDocumento[] = [];
@@ -45,25 +46,23 @@ export class PersonaComponent implements OnInit {
   }
   
   loadPersona(persona: Persona): void {
-    console.log(persona.ID_PERSONA)
-    this.service.getPersonaId(persona.ID_PERSONA).subscribe((data) => {
+    this.service.getPersonaId(persona.id_persona).subscribe((data) => {
       this.loadPersonaData = data['pers'];
     })
   }
-  /*
-  Actualizar(persona: Per) {
-    console.log(persona);
-    this.pers={persona.NOMBRE_PERSONA+persona.APELLIDO_PATERNO+persona.APELLIDO_MATERNO+persona.NRO_DOCUMENTO+persona.CELULAR+persona.ID_TIPO_DOCUMENTO};
-    this.service.updatePersona(persona).subscribe(data => {
-      console.log(data);
-      persona = data;
+  
+  Actualizar(persona: Persona) {
+    console.log(persona)
+    this.service.updatePersona(persona).subscribe((data) => {
+      this.per = data;
+      alert('Registro modificado correctamente...!');
       this.ngOnInit();
     })
   }
-  Eliminar(persona: Per) {
+  Eliminar(persona: Persona) {
     this.service.deletePersona(persona).subscribe(data => {
       alert('Registro eliminado correctamente');
       this.ngOnInit();
     })
-  }*/
+  }
 }
