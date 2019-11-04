@@ -1,29 +1,64 @@
 <div class="row">
   <div class="col-xl-12">
-    <h2 class="page-header">
+    <h1 class="page-header">
         Persona
-    </h2>
+    </h1>
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-      Launch demo modal
-    </button>
-
+    <div class="container row">
+      <div class="col-8">
+        <button (click)="fillSelect()" type="button" class="btn btn-primary" data-toggle="modal" data-target="#addpersonamodal">
+          Agregar Persona
+        </button>
+      </div>
+      <div class="col-4">
+          <form class="">
+              <input  name="inputSearch"  class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          </form>
+      </div>
+  </div>
     <!-- Modal -->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="addpersonamodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+            <h5 class="modal-title" id="exampleModalLongTitle">Nueva Persona</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            ...
+            <form>
+              <div class="form-group">
+                <label for="name" class="col-form-label">Nombre:</label>
+                <input [(ngModel)]="persona.NOMBRE_PERSONA" name="NOMBRE_PERSONA" type="text" class="form-control" >
+              </div>
+              <div class="form-group">
+                <label for="apepat" class="col-form-label">Apellido Paterno:</label>
+                <input [(ngModel)]="persona.APELLIDO_PATERNO" name="APELLIDO_PATERNO" type="text" class="form-control" >
+              </div>
+              <div class="form-group">
+                <label for="apemat" class="col-form-label">Apellido Materno:</label>
+                <input [(ngModel)]="persona.APELLIDO_MATERNO" name="APELLIDO_MATERNO" type="text" class="form-control" >
+              </div>
+              <div class="form-group">
+                <label for="tipodoc" class="col-form-label">Tipo de Documento:</label>
+                <select class="form-control" (change)="selectTipoDoc($event)">
+                  <option *ngFor="let tipodoc of (tipodocs$ | async) as tipodocs" value={{tipodoc.ID_TIPO_DOCUMENTO}}>{{tipodoc.NOMBRE_DOCUMENTO}}</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="nrodoc" class="col-form-label">Numero de Documento:</label>
+                <input [(ngModel)]="persona.NRO_DOCUMENTO" name="NRO_DOCUMENTO" type="text" class="form-control" >
+              </div>
+              <div class="form-group">
+                <label for="cel" class="col-form-label">Celular:</label>
+                <input [(ngModel)]="persona.CELULAR" name="CELULAR" type="text" class="form-control" >
+              </div>
+            </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button type="button" (click)="Guardar()" class="btn btn-primary">Guardar</button>
           </div>
         </div>
       </div>

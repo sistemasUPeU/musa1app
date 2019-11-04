@@ -11,3 +11,12 @@ export interface Per {
     CELULAR:           string;
     ID_TIPO_DOCUMENTO: number;
 }
+export class Persona {
+    ID_PERSONA:        number;
+    NOMBRE_PERSONA:    string;
+    APELLIDO_PATERNO:  string;
+    APELLIDO_MATERNO:  string;
+    NRO_DOCUMENTO:     string;
+    CELULAR:           string;
+    ID_TIPO_DOCUMENTO: number;
+}
