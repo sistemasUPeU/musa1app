@@ -30,39 +30,87 @@
             <form>
               <div class="form-group">
                 <label for="name" class="col-form-label">Nombre:</label>
-                <input [(ngModel)]="persona.NOMBRE_PERSONA" name="NOMBRE_PERSONA" type="text" class="form-control" >
+                <input [(ngModel)]="persona.nombre_persona" name="nombre_persona" type="text" class="form-control" >
               </div>
               <div class="form-group">
                 <label for="apepat" class="col-form-label">Apellido Paterno:</label>
-                <input [(ngModel)]="persona.APELLIDO_PATERNO" name="APELLIDO_PATERNO" type="text" class="form-control" >
+                <input [(ngModel)]="persona.apellido_paterno" name="apellido_paterno" type="text" class="form-control" >
               </div>
               <div class="form-group">
                 <label for="apemat" class="col-form-label">Apellido Materno:</label>
-                <input [(ngModel)]="persona.APELLIDO_MATERNO" name="APELLIDO_MATERNO" type="text" class="form-control" >
+                <input [(ngModel)]="persona.apellido_materno" name="apellido_materno" type="text" class="form-control" >
               </div>
               <div class="form-group">
                 <label for="tipodoc" class="col-form-label">Tipo de Documento:</label>
                 <select class="form-control" (change)="selectTipoDoc($event)">
-                  <option *ngFor="let tipodoc of (tipodocs$ | async) as tipodocs" value={{tipodoc.ID_TIPO_DOCUMENTO}}>{{tipodoc.NOMBRE_DOCUMENTO}}</option>
+                  <option *ngFor="let tipodoc of listTipoDoc" value={{tipodoc.ID_TIPO_DOCUMENTO}}>{{tipodoc.NOMBRE_DOCUMENTO}}</option>
                 </select>
               </div>
               <div class="form-group">
                 <label for="nrodoc" class="col-form-label">Numero de Documento:</label>
-                <input [(ngModel)]="persona.NRO_DOCUMENTO" name="NRO_DOCUMENTO" type="text" class="form-control" >
+                <input [(ngModel)]="persona.nro_documento" name="nro_documento" type="text" class="form-control" >
               </div>
               <div class="form-group">
                 <label for="cel" class="col-form-label">Celular:</label>
-                <input [(ngModel)]="persona.CELULAR" name="CELULAR" type="text" class="form-control" >
+                <input [(ngModel)]="persona.celular" name="celular" type="text" class="form-control" >
               </div>
             </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            <button type="button" (click)="Guardar()" class="btn btn-primary">Guardar</button>
+            <button type="button" (click)="Guardar()" class="btn btn-primary" data-dismiss="modal">Guardar</button>
           </div>
         </div>
       </div>
     </div>
+
+    <!----------------->
+    <div class="modal fade" id="editpersonamodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content" *ngFor="let persona of loadPersonaData">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Nueva Persona</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="name" class="col-form-label">Nombre:</label>
+                  <input value={{persona.NOMBRE_PERSONA}} name="nombre_persona" type="text" class="form-control" >
+                </div>
+                <div class="form-group">
+                  <label for="apepat" class="col-form-label">Apellido Paterno:</label>
+                  <input value={{persona.APELLIDO_PATERNO}} name="apellido_paterno" type="text" class="form-control" >
+                </div>
+                <div class="form-group">
+                  <label for="apemat" class="col-form-label">Apellido Materno:</label>
+                  <input value={{persona.APELLIDO_MATERNO}} name="apellido_materno" type="text" class="form-control" >
+                </div>
+                <div class="form-group">
+                  <label for="tipodoc" class="col-form-label">Tipo de Documento:</label>
+                  <select class="form-control" (change)="selectTipoDoc($event)">
+                    <option *ngFor="let tipodoc of listTipoDoc" value={{tipodoc.ID_TIPO_DOCUMENTO}}>{{tipodoc.NOMBRE_DOCUMENTO}}</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="nrodoc" class="col-form-label">Numero de Documento:</label>
+                  <input value={{persona.NRO_DOCUMENTO}} name="nro_documento" type="text" class="form-control" >
+                </div>
+                <div class="form-group">
+                  <label for="cel" class="col-form-label">Celular:</label>
+                  <input value={{persona.CELULAR}} name="celular" type="text" class="form-control" >
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+              <button type="button" (click)="Actualizar(persona)" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+            </div>
+          </div>
+        </div>
+      </div>
     <br><br>
     <table class="table table-bordered">
       <thead>
@@ -76,13 +124,13 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let persona of (personas$ | async) as personas">
+        <tr *ngFor="let persona of listPeople">
           <td>{{persona.NOMBRE_PERSONA}}</td>
           <td>{{persona.APELLIDO_PATERNO}}</td>
           <td>{{persona.APELLIDO_MATERNO}}</td>
           <td>{{persona.NRO_DOCUMENTO}}</td>
           <td>{{persona.CELULAR}}</td>
-          <td><button class="btn btn-warning fa fa-pencil" (click)="Editar(persona)"></button></td>
+          <td><button class="btn btn-warning fa fa-pencil" (click)="fillSelect()" (click)="loadPersona(persona)" data-toggle="modal" data-target="#editpersonamodal" ></button></td>
           <td><button class="btn btn-danger fa fa-trash" (click)="Eliminar(persona)"></button></td>
         </tr>
       </tbody>

@@ -1,22 +1,9 @@
-export interface ApiResponsePersona {
-    pers: Per[];
-}
-
-export interface Per {
-    ID_PERSONA:        number;
-    NOMBRE_PERSONA:    string;
-    APELLIDO_PATERNO:  string;
-    APELLIDO_MATERNO:  string;
-    NRO_DOCUMENTO:     string;
-    CELULAR:           string;
-    ID_TIPO_DOCUMENTO: number;
-}
 export class Persona {
     ID_PERSONA:        number;
-    NOMBRE_PERSONA:    string;
-    APELLIDO_PATERNO:  string;
-    APELLIDO_MATERNO:  string;
-    NRO_DOCUMENTO:     string;
-    CELULAR:           string;
-    ID_TIPO_DOCUMENTO: number;
+    nombre_persona:    string;
+    apellido_paterno:  string;
+    apellido_materno:  string;
+    nro_documento:     string;
+    celular:           string;
+    id_tipo_documento: number;
 }
