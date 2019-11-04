@@ -7,4 +7,4 @@ const routes: Routes = [];
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class RequisitoRoutingModule { }
+export class MD01CondsyBusesRoutingModule { }

@@ -8,7 +8,7 @@ const routes: Routes = [
         component: LayoutComponent,
         children: [
             { path: '', redirectTo: 'dashboard', pathMatch: 'prefix' },
-            { path: 'persona', loadChildren: () => import('../base-components/GENERAL/persona/persona.module').then(m => m.PersonaModule)},
+            { path: 'general', loadChildren: () => import('../base-components/general/general.module').then(m => m.GeneralModule)},
             { path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule) },
             { path: 'charts', loadChildren: () => import('./charts/charts.module').then(m => m.ChartsModule) },
             { path: 'tables', loadChildren: () => import('./tables/tables.module').then(m => m.TablesModule) },

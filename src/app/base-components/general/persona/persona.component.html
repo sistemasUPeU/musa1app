@@ -1,0 +1,56 @@
+<div class="row">
+  <div class="col-xl-12">
+    <h2 class="page-header">
+        Persona
+    </h2>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+      Launch demo modal
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br><br>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Apellido Paterno</th>
+          <th>Apellido Materno</th>
+          <th>Nro Documento</th>
+          <th>Celular</th>
+          <th colspan="2">Opcion</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let persona of (personas$ | async) as personas">
+          <td>{{persona.NOMBRE_PERSONA}}</td>
+          <td>{{persona.APELLIDO_PATERNO}}</td>
+          <td>{{persona.APELLIDO_MATERNO}}</td>
+          <td>{{persona.NRO_DOCUMENTO}}</td>
+          <td>{{persona.CELULAR}}</td>
+          <td><button class="btn btn-warning fa fa-pencil" (click)="Editar(persona)"></button></td>
+          <td><button class="btn btn-danger fa fa-trash" (click)="Eliminar(persona)"></button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

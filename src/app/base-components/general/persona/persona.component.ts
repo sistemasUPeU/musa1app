@@ -5,13 +5,12 @@ import { ApiResponsePersona, Per } from 'src/app/base-models/Persona';
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 
-
 @Component({
-  selector: 'app-read-persona',
-  templateUrl: './read-persona.component.html',
-  styleUrls: ['./read-persona.component.scss']
+  selector: 'app-persona',
+  templateUrl: './persona.component.html',
+  styleUrls: ['./persona.component.scss']
 })
-export class ReadPersonaComponent implements OnInit {
+export class PersonaComponent implements OnInit {
 
   constructor(private service: ServiceService, private router: Router) { }
   personas$ : Observable<Array<Per>>;
@@ -20,5 +19,4 @@ export class ReadPersonaComponent implements OnInit {
     this.personas$ = this.service.getPersona()
     .pipe(map((apiResponsePersona: ApiResponsePersona) => apiResponsePersona.pers))
   }
-
 }
