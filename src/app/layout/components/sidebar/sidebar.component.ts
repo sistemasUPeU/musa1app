@@ -10,7 +10,9 @@ export class SidebarComponent implements OnInit {
     collapsed: boolean;
     showMenu: string;
     showModulos: string[];
+    showSubModulos: string[];
     showModulosOp: string[];
+    showSubModulosOp: string[];
 
     pushRightClass: string;
 
@@ -34,7 +36,9 @@ export class SidebarComponent implements OnInit {
         this.showMenu = '';
         this.pushRightClass = 'push-right';
         this.showModulos = ['', '', '', '', '', '', '', ''];
+        this.showSubModulos = ['', ''];
         this.showModulosOp = ['md01','md02','md03', 'md04', 'md05','md06','md07', 'md08'];
+        this.showSubModulosOp = ['vinculacion'];
     }
 
 
@@ -56,6 +60,16 @@ export class SidebarComponent implements OnInit {
                 this.showModulos[i] = '0';
             } else {
                 this.showModulos[i] = element;
+            }
+        }
+    }
+
+    addExpandSubModulos(element: any) {
+        for(let i = 0; i < this.showSubModulos.length; i++){
+            if (element === this.showSubModulos[i]) {
+                this.showSubModulos[i] = '0';
+            } else {
+                this.showSubModulos[i] = element;
             }
         }
     }

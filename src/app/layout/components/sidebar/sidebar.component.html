@@ -18,55 +18,40 @@
         </div>
 
         <!-- MODULO 1 BUS Y CONDUCTOR -->
-
         <div class="nested-menu">
             <a class="list-group-item" (click)="addExpandModulos('md01')">
                 <i class="fa fa-plus"></i>&nbsp;
-                <span>{{ 'MD01' | translate }}</span>
+                <span>{{ 'MD01' }}</span>
             </a>
             <li class="nested" [class.expand]="showModulos[0] === 'md01'">
                 <ul class="submenu">
                     <li>
-                        <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
-                            <i class="fa fa-fw fa-dashboard"></i>&nbsp;
-                            <span>{{ 'Dashboard' | translate }}</span>
+                        <a routerLink="/md01/requisito" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                            <i class="fa fa-user"></i>&nbsp;
+                            <span>{{ 'Requisito' }}</span>
                         </a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['/charts']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-                            <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;
-                            <span>{{ 'Charts' | translate }}</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['/tables']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-                            <i class="fa fa-fw fa-table"></i>&nbsp;
-                            <span>{{ 'Tables' | translate }}</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['/forms']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-                            <i class="fa fa-fw fa-edit"></i>&nbsp;
-                            <span>{{ 'Forms' | translate }}</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['/bs-element']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-                            <i class="fa fa-fw fa-desktop"></i>&nbsp;
-                            <span>{{ 'Bootstrap Element' | translate }}</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['/grid']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-                            <i class="fa fa-fw fa-wrench"></i>&nbsp;
-                            <span>{{ 'Bootstrap Grid' | translate }}</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['/components']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-                            <i class="fa fa-th-list"></i>&nbsp;
-                            <span>{{ 'Component' | translate }}</span>
-                        </a>
+                        <div class="nested-menu">
+                            <a class="list-group-item" (click)="addExpandSubModulos('vinculacion')">
+                                <i class="fa fa-plus"></i>&nbsp;
+                                <span>{{ 'Vinculacion' }}</span>
+                            </a>
+                            <li class="nested" [class.expand]="showSubModulos[0] === 'vinculacion'">
+                                <ul class="submenu">
+                                    <li>
+                                        <a routerLink="/md01/vinculacion/conductor" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                                            <i class="fa fa-user"></i>&nbsp;
+                                            <span>{{ 'Conductor' }}</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a routerLink="/md01/vinculacion/bus" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                                            <i class="fa fa-user"></i>&nbsp;
+                                            <span>{{ 'Bus' }}</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </div>
                     </li>
                 </ul>
             </li>

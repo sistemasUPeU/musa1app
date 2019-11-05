@@ -9,6 +9,7 @@ const routes: Routes = [
         children: [
             { path: '', redirectTo: 'dashboard', pathMatch: 'prefix' },
             { path: 'general', loadChildren: () => import('../base-components/general/general.module').then(m => m.GeneralModule)},
+            { path: 'md01', loadChildren: () => import('../base-components/md01-condsy-buses/md01-condsy-buses.module').then(m => m.MD01CondsyBusesModule)},
             { path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule) },
             { path: 'charts', loadChildren: () => import('./charts/charts.module').then(m => m.ChartsModule) },
             { path: 'tables', loadChildren: () => import('./tables/tables.module').then(m => m.TablesModule) },
