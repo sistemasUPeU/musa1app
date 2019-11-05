@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Persona } from '../base-models/Persona';
 import { TipoDocumento } from '../base-models/TipoDocumento';
 import { Requisito } from '../base-models/Requisito';
+import { Usuario } from '../base-models/Usuario';
 
 
 
@@ -16,6 +17,7 @@ export class ServiceService {
   personas = 'http://localhost:8090/persona/'
   tipoDocumento = 'http://localhost:8090/tipoDocumento/'
   requisitos = 'http://localhost:8090/requisito/'
+  seguridad = 'http://localhost:8090/seguridad/'
   
   getPersona(): Observable<Persona[]>{
     return this.http.get<Persona[]>(this.personas);
@@ -37,5 +39,8 @@ export class ServiceService {
   }
   getRequisito(): Observable<Requisito[]>{
     return this.http.get<Requisito[]>(this.requisitos);
+  }
+  getUsuario(): Observable<Usuario[]>{
+    return this.http.get<Usuario[]>(this.seguridad);
   }
 }
