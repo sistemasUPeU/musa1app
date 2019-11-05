@@ -3,11 +3,10 @@ import { CommonModule } from '@angular/common';
 
 import { MD01CondsyBusesRoutingModule } from './md01-condsy-buses-routing.module';
 import { ConductorComponent } from './conductor/conductor.component';
-import { VinculacionComponent } from './vinculacion/vinculacion.component';
 import { RequisitoComponent } from './requisito/requisito.component';
 
 @NgModule({
-  declarations: [ConductorComponent, VinculacionComponent, RequisitoComponent],
+  declarations: [ConductorComponent, RequisitoComponent],
   imports: [
     CommonModule,
     MD01CondsyBusesRoutingModule

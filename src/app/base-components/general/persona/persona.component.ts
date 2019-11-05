@@ -3,10 +3,6 @@ import { Router } from '@angular/router';
 import { ServiceService } from 'src/app/base-services/service.service';
 import { Persona } from 'src/app/base-models/Persona';
 import { TipoDocumento } from 'src/app/base-models/TipoDocumento';
-
-import { Observable } from "rxjs";
-import { map } from "rxjs/operators";
-
 @Component({
   selector: 'app-persona',
   templateUrl: './persona.component.html',
