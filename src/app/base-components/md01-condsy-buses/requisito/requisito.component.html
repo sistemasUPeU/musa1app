@@ -1,3 +1,43 @@
-<p>
-  requisito works!
-</p>
+<div class="row">
+    <div class="col-xl-12">
+      <h1 class="page-header">
+          Requisitos
+      </h1>
+      <!-- Button trigger modal -->
+      <div class="container row">
+        <div class="col-8">
+          <button (click)="fillSelect()" type="button" class="btn btn-primary" data-toggle="modal" data-target="#addreqmodal">
+            Agregar Requisito
+          </button>
+        </div>
+        <div class="col-4">
+            <form class="">
+                <input  name="inputSearch"  class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            </form>
+        </div>
+    </div>
+      <br><br>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Estado</th>
+            <th>Tipo de Requisito</th>
+            <th>Obligatorio</th>
+            <th colspan="2">Opcion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let requisito of listReq">
+            <td>{{requisito.nombre_requisito}}</td>
+            <td>{{requisito.estado}}</td>
+            <td>{{requisito.tipo_requisito}}</td>
+            <td>{{requisito.obligatorio}}</td>
+            <td><button class="btn btn-warning fa fa-pencil" (click)="fillSelect()" (click)="loadPersona(requisito)" data-toggle="modal" data-target="#editpersonamodal" ></button></td>
+            <td><button class="btn btn-danger fa fa-trash" (click)="Eliminar(requisito)"></button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
