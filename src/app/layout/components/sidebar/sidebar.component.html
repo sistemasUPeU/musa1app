@@ -26,10 +26,6 @@
             <li class="nested" [class.expand]="showModulos[0] === 'md01'">
                 <ul class="submenu">
                     <li>
-                        <a routerLink="/md01/requisito" [routerLinkActive]="['router-link-active']" class="list-group-item">
-                            <i class="fa fa-user"></i>&nbsp;
-                            <span>{{ 'Requisito' }}</span>
-                        </a>
                         <div class="nested-menu">
                             <a class="list-group-item" (click)="addExpandSubModulos('vinculacion')">
                                 <i class="fa fa-plus"></i>&nbsp;
@@ -52,9 +48,17 @@
                                 </ul>
                             </li>
                         </div>
+                        <a routerLink="/md01/curso" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                            <i class="fa fa-user"></i>&nbsp;
+                            <span>{{ 'Curso' }}</span>
+                        </a>
                         <a routerLink="/md01/buses" [routerLinkActive]="['router-link-active']" class="list-group-item">
                             <i class="fa fa-user"></i>&nbsp;
                             <span>{{ 'Buses' }}</span>
+                        </a>
+                        <a routerLink="/md01/requisito" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                            <i class="fa fa-user"></i>&nbsp;
+                            <span>{{ 'Requisito' }}</span>
                         </a>
                     </li>
                 </ul>
