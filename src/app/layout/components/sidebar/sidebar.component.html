@@ -21,7 +21,7 @@
         <div class="nested-menu">
             <a class="list-group-item" (click)="addExpandModulos('md01')">
                 <i class="fa fa-plus"></i>&nbsp;
-                <span>{{ 'MD01' }}</span>
+                <span>{{ 'Buses y Conductores' }}</span>
             </a>
             <li class="nested" [class.expand]="showModulos[0] === 'md01'">
                 <ul class="submenu">
@@ -277,51 +277,27 @@
         <!-- MODULO 6 SEGURIDAD -->
         <div class="nested-menu">
             <a class="list-group-item" (click)="addExpandModulos('md06')">
-                <i class="fa fa-plus"></i>&nbsp;
-                <span>{{ 'MD06' | translate }}</span>
+                <i class="fa fa-lock"></i>&nbsp;
+                <span>{{ 'Seguridad' }}</span>
             </a>
             <li class="nested" [class.expand]="showModulos[5] === 'md06'">
                 <ul class="submenu">
                     <li>
-                        <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
-                            <i class="fa fa-fw fa-dashboard"></i>&nbsp;
-                            <span>{{ 'Dashboard' | translate }}</span>
+                        <a routerLink="/seguridad/usuario" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                            <i class="fa fa-users"></i>&nbsp;
+                            <span>{{ 'Usuarios' }}</span>
                         </a>
                     </li>
                     <li>
-                        <a [routerLink]="['/charts']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-                            <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;
-                            <span>{{ 'Charts' | translate }}</span>
+                        <a routerLink="/seguridad/rol" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                            <i class="fa fa-code-fork"></i>&nbsp;
+                            <span>{{ 'Roles' }}</span>
                         </a>
                     </li>
                     <li>
-                        <a [routerLink]="['/tables']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-                            <i class="fa fa-fw fa-table"></i>&nbsp;
-                            <span>{{ 'Tables' | translate }}</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['/forms']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-                            <i class="fa fa-fw fa-edit"></i>&nbsp;
-                            <span>{{ 'Forms' | translate }}</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['/bs-element']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-                            <i class="fa fa-fw fa-desktop"></i>&nbsp;
-                            <span>{{ 'Bootstrap Element' | translate }}</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['/grid']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-                            <i class="fa fa-fw fa-wrench"></i>&nbsp;
-                            <span>{{ 'Bootstrap Grid' | translate }}</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['/components']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-                            <i class="fa fa-th-list"></i>&nbsp;
-                            <span>{{ 'Component' | translate }}</span>
+                        <a routerLink="/seguridad/opcion" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                            <i class="fa fa-cogs"></i>&nbsp;
+                            <span>{{ 'Opciones' }}</span>
                         </a>
                     </li>
                 </ul>
