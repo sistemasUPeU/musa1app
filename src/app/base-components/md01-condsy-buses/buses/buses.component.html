@@ -1,30 +1,53 @@
 <div class="row">
-  <div>
-    <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th>Marca</th>
-            <th>Placa</th>
-            <th>Padron</th>
-            <th>Estado</th>
-            <th>Modelo</th>
-            <th>A</th>
-            <th>Estado</th>
-            <th>Estado</th>
-            <th colspan="2">Opcion</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let persona of listPeople">
-            <td>{{persona.nombre_persona}}</td>
-            <td>{{persona.apellido_paterno}}</td>
-            <td>{{persona.apellido_materno}}</td>
-            <td>{{persona.nro_documento}}</td>
-            <td>{{persona.celular}}</td>
-            <td><button class="btn btn-warning fa fa-pencil" (click)="fillSelect()" (click)="loadPersona(persona)" data-toggle="modal" data-target="#editpersonamodal" ></button></td>
-            <td><button class="btn btn-danger fa fa-trash" (click)="Eliminar(persona)"></button></td>
-          </tr>
-        </tbody>
-      </table>
+  <div class="col-xl-12">
+      <h1 class="page-header">
+          Buses
+      </h1>
+      <div class="container row">
+          <div class="col-8">
+            <button (click)="fillSelect()" type="button" class="btn btn-primary" data-toggle="modal" data-target="#addpersonamodal">
+              Agregar Bus
+            </button>
+          </div>
+          <div class="col-4">
+              <form class="">
+                  <input  name="inputSearch"  class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+              </form>
+          </div>
+      </div>
+    <br><br>
+  <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Marca</th>
+          <th>Placa</th>
+          <th>Descripcion</th>
+          <th>Padron</th>
+          <th>Estado</th>
+          <th>Modelo</th>
+          <th>#Motor</th>
+          <th>Fabricación</th>
+          <th>#Serie</th>
+          <th>#Asientos</th>
+          <th colspan="2">Opcion</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let bus of listBus">
+          <td>{{bus.marca}}</td>
+          <td>{{bus.placa}}</td>
+          <td>{{bus.descripcion}}</td>
+          <td>{{bus.padron}}</td>
+          <td>{{bus.estado}}</td>
+          <td>{{bus.modelo}}</td>
+          <td>{{bus.nro_motor}}</td>
+          <td>{{bus.nro_motor}}</td>
+          <td>{{bus.nro_serie}}</td>
+          <td>{{bus.nro_asientos}}</td>
+          <td><button class="btn btn-warning fa fa-pencil" (click)="fillSelect()" (click)="loadPersona(persona)" data-toggle="modal" data-target="#editpersonamodal" ></button></td>
+          <td><button class="btn btn-danger fa fa-trash" (click)="Eliminar(persona)"></button></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
