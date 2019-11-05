@@ -10,6 +10,7 @@ import { TipoDocumento } from 'src/app/base-models/TipoDocumento';
 })
 export class PersonaComponent implements OnInit {
   selectedTipoDoc: number = null;
+  selectedTipoDocUpdate: number = null;
   persona: Persona = new Persona();
   per: Persona = new Persona();
   listPeople: Persona[] = [];
@@ -40,6 +41,9 @@ export class PersonaComponent implements OnInit {
   selectTipoDoc(event: any) {
     this.selectedTipoDoc = event.target.value;
   }
+  selectTipoDocUpdate(event: any) {
+    this.selectedTipoDocUpdate = event.target.value;
+  }
   
   loadPersona(persona: Persona): void {
     this.service.getPersonaId(persona.id_persona).subscribe((data) => {
@@ -47,9 +51,9 @@ export class PersonaComponent implements OnInit {
     })
   }
   
-  Actualizar(persona: Persona) {
-    console.log(persona)
-    this.service.updatePersona(persona).subscribe((data) => {
+  Actualizar(pers: Persona) {
+    pers.id_tipo_documento=this.selectedTipoDocUpdate;
+    this.service.updatePersona(pers).subscribe((data) => {
       this.per = data;
       alert('Registro modificado correctamente...!');
       this.ngOnInit();

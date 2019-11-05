@@ -1,3 +1,44 @@
-<p>
-  usuario works!
-</p>
+<div class="row">
+    <div class="col-xl-12">
+      <h1 class="page-header">
+          Usuarios
+      </h1>
+      <!-- Button trigger modal -->
+      <div class="container row">
+        <div class="col-8">
+          <button (click)="fillSelect()" type="button" class="btn btn-primary" data-toggle="modal" data-target="#addusermodal">
+            Agregar Usuario
+          </button>
+        </div>
+        <div class="col-4">
+            <form class="">
+                <input  name="inputSearch"  class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            </form>
+        </div>
+    </div>
+      <br><br>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Estado</th>
+            <th>Persona</th>
+            <th>Usuario Creacion</th>
+            <th>Fecha Creacion</th>
+            <th colspan="2">Opcion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let usuario of listUsers">
+            <td>{{usuario.nom_usuario}}</td>
+            <td>{{usuario.estado}}</td>
+            <td>{{usuario.cod_persona}}</td>
+            <td>{{usuario.usuario_creacion}}</td>
+            <td>{{usuario.fecha_creacion}}</td>
+            <td><button class="btn btn-warning fa fa-pencil" (click)="fillSelect()" (click)="loadPersona(usuario)" data-toggle="modal" data-target="#editpersonamodal" ></button></td>
+            <td><button class="btn btn-danger fa fa-trash" (click)="Eliminar(usuario)"></button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
