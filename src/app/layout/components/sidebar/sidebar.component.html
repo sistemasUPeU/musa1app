@@ -196,14 +196,14 @@
         <div class="nested-menu">
             <a class="list-group-item" (click)="addExpandModulos('md05')">
                 <i class="fa fa-plus"></i>&nbsp;
-                <span>{{ 'MD05' | translate }}</span>
+                <span>{{ 'Almacen' }}</span>
             </a>
             <li class="nested" [class.expand]="showModulos[4] === 'md05'">
                 <ul class="submenu">
                     <li>
-                        <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                        <a routerLink="/md05/producto" [routerLinkActive]="['router-link-active']" class="list-group-item">
                             <i class="fa fa-fw fa-dashboard"></i>&nbsp;
-                            <span>{{ 'Dashboard' | translate }}</span>
+                            <span>{{ 'Producto'}}</span>
                         </a>
                     </li>
                     <li>
