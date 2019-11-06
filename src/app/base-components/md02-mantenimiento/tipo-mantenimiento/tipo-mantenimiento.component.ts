@@ -16,7 +16,7 @@ export class TipoMantenimientoComponent implements OnInit {
   
   ngOnInit() {
     this.service.getTipoMantenimiento().subscribe((data) => {
-      this.listTipoMantenimiento = data['tipoman'];
+      this.listTipoMantenimiento = data['TIPO_MANT'];
       console.log(this.listTipoMantenimiento);
     })
   }
