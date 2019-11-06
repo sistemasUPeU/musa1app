@@ -11,6 +11,7 @@ const routes: Routes = [
             { path: 'general', loadChildren: () => import('../base-components/general/general.module').then(m => m.GeneralModule)},
             { path: 'md01', loadChildren: () => import('../base-components/md01-condsy-buses/md01-condsy-buses.module').then(m => m.MD01CondsyBusesModule)},
             { path: 'md02', loadChildren: () => import('../base-components/md02-mantenimiento/md02-mantenimiento.module').then(m => m.Md02MantenimientoModule)},
+            { path: 'md05', loadChildren:() => import('../base-components/md05-almacen/md05-almacen.module').then(m => m.Md05AlmacenModule)},
             { path: 'seguridad', loadChildren: () => import('../base-components/md06-seguridad/md06-seguridad.module').then(m => m.Md06SeguridadModule)},
             { path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule) },
             { path: 'charts', loadChildren: () => import('./charts/charts.module').then(m => m.ChartsModule) },
