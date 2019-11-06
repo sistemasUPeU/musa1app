@@ -8,6 +8,8 @@ import { Requisito } from '../base-models/Requisito';
 import { TipoRequisito } from '../base-models/TipoRequisito';
 import { Usuario } from '../base-models/Usuario';
 import { Bus } from '../base-models/Bus';
+import { TipoMantenimiento } from '../base-models/TipoMantenimiento';
+
 
 
 
@@ -22,6 +24,8 @@ export class ServiceService {
   requisitos = 'http://localhost:8090/requisito/'
   tipoRequisito = 'http://localhost:8090/tipoRequisito/'
   seguridad = 'http://localhost:8090/seguridad/'
+  tipoMantenimiento = 'http://localhost:8090/tipo_mantenimiento/'
+  
   
   getPersona(): Observable<Persona[]>{
     return this.http.get<Persona[]>(this.personas);
@@ -66,4 +70,15 @@ export class ServiceService {
   getBus(): Observable<Bus[]>{
     return this.http.get<Bus[]>(this.buses)
   }
+  getTipoMantenimiento(): Observable<TipoMantenimiento[]>{
+    return this.http.get<TipoMantenimiento[]>(this.tipoMantenimiento);
+  }
+  getTipoMantenimientoId(id_tipo_mantenimiento: number): Observable<TipoMantenimiento[]> {
+    return this.http.get<TipoMantenimiento[]>(this.tipoMantenimiento+id_tipo_mantenimiento);
+  }
+  createTipoMantenimiento(tipomantenimiento: TipoMantenimiento){
+    return this.http.post<TipoMantenimiento>(this.tipoMantenimiento + 'add',tipomantenimiento);
+  }
+
+
 }
