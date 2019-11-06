@@ -87,9 +87,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          
-          <td></td>
+        <tr *ngFor="let tipo_mantenimiento of listTipoMantenimiento">
+          <td>{{tipo_mantenimiento.tipo_mantenimiento}}</td>
           <td><button class="btn btn-warning fa fa-pencil" (click)="fillSelect()" (click)="loadPersona(persona)"
               data-toggle="modal" data-target="#editproductomodal"></button></td>
           <td><button class="btn btn-danger fa fa-trash" (click)="Eliminar(persona)"></button></td>
