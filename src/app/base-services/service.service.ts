@@ -33,6 +33,9 @@ export class ServiceService {
   getPersonaId(idpersona: number): Observable<Persona[]> {
     return this.http.get<Persona[]>(this.personas+idpersona);
   }
+  searchPersona(nombre: String): Observable<Persona[]> {
+    return this.http.get<Persona[]>(this.personas+'search/'+nombre);
+  }
   createPersona(persona: Persona){
     return this.http.post<Persona>(this.personas + 'add',persona);
   }
@@ -44,6 +47,9 @@ export class ServiceService {
   }
   getTipoDocumento(): Observable<TipoDocumento[]>{
     return this.http.get<TipoDocumento[]>(this.tipoDocumento);
+  }
+  getTipoDocumentoId(idtipodocumento: number): Observable<TipoDocumento[]> {
+    return this.http.get<TipoDocumento[]>(this.tipoDocumento+idtipodocumento);
   }
   getRequisito(): Observable<Requisito[]>{
     return this.http.get<Requisito[]>(this.requisitos);
