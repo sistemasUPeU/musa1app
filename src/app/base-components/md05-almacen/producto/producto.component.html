@@ -1,25 +1,154 @@
 <div class="row">
-  <div class="col-xl-12">
-    <h2 class="page-header">
-         Registrar Producto
-    </h2>
+    <div class="col-xl-12">
+      <h1 class="page-header">
+         Producto
+      </h1>
+      <!-- Button trigger modal -->
+      <div class="container row">
+        <div class="col-8">
+          <button (click)="fillSelect()" type="button" class="btn btn-primary" data-toggle="modal" data-target="#addproductomodal">
+            Agregar Producto
+          </button>
+        </div>
+        <div class="col-4">
+            <form class="">
+                <input  name="inputSearch"  class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            </form>
+        </div>
+    </div>
 
-    <div class="container row">
-      
-      <div class="col-8">
-          <form class="">
-              <label for="search" class="col-form-label">Buscar:</label>
-              <input  name="inputSearch"  class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          </form>
+    <!--bloqurmodal-->
+    <div class="modal fade" id="addproductomodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Nueva Producto</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="nom" class="col-form-label">Nombre Producto:</label>
+                  <input name="nombre_producto" type="text" class="form-control"> 
+
+                </div>
+                
+                <div class="form-group">
+                    <label for="desc" class="col-form-label">Descripción:</label>
+                    <input name="desc_producto" type="text" class="form-control"> 
+                </div>
+                <div class="form-group">
+                    <label for="categoria" class="col-form-label">Categoria:</label>
+                    <select class="form-control" (change)="selectTipoDoc($event)">
+                      <option> </option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="unidadmedida" class="col-form-label">Unidad de Medida:</label>
+                    <select class="form-control" (change)="selectTipoDoc($event)">
+                      <option> </option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="cod" class="col-form-label">Código:</label>
+                    <input name="codigo" type="text" class="form-control"> 
+                </div>
+                <div class="form-group">
+                    <label for="marca" class="col-form-label">Marca:</label>
+                    <select class="form-control" (change)="selectTipoDoc($event)">
+                      <option> </option>
+                    </select>
+                </div>
+
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+              <button type="button" (click)="Guardar()" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+            </div>
+          </div>
+        </div>
       </div>
-  </div>
+  <!--bloqurmodal modificar-->
+      <div class="modal fade" id="editproductomodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Nueva Producto</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-group">
+                    <label for="nom" class="col-form-label">Nombre Producto:</label>
+                    <input name="nombre_producto" type="text" class="form-control"> 
   
-  <div class="col-8">
-    <button (click)="fillSelect()" type="button" class="btn btn-primary" data-toggle="modal" data-target="#addproductomodal">
-      Agregar Producto
-    </button>
-  </div>
-
-
-
+                  </div>
+                  
+                  <div class="form-group">
+                      <label for="desc" class="col-form-label">Descripción:</label>
+                      <input name="desc_producto" type="text" class="form-control"> 
+                  </div>
+                  <div class="form-group">
+                      <label for="categoria" class="col-form-label">Categoria:</label>
+                      <select class="form-control" (change)="selectTipoDoc($event)">
+                        <option> </option>
+                      </select>
+                  </div>
+                  <div class="form-group">
+                      <label for="unidadmedida" class="col-form-label">Unidad de Medida:</label>
+                      <select class="form-control" (change)="selectTipoDoc($event)">
+                        <option> </option>
+                      </select>
+                  </div>
+                  <div class="form-group">
+                      <label for="cod" class="col-form-label">Código:</label>
+                      <input name="codigo" type="text" class="form-control"> 
+                  </div>
+                  <div class="form-group">
+                      <label for="marca" class="col-form-label">Marca:</label>
+                      <select class="form-control" (change)="selectTipoDoc($event)">
+                        <option> </option>
+                      </select>
+                  </div>
   
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="button" (click)="Guardar()" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+    <!----fin de modificar-->
+<!----tabla-->
+   <br><br>
+   <table class="table table-bordered">
+     <thead>
+       <tr>
+         <th>Nombre</th>
+         <th>Descripcion</th>
+         <th>Categoria</th>
+         <th>Unidad Medida</th>
+         <th>Código</th>
+         <th>Marca</th>
+         <th colspan="2">Opcion</th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td><button class="btn btn-warning fa fa-pencil" (click)="fillSelect()" (click)="loadPersona(persona)" data-toggle="modal" data-target="#editproductomodal" ></button></td>
+         <td><button class="btn btn-danger fa fa-trash" (click)="Eliminar(persona)"></button></td>
+       </tr>
+     </tbody>
