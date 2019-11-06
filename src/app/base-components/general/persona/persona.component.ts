@@ -16,6 +16,7 @@ export class PersonaComponent implements OnInit {
   listPeople: Persona[] = [];
   tipodoc: TipoDocumento = new TipoDocumento();
   listTipoDoc: TipoDocumento[] = [];
+  listTipoDocId: TipoDocumento[] = [];
   loadPersonaData: Persona[] = [];
   showDropDown=false;
   input:String;
@@ -82,6 +83,7 @@ export class PersonaComponent implements OnInit {
       })
     }else{
       console.log('Input vacio');
+      this.toggleDropDownOff();
     }
   }
   getInfo(persona:Persona) {
@@ -93,7 +95,7 @@ export class PersonaComponent implements OnInit {
   getTipoDoc(idtipodoc:number) {
     console.log(idtipodoc)
     this.service.getTipoDocumentoId(idtipodoc).subscribe((data) => {
-      this.listTipoDoc = data['TIPODOC'];
+      this.listTipoDocId = data['TIPODOC'];
     })
   }
 }

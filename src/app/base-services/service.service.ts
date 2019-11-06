@@ -9,6 +9,8 @@ import { TipoRequisito } from '../base-models/TipoRequisito';
 import { Usuario } from '../base-models/Usuario';
 import { Bus } from '../base-models/Bus';
 import { TipoMantenimiento } from '../base-models/TipoMantenimiento';
+import { Curso } from '../base-models/Curso';
+import { CursoConductor } from '../base-models/CursoConductor';
 
 
 
@@ -20,6 +22,8 @@ export class ServiceService {
   constructor(private http: HttpClient) { }
   personas = 'http://localhost:8090/persona/'
   tipoDocumento = 'http://localhost:8090/tipoDocumento/'
+  cursos = 'http://localhost:8090/curso/'
+  cursoConductores = 'http://localhost:8090/cursoConductor/'
   buses = 'http://localhost:8090/bus/'
   requisitos = 'http://localhost:8090/requisito/'
   tipoRequisito = 'http://localhost:8090/tipoRequisito/'
@@ -68,6 +72,12 @@ export class ServiceService {
   }
   getTipoRequisito(): Observable<TipoRequisito[]>{
     return this.http.get<TipoRequisito[]>(this.tipoRequisito);
+  }
+  getCurso(): Observable<Curso[]>{
+    return this.http.get<Curso[]>(this.cursos)
+  }
+  getCursoConductor(): Observable<CursoConductor[]> {
+    return this.http.get<CursoConductor[]>(this.cursoConductores)
   }
   getUsuario(): Observable<Usuario[]>{
     return this.http.get<Usuario[]>(this.seguridad);
