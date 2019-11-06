@@ -16,7 +16,11 @@ export class PersonaComponent implements OnInit {
   listPeople: Persona[] = [];
   tipodoc: TipoDocumento = new TipoDocumento();
   listTipoDoc: TipoDocumento[] = [];
+  listTipoDocId: TipoDocumento[] = [];
   loadPersonaData: Persona[] = [];
+  showDropDown=false;
+  input:String;
+  searchResult: Persona[] = [];
   constructor(private service: ServiceService, private router: Router) { }
   ngOnInit() {
     this.service.getPersona().subscribe((data) => {
@@ -63,6 +67,35 @@ export class PersonaComponent implements OnInit {
     this.service.deletePersona(persona).subscribe(data => {
       alert('Registro eliminado correctamente');
       this.ngOnInit();
+    })
+  }
+  toggleDropDown() {
+    this.showDropDown=!this.showDropDown;
+  }
+  toggleDropDownOff() {
+    this.showDropDown=false;
+  }
+  searchPersona() {
+    if(this.input!=''){
+      console.log(this.input);
+      this.service.searchPersona(this.input).subscribe((data) => {
+      this.searchResult = data['return']
+      })
+    }else{
+      console.log('Input vacio');
+      this.toggleDropDownOff();
+    }
+  }
+  getInfo(persona:Persona) {
+    this.toggleDropDownOff;
+    this.service.getPersonaId(persona.id_persona).subscribe((data) => {
+      this.loadPersonaData = data['pers'];
+    })
+  }
+  getTipoDoc(idtipodoc:number) {
+    console.log(idtipodoc)
+    this.service.getTipoDocumentoId(idtipodoc).subscribe((data) => {
+      this.listTipoDocId = data['TIPODOC'];
     })
   }
 }

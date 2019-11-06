@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-xl-12">
     <h1 class="page-header">
-        Persona
+      Persona
     </h1>
     <!-- Button trigger modal -->
     <div class="container row">
@@ -12,12 +12,63 @@
       </div>
       <div class="col-4">
           <form class="">
-              <input  name="inputSearch"  class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+              <input clickOutside (clickOutside)="toggleDropDownOff()" (click)="toggleDropDown()" (keyup)="searchPersona()" [(ngModel)]="input" name="inputSearch"  class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" >
           </form>
+          <div *ngIf="showDropDown" class="state-container-dropdown">
+              <div class="return " *ngFor="let persona of searchResult">
+                  <ul (click)="getInfo(persona)" data-toggle="modal" data-target="#viewpersonamodal">{{persona.nombre_persona}}</ul>
+              </div>
+          </div>
       </div>
-  </div>
+    </div>
+    <div class="modal fade" id="viewpersonamodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content"  *ngFor="let per of loadPersonaData; let $last = last" [isLast]='$last' (ngInit)="getTipoDoc(per.id_tipo_documento)" >
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Persona</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="name" class="col-form-label">Nombre:</label>
+                <h1>{{per.nombre_persona}}</h1>
+              </div>
+              <div class="form-group">
+                <label for="apepat" class="col-form-label">Apellido Paterno:</label>
+                <h2>{{per.apellido_paterno}}</h2>
+              </div>
+              <div class="form-group">
+                <label for="apemat" class="col-form-label">Apellido Materno:</label>
+                <h2>{{per.apellido_materno}}</h2>
+              </div>
+              <div class="form-group">
+                <label for="tipodoc" class="col-form-label">Tipo de Documento:</label>
+                <h2 *ngFor="let tipodoc of listTipoDocId">{{tipodoc.NOMBRE_DOCUMENTO}}</h2>
+              </div>
+              <div class="form-group">
+                <label for="nrodoc" class="col-form-label">Numero de Documento:</label>
+                <h2>{{per.nro_documento}}</h2>
+              </div>
+              <div class="form-group">
+                <label for="cel" class="col-form-label">Celular:</label>
+                <h2>{{per.celular}}</h2>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- Modal -->
-    <div class="modal fade" id="addpersonamodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="addpersonamodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -30,29 +81,30 @@
             <form>
               <div class="form-group">
                 <label for="name" class="col-form-label">Nombre:</label>
-                <input [(ngModel)]="persona.nombre_persona" name="nombre_persona" type="text" class="form-control" >
+                <input [(ngModel)]="persona.nombre_persona" name="nombre_persona" type="text" class="form-control">
               </div>
               <div class="form-group">
                 <label for="apepat" class="col-form-label">Apellido Paterno:</label>
-                <input [(ngModel)]="persona.apellido_paterno" name="apellido_paterno" type="text" class="form-control" >
+                <input [(ngModel)]="persona.apellido_paterno" name="apellido_paterno" type="text" class="form-control">
               </div>
               <div class="form-group">
                 <label for="apemat" class="col-form-label">Apellido Materno:</label>
-                <input [(ngModel)]="persona.apellido_materno" name="apellido_materno" type="text" class="form-control" >
+                <input [(ngModel)]="persona.apellido_materno" name="apellido_materno" type="text" class="form-control">
               </div>
               <div class="form-group">
                 <label for="tipodoc" class="col-form-label">Tipo de Documento:</label>
                 <select class="form-control" (change)="selectTipoDoc($event)">
+                  <option value="0">Seleccionar...</option>
                   <option *ngFor="let tipodoc of listTipoDoc" value={{tipodoc.ID_TIPO_DOCUMENTO}}>{{tipodoc.NOMBRE_DOCUMENTO}}</option>
                 </select>
               </div>
               <div class="form-group">
                 <label for="nrodoc" class="col-form-label">Numero de Documento:</label>
-                <input [(ngModel)]="persona.nro_documento" name="nro_documento" type="text" class="form-control" >
+                <input [(ngModel)]="persona.nro_documento" name="nro_documento" type="text" class="form-control">
               </div>
               <div class="form-group">
                 <label for="cel" class="col-form-label">Celular:</label>
-                <input [(ngModel)]="persona.celular" name="celular" type="text" class="form-control" >
+                <input [(ngModel)]="persona.celular" name="celular" type="text" class="form-control">
               </div>
             </form>
           </div>
@@ -65,52 +117,55 @@
     </div>
 
     <!----------------->
-    <div class="modal fade" id="editpersonamodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content" *ngFor="let per of loadPersonaData">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle">Nueva Persona</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <form>
-                <div class="form-group">
-                  <label for="name" class="col-form-label">Nombre:</label>
-                  <input [(ngModel)]="per.nombre_persona" name="nombre_persona" type="text" class="form-control" >
-                </div>
-                <div class="form-group">
-                  <label for="apepat" class="col-form-label">Apellido Paterno:</label>
-                  <input [(ngModel)]="per.apellido_paterno" name="apellido_paterno" type="text" class="form-control" >
-                </div>
-                <div class="form-group">
-                  <label for="apemat" class="col-form-label">Apellido Materno:</label>
-                  <input [(ngModel)]="per.apellido_materno" name="apellido_materno" type="text" class="form-control" >
-                </div>
-                <div class="form-group">
-                  <label for="tipodoc" class="col-form-label">Tipo de Documento:</label>
-                  <select class="form-control" (change)="selectTipoDocUpdate($event)">
-                    <option *ngFor="let tipodoc of listTipoDoc" value={{tipodoc.ID_TIPO_DOCUMENTO}}>{{tipodoc.NOMBRE_DOCUMENTO}}</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="nrodoc" class="col-form-label">Numero de Documento:</label>
-                  <input [(ngModel)]="per.nro_documento" name="nro_documento" type="text" class="form-control" >
-                </div>
-                <div class="form-group">
-                  <label for="cel" class="col-form-label">Celular:</label>
-                  <input [(ngModel)]="per.celular" name="celular" type="text" class="form-control" >
-                </div>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-              <button type="button" (click)="Actualizar(per)" class="btn btn-primary" data-dismiss="modal">Guardar</button>
-            </div>
+    <div class="modal fade" id="editpersonamodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content" *ngFor="let per of loadPersonaData">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Nueva Persona</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="name" class="col-form-label">Nombre:</label>
+                <input [(ngModel)]="per.nombre_persona" name="nombre_persona" type="text" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="apepat" class="col-form-label">Apellido Paterno:</label>
+                <input [(ngModel)]="per.apellido_paterno" name="apellido_paterno" type="text" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="apemat" class="col-form-label">Apellido Materno:</label>
+                <input [(ngModel)]="per.apellido_materno" name="apellido_materno" type="text" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="tipodoc" class="col-form-label">Tipo de Documento:</label>
+                <select class="form-control" (change)="selectTipoDocUpdate($event)">
+                  <option *ngFor="let tipodoc of listTipoDoc" value={{tipodoc.ID_TIPO_DOCUMENTO}}>
+                    {{tipodoc.NOMBRE_DOCUMENTO}}</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="nrodoc" class="col-form-label">Numero de Documento:</label>
+                <input [(ngModel)]="per.nro_documento" name="nro_documento" type="text" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="cel" class="col-form-label">Celular:</label>
+                <input [(ngModel)]="per.celular" name="celular" type="text" class="form-control">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button type="button" (click)="Actualizar(per)" class="btn btn-primary"
+              data-dismiss="modal">Guardar</button>
           </div>
         </div>
       </div>
+    </div>
     <br><br>
     <table class="table table-bordered">
       <thead>
@@ -132,7 +187,8 @@
           <td>{{persona.id_tipo_documento}}</td>
           <td>{{persona.nro_documento}}</td>
           <td>{{persona.celular}}</td>
-          <td><button class="btn btn-warning fa fa-pencil" (click)="fillSelect()" (click)="loadPersona(persona)" data-toggle="modal" data-target="#editpersonamodal" ></button></td>
+          <td><button class="btn btn-warning fa fa-pencil" (click)="fillSelect()" (click)="loadPersona(persona)"
+              data-toggle="modal" data-target="#editpersonamodal"></button></td>
           <td><button class="btn btn-danger fa fa-trash" (click)="Eliminar(persona)"></button></td>
         </tr>
       </tbody>
