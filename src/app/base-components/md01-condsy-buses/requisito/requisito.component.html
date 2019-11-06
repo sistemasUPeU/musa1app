@@ -16,6 +16,87 @@
             </form>
         </div>
     </div>
+    <!---------------Modal Agregar Requisito-->
+    <div class="modal fade" id="addreqmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Nuevo Requisito</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="name" class="col-form-label">Nombre:</label>
+                  <input [(ngModel)]="requisito.nombre_requisito" name="nombre_req" type="text" class="form-control" >
+                </div>
+                <div class="form-group">
+                  <label for="tiporeq" class="col-form-label">Tipo de Requisito:</label>
+                  <select class="form-control" (change)="selectTipoReq($event)">
+                    <option value="0">Seleccionar...</option>
+                    <option *ngFor="let tiporeq of listTipoReq" value={{tiporeq.ID_TIPO_REQUISITO}}>{{tiporeq.REQUISITO}}</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                    <label for="obligatorio" class="col-form-label">Obligatorio:</label>
+                    <select class="form-control" (change)="selectObligatorio($event)">
+                      <option value="2">Seleccionar...</option>
+                      <option value="1">Si</option>
+                      <option value="0">No</option>
+                    </select>
+                  </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+              <button type="button" (click)="Guardar()" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!---------------Modal Editar Requisito-->
+      <div class="modal fade" id="editreqmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content" *ngFor="let  req of loadReqData">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Editar Requisito</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-group">
+                    <label for="name" class="col-form-label">Nombre:</label>
+                    <input [(ngModel)]="req.nombre_requisito" name="nombre_req" type="text" class="form-control" >
+                  </div>
+                  <div class="form-group">
+                    <label for="tiporeq" class="col-form-label">Tipo de Requisito:</label>
+                    <select class="form-control" (change)="selectTipoReqUpdate($event)">
+                      <option value="0">Seleccionar...</option>
+                      <option *ngFor="let tiporeq of listTipoReq" value={{tiporeq.ID_TIPO_REQUISITO}}>{{tiporeq.REQUISITO}}</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                      <label for="obligatorio" class="col-form-label">Obligatorio:</label>
+                      <select class="form-control" (change)="selectObligatorio($event)">
+                        <option value="2">Seleccionar...</option>
+                        <option value="1">Si</option>
+                        <option value="0">No</option>
+                      </select>
+                    </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="button" (click)="Actualizar(req)" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--------------Tabla Listar-->
       <br><br>
       <table class="table table-bordered">
         <thead>
@@ -31,9 +112,9 @@
           <tr *ngFor="let requisito of listReq">
             <td>{{requisito.nombre_requisito}}</td>
             <td>{{requisito.estado}}</td>
-            <td>{{requisito.tipo_requisito}}</td>
+            <td>{{requisito.id_tipo_requisito}}</td>
             <td>{{requisito.obligatorio}}</td>
-            <td><button class="btn btn-warning fa fa-pencil" (click)="fillSelect()" (click)="loadPersona(requisito)" data-toggle="modal" data-target="#editpersonamodal" ></button></td>
+            <td><button class="btn btn-warning fa fa-pencil" (click)="fillSelect()" (click)="loadRequisito(requisito)" data-toggle="modal" data-target="#editreqmodal" ></button></td>
             <td><button class="btn btn-danger fa fa-trash" (click)="Eliminar(requisito)"></button></td>
           </tr>
         </tbody>
