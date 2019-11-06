@@ -95,6 +95,9 @@ export class ServiceService {
   createTipoMantenimiento(tipomantenimiento: TipoMantenimiento){
     return this.http.post<TipoMantenimiento>(this.tipoMantenimiento + 'add',tipomantenimiento);
   }
+  deleteTipoMantenimiento(tipomantenimiento: TipoMantenimiento){
+    return this.http.delete<Persona>(this.tipoMantenimiento + tipomantenimiento.id_tipo_mantenimiento);
+  }
 
 
 }

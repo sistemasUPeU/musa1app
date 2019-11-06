@@ -5,12 +5,15 @@ import { Md02MantenimientoRoutingModule } from './md02-mantenimiento-routing.mod
 import { AccionComponent } from './accion/accion.component';
 import { TipoMantenimientoComponent } from './tipo-mantenimiento/tipo-mantenimiento.component';
 import { RegistrarMantenimientoComponent } from './registrar-mantenimiento/registrar-mantenimiento.component';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [AccionComponent, TipoMantenimientoComponent, RegistrarMantenimientoComponent],
   imports: [
     CommonModule,
-    Md02MantenimientoRoutingModule
+    Md02MantenimientoRoutingModule,
+    FormsModule
   ]
 })
 export class Md02MantenimientoModule { }
