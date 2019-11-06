@@ -6,15 +6,64 @@
     <!-- Button trigger modal -->
     <div class="container row">
       <div class="col-8">
-        <button (click)="fillSelect()" type="button" class="btn btn-primary" data-toggle="modal"
-          data-target="#addpersonamodal">
+        <button (click)="fillSelect()" type="button" class="btn btn-primary" data-toggle="modal" data-target="#addpersonamodal">
           Agregar Persona
         </button>
       </div>
       <div class="col-4">
-        <form class="">
-          <input name="inputSearch" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        </form>
+          <form class="">
+              <input clickOutside (clickOutside)="toggleDropDownOff()" (click)="toggleDropDown()" (keyup)="searchPersona()" [(ngModel)]="input" name="inputSearch"  class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" >
+          </form>
+          <div *ngIf="showDropDown" class="state-container-dropdown">
+              <div class="return " *ngFor="let persona of searchResult">
+                  <ul (click)="getInfo(persona)" data-toggle="modal" data-target="#viewpersonamodal">{{persona.nombre_persona}}</ul>
+              </div>
+          </div>
+      </div>
+    </div>
+    <div class="modal fade" id="viewpersonamodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content"  *ngFor="let per of loadPersonaData; let $last = last" [isLast]='$last' (ngInit)="getTipoDoc(per.id_tipo_documento)" >
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Persona</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="name" class="col-form-label">Nombre:</label>
+                <h1>{{per.nombre_persona}}</h1>
+              </div>
+              <div class="form-group">
+                <label for="apepat" class="col-form-label">Apellido Paterno:</label>
+                <h2>{{per.apellido_paterno}}</h2>
+              </div>
+              <div class="form-group">
+                <label for="apemat" class="col-form-label">Apellido Materno:</label>
+                <h2>{{per.apellido_materno}}</h2>
+              </div>
+              <div class="form-group">
+                <label for="tipodoc" class="col-form-label">Tipo de Documento:</label>
+                <h2 *ngFor="let tipodoc of listTipoDoc">{{tipodoc.NOMBRE_DOCUMENTO}}</h2>
+              </div>
+              <div class="form-group">
+                <label for="nrodoc" class="col-form-label">Numero de Documento:</label>
+                <h2>{{per.nro_documento}}</h2>
+              </div>
+              <div class="form-group">
+                <label for="cel" class="col-form-label">Celular:</label>
+                <h2>{{per.celular}}</h2>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+          </div>
+        </div>
       </div>
     </div>
     <!-- Modal -->
@@ -45,8 +94,9 @@
               <div class="form-group">
                 <label for="tipodoc" class="col-form-label">Tipo de Documento:</label>
                 <select class="form-control" (change)="selectTipoDoc($event)">
-                  <option *ngFor="let tipodoc of listTipoDoc" value={{tipodoc.ID_TIPO_DOCUMENTO}}>
-                    {{tipodoc.NOMBRE_DOCUMENTO}}</option>
+                  <option value="0">Seleccionar...</option>
+                  <option *ngFor="let tipodoc of listTipoDoc" value={{tipodoc.ID_TIPO_DOCUMENTO}}>{{tipodoc.NOMBRE_DOCUMENTO}}</option>
+                  <option *ngFor="let tipodoc of listTipoDoc" value={{tipodoc.ID_TIPO_DOCUMENTO}}>{{tipodoc.NOMBRE_DOCUMENTO}}</option>
                 </select>
               </div>
               <div class="form-group">
