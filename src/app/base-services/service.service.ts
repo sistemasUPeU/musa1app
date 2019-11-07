@@ -12,6 +12,7 @@ import { TipoMantenimiento } from '../base-models/TipoMantenimiento';
 import { Curso } from '../base-models/Curso';
 import { CursoConductor } from '../base-models/CursoConductor';
 import { Producto } from '../base-models/Producto';
+import { TipoAccion } from '../base-models/TipoAccion';
 
 
 
@@ -31,6 +32,7 @@ export class ServiceService {
   seguridad = 'http://localhost:8090/seguridad/'
   tipoMantenimiento = 'http://localhost:8090/tipo_mantenimiento/'
   productos= 'http://localhost:8090/producto/'
+  tipoaccion='http://localhost:8090/tipo_accion/'
   
   getPersona(): Observable<Persona[]>{
     return this.http.get<Persona[]>(this.personas);
@@ -137,6 +139,22 @@ export class ServiceService {
   }
 
   //Almacen END
-  
 
+  // -- tipo de accion -- //
+
+  getTipoAccion(){
+    return this.http.get<TipoAccion[]>(this.tipoaccion)
+  }
+  getTipoAccionId(id_tipo_accion: number){
+    return this.http.get<TipoAccion>(this.tipoaccion+id_tipo_accion)
+  }
+  createTipoAccion(tipoaccion: TipoAccion){
+    return this.http.post<TipoAccion>(this.tipoaccion+"add",tipoaccion)
+  }
+  updateTipoAccion(tipoaccion: TipoAccion){
+    return this.http.put<TipoAccion>(this.tipoaccion + tipoaccion.id_tipo_accion,tipoaccion)
+  }
+  deleteTipoAccion(tipoaccion: TipoAccion){
+    return this.http.delete<TipoAccion>(this.tipoaccion + tipoaccion.id_tipo_accion)
+  }
 }
