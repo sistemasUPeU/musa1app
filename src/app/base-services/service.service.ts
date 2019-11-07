@@ -79,6 +79,9 @@ export class ServiceService {
   getCursoConductor(): Observable<CursoConductor[]> {
     return this.http.get<CursoConductor[]>(this.cursoConductores)
   }
+  getCursoConductorId(idcurso: number): Observable<CursoConductor[]> {
+    return this.http.get<CursoConductor[]>(this.cursoConductores+idcurso);
+  }
   getUsuario(): Observable<Usuario[]>{
     return this.http.get<Usuario[]>(this.seguridad);
   }
