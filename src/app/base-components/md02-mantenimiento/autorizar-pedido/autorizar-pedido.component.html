@@ -1,0 +1,76 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xl-12">
+      <h1 class="page-header">
+          AUTORIZAR PEDIDO
+      </h1>
+      <br><br>
+      <!-- TABLA -->
+      <div class="container row">
+        <table class="table">
+          <thead class="thead-light">
+            <tr>
+              <th colspan="5">LISTA DE PEDIDOS</th>
+            </tr>
+          </thead>
+          <thead class="thead">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Fecha</th>
+              <th scope="col">Ver Detalle</th>
+              <th scope="col" colspan="2">Autorizacion</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>1</th>
+              <td>2017/02/21</td>
+              <td><button type="button" class="btn btn-info fa fa-eye" data-toggle="modal" data-target="#exampleModal"></button></td>
+              <td><button class="btn btn-info">Aprobar</button></td>  
+              <td><button class="btn btn-danger">Denegar</button></td>       
+            </tr>
+          </tbody>
+        </table>
+    </div>
+        <!-- MODAL -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">PRODUCTOS</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+         <!-- MODAL BODY -->
+        <div class="modal-body">
+          <table class="table">
+            <thead class="thead-light">
+              <tr>
+                <th colspan="5">LISTA DE PRODUCTOS</th>
+              </tr>
+            </thead>
+            <thead class="thead">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Producto</th>
+                <th scope="col">Cantidad</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>1</th>
+                <td>Llantas</td>
+                <td>20</td>    
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- MODAL FOOTER -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
