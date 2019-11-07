@@ -27,13 +27,20 @@ export class TipoMantenimientoComponent implements OnInit {
     });
   }
   loadTipoMantenimiento(tipomantenimiento: TipoMantenimiento): void {
-    this.service.getTipoDocumentoId(tipomantenimiento.id_tipo_mantenimiento).subscribe((data) => {
+    this.service.getTipoMantenimientoId(tipomantenimiento.id_tipo_mantenimiento).subscribe((data) => {
       this.loadTipoMantenimientoData = data['TIPO_MANT'];
     })
   }
   Eliminar(tipomantenimiento: TipoMantenimiento) {
     this.service.deleteTipoMantenimiento(tipomantenimiento).subscribe(data => {
       alert('Registro eliminado correctamente');
+      this.ngOnInit();
+    })
+  }
+  Actualizar(tipomant: TipoMantenimiento) {
+    this.service.updateTipoMantenimiento(tipomant).subscribe((data) => {
+      this.tipomantenimiento = data;
+      alert('Registro modificado correctamente...!');
       this.ngOnInit();
     })
   }
