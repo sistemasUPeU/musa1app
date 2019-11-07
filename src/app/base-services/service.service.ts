@@ -89,6 +89,13 @@ export class ServiceService {
   getBus(): Observable<Bus[]>{
     return this.http.get<Bus[]>(this.buses)
   }
+  createBus(bus: Bus){
+    return this.http.post<Bus>(this.buses + 'add',bus);
+  }
+  getBusId(placa: String): Observable<Bus[]> {
+    return this.http.get<Bus[]>(this.buses+String);
+  }
+
   getTipoMantenimiento(): Observable<TipoMantenimiento[]>{
     return this.http.get<TipoMantenimiento[]>(this.tipoMantenimiento);
   }
