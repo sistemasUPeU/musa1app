@@ -6,10 +6,11 @@ import { AccionComponent } from './accion/accion.component';
 import { TipoMantenimientoComponent } from './tipo-mantenimiento/tipo-mantenimiento.component';
 import { RegistrarMantenimientoComponent } from './registrar-mantenimiento/registrar-mantenimiento.component';
 import { FormsModule } from '@angular/forms';
+import { RevisionTecnicaComponent } from './revision-tecnica/revision-tecnica.component';
 
 
 @NgModule({
-  declarations: [AccionComponent, TipoMantenimientoComponent, RegistrarMantenimientoComponent],
+  declarations: [AccionComponent, TipoMantenimientoComponent, RegistrarMantenimientoComponent, RevisionTecnicaComponent],
   imports: [
     CommonModule,
     Md02MantenimientoRoutingModule,
