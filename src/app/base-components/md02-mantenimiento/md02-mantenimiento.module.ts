@@ -9,14 +9,10 @@ import { TipoAccionComponent } from './tipo-accion/tipo-accion.component';
 import { FormsModule } from '@angular/forms';
 import { RevisionTecnicaComponent } from './revision-tecnica/revision-tecnica.component';
 import { AutorizarPedidoComponent } from './autorizar-pedido/autorizar-pedido.component';
-import { ClickOutsideDirective } from 'src/app/base-directives/dropdown.directive';
-import { NgInitDirective } from 'src/app/base-directives/oninit.directive';
 
 
 @NgModule({
   declarations: [
-    NgInitDirective,
-    ClickOutsideDirective,
     AccionComponent,
     TipoAccionComponent, 
     TipoMantenimientoComponent, 
