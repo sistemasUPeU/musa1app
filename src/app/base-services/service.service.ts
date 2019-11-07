@@ -11,6 +11,7 @@ import { Bus } from '../base-models/Bus';
 import { TipoMantenimiento } from '../base-models/TipoMantenimiento';
 import { Curso } from '../base-models/Curso';
 import { CursoConductor } from '../base-models/CursoConductor';
+import { Producto } from '../base-models/Producto';
 
 
 
@@ -29,7 +30,7 @@ export class ServiceService {
   tipoRequisito = 'http://localhost:8090/tipoRequisito/'
   seguridad = 'http://localhost:8090/seguridad/'
   tipoMantenimiento = 'http://localhost:8090/tipo_mantenimiento/'
-  
+  productos= 'http://localhost:8090/producto/'
   
   getPersona(): Observable<Persona[]>{
     return this.http.get<Persona[]>(this.personas);
@@ -108,6 +109,28 @@ export class ServiceService {
   deleteTipoMantenimiento(tipomantenimiento: TipoMantenimiento){
     return this.http.delete<Persona>(this.tipoMantenimiento + tipomantenimiento.id_tipo_mantenimiento);
   }
+  //Almacen
+   //Producto
+  getProducto():Observable<Producto[]>{
+    return this.http.get<Producto[]>(this.productos);
+  }
+  getProductoId(idproducto: number):Observable<Producto[]>{
+    return this.http.get<Producto[]>(this.productos+idproducto);
+  }
+  searchProducto(nombre: String): Observable<Producto[]>{
+    return this.http.get<Producto[]>(this.productos+'search/'+nombre);
+  }
+  createProducto(producto: Producto){
+    return this.http.post<Producto>(this.productos+producto.id_producto,producto);
+  }
+  deleteProducto(producto: Producto){
+    return this.http.delete<Producto>(this.productos + producto.id_producto);
+  }
+  updateProducto(producto: Producto){
+    return this.http.put<Producto>(this.productos + producto.id_producto,producto);
+  }
 
+  //Almacen END
+  
 
 }
