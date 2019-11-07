@@ -3,30 +3,6 @@
     <h1 class="page-header">
       Tipo de Mantenimiento
     </h1>
-<<<<<<< HEAD
-    <!-- Button trigger modal -->
-    <div class="container row">
-      <div class="col-8">
-        <button (click)="fillSelect()" type="button" class="btn btn-success" data-toggle="modal"
-          data-target="#addproductomodal"> <i class="fa fa-plus-circle"></i>
-          Agregar Nuevo
-        </button>
-      </div>
-      <div class="col-4">
-        <form class="">
-          <input name="inputSearch" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        </form>
-      </div>
-    </div>
-
-    <!--bloqurmodal-->
-    <div class="modal fade" id="addproductomodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-      aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Nuevo Tipo de Mantenimiento</h5>
-=======
     <div class="container row">
       <div class="col-8">
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addtipomantenimiento">
@@ -40,7 +16,6 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLongTitle">Nueva Persona</h5>
->>>>>>> 79e1d3a0e85579f4d6527c1eef2dc5c2fa5c3c78
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -48,22 +23,12 @@
           <div class="modal-body">
             <form>
               <div class="form-group">
-<<<<<<< HEAD
-                <label for="nom" class="col-form-label">Tipo de Mantenimiento:</label>
-                <input name="nombre_producto" type="text" class="form-control">
-
-              </div>
-
-            
-
-=======
                 <div class="form-group">
                   <label for="name" class="col-form-label">Nombre:</label>
                   <input [(ngModel)]="tipomantenimiento.tipo_mantenimiento" name="tipo_mantenimiento" type="text"
                     class="form-control">
                 </div>
               </div>
->>>>>>> 79e1d3a0e85579f4d6527c1eef2dc5c2fa5c3c78
             </form>
           </div>
           <div class="modal-footer">
@@ -73,38 +38,6 @@
         </div>
       </div>
     </div>
-<<<<<<< HEAD
-    <!--bloqurmodal modificar-->
-    <div class="modal fade" id="editproductomodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-      aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Modificar Tipo de Mantenimiento</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form>
-              <div class="form-group">
-                <label for="nom" class="col-form-label">Tipo de Mantenimiento:</label>
-                <input name="nombre_producto" type="text" class="form-control">
-
-              </div>
-
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            <button type="button" (click)="Guardar()" class="btn btn-primary" data-dismiss="modal">Guardar Cambios</button>
-          </div>
-        </div>
-      </div>
-    </div>
-=======
-
->>>>>>> 79e1d3a0e85579f4d6527c1eef2dc5c2fa5c3c78
 
 
     <br><br>
@@ -119,13 +52,6 @@
         <tr *ngFor="let tipo_mantenimiento of listTipoMantenimiento">
           <td>{{tipo_mantenimiento.tipo_mantenimiento}}</td>
           <td><button class="btn btn-warning fa fa-pencil" (click)="fillSelect()" (click)="loadPersona(persona)"
-<<<<<<< HEAD
-              data-toggle="modal" data-target="#editproductomodal"></button></td>
-          <td><button class="btn btn-danger fa fa-trash" (click)="Eliminar(persona)"></button></td>
-        </tr>
-      </tbody>
-      
-=======
             data-toggle="modal" data-target="#edit"></button></td>
           <td><button class="btn btn-danger fa fa-trash" (click)="Eliminar(tipo_mantenimiento)"></button></td>
         </tr>
@@ -134,4 +60,3 @@
 
   </div>
 </div>
->>>>>>> 79e1d3a0e85579f4d6527c1eef2dc5c2fa5c3c78

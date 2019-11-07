@@ -3,6 +3,7 @@
       <h1 class="page-header">
           Curso
       </h1>
+      <br><br>
       <!-- Button trigger modal -->
       <div class="container row">
         <div class="col-8">
@@ -18,12 +19,12 @@
     </div>
         <!--------------Tabla Listar-->
       <br><br>
-      <div class="container" *ngFor="let curso of listCursos">
+      <div class="table-responsive" *ngFor="let curso of listCursos">
         <h1>Curso "{{curso.nombre_curso}}"</h1>
-        <table class="table table-bordered"> 
+        <table class="table table-striped"> 
           <thead>
             <tr>
-              <th>ID CURSO</th>
+              <th>Nombre Persona</th>
               <th>Fecha Inicio</th>
               <th>Fecha Fin</th>
               <th>Estado</th>
@@ -45,5 +46,4 @@
         </table>
       </div>
     </div>
-  </div>
-  
+</div>
