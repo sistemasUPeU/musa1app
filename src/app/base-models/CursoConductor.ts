@@ -1,5 +1,7 @@
 export class CursoConductor {
     id_curso_conductor: number;
+    nombre_persona:     string;
+    nombre_curso:       string;
     f_inicio:           string;
     f_fin:              string;
     estado:             string;

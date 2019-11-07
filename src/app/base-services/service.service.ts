@@ -11,6 +11,8 @@ import { Bus } from '../base-models/Bus';
 import { TipoMantenimiento } from '../base-models/TipoMantenimiento';
 import { Curso } from '../base-models/Curso';
 import { CursoConductor } from '../base-models/CursoConductor';
+import { Producto } from '../base-models/Producto';
+import { TipoAccion } from '../base-models/TipoAccion';
 
 
 
@@ -29,7 +31,8 @@ export class ServiceService {
   tipoRequisito = 'http://localhost:8090/tipoRequisito/'
   seguridad = 'http://localhost:8090/seguridad/'
   tipoMantenimiento = 'http://localhost:8090/tipo_mantenimiento/'
-  
+  productos= 'http://localhost:8090/producto/'
+  tipoaccion='http://localhost:8090/tipo_accion/'
   
   getPersona(): Observable<Persona[]>{
     return this.http.get<Persona[]>(this.personas);
@@ -79,6 +82,9 @@ export class ServiceService {
   getCursoConductor(): Observable<CursoConductor[]> {
     return this.http.get<CursoConductor[]>(this.cursoConductores)
   }
+  getCursoConductorId(idcurso: number): Observable<CursoConductor[]> {
+    return this.http.get<CursoConductor[]>(this.cursoConductores+idcurso);
+  }
   getUsuario(): Observable<Usuario[]>{
     return this.http.get<Usuario[]>(this.seguridad);
   }
@@ -86,7 +92,16 @@ export class ServiceService {
   getBus(): Observable<Bus[]>{
     return this.http.get<Bus[]>(this.buses)
   }
-  getTipoMantenimiento(): Observable<TipoMantenimiento[]>{
+  createBus(bus: Bus){
+    return this.http.post<Bus>(this.buses + 'add',bus);
+  }
+  getBusId(placa: String): Observable<Bus[]> {
+    return this.http.get<Bus[]>(this.buses+String);
+  }
+
+   // ----- TIPO MANTENIMIENTO ---- //
+
+   getTipoMantenimiento(): Observable<TipoMantenimiento[]>{
     return this.http.get<TipoMantenimiento[]>(this.tipoMantenimiento);
   }
   getTipoMantenimientoId(id_tipo_mantenimiento: number): Observable<TipoMantenimiento[]> {
@@ -96,8 +111,50 @@ export class ServiceService {
     return this.http.post<TipoMantenimiento>(this.tipoMantenimiento + 'add',tipomantenimiento);
   }
   deleteTipoMantenimiento(tipomantenimiento: TipoMantenimiento){
-    return this.http.delete<Persona>(this.tipoMantenimiento + tipomantenimiento.id_tipo_mantenimiento);
+    return this.http.delete<TipoMantenimiento >(this.tipoMantenimiento + tipomantenimiento.id_tipo_mantenimiento);
+  }
+  updateTipoMantenimiento(tipomantenimiento: TipoMantenimiento){
+    return this.http.put<TipoMantenimiento>(this.tipoMantenimiento + tipomantenimiento.id_tipo_mantenimiento, tipomantenimiento);
+  }
+  // ----- TIPO MANTENIMIENTO  ----//
+  //Almacen
+   //Producto
+  getProducto():Observable<Producto[]>{
+    return this.http.get<Producto[]>(this.productos);
+  }
+  getProductoId(idproducto: number):Observable<Producto[]>{
+    return this.http.get<Producto[]>(this.productos+idproducto);
+  }
+  searchProducto(nombre: String): Observable<Producto[]>{
+    return this.http.get<Producto[]>(this.productos+'search/'+nombre);
+  }
+  createProducto(producto: Producto){
+    return this.http.post<Producto>(this.productos+producto.id_producto,producto);
+  }
+  deleteProducto(producto: Producto){
+    return this.http.delete<Producto>(this.productos + producto.id_producto);
+  }
+  updateProducto(producto: Producto){
+    return this.http.put<Producto>(this.productos + producto.id_producto,producto);
   }
 
+  //Almacen END
 
+  // -- tipo de accion -- //
+
+  getTipoAccion(){
+    return this.http.get<TipoAccion[]>(this.tipoaccion)
+  }
+  getTipoAccionId(id_tipo_accion: number){
+    return this.http.get<TipoAccion>(this.tipoaccion+id_tipo_accion)
+  }
+  createTipoAccion(tipoaccion: TipoAccion){
+    return this.http.post<TipoAccion>(this.tipoaccion+"add",tipoaccion)
+  }
+  updateTipoAccion(tipoaccion: TipoAccion){
+    return this.http.put<TipoAccion>(this.tipoaccion + tipoaccion.id_tipo_accion,tipoaccion)
+  }
+  deleteTipoAccion(tipoaccion: TipoAccion){
+    return this.http.delete<TipoAccion>(this.tipoaccion + tipoaccion.id_tipo_accion)
+  }
 }

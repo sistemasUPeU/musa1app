@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ServiceService } from 'src/app/base-services/service.service';
+import { TipoAccion } from 'src/app/base-models/TipoAccion';
 
 @Component({
   selector: 'app-tipo-accion',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TipoAccionComponent implements OnInit {
 
-  constructor() { }
+  tipoacc: TipoAccion= new TipoAccion
+
+  constructor(private service: ServiceService) { }
 
   ngOnInit() {
+  }
+  guardartipo(){
+    this.service.createTipoAccion(this.tipoacc).subscribe(data=>alert('Se ingreso correctamente'))
   }
 
 }
