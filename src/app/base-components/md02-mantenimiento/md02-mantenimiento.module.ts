@@ -8,10 +8,12 @@ import { RegistrarMantenimientoComponent } from './registrar-mantenimiento/regis
 import { FormsModule } from '@angular/forms';
 import { RevisionTecnicaComponent } from './revision-tecnica/revision-tecnica.component';
 import { AutorizarPedidoComponent } from './autorizar-pedido/autorizar-pedido.component';
+import { TipoAccionComponent } from './tipo-accion/tipo-accion.component';
+
 
 
 @NgModule({
-  declarations: [AccionComponent, TipoMantenimientoComponent, RegistrarMantenimientoComponent, RevisionTecnicaComponent, AutorizarPedidoComponent],
+  declarations: [AccionComponent, TipoMantenimientoComponent, RegistrarMantenimientoComponent, RevisionTecnicaComponent, AutorizarPedidoComponent, TipoAccionComponent],
   imports: [
     CommonModule,
     Md02MantenimientoRoutingModule,
