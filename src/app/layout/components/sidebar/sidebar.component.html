@@ -110,6 +110,18 @@
             </a>
             <li class="nested" [class.expand]="showModulos[2] === 'md03'">
                 <ul class="submenu">
+                        <li>
+                                <a routerLink="/md03/asignar-bus" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                                    <i class="fa fa-fw fa-edit"></i>&nbsp;
+                                    <span>{{ 'Asignar Bus' }}</span>
+                                </a>
+                            </li>
+                            <li>
+                                    <a routerLink="/md03/asignar-conductor" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                                        <i class="fa fa-fw fa-edit"></i>&nbsp;
+                                        <span>{{ 'Asignar Conductor' }}</span>
+                                    </a>
+                                </li>
                     <li>
                         <a routerLink="/md03/grupo" [routerLinkActive]="['router-link-active']" class="list-group-item">
                             <i class="fa fa-fw fa-edit"></i>&nbsp;
