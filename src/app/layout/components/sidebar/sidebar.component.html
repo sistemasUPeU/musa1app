@@ -92,6 +92,21 @@
                             <span>{{ 'Registrar Mantenimiento' }}</span>
                         </a>
                     </li>
+<<<<<<< HEAD
+=======
+                    <li>
+                        <a routerLink="/md02/autorizar-pedido" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                            <i class="fa fa-check-circle"></i>&nbsp;
+                            <span>{{ 'Autorizar Pedido' }}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/md02/revision-tecnica" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                            <i class="fa fa-fw fa-table"></i>&nbsp;
+                            <span>{{ 'Revisión Técnica' }}</span>
+                        </a>
+                    </li>
+>>>>>>> 79e1d3a0e85579f4d6527c1eef2dc5c2fa5c3c78
                 </ul>
             </li>
         </div>
@@ -100,52 +115,35 @@
         <div class="nested-menu">
             <a class="list-group-item" (click)="addExpandModulos('md03')">
                 <i class="fa fa-plus"></i>&nbsp;
-                <span>{{ 'MD03' | translate }}</span>
+                <span>{{ 'Cronograma y Despacho'}}</span>
             </a>
             <li class="nested" [class.expand]="showModulos[2] === 'md03'">
                 <ul class="submenu">
+                        <li>
+                                <a routerLink="/md03/asignar-bus" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                                    <i class="fa fa-fw fa-edit"></i>&nbsp;
+                                    <span>{{ 'Asignar Bus' }}</span>
+                                </a>
+                            </li>
+                            <li>
+                                    <a routerLink="/md03/asignar-conductor" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                                        <i class="fa fa-fw fa-edit"></i>&nbsp;
+                                        <span>{{ 'Asignar Conductor' }}</span>
+                                    </a>
+                                </li>
                     <li>
-                        <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
-                            <i class="fa fa-fw fa-dashboard"></i>&nbsp;
-                            <span>{{ 'Dashboard' | translate }}</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['/charts']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-                            <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;
-                            <span>{{ 'Charts' | translate }}</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['/tables']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-                            <i class="fa fa-fw fa-table"></i>&nbsp;
-                            <span>{{ 'Tables' | translate }}</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['/forms']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                        <a routerLink="/md03/grupo" [routerLinkActive]="['router-link-active']" class="list-group-item">
                             <i class="fa fa-fw fa-edit"></i>&nbsp;
-                            <span>{{ 'Forms' | translate }}</span>
+                            <span>{{ 'Configurar Grupos' }}</span>
                         </a>
                     </li>
                     <li>
-                        <a [routerLink]="['/bs-element']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-                            <i class="fa fa-fw fa-desktop"></i>&nbsp;
-                            <span>{{ 'Bootstrap Element' | translate }}</span>
+                        <a routerLink="/md03/csv" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                            <i class="fa fa-fw fa-table"></i>&nbsp;
+                            <span>{{ 'CSV'}}</span>
                         </a>
                     </li>
-                    <li>
-                        <a [routerLink]="['/grid']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-                            <i class="fa fa-fw fa-wrench"></i>&nbsp;
-                            <span>{{ 'Bootstrap Grid' | translate }}</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['/components']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-                            <i class="fa fa-th-list"></i>&nbsp;
-                            <span>{{ 'Component' | translate }}</span>
-                        </a>
-                    </li>
+
                 </ul>
             </li>
         </div>

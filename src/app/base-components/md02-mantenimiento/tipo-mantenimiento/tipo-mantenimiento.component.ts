@@ -9,7 +9,6 @@ import { TipoMantenimiento } from 'src/app/base-models/TipoMantenimiento';
 })
 export class TipoMantenimientoComponent implements OnInit {
   tipomantenimiento: TipoMantenimiento = new TipoMantenimiento();
-  tman: TipoMantenimiento = new TipoMantenimiento();
   listTipoMantenimiento: TipoMantenimiento[] = [];
   loadTipoMantenimientoData: TipoMantenimiento[] = [];
   constructor(private service: ServiceService, private router: Router) { }
@@ -26,6 +25,17 @@ export class TipoMantenimientoComponent implements OnInit {
       alert('Registro guardado correctamente...!');
       this.ngOnInit();
     });
+  }
+  loadTipoMantenimiento(tipomantenimiento: TipoMantenimiento): void {
+    this.service.getTipoDocumentoId(tipomantenimiento.id_tipo_mantenimiento).subscribe((data) => {
+      this.loadTipoMantenimientoData = data['TIPO_MANT'];
+    })
+  }
+  Eliminar(tipomantenimiento: TipoMantenimiento) {
+    this.service.deleteTipoMantenimiento(tipomantenimiento).subscribe(data => {
+      alert('Registro eliminado correctamente');
+      this.ngOnInit();
+    })
   }
 
 }
