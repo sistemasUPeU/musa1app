@@ -22,15 +22,37 @@ export class CursoComponent implements OnInit {
   listCursoConductor: CursoConductor[] = [];
   listCursoConductorPersona: CursoConductor[] = [];
   showDropDown=false;
+  showViewPersona=false;
+  showViewConductor=false;
   input:String;
   searchResult: Persona[] = [];
   fecha_i: any;
   fecha_f: any;
   selectedCurso: number = null;
+  buttonText: String = ''
   constructor(private service: ServiceService, private router: Router) { }
 
   ngOnInit() {
-    this.sortbyCurso();
+    this.changeView();
+    console.log(this.buttonText)
+
+  }
+  changeView() {
+    this.showViewConductor=!this.showViewConductor;
+    console.log(this.showViewConductor)
+    if(this.showViewConductor!=this.showViewPersona){
+      console.log(this.showViewConductor)
+      console.log(this.showViewPersona)
+      this.sortbyCurso();
+      this.buttonText = 'Por Persona'
+      console.log(this.buttonText)
+    }else{
+      console.log(this.showViewPersona)
+      this.showViewPersona=!this.showViewPersona;
+      this.sortbyPersona();
+      this.buttonText = 'Por Curso'
+      console.log(this.buttonText)
+    }
   }
   sortbyCurso() {
     this.service.getCurso().subscribe((data) => {
