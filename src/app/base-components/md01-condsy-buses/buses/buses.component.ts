@@ -29,6 +29,8 @@ export class BusesComponent implements OnInit {
       this.listBus = data['b']
     })
   }
+
+  filterBusHtml = '';  
   guardar(){
     this.bus.estado=this.estadobus;
     this.bus.id_persona_propietario=this.selectedPerson;
