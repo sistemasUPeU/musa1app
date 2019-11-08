@@ -5,18 +5,16 @@ import { Md02MantenimientoRoutingModule } from './md02-mantenimiento-routing.mod
 import { AccionComponent } from './accion/accion.component';
 import { TipoMantenimientoComponent } from './tipo-mantenimiento/tipo-mantenimiento.component';
 import { RegistrarMantenimientoComponent } from './registrar-mantenimiento/registrar-mantenimiento.component';
+import { TipoAccionComponent } from './tipo-accion/tipo-accion.component';
 import { FormsModule } from '@angular/forms';
 import { RevisionTecnicaComponent } from './revision-tecnica/revision-tecnica.component';
 import { AutorizarPedidoComponent } from './autorizar-pedido/autorizar-pedido.component';
-import { ClickOutsideDirective } from 'src/app/base-directives/dropdown.directive';
-import { NgInitDirective } from 'src/app/base-directives/oninit.directive';
 
 
 @NgModule({
   declarations: [
-    NgInitDirective,
-    ClickOutsideDirective,
-    AccionComponent, 
+    AccionComponent,
+    TipoAccionComponent, 
     TipoMantenimientoComponent, 
     RegistrarMantenimientoComponent, 
     RevisionTecnicaComponent,
