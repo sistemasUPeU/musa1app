@@ -156,4 +156,10 @@ export class ProductoComponent implements OnInit {
       this.listMarcaId = data['m'];
     })
   }
+  getMarca(idmarc:number){
+    console.log(idmarc)
+    this.service.getMarcaId(idmarc).subscribe((data) =>{
+      this.listMarcaId = data['m'];
+    })
+  }
 }
