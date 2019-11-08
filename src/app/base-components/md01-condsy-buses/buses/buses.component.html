@@ -1,180 +1,210 @@
-<div class="row">
-  <div class="col-xl-12">
-      <h1 class="page-header">
-          Buses
-      </h1>
-      <div class="container row">
-          <div class="col-8">
-            <button (click)="fillSelect()" type="button" class="btn btn-primary" data-toggle="modal" data-target="#addbusmodal">
-              Agregar Bus
-            </button>
-          </div>
-          <div class="col-4">
-              <form class="">
-                  <input  name="inputSearch"  class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-              </form>
-          </div>
-      </div>
-    <br><br>
-  <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th>Marca</th>
-          <th>Placa</th>
-          <th>Descripcion</th>
-          <th>Padron</th>
-          <th>Estado</th>
-          <th>Modelo</th>
-          <th>#Motor</th>
-          <th>Fabricación</th>
-          <th>#Serie</th>
-          <th>#Propietario</th>
-          <th colspan="2">Opcion</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let bus of listBus">
-          <td>{{bus.marca}}</td>
-          <td>{{bus.placa}}</td>
-          <td>{{bus.descripcion}}</td>
-          <td>{{bus.padron}}</td>
-          <td>{{bus.estado}}</td>
-          <td>{{bus.modelo}}</td>
-          <td>{{bus.nro_motor}}</td>
-          <td>{{bus.anio_fabricacion}}</td>
-          <td>{{bus.nro_serie}}</td>
-          <td>{{bus.id_persona_propietario}}</td>
-          <td><button class="btn btn-warning fa fa-pencil" (click)="fillSelect()" (click)="loadBus(bus)" data-toggle="modal" data-target="#updatebusmodal" ></button></td>
-          <td><button class="btn btn-danger fa fa-trash" (click)="Eliminar(bus)"></button></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<!-- Button agregar modal -->
-
-<div class="modal fade" id="addbusmodal" tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Registrar Bus</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="form-group">
-              <label for="pers" class="col-form-label">Tipo de Documento:</label>
-              <select class="form-control" (change)="selectPerson($event)">
-                <option value="0">Seleccionar...</option>
-                <option *ngFor="let pers  of listPerson" value={{pers.id_persona}}>{{pers.nombre_persona}}</option>
-              </select>
+<div class="card" >
+  <div class="row">
+    <div class="col-xl-12">
+        <h1 class="page-header">
+            Buses
+        </h1>
+        <div class="container row">
+            <div class="col-8">
+              <button (click)="fillSelect()" type="button" class="btn btn-primary" data-toggle="modal" data-target="#addbusmodal">
+                Agregar Bus
+              </button>
             </div>
-          <div class="form-group">
-            <label for="marc" class="col-form-label">Marca:</label>
-            <input [(ngModel)]="bus.marca" name="marca" class="form-control" type="text">
-          </div>
-          <div class="form-group">
-            <label for="plac">Placa:</label>
-            <input [(ngModel)]="bus.placa" name="placa" class="form-control" type="text">
-          </div>
-          <div class="form-group">
-            <label for="descrip">Descripcion:</label>
-            <input [(ngModel)]="bus.descripcion" name="descripcion" class="form-control" type="text">
-          </div>
-          <div class="form-group">
-            <label for="Padro">Padron: </label>
-            <input [(ngModel)]="bus.padron" name="padron" class="form-control" type="text">
-          </div> 
-          <div class="form-group">
-            <label for="Model">Modelo:</label>
-            <input [(ngModel)]="bus.modelo" name="modelo" class="form-control" type="text">
-          </div>
-          <div class="form-group">
-            <label for="nro_mot">Nro Motor:</label>
-            <input [(ngModel)]="bus.nro_motor" name="nro_motor" class="form-control" type="text">
-          </div>
-          <div class="form-group">
-            <label for="anio_fabric">Año Fabricación:</label>
-            <input [(ngModel)]="bus.anio_fabricacion" name="anio_fabricacion" class="form-control" type="text">
-          </div>
-          <div class="form-group">
-            <label for="nro_seri">Nro Serie:</label>
-            <input [(ngModel)]="bus.nro_serie" name="nro_serie" class="form-control" type="text">
-          </div>
-          <div class="form-group">
-            <label for="asientos">Nro Asientos:</label>
-            <input [(ngModel)]="bus.nro_asientos" name="nro_asientos" class="form-control" type="text">
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <button type="button" (click)="guardar()" class="btn btn-primary" data-dismiss="modal">Guardar</button>
-      </div>
+            <div class="col-4">
+                <form class="">
+                    <input  name="inputSearch"  class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                </form>
+            </div>
+        </div>
+      <br><br>
+    <table class="table table-responsive table-bordered">
+        <thead>
+          <tr>
+            <th>Marca</th>
+            <th>Placa</th>
+            <th>Descripcion</th>
+            <th>Padron</th>
+            <th>Estado</th>
+            <th>Modelo</th>
+            <th>#Motor</th>
+            <th>Fabricación</th>
+            <th>#Serie</th>
+            <th>#Propietario</th>
+            <th colspan="2">Opcion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let bus of listBus">
+            <td>{{bus.marca}}</td>
+            <td>{{bus.placa}}</td>
+            <td>{{bus.descripcion}}</td>
+            <td>{{bus.padron}}</td>
+            <td>{{bus.estado}}</td>
+            <td>{{bus.modelo}}</td>
+            <td>{{bus.nro_motor}}</td>
+            <td>{{bus.anio_fabricacion}}</td>
+            <td>{{bus.nro_serie}}</td>
+            <td>{{bus.id_persona_propietario}}</td>
+            <td><button class="btn btn-warning fa fa-pencil" (click)="loadBus(bus)" data-toggle="modal" data-target="#updatebusmodal" ></button></td>
+            <td><button class="btn btn-danger fa fa-trash" (click)="loadBus(bus)" data-toggle="modal" data-target="#confirmdelete"></button></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
-</div>
-
-<!-- update agregar modal -->
-
-<div class="modal fade" id="updatebusmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content" *ngFor="let bus of loadbusData">
-      <div class="modal-header">
-        <h5 class="modal-tittle" id="exmpleModalLongTitle">Modificar Bus</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form action="">
+  
+  <!-- Button agregar modal -->
+  
+  <div class="modal fade" id="addbusmodal" tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Registrar Bus</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
             <div class="form-group">
-                <label for="marc" class="col-form-label">Marca:</label>
-                <input [(ngModel)]="bus.marca" name="marca" class="form-control" type="text">
+                <label for="pers" class="col-form-label">Propietario:</label>
+                <select class="form-control" (change)="selectPerson($event)">
+                  <option value="0">Seleccionar...</option>
+                  <option *ngFor="let pers  of listPerson" value={{pers.id_persona}}>{{pers.nombre_persona}}</option>
+                </select>
               </div>
-              <div class="form-group">
-                <label for="plac">Placa:</label>
-                <input [(ngModel)]="bus.placa" name="placa" class="form-control" type="text">
-              </div>
-              <div class="form-group">
-                <label for="descrip">Descripcion:</label>
-                <input [(ngModel)]="bus.descripcion" name="descripcion" class="form-control" type="text">
-              </div>
-              <div class="form-group">
-                  <label for="pers" class="col-form-label">Tipo de Documento:</label>
-                  <select class="form-control" (change)="selectPerson($event)">
-                    <option value="0">Seleccionar...</option>
-                    <option  value=0>Inhabilitado</option>
-                    <option  value=1>Habilitado</option>
-                    <option  value=2>Documentos Vencidos</option>
-                  </select>
-                </div>
-              <div class="form-group">
-                <label for="Model">Modelo:</label>
-                <input [(ngModel)]="bus.modelo" name="modelo" class="form-control" type="text">
-              </div>
-              <div class="form-group">
-                <label for="nro_mot">Nro Motor:</label>
-                <input [(ngModel)]="bus.nro_motor" name="nro_motor" class="form-control" type="text">
-              </div>
-              <div class="form-group">
-                <label for="anio_fabric">Año Fabricación:</label>
-                <input [(ngModel)]="bus.anio_fabricacion" name="anio_fabricacion" class="form-control" type="text">
-              </div>
-              <div class="form-group">
-                <label for="nro_seri">Nro Serie:</label>
-                <input [(ngModel)]="bus.nro_serie" name="nro_serie" class="form-control" type="text">
-              </div>
-              <div class="form-group">
-                <label for="asientos">Nro Asientos:</label>
-                <input [(ngModel)]="bus.nro_asientos" name="nro_asientos" class="form-control" type="text">
-              </div>
-        </form>
+            <div class="form-group">
+              <label for="marc" class="col-form-label">Marca:</label>
+              <input [(ngModel)]="bus.marca" name="marca" class="form-control" type="text">
+            </div>
+            <div class="form-group">
+              <label for="plac">Placa:</label>
+              <input [(ngModel)]="bus.placa" name="placa" class="form-control" type="text">
+            </div>
+            <div class="form-group">
+              <label for="descrip">Descripcion:</label>
+              <input [(ngModel)]="bus.descripcion" name="descripcion" class="form-control" type="text">
+            </div>
+            <div class="form-group">
+              <label for="Padro">Padron: </label>
+              <input [(ngModel)]="bus.padron" name="padron" class="form-control" type="text">
+            </div> 
+            <div class="form-group">
+              <label for="Model">Modelo:</label>
+              <input [(ngModel)]="bus.modelo" name="modelo" class="form-control" type="text">
+            </div>
+            <div class="form-group">
+              <label for="nro_mot">Nro Motor:</label>
+              <input [(ngModel)]="bus.nro_motor" name="nro_motor" class="form-control" type="text">
+            </div>
+            <div class="form-group">
+              <label for="anio_fabric">Año Fabricación:</label>
+              <input [(ngModel)]="bus.anio_fabricacion" name="anio_fabricacion" class="form-control" type="text">
+            </div>
+            <div class="form-group">
+              <label for="nro_seri">Nro Serie:</label>
+              <input [(ngModel)]="bus.nro_serie" name="nro_serie" class="form-control" type="text">
+            </div>
+            <div class="form-group">
+              <label for="asientos">Nro Asientos:</label>
+              <input [(ngModel)]="bus.nro_asientos" name="nro_asientos" class="form-control" type="text">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button type="button" (click)="guardar()" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+        </div>
       </div>
     </div>
   </div>
+  
+  <!-- update agregar modal -->
+  
+  <div class="modal fade" id="updatebusmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content" *ngFor="let bus of loadbusData">
+        <div class="modal-header">
+          <h5 class="modal-tittle" id="exmpleModalLongTitle">Modificar Bus</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="">
+              <div class="form-group">
+                  <label for="marc" class="col-form-label">Marca:</label>
+                  <input [(ngModel)]="bus.marca" name="marca" class="form-control" type="text">
+                </div>
+                <div class="form-group">
+                  <label for="plac">Placa:</label>
+                  <input [(ngModel)]="bus.placa" name="placa" class="form-control" type="text">
+                </div>
+                <div class="form-group">
+                  <label for="descrip">Descripcion:</label>
+                  <input [(ngModel)]="bus.descripcion" name="descripcion" class="form-control" type="text">
+                </div>
+                <div class="form-group">
+                  <label for="satet">Estado:</label>
+                  <input [(ngModel)]="bus.estado" name="estado" class="form-control" type="text">
+                </div>
+              <!--  <div class="form-group">
+                    <label for="pers" class="col-form-label">Estado:</label>
+                    <select class="form-control" (change)="selectPerson($event)">
+                      <option value="0">Seleccionar...</option>
+                      <option  value=0>Inhabilitado</option>
+                      <option  value=1>Habilitado</option>
+                      <option  value=2>Documentos Vencidos</option>
+                    </select>
+                  </div>-->
+                <div class="form-group">
+                  <label for="Model">Modelo:</label>
+                  <input [(ngModel)]="bus.modelo" name="modelo" class="form-control" type="text">
+                </div>
+                <div class="form-group">
+                  <label for="nro_mot">Nro Motor:</label>
+                  <input [(ngModel)]="bus.nro_motor" name="nro_motor" class="form-control" type="text">
+                </div>
+                <div class="form-group">
+                  <label for="anio_fabric">Año Fabricación:</label>
+                  <input [(ngModel)]="bus.anio_fabricacion" name="anio_fabricacion" class="form-control" type="text">
+                </div>
+                <div class="form-group">
+                  <label for="nro_seri">Nro Serie:</label>
+                  <input [(ngModel)]="bus.nro_serie" name="nro_serie" class="form-control" type="text">
+                </div>
+                <div class="form-group">
+                  <label for="asientos">Nro Asientos:</label>
+                  <input [(ngModel)]="bus.nro_asientos" name="nro_asientos" class="form-control" type="text">
+                </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" (click)="Actualizar(bus)" class="btn btn-primary"
+            data-dismiss="modal">Actualizar</button>
+        </div>
+      </div>
+    </div>
+  </div>  
 </div>
 
+<!--Eliminar Bus-->
+
+<div class="modal fade" id="confirmdelete" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content" *ngFor="let bus of loadbusData">
+          <div class="modal-header">
+              <h4 class="modal-title">Eliminar Bus {{bus.placa}}</h4>
+          </div>
+          <div class="modal-body">
+              <label>¿Estás seguro de eliminar el registro?</label>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button type="button" (click)="Eliminar(bus)" class="btn btn-primary"
+              data-dismiss="modal">Eliminar</button>
+          </div>
+      </div>
+  </div>
+</div>
