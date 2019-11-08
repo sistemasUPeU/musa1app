@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
 import { ServiceService } from 'src/app/base-services/service.service';
+import { FilterBusPipe } from './Search/filter-bus.pipe';
 
 @NgModule({
     imports: [

@@ -12,7 +12,8 @@
             </div>
             <div class="col-4">
                 <form class="">
-                    <input  name="inputSearch"  class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <input  name="inputSearch"  class="form-control mr-sm-2" type="text" placeholder="Search" name="filterbus"  
+                    [(ngModel)]="filterBusHtml">
                 </form>
             </div>
         </div>
@@ -34,7 +35,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let bus of listBus">
+          <tr *ngFor="let bus of listBus | filterBus:filterBusHtml">
             <td>{{bus.marca}}</td>
             <td>{{bus.placa}}</td>
             <td>{{bus.descripcion}}</td>
