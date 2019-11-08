@@ -3,7 +3,7 @@
       <h1 class="page-header">
           Curso
       </h1>
-      <br><br>
+      <br>
       <!-- Button trigger modal -->
       <div class="container row">
         <div class="col-8">
@@ -12,6 +12,17 @@
           </button>
         </div>
         <div class="col-4">
+            <div class="container row">
+              <div class="col">
+                Tipo de Vista:
+              </div>
+              <div class="col">
+                <button type="button" class="btn btn-primary" (click)="changeView()">
+                    {{buttonText}}
+                </button>
+              </div>
+            </div>
+            <br>
             <form class="">
                 <input name="inputSearch"  class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             </form>
@@ -120,36 +131,39 @@
         </div>
         <!--------------Tabla Listar-->
       <br><br>
-      <div class="table-responsive" *ngFor="let persona of listPersona" >
-        <h2>Persona "{{persona.nombre_persona}}"</h2>
-        <table class="table table-striped"> 
-          <thead>
-            <tr>
-              <th>Nombre Curso</th>
-              <th>Fecha Inicio</th>
-              <th>Fecha Fin</th>
-              <th>Estado</th>
-              <th>Codigo de Carnet</th>
-              <th colspan="2">Opcion</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngIf="!persona?.listCursoConductorPersona">
-                <td colspan="6">No data available.</td>
-            </tr>
-            <tr *ngFor="let cursoConductor of persona?.listCursoConductorPersona">
-              <td>{{cursoConductor.nombre_curso}}</td>
-              <td>{{cursoConductor.f_inicio}}</td>
-              <td>{{cursoConductor.f_fin}}</td>
-              <td>{{cursoConductor.estado}}</td>
-              <td>{{cursoConductor.carnet_c}}</td>
-              <td><button class="btn btn-warning fa fa-pencil" (click)="fillSelect()" (click)="loadRequisito(requisito)" data-toggle="modal" data-target="#editreqmodal" ></button></td>
-              <td><button class="btn btn-danger fa fa-trash" (click)="Eliminar(requisito)"></button></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="table-responsive" *ngFor="let curso of listCursos">
+      <ng-container *ngIf="showViewPersona">
+        <div class="table-responsive" *ngFor="let persona of listPersona" >
+          <h2>Persona "{{persona.nombre_persona}}"</h2>
+          <table class="table table-striped"> 
+            <thead>
+              <tr>
+                <th>Nombre Curso</th>
+                <th>Fecha Inicio</th>
+                <th>Fecha Fin</th>
+                <th>Estado</th>
+                <th>Codigo de Carnet</th>
+                <th colspan="2">Opcion</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngIf="!persona?.listCursoConductorPersona">
+                  <td colspan="6">No data available.</td>
+              </tr>
+              <tr *ngFor="let cursoConductor of persona?.listCursoConductorPersona">
+                <td>{{cursoConductor.nombre_curso}}</td>
+                <td>{{cursoConductor.f_inicio}}</td>
+                <td>{{cursoConductor.f_fin}}</td>
+                <td>{{cursoConductor.estado}}</td>
+                <td>{{cursoConductor.carnet_c}}</td>
+                <td><button class="btn btn-warning fa fa-pencil" (click)="fillSelect()" (click)="loadRequisito(requisito)" data-toggle="modal" data-target="#editreqmodal" ></button></td>
+                <td><button class="btn btn-danger fa fa-trash" (click)="Eliminar(requisito)"></button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="showViewConductor">
+        <div class="table-responsive" *ngFor="let curso of listCursos">
           <h1>Curso "{{curso.nombre_curso}}"</h1>
           <table class="table table-striped"> 
             <thead>
@@ -172,11 +186,12 @@
                 <td>{{cursoConductor.f_fin}}</td>
                 <td>{{cursoConductor.estado}}</td>
                 <td>{{cursoConductor.carnet_c}}</td>
-                <td><button class="btn btn-warning fa fa-pencil" (click)="fillSelect()" (click)="loadRequisito(cursoConductor)" data-toggle="modal" data-target="#editreqmodal" ></button></td>
+                <td><button class="btn btn-warning fa fa-pencil" (click)="fillSelect()" (click)="loadCursoConductor(cursoConductor)" data-toggle="modal" data-target="#editcursomodal" ></button></td>
                 <td><button class="btn btn-danger fa fa-trash" (click)="Eliminar(cursoConductor)"></button></td>
               </tr>
             </tbody>
           </table>
         </div>
+      </ng-container>
     </div>
 </div>
