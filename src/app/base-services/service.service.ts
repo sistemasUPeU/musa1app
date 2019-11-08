@@ -15,6 +15,7 @@ import { Producto } from '../base-models/Producto';
 import { Marca } from '../base-models/Marca';
 import { Categoria } from '../base-models/Categoria';
 import { UnidadMedida } from '../base-models/UnidadMedida';
+import { TipoAccion } from '../base-models/TipoAccion';
 
 
 
@@ -38,6 +39,7 @@ export class ServiceService {
   marcas= 'http://localhost:8090/marca/'
   categorias= 'http://localhost:8090/categoria/'
   unidadmedidas= 'http://localhost:8090/unidad_medida/'
+  tipoaccion='http://localhost:8090/tipo_accion/'
 
   getPersona(): Observable<Persona[]>{
     return this.http.get<Persona[]>(this.personas);
