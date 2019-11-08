@@ -12,7 +12,10 @@ import { TipoMantenimiento } from '../base-models/TipoMantenimiento';
 import { Curso } from '../base-models/Curso';
 import { CursoConductor } from '../base-models/CursoConductor';
 import { Producto } from '../base-models/Producto';
-import { TipoAccion } from '../base-models/TipoAccion';
+import { Marca } from '../base-models/Marca';
+import { Categoria } from '../base-models/Categoria';
+import { UnidadMedida } from '../base-models/UnidadMedida';
+
 
 
 
@@ -32,8 +35,10 @@ export class ServiceService {
   seguridad = 'http://localhost:8090/seguridad/'
   tipoMantenimiento = 'http://localhost:8090/tipo_mantenimiento/'
   productos= 'http://localhost:8090/producto/'
-  tipoaccion='http://localhost:8090/tipo_accion/'
-  
+  marcas= 'http://localhost:8090/marca/'
+  categorias= 'http://localhost:8090/categoria/'
+  unidadmedidas= 'http://localhost:8090/unidad_medida/'
+
   getPersona(): Observable<Persona[]>{
     return this.http.get<Persona[]>(this.personas);
   }
@@ -138,7 +143,29 @@ export class ServiceService {
     return this.http.put<Producto>(this.productos + producto.id_producto,producto);
   }
 
+  //------------Marca---------------//
+  getMarca():Observable<Marca[]>{
+    return this.http.get<Marca[]>(this.marcas);
+  }
+  getMarcaId(idmarca: number):Observable<Marca[]>{
+    return this.http.get<Marca[]>(this.marcas+idmarca);
+  }
+
+   //------------Categoria---------------//
+  getCategoria():Observable<Categoria[]>{
+    return this.http.get<Categoria[]>(this.categorias);
+  }
+  getCategoriaId(idcategoria: number):Observable<Categoria[]>{
+    return this.http.get<Categoria[]>(this.categorias+idcategoria);
+  }
+  //--------------Unidad medida------///
+  getUnidadMedida():Observable<UnidadMedida[]>{
+    return this.http.get<UnidadMedida[]>(this.unidadmedidas);
+  }
+  getUnidadMedidaId(idunidadmedida: number):Observable<UnidadMedida[]>{
+    return this.http.get<UnidadMedida[]>(this.unidadmedidas+idunidadmedida);
   //Almacen END
+  }
 
   // -- tipo de accion -- //
 
