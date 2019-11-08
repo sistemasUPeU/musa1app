@@ -7,17 +7,117 @@
       <!-- Button trigger modal -->
       <div class="container row">
         <div class="col-8">
-          <button (click)="fillSelect()" type="button" class="btn btn-primary" data-toggle="modal" data-target="#addcursomodal">
-            Agregar Curso
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#searchPersonamodal">
+            Vincular Curso
           </button>
-          <input type="checkbox" checked data-toggle="toggle" data-on="Ready" data-off="Not Ready" data-onstyle="success" data-offstyle="danger">
         </div>
         <div class="col-4">
             <form class="">
-                <input  name="inputSearch"  class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <input name="inputSearch"  class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             </form>
         </div>
-    </div>
+      </div>
+      <div class="modal fade" id="searchPersonamodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Buscar Persona</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                  <form class="">
+                      <input clickOutside (clickOutside)="toggleDropDownOff()" (click)="toggleDropDown()" (keyup)="searchPersona()" [(ngModel)]="input" name="inputSearch"  class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" >
+                  </form>
+                  <div *ngIf="showDropDown" class="state-container-dropdown">
+                      <div class="return" *ngFor="let persona of searchResult">
+                          <ul (click)="loadInput(persona.nombre_persona)" (click)="storePersona(persona)">{{persona.nombre_persona}}</ul>
+                      </div>
+                  </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="button" (click)="fillCursoSelect()" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#addcursomodal">Agregar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!------------------------------------Modal Agregar-->
+        <!-- Modal -->
+        <div class="modal fade" id="addcursomodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content" *ngFor="let per of loadPersonaData">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Vincular Curso</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="container col-md-12">
+                  <div class="row">
+                      <div class="col-sm">
+                          <form>
+                              <div class="form-group">
+                                <label for="name" class="col-form-label">Nombre:</label>
+                                <h1>{{per.nombre_persona}}</h1>
+                              </div>
+                              <div class="form-group">
+                                <label for="apepat" class="col-form-label">Apellido Paterno:</label>
+                                <h2>{{per.apellido_paterno}}</h2>
+                              </div>
+                              <div class="form-group">
+                                <label for="apemat" class="col-form-label">Apellido Materno:</label>
+                                <h2>{{per.apellido_materno}}</h2>
+                              </div>
+                              <div class="form-group">
+                                <label for="nrodoc" class="col-form-label">Numero de Documento:</label>
+                                <h2>{{per.nro_documento}}</h2>
+                              </div>
+                            </form>
+                      </div>
+                       <div class="col-sm">
+                          <form>
+                              <div class="form-group">
+                                <label for="name" class="col-form-label">Nombre de Curso:</label>
+                                <select class="form-control" (change)="selectCurso($event)">
+                                  <option value="0">Seleccionar...</option>
+                                  <option *ngFor="let curso of selectCursos" value={{curso.id_curso}}>{{curso.nombre_curso}}</option>
+                                </select>
+                              </div>
+                              <div class="form-group">
+                                  <div class="input-group datepicker-input">
+                                      <label for="apemat" class="col-form-label">Fecha de Inicio:</label>
+                                      <input class="form-control" placeholder="yyyy-mm-dd"
+                                          name="dpi" [(ngModel)]="fecha_i" ngbDatepicker #di="ngbDatepicker" >
+                                      <button class="input-group-addon" (click)="di.toggle()" type="button">
+                                          <span class="fa fa-calendar"></span>
+                                      </button>
+                                  </div>
+                              </div>
+                              <div class="form-group">
+                                  <div class="input-group datepicker-input">
+                                      <label for="apemat" class="col-form-label">Fecha de Inicio:</label>
+                                      <input class="form-control" placeholder="yyyy-mm-dd"
+                                          name="dpf" [(ngModel)]="fecha_f" ngbDatepicker #df="ngbDatepicker" >
+                                      <button class="input-group-addon" (click)="df.toggle()" type="button">
+                                          <span class="fa fa-calendar"></span>
+                                      </button>
+                                  </div>
+                              </div>
+                            </form>
+                       </div>
+                   </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="button" (click)="Guardar(per.id_persona)" class="btn btn-primary">Guardar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
         <!--------------Tabla Listar-->
       <br><br>
       <div class="table-responsive" *ngFor="let persona of listPersona" >
