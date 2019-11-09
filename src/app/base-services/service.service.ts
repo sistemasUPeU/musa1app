@@ -92,6 +92,9 @@ export class ServiceService {
   createCursoConductor(cursoConductor: CursoConductor) {
     return this.http.post<CursoConductor>(this.cursoConductores+'add',cursoConductor);
   }
+  updateCursoConductor(cursoConductor: CursoConductor) {
+    return this.http.put<CursoConductor>(this.cursoConductores+cursoConductor.id_curso_conductor, cursoConductor);
+  }
   getCursoConductorId(idcurso: number): Observable<CursoConductor[]> {
     return this.http.get<CursoConductor[]>(this.cursoConductores+idcurso);
   }

@@ -19,6 +19,7 @@ export class CursoComponent implements OnInit {
   selectCursos: Curso[] = [];
   listPersona: Persona[] = [];
   loadPersonaData: Persona [] = [];
+  loadCursoConductorData: CursoConductor [] = [];
   listCursoConductor: CursoConductor[] = [];
   listCursoConductorPersona: CursoConductor[] = [];
   showDropDown=false;
@@ -28,6 +29,8 @@ export class CursoComponent implements OnInit {
   searchResult: Persona[] = [];
   fecha_i: any;
   fecha_f: any;
+  fecha_emision: any;
+  fecha_caducidad: any;
   selectedCurso: number = null;
   buttonText: String = ''
   constructor(private service: ServiceService, private router: Router) { }
@@ -35,7 +38,6 @@ export class CursoComponent implements OnInit {
   ngOnInit() {
     this.changeView();
     console.log(this.buttonText)
-
   }
   changeView() {
     this.showViewConductor=!this.showViewConductor;
@@ -149,5 +151,31 @@ export class CursoComponent implements OnInit {
       alert('Registro guardado correctamente...!');
       this.ngOnInit();
     });
+  }
+  loadCursoConductor(cursoConductor: CursoConductor):void {
+    if(cursoConductor.carnet_c!=null) {
+      alert('Carnet ya actualizado')
+    }else{
+      this.service.getCursoConductorId(cursoConductor.id_curso_conductor).subscribe((data) => {
+        this.loadCursoConductorData = data['dato'];
+      })
+    }
+  }
+  Actualizar(cursoConductor: CursoConductor) {
+    cursoConductor.f_emision=this.parseFecha(this.fecha_emision);
+    cursoConductor.f_caducidad=this.parseFecha(this.fecha_caducidad);
+    delete cursoConductor.estado
+    delete cursoConductor.f_fin
+    delete cursoConductor.f_inicio
+    delete cursoConductor.id_curso
+    delete cursoConductor.id_persona
+    delete cursoConductor.nombre_curso
+    delete cursoConductor.nombre_persona
+    console.log(cursoConductor)
+    this.service.updateCursoConductor(cursoConductor).subscribe((data) => {
+      this.cursoConductor = data;
+      alert('Registro modificado correctamente...!');
+      this.ngOnInit();
+    })
   }
 }
