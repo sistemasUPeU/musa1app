@@ -123,17 +123,66 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <button type="button" (click)="Guardar(per.id_persona)" class="btn btn-primary">Guardar</button>
+                <button type="button" (click)="Guardar(per.id_persona)" class="btn btn-primary" data-dismiss="modal">Guardar</button>
               </div>
             </div>
           </div>
         </div>
         </div>
+        <div class="modal fade" id="editcursomodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content" *ngFor="let cursoConductor of loadCursoConductorData">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Actualizar Carnet</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-group">
+                    <label for="name" class="col-form-label">Nombre Completo:</label>
+                    <h2>{{cursoConductor.nombre_persona}}</h2>
+                  </div>
+                  <div class="form-group">
+                    <label for="apepat" class="col-form-label">Numero de Carnet:</label>
+                    <input [(ngModel)]="cursoConductor.carnet_c" name="apellido_paterno" type="text" class="form-control">
+                  </div>
+                  <div class="form-group">
+                      <div class="input-group datepicker-input">
+                          <label for="apemat" class="col-form-label">Fecha de Inicio:</label>
+                          <input class="form-control" placeholder="yyyy-mm-dd"
+                              name="dpi" [(ngModel)]="fecha_emision" ngbDatepicker #di="ngbDatepicker" >
+                          <button class="input-group-addon" (click)="di.toggle()" type="button">
+                              <span class="fa fa-calendar"></span>
+                          </button>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <div class="input-group datepicker-input">
+                          <label for="apemat" class="col-form-label">Fecha de Inicio:</label>
+                          <input class="form-control" placeholder="yyyy-mm-dd"
+                              name="dpf" [(ngModel)]="fecha_caducidad" ngbDatepicker #df="ngbDatepicker" >
+                          <button class="input-group-addon" (click)="df.toggle()" type="button">
+                              <span class="fa fa-calendar"></span>
+                          </button>
+                      </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="button" (click)="Actualizar(cursoConductor)" class="btn btn-primary"
+                  data-dismiss="modal">Guardar</button>
+              </div>
+            </div>
+          </div>
+        </div>
         <!--------------Tabla Listar-->
       <br><br>
       <ng-container *ngIf="showViewPersona">
         <div class="table-responsive" *ngFor="let persona of listPersona" >
-          <h2>Persona "{{persona.nombre_persona}}"</h2>
+          <h2>Persona "{{persona.nombre_persona}}{{persona.apellido_paterno}}"</h2>
           <table class="table table-striped"> 
             <thead>
               <tr>
@@ -155,8 +204,8 @@
                 <td>{{cursoConductor.f_fin}}</td>
                 <td>{{cursoConductor.estado}}</td>
                 <td>{{cursoConductor.carnet_c}}</td>
-                <td><button class="btn btn-warning fa fa-pencil" (click)="fillSelect()" (click)="loadRequisito(requisito)" data-toggle="modal" data-target="#editreqmodal" ></button></td>
-                <td><button class="btn btn-danger fa fa-trash" (click)="Eliminar(requisito)"></button></td>
+                <td><button class="btn btn-warning fa fa-pencil" (click)="loadCursoConductor(cursoConductor)" data-toggle="modal" data-target="#editcursomodal" ></button></td>
+                <td><button class="btn btn-danger fa fa-trash" (click)="Eliminar(cursoConductor)"></button></td>
               </tr>
             </tbody>
           </table>
@@ -186,7 +235,7 @@
                 <td>{{cursoConductor.f_fin}}</td>
                 <td>{{cursoConductor.estado}}</td>
                 <td>{{cursoConductor.carnet_c}}</td>
-                <td><button class="btn btn-warning fa fa-pencil" (click)="fillSelect()" (click)="loadCursoConductor(cursoConductor)" data-toggle="modal" data-target="#editcursomodal" ></button></td>
+                <td><button class="btn btn-warning fa fa-pencil" (click)="loadCursoConductor(cursoConductor)" data-toggle="modal" data-target="#editcursomodal" ></button></td>
                 <td><button class="btn btn-danger fa fa-trash" (click)="Eliminar(cursoConductor)"></button></td>
               </tr>
             </tbody>
