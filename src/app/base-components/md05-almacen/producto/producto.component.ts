@@ -39,7 +39,7 @@ export class ProductoComponent implements OnInit {
 
   ngOnInit() {
     this.service.getProducto().subscribe((data) =>{
-      this.listProducto= data['prod'];
+      this.listProducto= data['LIS_PROD'];
       console.log(this.listProducto);
     })
   }

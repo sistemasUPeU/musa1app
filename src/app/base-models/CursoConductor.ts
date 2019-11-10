@@ -11,3 +11,9 @@ export class CursoConductor {
     id_curso:           number;
     id_persona:         number;
 }
+export class CursoConductorUpdate {
+    id_curso_conductor: number;
+    carnet_c:           string;
+    f_caducidad:        string;
+    f_emision:          string;
+}

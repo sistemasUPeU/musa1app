@@ -89,6 +89,12 @@ export class ServiceService {
   getCursoConductor(): Observable<CursoConductor[]> {
     return this.http.get<CursoConductor[]>(this.cursoConductores)
   }
+  createCursoConductor(cursoConductor: CursoConductor) {
+    return this.http.post<CursoConductor>(this.cursoConductores+'add',cursoConductor);
+  }
+  updateCursoConductor(cursoConductor: CursoConductor) {
+    return this.http.put<CursoConductor>(this.cursoConductores+cursoConductor.id_curso_conductor, cursoConductor);
+  }
   getCursoConductorId(idcurso: number): Observable<CursoConductor[]> {
     return this.http.get<CursoConductor[]>(this.cursoConductores+idcurso);
   }
@@ -102,8 +108,14 @@ export class ServiceService {
   createBus(bus: Bus){
     return this.http.post<Bus>(this.buses + 'add',bus);
   }
-  getBusId(placa: String): Observable<Bus[]> {
-    return this.http.get<Bus[]>(this.buses+String);
+  getBusPlaca(placa: String): Observable<Bus[]> {
+    return this.http.get<Bus[]>(this.buses+placa);
+  }
+  UpdateBus(bus: Bus){
+    return this.http.put<Bus>(this.buses + bus.id_bus, bus);
+  }
+  DeleteBus(bus: Bus): Observable<Bus[]>{
+    return this.http.delete<Bus[]>(this.buses+bus.id_bus);
   }
 
    // ----- TIPO MANTENIMIENTO ---- //
@@ -150,6 +162,15 @@ export class ServiceService {
   getMarca():Observable<Marca[]>{
     return this.http.get<Marca[]>(this.marcas);
   }
+  createMarca(marca:Marca){
+    return this.http.post<Marca[]>(this.marcas+'add',marca);
+  }
+  updatemarca(marca:Marca){
+    return this.http.put<Marca>(this.marcas+marca.id_marca,marca);
+  }
+  deletemarca(marca:Marca){
+    return this.http.delete<Marca>(this.marcas+marca.id_marca);
+  }
   getMarcaId(idmarca: number):Observable<Marca[]>{
     return this.http.get<Marca[]>(this.marcas+idmarca);
   }
@@ -157,6 +178,15 @@ export class ServiceService {
    //------------Categoria---------------//
   getCategoria():Observable<Categoria[]>{
     return this.http.get<Categoria[]>(this.categorias);
+  }
+  createCategoria(categoria:Categoria){
+    return this.http.post<Categoria>(this.categorias + 'add',categoria)
+  }
+  UpdateCategoria(categoria:Categoria){
+    return this.http.put<Categoria>(this.categorias + categoria.id_categoria,categoria)
+  }
+  deleteCategoria(categoria: Categoria){
+    return this.http.delete<Categoria>(this.categorias+ categoria.id_categoria)
   }
   getCategoriaId(idcategoria: number):Observable<Categoria[]>{
     return this.http.get<Categoria[]>(this.categorias+idcategoria);

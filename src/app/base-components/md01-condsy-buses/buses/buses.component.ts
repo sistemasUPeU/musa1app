@@ -18,8 +18,10 @@ export class BusesComponent implements OnInit {
   searchPerson: number = null;
   showDropDown=false;
   input:String;
+  bu: Bus = new Bus();
   searchResult: Persona[] = [];
   selectedPerson: number= null;
+  per: Bus = new Bus();
   constructor(private service: ServiceService , private router: Router) { }
 
   ngOnInit() {
@@ -27,6 +29,8 @@ export class BusesComponent implements OnInit {
       this.listBus = data['b']
     })
   }
+
+  filterBusHtml = '';  
   guardar(){
     this.bus.estado=this.estadobus;
     this.bus.id_persona_propietario=this.selectedPerson;
@@ -34,6 +38,21 @@ export class BusesComponent implements OnInit {
       alert('Registro guardado correctamente...!');
       this.ngOnInit();
     });
+  }
+
+  Actualizar(pers: Bus) {
+    this.service.UpdateBus(pers).subscribe((data) => {
+      this.per = data;
+      alert('Registro modificado correctamente...!');
+      this.ngOnInit();
+    })
+  }
+  Eliminar(bus : Bus){
+    console.log("estamos en el metodo eliminar = > " +bus);
+    this.service.DeleteBus(bus).subscribe((data)=>{
+      alert("Registro eliminado correctamente");
+      this.ngOnInit();
+    })
   }
   toggleDropDown() {
     this.showDropDown=!this.showDropDown;
@@ -70,10 +89,11 @@ export class BusesComponent implements OnInit {
   selectPerson(event:any){
     this.selectedPerson = event.target.value;
   }
-
+  
   loadBus(bus: Bus):void{
-    this.service.getBusId(bus.placa).subscribe((data) => {
-      this.loadbusData = data['b'];
+    this.service.getBusPlaca(bus.placa).subscribe((data) => {
+      console.log(bus);
+      this.loadbusData = data['bus'];
     })
   }
 }

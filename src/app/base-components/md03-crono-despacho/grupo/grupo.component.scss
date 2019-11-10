@@ -2,8 +2,25 @@
     margin-top: 50px;
 }
 
+.m20 {
+    margin-top: 15px;
+}
+
 .radius {
     border-radius: 15px;
+}
+
+.r {
+    border-radius: 25px;
+    width: 400px;
+    margin: auto;
+}
+
+.card {
+    padding: 25px;
+    border-radius: 25px;
+    background: rgba($color: #f1f1f1, $alpha: 1.0);
+    border: black;
 }
 
 footer {
@@ -17,7 +34,32 @@ footer {
     text-align: center;
     width: 45px;
     height: 25px;
-    position: fixed;
     margin-left: 50px;
     font-size: 17px;
+}
+
+.mes {
+    position: fixed;
+    right: 10%;
+    top: 100px;
+}
+
+// modal
+.a {
+    width: 150px;
+}
+
+.b {
+    width: 50px;
+}
+
+.a,
+.b {
+    height: 25px;
+    border-radius: 25px;
+    text-align: center;
+}
+
+.t {
+    text-align: center;
 }
