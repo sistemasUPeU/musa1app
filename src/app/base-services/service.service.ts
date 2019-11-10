@@ -158,6 +158,15 @@ export class ServiceService {
   getMarca():Observable<Marca[]>{
     return this.http.get<Marca[]>(this.marcas);
   }
+  createMarca(marca:Marca){
+    return this.http.post<Marca[]>(this.marcas+'add',marca);
+  }
+  updatemarca(marca:Marca){
+    return this.http.put<Marca>(this.marcas+marca.id_marca,marca);
+  }
+  deletemarca(marca:Marca){
+    return this.http.delete<Marca>(this.marcas+marca.id_marca);
+  }
   getMarcaId(idmarca: number):Observable<Marca[]>{
     return this.http.get<Marca[]>(this.marcas+idmarca);
   }
@@ -165,6 +174,15 @@ export class ServiceService {
    //------------Categoria---------------//
   getCategoria():Observable<Categoria[]>{
     return this.http.get<Categoria[]>(this.categorias);
+  }
+  createCategoria(categoria:Categoria){
+    return this.http.post<Categoria>(this.categorias + 'add',categoria)
+  }
+  UpdateCategoria(categoria:Categoria){
+    return this.http.put<Categoria>(this.categorias + categoria.id_categoria,categoria)
+  }
+  deleteCategoria(categoria: Categoria){
+    return this.http.delete<Categoria>(this.categorias+ categoria.id_categoria)
   }
   getCategoriaId(idcategoria: number):Observable<Categoria[]>{
     return this.http.get<Categoria[]>(this.categorias+idcategoria);
