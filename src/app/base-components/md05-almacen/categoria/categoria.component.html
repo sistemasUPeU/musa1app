@@ -1,0 +1,213 @@
+<div class="row">
+  <div class="col-xl-12">
+    <h1 class="page-header">
+      Categoria
+    </h1>
+    <div class="container row">
+      <div class="col-8">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#agregarcategoria">Agregar</button>
+      </div>
+    </div>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Nombre</th>
+          <th colspan="2">Opcion</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cat of listCat">
+          <td>{{cat.id_categoria}}</td>
+          <td>{{cat.nombre_categoria}}</td>
+          <td><button class="btn btn-warning fa fa-pencil" (click)="loadCate(cat)" data-target="#updatecat" data-toggle="modal"></button></td>
+          <td><button class="btn btn-danger fa fa-trash" data-toggle="modal" (click)="loadCate(cat)" data-target="#confirmdelete"></button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<!--Agregar categoria-->
+
+<!-- Modal -->
+<div class="modal fade" id="agregarcategoria" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Nueva Categoria</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="">
+          <div class="form-group">
+            <label for="nombre">Nombre :</label>
+            <input [(ngModel)]="categoria.nombre_categoria" name="nombre_categoria" class="form-control" type="text" >
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="guardar()" data-dismiss="modal">Registrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--Update categoria-->
+
+<div class="modal fade" id="updatecat" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" *ngFor="let cat of loadCat">
+      <div class="modal-header" >
+        <h5 class="modal-title" id="exampleModalLabel">Modificar Categoria</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="">
+          <div class="form-group">
+            <label for="nombre">Nombre :</label>
+            <input [(ngModel)]="cat.nombre_categoria" name="nombre_categoria" class="form-control" type="text" >
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="actualizar(cat)" data-dismiss="modal">Modificar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--delete-->
+
+<div class="modal fade" id="confirmdelete" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content" *ngFor="let cat of loadCat">
+          <div class="modal-header">
+              <h4 class="modal-title">Eliminar Categoria {{cat.nombre_categoria}}</h4>
+          </div>
+          <div class="modal-body">
+              <label>¿Está seguro de eliminar el registro?</label>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button type="button" (click)="Eliminar(cat)" class="btn btn-primary"
+              data-dismiss="modal">Eliminar</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+<!-- A PARTIR DE ACA TODO ES DE MARCA ..... FALTA FUSIONAR CON CATEGORIA Y LISTO XD-->
+
+<div class="row">
+  <div class="col-xl-12">
+    <h1 class="page-header">
+      Marca
+    </h1>
+    <div class="container row">
+      <div class="col-8">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addmarca">Agregar</button>
+      </div>
+    </div>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Nombre</th>
+          <th colspan="2">Opcion</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let marca of listMarca">
+          <td>{{marca.id_marca}}</td>
+          <td>{{marca.nombre_marca}}</td>
+          <td><button class="btn btn-warning fa fa-pencil" (click)="loadMarca(marca)" data-target="#updatemarca" data-toggle="modal"></button></td>
+          <td><button class="btn btn-danger fa fa-trash" data-toggle="modal" (click)="loadMarca(marca)" data-target="#confirmdeletemarca"></button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!--Agregar categoria-->
+
+<!-- Modal -->
+<div class="modal fade" id="addmarca" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Nueva Marca</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="">
+          <div class="form-group">
+            <label for="nombre">Nombre :</label>
+            <input [(ngModel)]="marca.nombre_marca" name="nombre_marca" class="form-control" type="text" >
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="guardarmarca()" data-dismiss="modal">Registrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Update marca-->
+
+<div class="modal fade" id="updatemarca" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" *ngFor="let mar of loadMar">
+      <div class="modal-header" >
+        <h5 class="modal-title" id="exampleModalLabel">Modificar Marca</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="">
+          <div class="form-group">
+            <label for="nombre">Nombre :</label>
+            <input [(ngModel)]="mar.nombre_marca" name="nombre_categoria" class="form-control" type="text" >
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="actualizarmarca(mar)" data-dismiss="modal">Modificar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--delete-->
+
+<div class="modal fade" id="confirmdeletemarca" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content" *ngFor="let mar of loadMar">
+          <div class="modal-header">
+              <h4 class="modal-title">Eliminar Categoria {{mar.nombre_marca}}</h4>
+          </div>
+          <div class="modal-body">
+              <label>¿Está seguro de eliminar el registro?</label>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button type="button" (click)="Eliminarmarca(mar)" class="btn btn-primary"
+              data-dismiss="modal">Eliminar</button>
+          </div>
+      </div>
+  </div>
+</div>
