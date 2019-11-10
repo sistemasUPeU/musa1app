@@ -1,58 +1,58 @@
 .form-control::placeholder {
-    font-size: 0.95rem;
-    color: #aaa;
-    font-style: italic;
-  }
-  
-  #imgRedonda {
-    width:100px;
-    height:80px;
-    border-radius:20px;
+  font-size: 0.95rem;
+  color: #aaa;
+  font-style: italic;
+}
+
+#imgRedonda {
+  width:100px;
+  height:80px;
+  border-radius:20px;
 }
 #hola{
-  width: 900px;
-  margin-left: 48px;
+width: 900px;
+margin-left: 48px;
 }
 
 .button-7{
-  width:140px;
-  height:50px;
-  border:2px solid #34495e;
-  border-radius: 3px;
-  float:left;
-  text-align:center;
-  cursor:pointer;
-  position:relative;
-  box-sizing:border-box;
-  overflow:hidden;
-  margin:0 0 40px 50px;
+width:140px;
+height:50px;
+border:2px solid #34495e;
+border-radius: 3px;
+float:left;
+text-align:center;
+cursor:pointer;
+position:relative;
+box-sizing:border-box;
+overflow:hidden;
+margin:0 0 40px 50px;
 }
 .button-7 a{
-  font-family:arial;
-  font-size:16px;
-  color:#34495e;
-  text-decoration:none;
-  line-height:50px;
-  transition:all .5s ease;
-  z-index:2;
-  position:relative;
+font-family:arial;
+font-size:16px;
+color:#34495e;
+text-decoration:none;
+line-height:50px;
+transition:all .5s ease;
+z-index:2;
+position:relative;
 }
 .eff-7{
-  width:140px;
-  height:50px;
-  border:0px solid #34495e;
-  position:absolute;
-  transition:all .5s ease;
-  z-index:1;
-  box-sizing:border-box;
+width:140px;
+height:50px;
+border:0px solid #34495e;
+position:absolute;
+transition:all .5s ease;
+z-index:1;
+box-sizing:border-box;
 }
 .button-7:hover .eff-7{
-  border:70px solid #34495e;
+border:70px solid #34495e;
 }
 .button-7:hover a{
-  color:#fff;
+color:#fff;
 }
 #tabla_registrar_mantenimiento{
-  width: 1000px;
-  margin-left: 80px;
-}
+width: 1000px;
+margin-left: 80px;
+} 
