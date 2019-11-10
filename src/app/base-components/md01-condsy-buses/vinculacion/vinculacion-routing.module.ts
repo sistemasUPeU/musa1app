@@ -6,14 +6,8 @@ import { VinculacionBusComponent } from './vinculacion-bus/vinculacion-bus.compo
 
 
 const routes: Routes = [
-  {
-    path: '',
-    component: VinculacionModule,
-    children: [
-      {path:'conductor' , component: VinculacionConductorComponent},
-      {path:'bus', component:VinculacionBusComponent}
-    ]
-  }  
+  {path:'conductor' , component: VinculacionConductorComponent},
+  {path:'bus', component: VinculacionBusComponent}
 ];
 
 @NgModule({
