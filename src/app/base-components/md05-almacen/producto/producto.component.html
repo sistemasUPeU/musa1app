@@ -22,10 +22,43 @@
            <a href="#">Agregar Productos</a>
          </div>
          <br><br><br><br>
-
-      <div class="modal fade" id="addtipomantenimiento" tabindex="-1" role="dialog"
+ 
+      <div class="modal fade" id="addproducto" tabindex="-1" role="dialog"
          aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      </div>
+         <div class="modal-dialog modal-dialog-centered" role="document">
+           <div class="modal-content">
+             <div class="modal-header">
+               <h5 class="modal-title" id="exampleModalLongTitle">Agregar Productos  </h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+               </button>
+             </div>
+             <div class="modal-body">
+               <form>
+                 <div class="form-group">
+                   <div class="form-group">
+                     <label for="name" class="col-form-label">Nombre:</label>
+                     <input [(ngModel)]="tipomantenimiento.tipo_mantenimiento" name="tipo_mantenimiento" type="text"
+                       class="form-control">
+                   </div>
+                 </div>
+               </form>
+             </div>
+             <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+               <button type="button" (click)="Guardar()" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+             </div>
+           </div>
+         </div>
+       </div>
+
+
+
+
+
+
+
+      <!-----Listar Productosss ------>
          <table class="table table-hover" id="tabla_producto">
             <thead>
                <tr>
@@ -54,3 +87,10 @@
          </table>
 </div>
     
+
+<div class="container row">
+   <div class="button-7">
+     <div class="eff-7"></div>
+     <a data-toggle="modal" data-target="#addtipomantenimiento">Registrar Mantenimiento</a>
+   </div>
+ </div>
