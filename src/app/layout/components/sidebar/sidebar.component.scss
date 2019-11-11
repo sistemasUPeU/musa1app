@@ -14,7 +14,7 @@ $topnav-background-color: rgb(88, 181, 171);
     background-color: $topnav-background-color;
     bottom: 0;
     overflow-x: hidden;
-    padding-bottom: 40px;
+    padding-top: 18px;
     white-space: nowrap;
     -webkit-transition: all 0.2s ease-in-out;
     -moz-transition: all 0.2s ease-in-out;
@@ -23,6 +23,7 @@ $topnav-background-color: rgb(88, 181, 171);
     transition: all 0.2s ease-in-out;
     // border-top: 1px solid rgba(255,255,255,0.3);
     .list-group {
+        
         a.list-group-item {
             background: $topnav-background-color;
             border: 0;
@@ -106,6 +107,7 @@ $topnav-background-color: rgb(88, 181, 171);
 .nested-menu {
     .list-group-item {
         cursor: pointer;
+        
     }
     .nested {
         list-style-type: none;
