@@ -18,8 +18,8 @@ import { Categoria } from '../base-models/Categoria';
 import { UnidadMedida } from '../base-models/UnidadMedida';
 import { TipoAccion } from '../base-models/TipoAccion';
 
-
-
+import { DetallePedido } from "../base-models/DetallePedido";
+import { Pedido } from '../base-models/Pedido';
 
 
 
@@ -41,6 +41,8 @@ export class ServiceService {
   categorias= 'http://localhost:8090/categoria/'
   unidadmedidas= 'http://localhost:8090/unidad_medida/'
   tipoaccion='http://localhost:8090/tipo_accion/'
+  pedido='http://localhost:8090/detalle_pedido/'
+
 
   getPersona(): Observable<Persona[]>{
     return this.http.get<Persona[]>(this.personas);
@@ -145,6 +147,30 @@ export class ServiceService {
   updateTipoMantenimiento(tipomantenimiento: TipoMantenimiento){
     return this.http.put<TipoMantenimiento>(this.tipoMantenimiento + tipomantenimiento.id_tipo_mantenimiento, tipomantenimiento);
   }
+
+
+
+   // ----- AUTORIZAR PEDIDO ---- //
+    getPedido(): Observable<Pedido[]> {
+      return this.http.get<Pedido[]>(this.pedido);
+    }
+    getPedidoId(idpedido: number): Observable<Pedido[]> {
+      return this.http.get<Pedido[]>(this.pedido + idpedido);
+    }
+    getDetallePedido(id_pedido: Pedido): Observable<DetallePedido[]> {
+      return this.http.get<DetallePedido[]>(this.pedido+id_pedido)
+    }
+    deletePedido(pedido: Pedido){
+      return this.http.delete<Pedido>(this.pedido + pedido.id_pedido)
+    }
+
+
+
+
+
+
+
+
   // ----- TIPO MANTENIMIENTO  ----//
   //Almacen
    //Producto
