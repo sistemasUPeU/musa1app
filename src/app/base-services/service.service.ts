@@ -148,13 +148,13 @@ export class ServiceService {
     return this.http.get<Producto[]>(this.productos+'search/'+nombre);
   }
   createProducto(producto: Producto){
-    return this.http.post<Producto>(this.productos+producto.id_producto,producto);
+    return this.http.post<Producto>(this.productos + 'add',producto);
   }
   deleteProducto(producto: Producto){
     return this.http.delete<Producto>(this.productos + producto.id_producto);
   }
   updateProducto(producto: Producto){
-    return this.http.put<Producto>(this.productos + producto.id_producto,producto);
+    return this.http.put<Producto>(this.productos + producto.id_producto, producto);
   }
 
   //------------Marca---------------//

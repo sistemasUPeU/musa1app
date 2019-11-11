@@ -95,7 +95,7 @@ export class ProductoComponent implements OnInit {
 
   loadProducto(producto: Producto):void {
     this.service.getProductoId(producto.id_producto).subscribe((data)=>{
-      this.loadProductoData = data['lis_prod'];
+      this.loadProductoData = data['LIS_PROD'];
     })
   }
 
@@ -103,11 +103,11 @@ export class ProductoComponent implements OnInit {
     produ.id_categoria=this.selectedCategoriaUpdate;
     produ.id_unidad_medida=this.selectedUnidadMedidaUpdate;
     produ.id_marca=this.selectedMarcaUpdate;
-    this.service.updateProducto(produ).subscribe((data)=>{
-      this.prod=data;
-      alert('Registro modificado correctamente....!');
-      this.ngOnInit();
-    })
+      this.service.updateProducto(produ).subscribe((data)=>{
+        this.prod = data;
+        alert('Registro omdificado correctamente...!');
+        this.ngOnInit();
+      })
   }
   Eliminar(producto: Producto){
     this.service.deleteProducto(producto).subscribe(data =>{
@@ -135,10 +135,10 @@ export class ProductoComponent implements OnInit {
   getInfo(producto:Producto){
     this.toogleDropDownOff;
     this.service.getProductoId(producto.id_producto).subscribe((data)=>{
-      this.loadProductoData = data['lis_prod'];
+      this.loadProductoData = data['LIS_PROD'];
     })
   }
-  getCate(idcategoria: number) {
+  getCategoria(idcategoria: number) {
     console.log(idcategoria)
     this.service.getProductoId(idcategoria).subscribe((data)=>{
       this.listCategoriaId = data['LIS_CAT'];
