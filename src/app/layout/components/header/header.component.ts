@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-import { Usuario } from 'src/app/base-models/Usuario';
+import { timer } from 'rxjs';
 
 @Component({
     selector: 'app-header',
@@ -11,7 +11,7 @@ export class HeaderComponent implements OnInit {
     public pushRightClass: string;
     public name:any;
     usuario: any;
-    constructor( public router: Router) {
+    constructor( private router: Router) {
 
         this.router.events.subscribe(val => {
             if (
@@ -31,8 +31,12 @@ export class HeaderComponent implements OnInit {
         console.log(this.usuario)
         this.name=this.usuario[0].nom_usuario
         console.log(this.name)
+        this.observableTimer();
     }
-
+    observableTimer() {
+        let source = timer(300000);
+        source.subscribe(this.onLoggedout)
+      }
     isToggled(): boolean {
         const dom: Element = document.querySelector('body');
         return dom.classList.contains(this.pushRightClass);
@@ -50,6 +54,8 @@ export class HeaderComponent implements OnInit {
 
     onLoggedout() {
         localStorage.removeItem('currentUser');
+        alert('Sesion expirada')
+        window.location.reload();
     }
 
 }
