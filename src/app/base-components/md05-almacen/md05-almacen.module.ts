@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+<<<<<<< HEAD
 import { Md05AlmacenRoutingModule } from './md05-almacen-routing.module';
 import { ProductoComponent } from './producto/producto.component';import { FormsModule } from '@angular/forms';
 
@@ -12,6 +13,22 @@ import { ProductoComponent } from './producto/producto.component';import { Forms
     CommonModule,
     Md05AlmacenRoutingModule,
     FormsModule
+=======
+import { ProductoComponent } from './producto/producto.component';
+import { Md05AlmacenRoutingModule } from './md05-almacen-routing.module';
+import { CategoriaComponent } from './categoria/categoria.component';
+import { FormsModule } from '@angular/forms';
+import { NgbDate, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+
+@NgModule({
+  declarations: [ProductoComponent, CategoriaComponent],
+  imports: [
+    CommonModule,
+    Md05AlmacenRoutingModule,
+    FormsModule,
+    NgbModule
+>>>>>>> df8c6a0873e83fac9f064b2f4d7066b7d68d3e5f
   ]
 })
 export class Md05AlmacenModule { }
