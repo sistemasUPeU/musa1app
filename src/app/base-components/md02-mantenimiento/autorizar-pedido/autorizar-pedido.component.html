@@ -53,14 +53,12 @@
             </thead>
             <thead class="thead">
               <tr>
-                <th scope="col">#</th>
                 <th scope="col">Producto</th>
                 <th scope="col">Cantidad</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let det of listdetalle, let i = index">
-                <th>{{i+1}}</th>
+              <tr *ngFor="let det of listdetalle">
                 <td>{{det.nombre_producto}}</td>
                 <td>{{det.cantidad_pedido}}</td>    
               </tr>
