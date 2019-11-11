@@ -123,6 +123,7 @@ export class ServiceService {
    getTipoMantenimiento(): Observable<TipoMantenimiento[]>{
     return this.http.get<TipoMantenimiento[]>(this.tipoMantenimiento);
   }
+  
   getTipoMantenimientoId(id_tipo_mantenimiento: number): Observable<TipoMantenimiento[]> {
     return this.http.get<TipoMantenimiento[]>(this.tipoMantenimiento+id_tipo_mantenimiento);
   }
