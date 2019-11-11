@@ -13,6 +13,7 @@ export class BusesComponent implements OnInit {
   bus : Bus = new Bus();
   listBus: Bus[] = [];
   loadbusData: Bus[] = [];
+  loadBusDataSI: Persona[]=[];
   listPerson: Persona[]=[];
   estadobus: string = '1';
   searchPerson: number = null;
@@ -22,6 +23,7 @@ export class BusesComponent implements OnInit {
   searchResult: Persona[] = [];
   selectedPerson: number= null;
   per: Bus = new Bus();
+  pers: Persona= new Persona();
   constructor(private service: ServiceService , private router: Router) { }
 
   ngOnInit() {
@@ -54,24 +56,6 @@ export class BusesComponent implements OnInit {
       this.ngOnInit();
     })
   }
-  toggleDropDown() {
-    this.showDropDown=!this.showDropDown;
-  }
-  toggleDropDownOff() {
-    this.showDropDown=false;
-  }
-  searchPersona() {
-    if(this.input!=''){
-      console.log(this.input);
-      this.service.searchPersona(this.input).subscribe((data) => {
-      this.searchResult = data['return']
-      })
-    }else{
-      console.log('Input vacio');
-      this.toggleDropDownOff();
-    }
-  }
-
   getPropietario(idpersona:number){
     console.log(idpersona);
     this.service.getPersonaId(idpersona).subscribe((data) => {
@@ -94,6 +78,14 @@ export class BusesComponent implements OnInit {
     this.service.getBusPlaca(bus.placa).subscribe((data) => {
       console.log(bus);
       this.loadbusData = data['bus'];
+    })
+  }
+
+  loadPersona(id_persona_propietario):void{
+    this.service.getPersonaId(id_persona_propietario).subscribe((data)=>{
+      console.log(id_persona_propietario);
+      console.log(data);
+      this.loadBusDataSI= data['pers'];
     })
   }
 }

@@ -1,32 +1,69 @@
 <div class="row">
-  <div class="col-xl-12">
-    <h1 class="page-header">
-      Categoria
-    </h1>
-    <div class="container row">
-      <div class="col-8">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#agregarcategoria">Agregar</button>
+  <div class="col col-xl-6 col-lg-12">
+    <div class="mb-3">
+      <h1 class="page-header">
+        Categoria
+      </h1>
+      <div class="container row">
+        <div class="col-8">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#agregarcategoria">Agregar</button>
+        </div>
+      </div>
+    <div class="card-body table-responsive">
+      <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Nombre</th>
+              <th colspan="2">Opcion</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let cat of listCat">
+              <td>{{cat.id_categoria}}</td>
+              <td>{{cat.nombre_categoria}}</td>
+              <td><button class="btn btn-warning fa fa-pencil" (click)="loadCate(cat)" data-target="#updatecat" data-toggle="modal"></button></td>
+              <td><button class="btn btn-danger fa fa-trash" data-toggle="modal" (click)="loadCate(cat)" data-target="#confirmdelete"></button></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Nombre</th>
-          <th colspan="2">Opcion</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let cat of listCat">
-          <td>{{cat.id_categoria}}</td>
-          <td>{{cat.nombre_categoria}}</td>
-          <td><button class="btn btn-warning fa fa-pencil" (click)="loadCate(cat)" data-target="#updatecat" data-toggle="modal"></button></td>
-          <td><button class="btn btn-danger fa fa-trash" data-toggle="modal" (click)="loadCate(cat)" data-target="#confirmdelete"></button></td>
-        </tr>
-      </tbody>
-    </table>
   </div>
+  <div class="col col-xl-6 col-lg-12">
+      <div class="mb-3">
+        <h1 class="page-header">
+          Marca
+        </h1>
+        <div class="container row">
+          <div class="col-8">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addmarca">Agregar</button>
+          </div>
+        </div>
+      <div class="card-body table-responsive">
+        <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th colspan="2">Opcion</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let marca of listMarca">
+                <td>{{marca.id_marca}}</td>
+                <td>{{marca.nombre_marca}}</td>
+                <td><button class="btn btn-warning fa fa-pencil" (click)="loadMarca(marca)" data-target="#updatemarca" data-toggle="modal"></button></td>
+                <td><button class="btn btn-danger fa fa-trash" data-toggle="modal" (click)="loadMarca(marca)" data-target="#confirmdeletemarca"></button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
 </div>
+
+
 
 
 <!--Agregar categoria-->
@@ -108,35 +145,6 @@
 
 <!-- A PARTIR DE ACA TODO ES DE MARCA ..... FALTA FUSIONAR CON CATEGORIA Y LISTO XD-->
 
-<div class="row">
-  <div class="col-xl-12">
-    <h1 class="page-header">
-      Marca
-    </h1>
-    <div class="container row">
-      <div class="col-8">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addmarca">Agregar</button>
-      </div>
-    </div>
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Nombre</th>
-          <th colspan="2">Opcion</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let marca of listMarca">
-          <td>{{marca.id_marca}}</td>
-          <td>{{marca.nombre_marca}}</td>
-          <td><button class="btn btn-warning fa fa-pencil" (click)="loadMarca(marca)" data-target="#updatemarca" data-toggle="modal"></button></td>
-          <td><button class="btn btn-danger fa fa-trash" data-toggle="modal" (click)="loadMarca(marca)" data-target="#confirmdeletemarca"></button></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
 
 <!--Agregar categoria-->
 

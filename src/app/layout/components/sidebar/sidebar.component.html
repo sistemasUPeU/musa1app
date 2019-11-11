@@ -56,6 +56,10 @@
                             <i class="fa fa-user"></i>&nbsp;
                             <span>{{ 'Buses' }}</span>
                         </a>
+                        <a routerLink="/md01/buses" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                            <i class="fa fa-user"></i>&nbsp;
+                            <span>{{ 'Soat/Circulacion' }}</span>
+                        </a>
                         <a routerLink="/md01/requisito" [routerLinkActive]="['router-link-active']" class="list-group-item">
                             <i class="fa fa-th-list"></i>&nbsp;
                             <span>{{ 'Requisito' }}</span>
@@ -223,7 +227,7 @@
                     <li>
                         <a [routerLink]="['/md05/categoria']" [routerLinkActive]="['router-link-active']" class="list-group-item">
                             <i class="fa fa-fw fa-table"></i>&nbsp;
-                            <span>{{'Categoria'}}</span>
+                            <span>{{'Categoria/Marca'}}</span>
                         </a>
                     </li>
                     <li>
