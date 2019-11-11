@@ -19,6 +19,7 @@ export class TipoMantenimientoComponent implements OnInit {
       console.log(this.listTipoMantenimiento);
     })
   }
+  
   Guardar() {
     console.log(this.tipomantenimiento)
     this.service.createTipoMantenimiento(this.tipomantenimiento).subscribe(data =>{

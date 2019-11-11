@@ -1,4 +1,4 @@
-<div class="card" >
+<div class="" >
   <div class="row">
     <div class="col-xl-12">
         <h1 class="page-header">
@@ -12,45 +12,42 @@
             </div>
             <div class="col-4">
                 <form class="">
-                    <input  name="inputSearch"  class="form-control mr-sm-2" type="text" placeholder="Search" name="filterbus"  
+                    <input  name="inputSearch"  class="form-control mr-sm-2" type="text" placeholder="Search: Ingrese placa " name="filterbus"  
                     [(ngModel)]="filterBusHtml">
                 </form>
             </div>
         </div>
       <br><br>
-    <table class="table table-responsive table-bordered">
-        <thead>
-          <tr>
-            <th>Marca</th>
-            <th>Placa</th>
-            <th>Descripcion</th>
-            <th>Padron</th>
-            <th>Estado</th>
-            <th>Modelo</th>
-            <th>#Motor</th>
-            <th>Fabricación</th>
-            <th>#Serie</th>
-            <th>#Propietario</th>
-            <th colspan="2">Opcion</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let bus of listBus | filterBus:filterBusHtml">
-            <td>{{bus.marca}}</td>
-            <td>{{bus.placa}}</td>
-            <td>{{bus.descripcion}}</td>
-            <td>{{bus.padron}}</td>
-            <td>{{bus.estado}}</td>
-            <td>{{bus.modelo}}</td>
-            <td>{{bus.nro_motor}}</td>
-            <td>{{bus.anio_fabricacion}}</td>
-            <td>{{bus.nro_serie}}</td>
-            <td>{{bus.id_persona_propietario}}</td>
-            <td><button class="btn btn-warning fa fa-pencil" (click)="loadBus(bus)" data-toggle="modal" data-target="#updatebusmodal" ></button></td>
-            <td><button class="btn btn-danger fa fa-trash" (click)="loadBus(bus)" data-toggle="modal" data-target="#confirmdelete"></button></td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="card-body table-responsive">
+      <table class="table table-responsive table-bordered">
+          <thead>
+            <tr>
+              <th>Marca</th>
+              <th>Placa</th>
+              <th>Padron</th>
+              <th>Estado</th>
+              <th>Modelo</th>
+              <th>Fabricación</th>
+              <th>#Propietario</th>
+              <th colspan="3">Opcion</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let bus of listBus | filterBus:filterBusHtml">
+              <td>{{bus.marca}}</td>
+              <td>{{bus.placa}}</td>
+              <td>{{bus.padron}}</td>
+              <td>{{bus.estado}}</td>
+              <td>{{bus.modelo}}</td>
+              <td>{{bus.anio_fabricacion}}</td>
+              <td>{{bus.id_persona_propietario}}</td>
+              <td><button class="btn btn-info fa fa-eye" (click)="loadBus(bus)" (click)="loadPersona(bus.id_persona_propietario)" data-toggle="modal" data-target="#ReadBus"></button></td>
+              <td><button class="btn btn-warning far fa-edit" (click)="loadBus(bus)" data-toggle="modal" data-target="#updatebusmodal" ></button></td>
+              <td><button class="btn btn-danger fas fa-trash-alt" (click)="loadBus(bus)" data-toggle="modal" data-target="#confirmdelete"></button></td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
     </div>
   </div>
   
@@ -209,3 +206,58 @@
       </div>
   </div>
 </div>
+
+
+<!--Especificacion del bus-->
+<div class="modal fade bd-example-modal-lg" id="ReadBus" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content" *ngFor="let bus of loadbusData">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Detalle</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body row" >
+          <div class="col col-xl-6 col-lg-12">
+            <div class="mb-3" *ngFor="let pers of loadBusDataSI">
+                <label for="">Propietario : {{pers.nombre_persona}}</label>
+                <hr>
+                <label for="">Apellido : {{pers.apellido_paterno}}</label>
+                <hr>
+                <label for="">Nro Documento : {{pers.nro_documento}}</label>
+                <hr>
+                <label>Marca : {{bus.marca}} </label>
+                <hr>
+                <label>Placa : {{bus.placa}} </label>
+                <hr>
+                <label>Padron : {{bus.padron}} </label>
+                <hr>
+            </div>
+          </div>
+          <div class="col col-xl-6 col-lg-12">
+            <div class="mb-3">
+                
+                <label>Estado : {{bus.estado}} </label>
+                <hr>
+                <label>Descripcion : {{bus.descripcion}} </label>
+                <hr>
+                <label>Modelo : {{bus.modelo}} </label>
+                <hr>
+                <label>Nro de motor : {{bus.nro_motor}} </label>
+                <hr>
+                <label>Nro de asientos : {{bus.nro_asientos}} </label>
+                <hr>
+                <label>Nro de serie : {{bus.nro_serie}} </label>
+              </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- Button trigger modal -->
+  <!-- Modal -->
+  

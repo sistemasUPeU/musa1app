@@ -59,7 +59,7 @@ export class CursoComponent implements OnInit {
   sortbyCurso() {
     this.service.getCurso().subscribe((data) => {
       this.listCursos = data['cur']
-      console.log(this.listCursos)
+      console.table(this.listCursos)
       // ensure to call the getCursoConductor() when you retrieved the data
       this.getCursoConductor()
     })
@@ -149,7 +149,7 @@ export class CursoComponent implements OnInit {
     console.log(this.cursoConductor)
     this.service.createCursoConductor(this.cursoConductor).subscribe(data =>{
       alert('Registro guardado correctamente...!');
-      this.ngOnInit();
+      this.sortbyCurso();
     });
   }
   loadCursoConductor(cursoConductor: CursoConductor):void {
@@ -175,7 +175,7 @@ export class CursoComponent implements OnInit {
     this.service.updateCursoConductor(cursoConductor).subscribe((data) => {
       this.cursoConductor = data;
       alert('Registro modificado correctamente...!');
-      this.ngOnInit();
+      this.sortbyCurso();
     })
   }
 }

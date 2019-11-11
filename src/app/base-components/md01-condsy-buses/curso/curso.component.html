@@ -3,11 +3,15 @@
       <h1 class="page-header">
           Curso
       </h1>
-      <br>
+      <hr>
       <!-- Button trigger modal -->
       <div class="container row">
         <div class="col-8">
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#searchPersonamodal">
+          <button type="button" class="btn btn-info">
+              Administrar Cursos
+          </button>
+          <h1></h1>
+          <button type="button" class="btn btn-info" data-toggle="modal" data-target="#searchPersonamodal">
             Vincular Curso
           </button>
         </div>
@@ -17,7 +21,7 @@
                 Tipo de Vista:
               </div>
               <div class="col">
-                <button type="button" class="btn btn-primary" (click)="changeView()">
+                <button type="button" class="btn btn-info" (click)="changeView()">
                     {{buttonText}}
                 </button>
               </div>
@@ -49,7 +53,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <button type="button" (click)="fillCursoSelect()" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#addcursomodal">Agregar</button>
+                <button type="button" (click)="fillCursoSelect()" class="btn btn-info" data-dismiss="modal" data-toggle="modal" data-target="#addcursomodal">Agregar</button>
               </div>
             </div>
           </div>
@@ -123,7 +127,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <button type="button" (click)="Guardar(per.id_persona)" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+                <button type="button" (click)="Guardar(per.id_persona)" class="btn btn-info" data-dismiss="modal">Guardar</button>
               </div>
             </div>
           </div>
@@ -172,7 +176,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <button type="button" (click)="Actualizar(cursoConductor)" class="btn btn-primary"
+                <button type="button" (click)="Actualizar(cursoConductor)" class="btn btn-info"
                   data-dismiss="modal">Guardar</button>
               </div>
             </div>
@@ -182,7 +186,7 @@
       <br><br>
       <ng-container *ngIf="showViewPersona">
         <div class="table-responsive" *ngFor="let persona of listPersona" >
-          <h2>Persona "{{persona.nombre_persona}}{{persona.apellido_paterno}}"</h2>
+          <h2>Persona "{{persona.nombre_persona}} {{persona.apellido_paterno}}"</h2>
           <table class="table table-striped"> 
             <thead>
               <tr>
@@ -204,8 +208,8 @@
                 <td>{{cursoConductor.f_fin}}</td>
                 <td>{{cursoConductor.estado}}</td>
                 <td>{{cursoConductor.carnet_c}}</td>
-                <td><button class="btn btn-warning fa fa-pencil" (click)="loadCursoConductor(cursoConductor)" data-toggle="modal" data-target="#editcursomodal" ></button></td>
-                <td><button class="btn btn-danger fa fa-trash" (click)="Eliminar(cursoConductor)"></button></td>
+                <td><button class="btn btn-warning far fa-edit" (click)="loadCursoConductor(cursoConductor)" data-toggle="modal" data-target="#editcursomodal" ></button></td>
+                <td><button class="btn btn-danger fas fa-trash-alt" (click)="Eliminar(cursoConductor)"></button></td>
               </tr>
             </tbody>
           </table>
@@ -235,8 +239,8 @@
                 <td>{{cursoConductor.f_fin}}</td>
                 <td>{{cursoConductor.estado}}</td>
                 <td>{{cursoConductor.carnet_c}}</td>
-                <td><button class="btn btn-warning fa fa-pencil" (click)="loadCursoConductor(cursoConductor)" data-toggle="modal" data-target="#editcursomodal" ></button></td>
-                <td><button class="btn btn-danger fa fa-trash" (click)="Eliminar(cursoConductor)"></button></td>
+                <td><button class="btn btn-warning far fa-edit" (click)="loadCursoConductor(cursoConductor)" data-toggle="modal" data-target="#editcursomodal" ></button></td>
+                <td><button class="btn btn-danger fas fa-trash-alt" (click)="Eliminar(cursoConductor)"></button></td>
               </tr>
             </tbody>
           </table>

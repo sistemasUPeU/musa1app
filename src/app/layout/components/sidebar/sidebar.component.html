@@ -20,7 +20,10 @@
         <!-- MODULO 1 BUS Y CONDUCTOR -->
         <div class="nested-menu">
             <a class="list-group-item" (click)="addExpandModulos('md01')">
-                <i class="fa fa-plus"></i>&nbsp;
+                <span class="fa-stack">
+                    <i class="fas fa-bus"></i>&nbsp;
+                    <i class="fas fa-user-tie"></i>&nbsp;
+                </span>
                 <span>{{ 'Buses y Conductores' }}</span>
             </a>
             <li class="nested" [class.expand]="showModulos[0] === 'md01'">
@@ -35,7 +38,7 @@
                                 <ul class="submenu">
                                     <li>
                                         <a routerLink="/md01/vinculacion/conductor" [routerLinkActive]="['router-link-active']" class="list-group-item">
-                                            <i class="fa fa-user"></i>&nbsp;
+                                            <i class="fas fa-user-tie"></i>&nbsp;
                                             <span>{{ 'Conductor' }}</span>
                                         </a>
                                     </li>
@@ -49,15 +52,19 @@
                             </li>
                         </div>
                         <a routerLink="/md01/curso" [routerLinkActive]="['router-link-active']" class="list-group-item">
-                            <i class="fa fa-address-card-o"></i>&nbsp;
+                            <i class="fas fa-bookmark"></i>&nbsp;
                             <span>{{ 'Curso' }}</span>
                         </a>
                         <a routerLink="/md01/buses" [routerLinkActive]="['router-link-active']" class="list-group-item">
-                            <i class="fa fa-user"></i>&nbsp;
+                            <i class="fas fa-bus"></i>&nbsp;
                             <span>{{ 'Buses' }}</span>
                         </a>
+                        <a routerLink="/md01/buses" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                            <i class="fa fa-user"></i>&nbsp;
+                            <span>{{ 'Soat/Circulacion' }}</span>
+                        </a>
                         <a routerLink="/md01/requisito" [routerLinkActive]="['router-link-active']" class="list-group-item">
-                            <i class="fa fa-th-list"></i>&nbsp;
+                            <i class="fas fa-tasks"></i>&nbsp;
                             <span>{{ 'Requisito' }}</span>
                         </a>
                     </li>
@@ -216,14 +223,14 @@
                 <ul class="submenu">
                     <li>
                         <a routerLink="/md05/producto" [routerLinkActive]="['router-link-active']" class="list-group-item">
-                            <i class="fa fa-fw fa-dashboard"></i>&nbsp;
+                            <i class="fa fa-user"></i>&nbsp;
                             <span>{{ 'Producto'}}</span>
                         </a>
                     </li>
                     <li>
-                        <a [routerLink]="['/charts']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-                            <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;
-                            <span>{{ 'Charts' | translate }}</span>
+                        <a [routerLink]="['/md05/categoria']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                            <i class="fa fa-fw fa-table"></i>&nbsp;
+                            <span>{{'Categoria/Marca'}}</span>
                         </a>
                     </li>
                     <li>
