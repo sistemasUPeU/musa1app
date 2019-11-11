@@ -23,6 +23,14 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('isLoggedin', 'true');
     }
     validateUser(user: Usuario) {
-        localStorage.setItem('user', JSON.stringify(user));
+        this.service.validarUsuario(user).subscribe(
+            data => {
+                console.log(data['usuario'])
+                if(data['usuario'].length=0){
+                    alert('Nombre de usuario/contraseña incorrectos')
+                }else{
+                this.router.navigate(['general/persona'])
+                }
+            });
     }
 }

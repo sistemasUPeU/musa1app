@@ -26,8 +26,9 @@ export class HeaderComponent implements OnInit {
 
     ngOnInit() {
         this.pushRightClass = 'push-right';
-        console.log(localStorage.getItem('usuario'))
-        this.usuario=JSON.parse(localStorage.getItem('usuario'))
+        console.log(localStorage.getItem('currentUser'))
+        this.usuario=JSON.parse(localStorage.getItem('currentUser'))
+        console.log(this.usuario)
         this.name=this.usuario[0].nom_usuario
         console.log(this.name)
     }
@@ -48,7 +49,7 @@ export class HeaderComponent implements OnInit {
     }
 
     onLoggedout() {
-        localStorage.removeItem('usuario');
+        localStorage.removeItem('currentUser');
     }
 
 }
