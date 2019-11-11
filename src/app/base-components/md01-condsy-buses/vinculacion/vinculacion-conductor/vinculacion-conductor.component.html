@@ -1,0 +1,65 @@
+<div class="row">
+        <div class="col-xl-12">
+          <h1 class="page-header">
+            Vinculacion Conductor
+          </h1>
+          <hr>
+          <!-- Button trigger modal -->
+          <div class="container row">
+            <div class="col-8">
+              <button (click)="fillSelect()" type="button" class="btn btn-info" data-toggle="modal" data-target="#addvinculacionmodal">
+                Agregar Vinculacion
+              </button>
+            </div>
+            <div class="col-4">
+                
+            </div>
+          </div>
+          <br><br>
+          <div class="modal fade" id="addvinculacionmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Nueva Vinculacion</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                    
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="button" (click)="Guardar()" class="btn btn-info" data-dismiss="modal">Guardar</button>
+                </div>
+                </div>
+            </div>
+          </div>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Conductor</th>
+                <th>Nro de Documento</th>
+                <th>Inicio de Vinculacion</th>
+                <th>Termino de Vinculacion</th>
+                <th>Estado</th>
+                <th colspan="2">Opcion</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let persona of listPeople">
+                <td>{{persona.nombre_persona}}</td>
+                <td>{{persona.apellido_paterno}}</td>
+                <td>{{persona.apellido_materno}}</td>
+                <td>{{persona.id_tipo_documento}}</td>
+                <td>{{persona.nro_documento}}</td>
+                <td><button class="btn btn-warning far fa-edit" (click)="fillSelect()" (click)="loadPersona(persona)"
+                    data-toggle="modal" data-target="#editpersonamodal"></button></td>
+                <td><button class="btn btn-danger fas fa-trash-alt" (click)="Eliminar(persona)"></button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>

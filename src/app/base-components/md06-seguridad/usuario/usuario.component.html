@@ -3,10 +3,11 @@
       <h1 class="page-header">
           Usuarios
       </h1>
+      <hr>
       <!-- Button trigger modal -->
       <div class="container row">
         <div class="col-8">
-          <button (click)="fillSelect()" type="button" class="btn btn-primary" data-toggle="modal" data-target="#addusermodal">
+          <button (click)="fillSelect()" type="button" class="btn btn-info" data-toggle="modal" data-target="#addusermodal">
             Agregar Usuario
           </button>
         </div>
@@ -35,8 +36,8 @@
             <td>{{usuario.cod_persona}}</td>
             <td>{{usuario.usuario_creacion}}</td>
             <td>{{usuario.fecha_creacion}}</td>
-            <td><button class="btn btn-warning fa fa-pencil" (click)="fillSelect()" (click)="loadPersona(usuario)" data-toggle="modal" data-target="#editpersonamodal" ></button></td>
-            <td><button class="btn btn-danger fa fa-trash" (click)="Eliminar(usuario)"></button></td>
+            <td><button class="btn btn-warning far fa-edit" (click)="fillSelect()" (click)="loadPersona(usuario)" data-toggle="modal" data-target="#editpersonamodal" ></button></td>
+            <td><button class="btn btn-danger fas fa-trash-alt" (click)="Eliminar(usuario)"></button></td>
           </tr>
         </tbody>
       </table>

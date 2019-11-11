@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators'
 
 import { Persona } from '../base-models/Persona';
 import { TipoDocumento } from '../base-models/TipoDocumento';
@@ -101,7 +102,15 @@ export class ServiceService {
   getUsuario(): Observable<Usuario[]>{
     return this.http.get<Usuario[]>(this.seguridad);
   }
-  
+  validarUsuario(usuario: Usuario){
+    return this.http.post<Usuario>(this.seguridad+'validar',usuario).pipe(map(data => {
+      console.log(data['usuario']);
+      if(data['usuario'].length!=0){
+        localStorage.setItem('currentUser', JSON.stringify(data['usuario']))
+      }
+      return data;
+    }));
+  }
   getBus(): Observable<Bus[]>{
     return this.http.get<Bus[]>(this.buses)
   }

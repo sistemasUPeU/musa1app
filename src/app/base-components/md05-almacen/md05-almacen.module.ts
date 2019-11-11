@@ -14,7 +14,6 @@ import { NgbDate, NgbModule } from '@ng-bootstrap/ng-bootstrap';
     CommonModule,
     Md05AlmacenRoutingModule,
     FormsModule,
-    NgbModule
-  ]
+    NgbModule]
 })
 export class Md05AlmacenModule { }
