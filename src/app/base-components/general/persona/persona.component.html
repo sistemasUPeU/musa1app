@@ -3,10 +3,11 @@
     <h1 class="page-header">
       Persona
     </h1>
+    <hr>
     <!-- Button trigger modal -->
     <div class="container row">
       <div class="col-8">
-        <button (click)="fillSelect()" type="button" class="btn btn-primary" data-toggle="modal" data-target="#addpersonamodal">
+        <button (click)="fillSelect()" type="button" class="btn btn-info" data-toggle="modal" data-target="#addpersonamodal">
           Agregar Persona
         </button>
       </div>
@@ -61,7 +62,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+            <button type="button" class="btn btn-info" data-dismiss="modal">Aceptar</button>
           </div>
         </div>
       </div>
@@ -110,7 +111,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            <button type="button" (click)="Guardar()" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+            <button type="button" (click)="Guardar()" class="btn btn-info" data-dismiss="modal">Guardar</button>
           </div>
         </div>
       </div>
@@ -160,7 +161,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            <button type="button" (click)="Actualizar(per)" class="btn btn-primary"
+            <button type="button" (click)="Actualizar(per)" class="btn btn-info"
               data-dismiss="modal">Guardar</button>
           </div>
         </div>
@@ -187,9 +188,9 @@
           <td>{{persona.id_tipo_documento}}</td>
           <td>{{persona.nro_documento}}</td>
           <td>{{persona.celular}}</td>
-          <td><button class="btn btn-warning fa fa-pencil" (click)="fillSelect()" (click)="loadPersona(persona)"
+          <td><button class="btn btn-warning far fa-edit" (click)="fillSelect()" (click)="loadPersona(persona)"
               data-toggle="modal" data-target="#editpersonamodal"></button></td>
-          <td><button class="btn btn-danger fa fa-trash" (click)="Eliminar(persona)"></button></td>
+          <td><button class="btn btn-danger fas fa-trash-alt" (click)="Eliminar(persona)"></button></td>
         </tr>
       </tbody>
     </table>
