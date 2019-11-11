@@ -140,7 +140,7 @@ export class ServiceService {
     return this.http.post<TipoMantenimiento>(this.tipoMantenimiento + 'add',tipomantenimiento);
   }
   deleteTipoMantenimiento(tipomantenimiento: TipoMantenimiento){
-    return this.http.delete<TipoMantenimiento >(this.tipoMantenimiento + tipomantenimiento.id_tipo_mantenimiento);
+    return this.http.delete<TipoMantenimiento>(this.tipoMantenimiento + tipomantenimiento.id_tipo_mantenimiento);
   }
   updateTipoMantenimiento(tipomantenimiento: TipoMantenimiento){
     return this.http.put<TipoMantenimiento>(this.tipoMantenimiento + tipomantenimiento.id_tipo_mantenimiento, tipomantenimiento);
