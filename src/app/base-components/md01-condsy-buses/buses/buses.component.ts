@@ -81,7 +81,7 @@ export class BusesComponent implements OnInit {
     })
   }
 
-  loadPersona(id_persona_propietario):void{
+  loadPersona(id_persona_propietario){
     this.service.getPersonaId(id_persona_propietario).subscribe((data)=>{
       console.log(id_persona_propietario);
       console.log(data);
