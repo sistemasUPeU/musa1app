@@ -22,8 +22,8 @@
             <tr *ngFor="let cat of listCat">
               <td>{{cat.id_categoria}}</td>
               <td>{{cat.nombre_categoria}}</td>
-              <td><button class="btn btn-warning fa fa-pencil" (click)="loadCate(cat)" data-target="#updatecat" data-toggle="modal"></button></td>
-              <td><button class="btn btn-danger fa fa-trash" data-toggle="modal" (click)="loadCate(cat)" data-target="#confirmdelete"></button></td>
+              <td><button class="btn btn-warning far fa-edit" (click)="loadCate(cat)" data-target="#updatecat" data-toggle="modal"></button></td>
+              <td><button class="btn btn-danger fas fa-trash-alt" data-toggle="modal" (click)="loadCate(cat)" data-target="#confirmdelete"></button></td>
             </tr>
           </tbody>
         </table>
@@ -53,8 +53,8 @@
               <tr *ngFor="let marca of listMarca">
                 <td>{{marca.id_marca}}</td>
                 <td>{{marca.nombre_marca}}</td>
-                <td><button class="btn btn-warning fa fa-pencil" (click)="loadMarca(marca)" data-target="#updatemarca" data-toggle="modal"></button></td>
-                <td><button class="btn btn-danger fa fa-trash" data-toggle="modal" (click)="loadMarca(marca)" data-target="#confirmdeletemarca"></button></td>
+                <td><button class="btn btn-warning far fa-edit" (click)="loadMarca(marca)" data-target="#updatemarca" data-toggle="modal"></button></td>
+                <td><button class="btn btn-danger fas fa-trash-alt" data-toggle="modal" (click)="loadMarca(marca)" data-target="#confirmdeletemarca"></button></td>
               </tr>
             </tbody>
           </table>
