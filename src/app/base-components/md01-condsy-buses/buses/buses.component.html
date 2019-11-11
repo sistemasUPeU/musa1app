@@ -42,8 +42,8 @@
               <td>{{bus.anio_fabricacion}}</td>
               <td>{{bus.id_persona_propietario}}</td>
               <td><button class="btn btn-info fa fa-eye" (click)="loadBus(bus)" (click)="loadPersona(bus.id_persona_propietario)" data-toggle="modal" data-target="#ReadBus"></button></td>
-              <td><button class="btn btn-warning fa fa-pencil" (click)="loadBus(bus)" data-toggle="modal" data-target="#updatebusmodal" ></button></td>
-              <td><button class="btn btn-danger fa fa-trash" (click)="loadBus(bus)" data-toggle="modal" data-target="#confirmdelete"></button></td>
+              <td><button class="btn btn-warning far fa-edit" (click)="loadBus(bus)" data-toggle="modal" data-target="#updatebusmodal" ></button></td>
+              <td><button class="btn btn-danger fas fa-trash-alt" (click)="loadBus(bus)" data-toggle="modal" data-target="#confirmdelete"></button></td>
             </tr>
           </tbody>
         </table>
