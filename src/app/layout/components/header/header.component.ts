@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { Usuario } from 'src/app/base-models/Usuario';
 
 @Component({
     selector: 'app-header',
@@ -8,7 +9,8 @@ import { Router, NavigationEnd } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
     public pushRightClass: string;
-
+    public name:any;
+    usuario: any;
     constructor( public router: Router) {
 
         this.router.events.subscribe(val => {
@@ -24,6 +26,10 @@ export class HeaderComponent implements OnInit {
 
     ngOnInit() {
         this.pushRightClass = 'push-right';
+        console.log(localStorage.getItem('usuario'))
+        this.usuario=JSON.parse(localStorage.getItem('usuario'))
+        this.name=this.usuario[0].nom_usuario
+        console.log(this.name)
     }
 
     isToggled(): boolean {
@@ -42,7 +48,7 @@ export class HeaderComponent implements OnInit {
     }
 
     onLoggedout() {
-        localStorage.removeItem('isLoggedin');
+        localStorage.removeItem('usuario');
     }
 
 }

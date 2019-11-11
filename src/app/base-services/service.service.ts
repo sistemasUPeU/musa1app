@@ -101,7 +101,10 @@ export class ServiceService {
   getUsuario(): Observable<Usuario[]>{
     return this.http.get<Usuario[]>(this.seguridad);
   }
-  
+  validarUsuario(usuario: Usuario): Observable<Usuario[]> {
+    console.log(usuario)
+    return this.http.post<Usuario[]>(this.seguridad+'validar',usuario);
+  }
   getBus(): Observable<Bus[]>{
     return this.http.get<Bus[]>(this.buses)
   }
