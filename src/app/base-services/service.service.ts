@@ -21,35 +21,13 @@ import { UnidadMedida } from '../base-models/UnidadMedida';
 import { TipoAccion } from '../base-models/TipoAccion';
 import { Rol } from '../base-models/Rol';
 import { UsuarioRol } from '../base-models/UsuarioRol';
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-import { DetallePedido } from "../base-models/DetallePedido";
-<<<<<<< HEAD
-import { Pedido } from '../base-models/Pedido';
-import { Padron } from '../base-models/Padron';
-=======
-import {Pedido} from "../base-models/Pedido";
-import {Padron} from "../base-models/Padron";
->>>>>>> yeiser
-import { RevisionTecnica } from '../base-models/RevisionTecnica';
-<<<<<<< HEAD
-=======
-import {DetallePedido} from '../base-models/DetallePedido';
-import { Pedido } from '../base-models/Pedido';
-import { Padron } from '../base-models/Padron';
-import {RevisionTecnica} from '../base-models/RevisionTecnica';
->>>>>>> yeiser
-=======
 import { DetallePedido } from "../base-models/DetallePedido";
 import { Pedido } from '../base-models/Pedido';
 import { Padron } from '../base-models/Padron';
 import { RevisionTecnica } from '../base-models/RevisionTecnica';
-
->>>>>>> yeiser
-=======
 import { Opcion } from '../base-models/Opcion';
->>>>>>> 50a885c2355bfa54ade944e7e73bf6517f2ee4f5
+
 
 
 
