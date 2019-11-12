@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { RevisionTecnicaComponent } from './revision-tecnica/revision-tecnica.component';
 import { AutorizarPedidoComponent } from './autorizar-pedido/autorizar-pedido.component';
 import { PedidoComponent } from './pedido/pedido.component';
+import { RevisiondetalleComponent } from './revisiondetalle/revisiondetalle.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { PedidoComponent } from './pedido/pedido.component';
     RegistrarMantenimientoComponent, 
     RevisionTecnicaComponent,
     AutorizarPedidoComponent,
-    PedidoComponent],
+    PedidoComponent,
+    RevisiondetalleComponent],
   imports: [
     CommonModule,
     Md02MantenimientoRoutingModule,

@@ -1,8 +1,8 @@
 <div class="container-fluid">
 
     <nav class="margin">
-        <button type="button" (click)="fillSelec()" class="btn btn-lg btn-success radius" style="margin-right: 25px" data-toggle="modal" data-target="#exampleModal">Nuevo</button>
-        <button type="button" class="btn btn-secondary btn-lg radius">Agregar</button>
+        <button type="button" (click)="fillSelec(); mostrar = true" class="btn btn-lg btn-success radius" style="margin-right: 25px" data-toggle="modal" data-target="#exampleModal">Nuevo</button>
+        <button (click)="mostrar = false" class="btn btn-secondary btn-lg radius" data-toggle="modal" data-target="#exampleModal">Agregar</button>
 
         <div class="mes">
             <label class="h4">{{varmes}}</label>
@@ -22,13 +22,13 @@
                 </div>
                 <div class="modal-body">
                     <form action="">
-                        <div class="row m20">
+                        <div class="row m20" *ngIf="mostrar">
                             <div class="col-6 t">
                                 <label for="">Mes </label>
                             </div>
                             <div class="col-6">
-                                <select class="form-control a" style="height: 29px; padding: 2px; padding-left: 5px;">
-                                <option >Mes</option>
+                                <select class="form-control a" (change)="selectmes($event)" style="height: 29px; padding: 2px; padding-left: 5px;">
+                                <option value="0">Mes</option>
                                 <option *ngFor="let me of listmes" value="{{me.id_mes}}">{{me.mes}}</option>
                                 </select>
                             </div>
@@ -36,12 +36,12 @@
 
                         <div class="row m20">
                             <div class="col-6 t"><label>Grupo</label></div>
-                            <div class="col-6"><input class="form-control b" type="text"></div>
+                            <div class="col-6"><input [(ngModel)]="newgrupo.numero" name="numero" class="form-control b" type="text"></div>
                         </div>
 
                         <div class="row m20">
                             <div class="col-6"><label>Cantidad de vehiculos</label></div>
-                            <div class="col-6"><input class="form-control b" type="text"></div>
+                            <div class="col-6"><input [(ngModel)]="newgrupo.cantidad_buses" name="cantidad_buses" class="form-control b" type="text"></div>
                         </div>
 
                         <div class="row">
@@ -50,15 +50,16 @@
                                 <div class="form-inline">
                                     <div>
                                         <small id="emailHelp" class="form-text text-muted">Hora</small>
-                                        <select class="form-control b" style="padding: 2px;padding-left: 5px; height: 25px;">
-                                                        <option *ngFor="let h of hora">{{h}}</option>
-                                                </select>
+                                        <select class="form-control b" (change)="selecthora($event)" style="padding: 2px;padding-left: 5px; height: 25px;">
+                                            <option  value="{{00}}" >00</option>            
+                                            <option *ngFor="let h of hora" value="{{h}}" >{{h}}</option>
+                                        </select>
                                     </div>
 
                                     <div>
                                         <small id="emailHelp" class="form-text text-muted">Minuto</small>
-                                        <select class="form-control b" style="padding: 1px; padding-left: 7px; height: 25px; margin-left: 10px;">
-                                                    <option *ngFor="let minutos of minuto">{{minutos}}</option>
+                                        <select class="form-control b" (change)="selectminuto($event)" style="padding: 1px; padding-left: 7px; height: 25px; margin-left: 10px;">
+                                                    <option *ngFor="let minutos of minuto" value="{{minutos}}">{{minutos}}</option>
                                             </select>
 
                                     </div>
@@ -71,7 +72,7 @@
 
                         <div class="row m20">
                             <div class="col-6 t"><label>Intervalo</label></div>
-                            <div class="col-6"><input class="form-control b" type="text"></div>
+                            <div class="col-6"><input [(ngModel)]="newgrupo.intervalo" name="intervalo" class="form-control b" type="text"></div>
                         </div>
 
 
@@ -80,7 +81,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-success">Guardar</button>
+                    <button type="button" class="btn btn-success" (click)="guardar()" data-dismiss="modal">Guardar</button>
                 </div>
             </div>
         </div>
@@ -96,30 +97,75 @@
         <div class="card-columns">
 
             <!-- Ng For-->
-            <div *ngFor="let g of grupos" class="card border-success mb-3" style="max-width: 18rem;">
-
+            <div *ngFor="let g of grupos" class="card border-success mb-3" style="max-width: 18rem; padding-top: 0px;">
+                <button type="button" (click)="Eliminar(g)" class="clos">
+                                <span aria-hidden="true">&times;</span>
+                </button>
                 <div class="" style="color: black;">
                     <!--  Grupo -->
-                    <p>Grupo <span class="badge badge-dark badge-pill input" style="margin-left: 70px;"> {{g.numero}}</span> </p>
+                    <div class="row">
+                        <div class="col-6">
+                            <p>Grupo </p>
+                        </div>
+
+                        <div class="col-6" style="padding-left: 0px; ">
+                            <span class="badge badge-dark badge-pill input"> {{g.numero}}</span>
+                        </div>
+                    </div>
                     <!--  Cantidad Bus -->
-                    <p>C. de Buses <span class="badge badge-dark badge-pill input" style="margin-left: 33px;">{{g.cantidad_buses}}</span></p>
+                    <div class="row">
+                        <div class="col-6">
+                            <p>C. de Buses </p>
+                        </div>
+
+                        <div class="col-6" style="padding: 0">
+                            <span class="badge badge-dark badge-pill input">{{g.cantidad_buses}}</span>
+                        </div>
+
+                    </div>
+
+
+
+
                     <!--  Hora Inicio -->
-                    <p>Hora Inicio
-                        <span class="badge badge-dark badge-pill input" style="margin-left: 38px; width: 70px;">{{g.hora_inicio}}</span>
-                    </p>
+                    <div class="row">
+                        <div class="col-6">
+                            <p>Hora Inicio</p>
+                        </div>
+
+                        <div class="col-6" style="padding: 0">
+                            <span class="badge badge-dark badge-pill input">{{g.hora_inicio}}</span>
+                        </div>
+
+                    </div>
+
+
                     <!--  Hora Fin -->
-                    <p>Hora Fin <span class="badge badge-dark badge-pill input" style="margin-left: 55px; width: 70px;">{{g.hora_fin}}</span></p>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <p>Hora Fin </p>
+                        </div>
+
+                        <div class="col-6" style="padding: 0">
+                            <span class="badge badge-dark badge-pill input">{{g.hora_fin}}</span>
+                        </div>
+
+                    </div>
+
                     <!-- Intervalo -->
-                    <p>Intervalo <span class="badge badge-dark badge-pill input" style="margin-left: 50px;">{{g.intervalo}}</span><span style="margin-left: 100px;">min</span> </p>
+                    <div class="row">
+                        <div class="col-6">
+                            <p>Intervalo </p>
+                        </div>
 
+                        <div class="col-6" style="padding: 0">
+                            <span class="badge badge-dark badge-pill input">{{g.intervalo}}</span>
+                        </div>
 
+                    </div>
                 </div>
             </div>
-
-
-
-
-
         </div>
         <!--fin de cards -->
 

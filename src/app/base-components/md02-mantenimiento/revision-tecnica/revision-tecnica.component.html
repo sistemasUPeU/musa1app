@@ -1,10 +1,13 @@
 <div class="row">
   <div class="col-xl-12">
     <br>
+
     <FONT FACE="courier" SIZE=10 style="margin-left:50px;">REVISIONES TÉCNICAS</FONT>
-    <img src="assets/images/bus_logo.png"  style="margin-left:700px;"id="imgRedonda"/>
-    <br>
     
+
+    <img src="assets/images/revision_tecnica.logo.png"  style="margin-left:500px;"id="imgRedonda"/>
+    
+    <br>
     <br>
     <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4" id="hola">
       <div class="input-group">
@@ -18,40 +21,100 @@
     </div>
     <br>
     <div class="button-7">
-      <div class="eff-7"></div>
-      <a href="#">Registrar Revisión </a>
-    </div>
+        <div class="eff-7"></div>
+        <a data-toggle="modal" data-target="#addrevisiontecnica">Registrar Revisión </a>
+      </div>
     <br><br><br><br>
-    <table class="table table-hover" id="tabla_registrar_mantenimiento">
+
+     <!-------MODAL Agregar Revision------->
+    <div class="modal fade bd-example-modal-lg" id="addrevisiontecnica" tabindex="-1" role="dialog"
+      aria-labelledby="myLargeModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Registrar Revisiones Técnicas </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="container-fluid">
+
+              <div class="row">
+                <div class="col">
+                  <label for="name" class="col-form-label">Placa de Bus:</label>
+                  <input name="placa" type="text" class="form-control">
+                  <br>
+                  <div class="form-group">
+                      <label for="example-date-input" class="">Fecha Revisión: </label>
+                      <div class="">
+                          <input  class="form-control" type="date" value="" id="example-date-input">
+                      </div>
+                  </div>
+                  <br>
+                  <label for="exampleFormControlSelect1">Resultado:</label>
+                  <input name="resultado" type="text" class="form-control">
+                </div>
+
+                <div class="col">
+                  <label for="name" class="col-form-label">Empresa:</label>
+                  <input name="empresa" type="text" class="form-control">
+                  <br>
+                  <div class="form-group">
+                      <label for="example-date-input" class="">Fecha Vigencia: </label>
+                      <div class="">
+                          <input  class="form-control" type="date" value="" id="example-date-input">
+                      </div>
+                  </div>
+                  <br>
+                  <label for="exampleFormControlSelect1">Observaciones:</label>
+                  <input name="resultado" type="text" class="form-control">
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+   <!----------listar tabla---------->
+    <table class="table table-hover" id="tablarevisiones">
         <thead>
           <tr>
-              <th>Fecha</th>  
-              <th>Tipo Mantenimiento</th> 
-              <th>Padrón</th>
-              <th>Placa</th>
-              <th colspan="2">Opciones</th>
-          </tr>
+              <th scope="col">#</th>
+              <th scope="col">F. Registro</th>
+              <th scope="col">Empresa</th>
+              <th scope="col">F. Vigencia</th>
+              <th scope="col">Bus</th>
+              <th scope="col">Resultado</th>
+              <th scope="col">Imagen</th>
+              <th colspan="2">Opción</th>
+            </tr>
         </thead>
         <tbody>
-          <tr>
-            <th>8/11/2019</th>
-            <td>Correctivo</td>
-            <td>AAA</td>
-            <td>AAA-123</td>
-          </tr>
-          <tr>
-            <th>7/11/2019</th>
-            <td>Preventivo</td>
-            <td>BBB</td>
-            <td>BBB-123</td>
-          </tr>
-          <tr>
-            <th>7/11/2019</th>
-            <td>Diario</td>
-            <td>CCC</td>
-            <td>CCC-123</td>
-          </tr>
+            <tr *ngFor="let revisiontecnica of listRevisionTecnica,let i = index">
+                <td>{{i+1}}</td>
+                <td>{{revisiontecnica.fecha}}</td>
+                <td>{{revisiontecnica.empresa_de_revision}}</td>
+                <td>{{revisiontecnica.fecha_vigencia}}</td>
+                <td>{{revisiontecnica.id_bus}}</td>
+                <td>{{revisiontecnica.resultado_inspeccion}}</td>
+                <td>{{revisiontecnica.url}}</td>
+                <td><button class="btn btn-warning far fa-edit"
+                      data-toggle="modal" data-target="#modal"></button></td>
+                <td><button class="btn btn-danger fas fa-trash-alt" (click)="Eliminar(revisiontecnica)"></button></td>
+             </tr>
         </tbody>
       </table>
   </div>
 </div>
+
+
+<!----------------MODAL DE AGREGAR----->
+
+
+   

@@ -76,7 +76,7 @@
         <!-- MODULO 2 MANTENIMIENTO -->
         <div class="nested-menu">
             <a class="list-group-item" (click)="addExpandModulos('md02')">
-                <i class="fa fa-plus"></i>&nbsp;
+                <i class="fa fa-fw fa-wrench"></i>&nbsp;
                 <span>{{ 'Mantenimiento' }}</span>
             </a>
             <li class="nested" [class.expand]="showModulos[1] === 'md02'">
@@ -224,14 +224,14 @@
         <!-- MODULO  5 ALMACEN -->
         <div class="nested-menu">
             <a class="list-group-item" (click)="addExpandModulos('md05')">
-                <i class="fa fa-plus"></i>&nbsp;
+                <i class="fa fa-fw fa-edit"></i>&nbsp;
                 <span>{{ 'Almacen' }}</span>
             </a>
             <li class="nested" [class.expand]="showModulos[4] === 'md05'">
                 <ul class="submenu">
                     <li>
                         <a routerLink="/md05/producto" [routerLinkActive]="['router-link-active']" class="list-group-item">
-                            <i class="fa fa-user"></i>&nbsp;
+                            <i class="fa fa-th-list"></i>&nbsp;
                             <span>{{ 'Producto'}}</span>
                         </a>
                     </li>

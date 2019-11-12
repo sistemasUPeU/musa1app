@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
 
 import { Md03CronoDespachoRoutingModule } from './md03-crono-despacho-routing.module';
 import { GrupoComponent } from './grupo/grupo.component';
@@ -10,6 +12,7 @@ import { AsignarConductorComponent } from './asignar-conductor/asignar-conductor
 @NgModule({
   declarations: [GrupoComponent, CsvComponent, AsignarBusComponent, AsignarConductorComponent],
   imports: [
+    FormsModule,
     CommonModule,
     Md03CronoDespachoRoutingModule
   ]

@@ -24,7 +24,11 @@ import { UsuarioRol } from '../base-models/UsuarioRol';
 
 import { DetallePedido } from "../base-models/DetallePedido";
 import { Pedido } from '../base-models/Pedido';
+<<<<<<< HEAD
 import { Padron } from '../base-models/Padron';
+=======
+import { RevisionTecnica } from '../base-models/RevisionTecnica';
+>>>>>>> 1600569333f51f3ddb20757e7cf5566a14576cb0
 
 
 
@@ -49,6 +53,7 @@ export class ServiceService {
   unidadmedidas= 'http://localhost:8090/unidad_medida/'
   tipoaccion='http://localhost:8090/tipo_accion/'
   pedido='http://localhost:8090/detalle_pedido/'
+  revitecnicas= 'http://localhost:8090/revisiontecnica/'
 
   mantenimiento2 = 'http://localhost:8090/mantenimiento/'
 
@@ -286,4 +291,12 @@ export class ServiceService {
   deleteTipoAccion(tipoaccion: TipoAccion){
     return this.http.delete<TipoAccion>(this.tipoaccion + tipoaccion.id_tipo_accion)
   }
+
+  //----------REVISIONES TECNICAS-----------//
+  getRevisionTecnica():Observable<RevisionTecnica[]>{
+    return this.http.get<RevisionTecnica[]>(this.revitecnicas);
+  }
+
+  
+
 }
