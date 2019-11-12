@@ -20,6 +20,7 @@ import { TipoAccion } from '../base-models/TipoAccion';
 
 import { DetallePedido } from "../base-models/DetallePedido";
 import { Pedido } from '../base-models/Pedido';
+import { RevisionTecnica } from '../base-models/RevisionTecnica';
 
 
 
@@ -42,6 +43,7 @@ export class ServiceService {
   unidadmedidas= 'http://localhost:8090/unidad_medida/'
   tipoaccion='http://localhost:8090/tipo_accion/'
   pedido='http://localhost:8090/detalle_pedido/'
+  revitecnicas= 'http://localhost:8090/revisiontecnica/'
 
 
   getPersona(): Observable<Persona[]>{
@@ -252,4 +254,12 @@ export class ServiceService {
   deleteTipoAccion(tipoaccion: TipoAccion){
     return this.http.delete<TipoAccion>(this.tipoaccion + tipoaccion.id_tipo_accion)
   }
+
+  //----------REVISIONES TECNICAS-----------//
+  getRevisionTecnica():Observable<RevisionTecnica[]>{
+    return this.http.get<RevisionTecnica[]>(this.revitecnicas);
+  }
+
+  
+
 }

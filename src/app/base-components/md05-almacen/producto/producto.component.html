@@ -92,7 +92,7 @@
    <div class="modal fade" id="editarproductomodal" tabindex="-1" role="dialog"
       aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
-         <div class="modal-content" >
+         <div class="modal-content" *ngFor="let prod of loadProductoData" >
             <div class="modal-header">
                <h5 class="modal-title" id="exampleModalLongTitle"> Producto</h5>
                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -149,27 +149,29 @@
    <table class="table table-hover" id="tabla_producto">
       <thead>
          <tr>
-            <th>Producto</th>
-            <th>Descripción</th>
-            <th>Categoría</th>
-            <th>U. M.</th>
-            <th>Código</th>
-            <th>Marca</th>
+            <th scope="col">#</th>
+            <th scope="col">Producto</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">Categoría</th>
+            <th scope="col">U. M.</th>
+            <th scope="col">Código</th>
+            <th scope="col">Marca</th>
             <th colspan="2">Opción</th>
          </tr>
       </thead>
       <tbody>
-         <tr *ngFor="let producto of listProducto">
+         <tr *ngFor="let producto of listProducto,let i = index">
+            <td>{{i+1}}</td>
             <td>{{producto.nombre_producto}}</td>
             <td>{{producto.descripcion}}</td>
             <td>{{producto.id_categoria}}</td>
             <td>{{producto.id_unidad_medida}}</td>
             <td>{{producto.codigo}}</td>
             <td>{{producto.id_marca}}</td>
-            <td><button class="btn btn-warning fa fa-pencil" (click)="loadProducto(producto)"
+            <td><button class="btn btn-warning far fa-edit" (click)="loadProducto(producto)"
                   (click)="fillSelectCategoria()" (click)="fillSelectMarca()" (click)="fillSelectUnidadMedida()"
                   data-toggle="modal" data-target="#editarproductomodal"></button></td>
-            <td><button class="btn btn-danger fa fa-trash" (click)="Eliminar(producto)"></button></td>
+            <td><button class="btn btn-danger fas fa-trash-alt" (click)="Eliminar(producto)"></button></td>
          </tr>
       </tbody>
    </table>
