@@ -23,12 +23,9 @@ import { Rol } from '../base-models/Rol';
 import { UsuarioRol } from '../base-models/UsuarioRol';
 
 import { DetallePedido } from "../base-models/DetallePedido";
-import { Pedido } from '../base-models/Pedido';
-<<<<<<< HEAD
-import { Padron } from '../base-models/Padron';
-=======
+import {Pedido} from "../base-models/Pedido";
+import {Padron} from "../base-models/Padron";
 import { RevisionTecnica } from '../base-models/RevisionTecnica';
->>>>>>> 1600569333f51f3ddb20757e7cf5566a14576cb0
 
 
 
