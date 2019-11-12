@@ -23,8 +23,13 @@ import { Rol } from '../base-models/Rol';
 import { UsuarioRol } from '../base-models/UsuarioRol';
 
 import { DetallePedido } from "../base-models/DetallePedido";
+<<<<<<< HEAD
 import { Pedido } from '../base-models/Pedido';
 import { Padron } from '../base-models/Padron';
+=======
+import {Pedido} from "../base-models/Pedido";
+import {Padron} from "../base-models/Padron";
+>>>>>>> yeiser
 import { RevisionTecnica } from '../base-models/RevisionTecnica';
 
 
