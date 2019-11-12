@@ -17,6 +17,8 @@ import { Marca } from '../base-models/Marca';
 import { Categoria } from '../base-models/Categoria';
 import { UnidadMedida } from '../base-models/UnidadMedida';
 import { TipoAccion } from '../base-models/TipoAccion';
+import { Rol } from '../base-models/Rol';
+import { UsuarioRol } from '../base-models/UsuarioRol';
 
 import { DetallePedido } from "../base-models/DetallePedido";
 import { Pedido } from '../base-models/Pedido';
@@ -35,6 +37,7 @@ export class ServiceService {
   requisitos = 'http://localhost:8090/requisito/'
   tipoRequisito = 'http://localhost:8090/tipoRequisito/'
   seguridad = 'http://localhost:8090/seguridad/'
+  roles = 'http://localhost:8090/rol/'
   tipoMantenimiento = 'http://localhost:8090/tipo_mantenimiento/'
   productos= 'http://localhost:8090/producto/'
   marcas= 'http://localhost:8090/marca/'
@@ -101,12 +104,20 @@ export class ServiceService {
   getCursoConductorId(idcurso: number): Observable<CursoConductor[]> {
     return this.http.get<CursoConductor[]>(this.cursoConductores+idcurso);
   }
+  getRol(): Observable<Rol[]>{
+    return this.http.get<Rol[]>(this.roles)
+  }
+  createUsuarioRol(usuarioRol: UsuarioRol) {
+    return this.http.post<UsuarioRol>(this.seguridad+'add/rol',usuarioRol);
+  }
   getUsuario(): Observable<Usuario[]>{
     return this.http.get<Usuario[]>(this.seguridad);
   }
+  createUsuario(usuario: Usuario) {
+    return this.http.post<Usuario>(this.seguridad+'add',usuario);
+  }
   validarUsuario(usuario: Usuario){
     return this.http.post<Usuario>(this.seguridad+'validar',usuario).pipe(map(data => {
-      console.log(data['usuario']);
       if(data['usuario'].length!=0){
         localStorage.setItem('currentUser', JSON.stringify(data['usuario']))
       }
