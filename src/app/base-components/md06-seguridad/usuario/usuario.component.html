@@ -7,7 +7,7 @@
       <!-- Button trigger modal -->
       <div class="container row">
         <div class="col-8">
-          <button (click)="fillSelect()" type="button" class="btn btn-info" data-toggle="modal" data-target="#addusermodal">
+          <button (click)="loadSelects()" type="button" class="btn btn-info" data-toggle="modal" data-target="#addusermodal">
             Agregar Usuario
           </button>
         </div>
@@ -18,6 +18,56 @@
         </div>
     </div>
       <br><br>
+      <div class="modal fade" id="addusermodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Nuevo Usuario</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="name" class="col-form-label">Nombre de Usuario:</label>
+                  <input [(ngModel)]="usuario.nom_usuario" name="nom_usuario" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="apepat" class="col-form-label">Contraseña:</label>
+                  <input [(ngModel)]="contrasena" name="contrasena" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="tipodoc" class="col-form-label">Rol:</label>
+                  <select class="form-control" (change)="selectRol($event)">
+                    <option value="0">Seleccionar...</option>
+                    <option *ngFor="let rol of listRol" value={{rol.id_rol}}>{{rol.nom_rol}}</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                    <label for="tipodoc" class="col-form-label">Persona:</label>
+                    <select class="form-control" (change)="selectPersona($event)">
+                      <option value="0">Seleccionar...</option>
+                      <option *ngFor="let persona of listPersona" value={{persona.id_persona}}>{{persona.nombre_persona}} {{persona.apellido_paterno}}</option>
+                    </select>
+                  </div>
+                <div class="form-group">
+                  <label for="superusuario" class="col-form-label">Super Usuario:</label>
+                  <select class="form-control" (change)="selectSuperUser($event)">
+                    <option value="2">Seleccionar...</option>
+                    <option value="1">Si</option>
+                    <option value="0">No</option>
+                  </select>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+              <button type="button" (click)="Guardar()" class="btn btn-info" data-dismiss="modal">Guardar</button>
+            </div>
+          </div>
+        </div>
+      </div>
       <table class="table table-bordered">
         <thead>
           <tr>

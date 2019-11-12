@@ -26,16 +26,13 @@ export class HeaderComponent implements OnInit {
 
     ngOnInit() {
         this.pushRightClass = 'push-right';
-        console.log(localStorage.getItem('currentUser'))
         this.usuario=JSON.parse(localStorage.getItem('currentUser'))
-        console.log(this.usuario)
         this.name=this.usuario[0].nom_usuario
-        console.log(this.name)
         this.observableTimer();
     }
     observableTimer() {
-        let source = timer(300000);
-        source.subscribe(this.onLoggedout)
+        let source = timer(1500000);
+        source.subscribe(this.expiredSession)
       }
     isToggled(): boolean {
         const dom: Element = document.querySelector('body');
@@ -51,11 +48,13 @@ export class HeaderComponent implements OnInit {
         const dom: any = document.querySelector('body');
         dom.classList.toggle('rtl');
     }
-
+    expiredSession() {
+        alert('Sesion expirada')
+        localStorage.removeItem('currentUser');
+        window.location.reload();
+    }
     onLoggedout() {
         localStorage.removeItem('currentUser');
-        alert('Sesion expirada')
-        window.location.reload();
     }
 
 }
