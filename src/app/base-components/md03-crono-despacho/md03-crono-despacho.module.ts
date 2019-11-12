@@ -6,9 +6,10 @@ import { GrupoComponent } from './grupo/grupo.component';
 import { CsvComponent } from './csv/csv.component';
 import { AsignarBusComponent } from './asignar-bus/asignar-bus.component';
 import { AsignarConductorComponent } from './asignar-conductor/asignar-conductor.component';
+import { ReportesComponent } from './reportes/reportes.component';
 
 @NgModule({
-  declarations: [GrupoComponent, CsvComponent, AsignarBusComponent, AsignarConductorComponent],
+  declarations: [GrupoComponent, CsvComponent, AsignarBusComponent, AsignarConductorComponent, ReportesComponent],
   imports: [
     CommonModule,
     Md03CronoDespachoRoutingModule
