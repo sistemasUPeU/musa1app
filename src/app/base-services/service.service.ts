@@ -10,6 +10,8 @@ import { TipoRequisito } from '../base-models/TipoRequisito';
 import { Usuario } from '../base-models/Usuario';
 import { Bus } from '../base-models/Bus';
 import { TipoMantenimiento } from '../base-models/TipoMantenimiento';
+import { Mantenimiento } from '../base-models/Mantenimiento'
+import { DetalleMantenimiento } from '../base-models/DetalleMantenimiento'
 import { Curso } from '../base-models/Curso';
 import { CursoConductor } from '../base-models/CursoConductor';
 import { Producto } from '../base-models/Producto';
@@ -17,7 +19,6 @@ import { Marca } from '../base-models/Marca';
 import { Categoria } from '../base-models/Categoria';
 import { UnidadMedida } from '../base-models/UnidadMedida';
 import { TipoAccion } from '../base-models/TipoAccion';
-
 import { DetallePedido } from "../base-models/DetallePedido";
 import { Pedido } from '../base-models/Pedido';
 
@@ -36,6 +37,7 @@ export class ServiceService {
   tipoRequisito = 'http://localhost:8090/tipoRequisito/'
   seguridad = 'http://localhost:8090/seguridad/'
   tipoMantenimiento = 'http://localhost:8090/tipo_mantenimiento/'
+  mantenimiento = 'http://localhost:8090/detalle_mantenimiento/'
   productos= 'http://localhost:8090/producto/'
   marcas= 'http://localhost:8090/marca/'
   categorias= 'http://localhost:8090/categoria/'
@@ -164,12 +166,22 @@ export class ServiceService {
       return this.http.delete<Pedido>(this.pedido + pedido.id_pedido)
     }
 
+     // ----- AUTORIZAR PEDIDO ---- //
+
+      // ----- MANTENIMIENTO ---- //
+      getMantenimiento(): Observable<Mantenimiento[]> {
+        return this.http.get<Mantenimiento[]>(this.mantenimiento);
+      }
+      getMantenimientoId(idmantenimiento: number): Observable<Mantenimiento[]> {
+        return this.http.get<Mantenimiento[]>(this.mantenimiento + idmantenimiento);
+      }
 
 
 
 
 
 
+      // ----- MANTENIMIENTO ---- //
 
   // ----- TIPO MANTENIMIENTO  ----//
   //Almacen
