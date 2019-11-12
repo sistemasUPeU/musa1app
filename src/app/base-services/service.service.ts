@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators'
 
 import { Persona } from '../base-models/Persona';
 import { TipoDocumento } from '../base-models/TipoDocumento';
@@ -9,6 +10,8 @@ import { TipoRequisito } from '../base-models/TipoRequisito';
 import { Usuario } from '../base-models/Usuario';
 import { Bus } from '../base-models/Bus';
 import { TipoMantenimiento } from '../base-models/TipoMantenimiento';
+import { Mantenimiento } from '../base-models/Mantenimiento'
+import { DetalleMantenimiento } from '../base-models/DetalleMantenimiento'
 import { Curso } from '../base-models/Curso';
 import { CursoConductor } from '../base-models/CursoConductor';
 import { Producto } from '../base-models/Producto';
@@ -16,9 +19,12 @@ import { Marca } from '../base-models/Marca';
 import { Categoria } from '../base-models/Categoria';
 import { UnidadMedida } from '../base-models/UnidadMedida';
 import { TipoAccion } from '../base-models/TipoAccion';
+import { Rol } from '../base-models/Rol';
+import { UsuarioRol } from '../base-models/UsuarioRol';
 
-
-
+import { DetallePedido } from "../base-models/DetallePedido";
+import { Pedido } from '../base-models/Pedido';
+import { RevisionTecnica } from '../base-models/RevisionTecnica';
 
 
 
@@ -34,12 +40,17 @@ export class ServiceService {
   requisitos = 'http://localhost:8090/requisito/'
   tipoRequisito = 'http://localhost:8090/tipoRequisito/'
   seguridad = 'http://localhost:8090/seguridad/'
+  roles = 'http://localhost:8090/rol/'
   tipoMantenimiento = 'http://localhost:8090/tipo_mantenimiento/'
+  mantenimiento = 'http://localhost:8090/detalle_mantenimiento/'
   productos= 'http://localhost:8090/producto/'
   marcas= 'http://localhost:8090/marca/'
   categorias= 'http://localhost:8090/categoria/'
   unidadmedidas= 'http://localhost:8090/unidad_medida/'
   tipoaccion='http://localhost:8090/tipo_accion/'
+  pedido='http://localhost:8090/detalle_pedido/'
+  revitecnicas= 'http://localhost:8090/revisiontecnica/'
+
 
   getPersona(): Observable<Persona[]>{
     return this.http.get<Persona[]>(this.personas);
@@ -98,10 +109,26 @@ export class ServiceService {
   getCursoConductorId(idcurso: number): Observable<CursoConductor[]> {
     return this.http.get<CursoConductor[]>(this.cursoConductores+idcurso);
   }
+  getRol(): Observable<Rol[]>{
+    return this.http.get<Rol[]>(this.roles)
+  }
+  createUsuarioRol(usuarioRol: UsuarioRol) {
+    return this.http.post<UsuarioRol>(this.seguridad+'add/rol',usuarioRol);
+  }
   getUsuario(): Observable<Usuario[]>{
     return this.http.get<Usuario[]>(this.seguridad);
   }
-  
+  createUsuario(usuario: Usuario) {
+    return this.http.post<Usuario>(this.seguridad+'add',usuario);
+  }
+  validarUsuario(usuario: Usuario){
+    return this.http.post<Usuario>(this.seguridad+'validar',usuario).pipe(map(data => {
+      if(data['usuario'].length!=0){
+        localStorage.setItem('currentUser', JSON.stringify(data['usuario']))
+      }
+      return data;
+    }));
+  }
   getBus(): Observable<Bus[]>{
     return this.http.get<Bus[]>(this.buses)
   }
@@ -123,6 +150,7 @@ export class ServiceService {
    getTipoMantenimiento(): Observable<TipoMantenimiento[]>{
     return this.http.get<TipoMantenimiento[]>(this.tipoMantenimiento);
   }
+  
   getTipoMantenimientoId(id_tipo_mantenimiento: number): Observable<TipoMantenimiento[]> {
     return this.http.get<TipoMantenimiento[]>(this.tipoMantenimiento+id_tipo_mantenimiento);
   }
@@ -130,11 +158,45 @@ export class ServiceService {
     return this.http.post<TipoMantenimiento>(this.tipoMantenimiento + 'add',tipomantenimiento);
   }
   deleteTipoMantenimiento(tipomantenimiento: TipoMantenimiento){
-    return this.http.delete<TipoMantenimiento >(this.tipoMantenimiento + tipomantenimiento.id_tipo_mantenimiento);
+    return this.http.delete<TipoMantenimiento>(this.tipoMantenimiento + tipomantenimiento.id_tipo_mantenimiento);
   }
   updateTipoMantenimiento(tipomantenimiento: TipoMantenimiento){
     return this.http.put<TipoMantenimiento>(this.tipoMantenimiento + tipomantenimiento.id_tipo_mantenimiento, tipomantenimiento);
   }
+
+
+
+   // ----- AUTORIZAR PEDIDO ---- //
+    getPedido(): Observable<Pedido[]> {
+      return this.http.get<Pedido[]>(this.pedido);
+    }
+    getPedidoId(idpedido: number): Observable<Pedido[]> {
+      return this.http.get<Pedido[]>(this.pedido + idpedido);
+    }
+    getDetallePedido(id_pedido: Pedido): Observable<DetallePedido[]> {
+      return this.http.get<DetallePedido[]>(this.pedido+id_pedido)
+    }
+    deletePedido(pedido: Pedido){
+      return this.http.delete<Pedido>(this.pedido + pedido.id_pedido)
+    }
+
+     // ----- AUTORIZAR PEDIDO ---- //
+
+      // ----- MANTENIMIENTO ---- //
+      getMantenimiento(): Observable<Mantenimiento[]> {
+        return this.http.get<Mantenimiento[]>(this.mantenimiento);
+      }
+      getMantenimientoId(idmantenimiento: number): Observable<Mantenimiento[]> {
+        return this.http.get<Mantenimiento[]>(this.mantenimiento + idmantenimiento);
+      }
+
+
+
+
+
+
+      // ----- MANTENIMIENTO ---- //
+
   // ----- TIPO MANTENIMIENTO  ----//
   //Almacen
    //Producto
@@ -148,18 +210,27 @@ export class ServiceService {
     return this.http.get<Producto[]>(this.productos+'search/'+nombre);
   }
   createProducto(producto: Producto){
-    return this.http.post<Producto>(this.productos+producto.id_producto,producto);
+    return this.http.post<Producto>(this.productos + 'add',producto);
   }
   deleteProducto(producto: Producto){
     return this.http.delete<Producto>(this.productos + producto.id_producto);
   }
   updateProducto(producto: Producto){
-    return this.http.put<Producto>(this.productos + producto.id_producto,producto);
+    return this.http.put<Producto>(this.productos + producto.id_producto, producto);
   }
 
   //------------Marca---------------//
   getMarca():Observable<Marca[]>{
     return this.http.get<Marca[]>(this.marcas);
+  }
+  createMarca(marca:Marca){
+    return this.http.post<Marca[]>(this.marcas+'add',marca);
+  }
+  updatemarca(marca:Marca){
+    return this.http.put<Marca>(this.marcas+marca.id_marca,marca);
+  }
+  deletemarca(marca:Marca){
+    return this.http.delete<Marca>(this.marcas+marca.id_marca);
   }
   getMarcaId(idmarca: number):Observable<Marca[]>{
     return this.http.get<Marca[]>(this.marcas+idmarca);
@@ -168,6 +239,15 @@ export class ServiceService {
    //------------Categoria---------------//
   getCategoria():Observable<Categoria[]>{
     return this.http.get<Categoria[]>(this.categorias);
+  }
+  createCategoria(categoria:Categoria){
+    return this.http.post<Categoria>(this.categorias + 'add',categoria)
+  }
+  UpdateCategoria(categoria:Categoria){
+    return this.http.put<Categoria>(this.categorias + categoria.id_categoria,categoria)
+  }
+  deleteCategoria(categoria: Categoria){
+    return this.http.delete<Categoria>(this.categorias+ categoria.id_categoria)
   }
   getCategoriaId(idcategoria: number):Observable<Categoria[]>{
     return this.http.get<Categoria[]>(this.categorias+idcategoria);
@@ -198,4 +278,12 @@ export class ServiceService {
   deleteTipoAccion(tipoaccion: TipoAccion){
     return this.http.delete<TipoAccion>(this.tipoaccion + tipoaccion.id_tipo_accion)
   }
+
+  //----------REVISIONES TECNICAS-----------//
+  getRevisionTecnica():Observable<RevisionTecnica[]>{
+    return this.http.get<RevisionTecnica[]>(this.revitecnicas);
+  }
+
+  
+
 }

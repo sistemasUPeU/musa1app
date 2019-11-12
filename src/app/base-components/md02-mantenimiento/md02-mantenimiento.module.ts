@@ -9,6 +9,8 @@ import { TipoAccionComponent } from './tipo-accion/tipo-accion.component';
 import { FormsModule } from '@angular/forms';
 import { RevisionTecnicaComponent } from './revision-tecnica/revision-tecnica.component';
 import { AutorizarPedidoComponent } from './autorizar-pedido/autorizar-pedido.component';
+import { PedidoComponent } from './pedido/pedido.component';
+import { RevisiondetalleComponent } from './revisiondetalle/revisiondetalle.component';
 
 
 @NgModule({
@@ -18,7 +20,9 @@ import { AutorizarPedidoComponent } from './autorizar-pedido/autorizar-pedido.co
     TipoMantenimientoComponent, 
     RegistrarMantenimientoComponent, 
     RevisionTecnicaComponent,
-    AutorizarPedidoComponent],
+    AutorizarPedidoComponent,
+    PedidoComponent,
+    RevisiondetalleComponent],
   imports: [
     CommonModule,
     Md02MantenimientoRoutingModule,

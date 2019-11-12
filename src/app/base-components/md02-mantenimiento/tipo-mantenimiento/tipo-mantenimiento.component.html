@@ -4,6 +4,16 @@
     <FONT FACE="courier" SIZE=10 style="margin-left:40px; margin-top:10px;">TIPO DE MANTENIMIENTO</FONT>
     <img src="assets/images/llave_logo.png"  id="imgRedonda2"/>
     <br><br>
+    <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4" id="hola">
+      <div class="input-group"> 
+        <input type="search" placeholder="Ingrese el Tipo de Mantenimiento a buscar..."  aria-describedby="button-addon1"
+          class="form-control border-0 bg-light" >
+        <div class="input-group-append">
+          <button id="button-addon1" type="submit" class="btn btn-link text-primary"><i
+              class="fa fa-search"></i></button>
+        </div>
+      </div>
+    </div>
 
     <div class="container row">
       <div class="button-7">
@@ -71,9 +81,6 @@
       </div>
     </div>
 
-
-
-  
     <table class="table table-hover" id="tabla_tipo_mantenimiento">
       <thead>
         <tr>
@@ -84,21 +91,12 @@
       <tbody>
         <tr *ngFor="let tipo_mantenimiento of listTipoMantenimiento">
           <td>{{tipo_mantenimiento.tipo_mantenimiento}}</td>
-          <td><button class="btn btn-warning fa fa-pencil"  (click)="loadTipoMantenimiento(tipo_mantenimiento)"
+          <td><button class="btn btn-warning far fa-edit"  (click)="loadTipoMantenimiento(tipo_mantenimiento)"
             data-toggle="modal" data-target="#edit"></button></td>
-          <td><button class="btn btn-danger fa fa-trash" (click)="Eliminar(tipo_mantenimiento)"></button></td>
+          <td><button class="btn btn-danger fas fa-trash-alt" (click)="Eliminar(tipo_mantenimiento)"></button></td>
         </tr>
       </tbody>
     </table>
-
-    
-      
-      
-     
- 
-  
-
-
   </div>
 </div>
 

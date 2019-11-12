@@ -11,8 +11,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
 import { ServiceService } from 'src/app/base-services/service.service';
+import {EncrDecrService} from 'src/app/base-services/encr-decr.service';
 import { GrupoService } from 'src/app/base-services/grupo/grupo.service';
 import { FilterBusPipe } from './Search/filter-bus.pipe';
+
 
 
 
@@ -26,7 +28,7 @@ import { FilterBusPipe } from './Search/filter-bus.pipe';
         AppRoutingModule
     ],
     declarations: [AppComponent],
-    providers: [AuthGuard, ServiceService, GrupoService],
+    providers: [AuthGuard, ServiceService, GrupoService, EncrDecrService],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

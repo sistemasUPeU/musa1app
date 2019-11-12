@@ -1,0 +1,251 @@
+
+
+<!-- INICION MODAL -->
+<div class="modal fade modal-agregar-vinculacion" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true" #modalVinculacion>
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <!-- HEADER -->
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Agregar vinculacion</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="accionModalCancelar()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <!-- BODY -->
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-group input-group" *ngIf="mode_modal === 'crear'">
+                            <input [(ngModel)]="placa_modal" type="text" class="form-control" placeholder="Nro. de placa del bus" aria-label="Nro. de placa del bus"
+                                aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button (click)="cargarInvolucrados(placa_modal)" class="btn btn-secondary" type="button"><i class="fas fa-search" type="solid.scss"></i></button>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5>Vinculacion</h5>
+                                    <div class="form-group">
+                                        <label for="example-date-input" class="">F. Emision: </label>
+                                        <div class="">
+                                            <input [(ngModel)]="vinculacion_modal.f_emision" class="form-control" type="date" value="" id="example-date-input">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="example-date-input" class="">F. Termino: </label>
+                                        <div class="">
+                                            <input [(ngModel)]="vinculacion_modal.f_termino" class="form-control" type="date" value="" id="example-date-input">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="card form-group">
+                            <div class="card-body">
+                                <h5>Propietario</h5>
+                                <div class="row">
+                                    <label for="" class="col-sm-4 col-form-label">Nombres: </label>
+                                    <label for="" class="col-sm-8 col-form-label">{{ propietario_modal.nombre_persona }}</label>
+                                </div>
+                                <div class="row">
+                                    <label for="" class="col-sm-4 col-form-label">A. paterno: </label>
+                                    <label for="" class="col-sm-8 col-form-label">{{ propietario_modal.apellido_paterno }}</label>
+                                </div>
+                                <div class="row">
+                                    <label for="" class="col-sm-4 col-form-label">A. materno:</label>
+                                    <label for="" class="col-sm-8 col-form-label">{{ propietario_modal.apellido_materno }}</label>
+                                </div>
+                                <div class="row">
+                                    <label for="" class="col-sm-4 col-form-label">Nro. Doc.: </label>
+                                    <label for="" class="col-sm-8 col-form-label">{{ propietario_modal.nro_documento }}</label>
+                                </div>
+                                <div class="row">
+                                    <label for="" class="col-sm-4 col-form-label">Celular</label>
+                                    <label for="" class="col-sm-8 col-form-label">{{ propietario_modal.celular }}</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="card form-group">
+                            <div class="card-body">
+                                <h5>Bus</h5>
+                                <div class="row">
+                                    <label for="" class="col-sm-4 col-form-label">Nro. Placa: </label>
+                                    <label for="" class="col-sm-8 col-form-label">{{ bus_modal.placa }}</label>
+                                </div>
+                                <div class="row">
+                                    <label for="" class="col-sm-4 col-form-label">Padron: </label>
+                                    <label for="" class="col-sm-8 col-form-label">{{ bus_modal.padron }}</label>
+                                </div>
+                                <div class="row">
+                                    <label for="" class="col-sm-4 col-form-label">Marca: </label>
+                                    <label for="" class="col-sm-8 col-form-label">{{ bus_modal.marca }}</label>
+                                </div>
+                                <div class="row">
+                                    <label for="" class="col-sm-4 col-form-label">Modelo: </label>
+                                    <label for="" class="col-sm-8 col-form-label">{{ bus_modal.modelo }}</label>
+                                </div><div class="row">
+                                    <label for="" class="col-sm-4 col-form-label">Año: </label>
+                                    <label for="" class="col-sm-8 col-form-label">{{ bus_modal.anio_fabricacion }}</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="card">
+                        <div class="card-header">Requisitos para la vinculacion</div>
+                        <div class="card-body">
+                            <table class="table table-borderless">
+                                <thead>
+                                    <tr>
+                                        <th scope="col"></th>
+                                        <th scope="col"></th>
+                                        <th scope="col">Requisito</th>
+                                        <th scope="col">Fecha</th>
+                                        <th scope="col">URL</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let requisito of requisito_modal; let i = index">
+                                        <th>{{ i+1 }}</th>
+                                        <th scope="row" style="text-align: center;">{{ mostrarEstado(vreqs_modal[i].estado) }}</th>
+                                        <td>{{requisito.NOMBRE_REQUISITO}}</td>
+                                        <td>
+                                            <input class="form-control" type="date" value="" id="" [(ngModel)]="vreqs_modal[i].fecha_vencimiento_doc">
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-outline-secondary" data-toggle="modal" data-dismiss="modal" data-target=".url-modal" (click)="selectorVReqsToggle(i)">
+                                                Agregar
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="row"> -->
+                <!-- </div> -->
+            </div>
+            <!-- FOOTER -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal" (click)="accionModalCancelar()" >Cerrar</button>
+                <button *ngIf=" mode_modal == 'modificar'" type="button" class="btn btn-secondary" (click)="modificarVinculacion()" data-dismiss="modal">Modificar</button>
+                <button *ngIf=" mode_modal == 'crear' " type="button" class="btn btn-secondary" (click)="guardarVinculacion()" data-dismiss="modal">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FIN MODAL -->
+<!-- INICIO PEQUENO MODAL -->
+<div class="modal fade url-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5>URL</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" (click)="selectorVReqsToggle(vreq_pos)">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="URL" [(ngModel)]="url_modal">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal" data-toggle="modal" data-target=".modal-agregar-vinculacion" (click)="selectorVReqsToggle(vreqs_pos)" >Volver</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FIN PEQUENO MODAL -->
+<!-- INICIO MODAL CONFIRMACION -->
+<!-- <div class="modal fade modal-confirmacion-eliminar" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Eliminar Vinculacion del Bus</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Desea eliminar la vinculacion?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="accionEliminarVinculacionBus(vinculacion.placa)">Confirmar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div> -->
+<!-- FIN MODAL CONFIRMACION -->
+
+<div class="container">
+    <h1>Vinculacion Bus</h1>
+
+    <hr>
+
+    <!-- INICIO INPUTS -->
+    <div class="row">
+        <div class="form-group col-md-3">
+            <button class="btn btn-sm btn-secondary" data-toggle="modal" data-target=".modal-agregar-vinculacion" (click)="cambiarModoModal('crear')">
+                <i class="far fa-file"></i> Agregar vinculacion
+            </button>
+        </div>
+        <div class="col-md-3 float-right">
+            <label for="" class=" col-form-label float-md-right">Buscar vinculacion:</label>
+        </div>
+        <div class="col-md-6">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Nro. de placa del bus" aria-label="Nro. de placa del bus" aria-describedby="basic-addon2" #iBuscarPlaca>
+                <div class="input-group-append">
+                    <button class="btn btn-secondary" type="button"(click)="accionBuscarVinculacion()" data-toggle="modal" data-target=".modal-agregar-vinculacion"><i class="fas fa-search" type="solid.scss"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FIN INPUTS -->
+
+    <br>
+
+    <!-- INICION TABLA -->
+    <div class="card">
+        <table class="table table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>Propietario</th>
+                    <th>Nro. Documento</th>
+                    <th>Placa</th>
+                    <th>Celular</th>
+                    <th>Requisitos</th>
+                    <th>Fecha Emision</th>
+                    <th>Fecha Termino</th>
+                    <th colspan="2">Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let vinculacion of vinculaciones">
+                    <td>{{ vinculacion.nombre_propietario }}</td>
+                    <td>{{ vinculacion.nro_documento }}</td>
+                    <td>{{ vinculacion.placa }}</td>
+                    <td>{{ vinculacion.celular }}</td>
+                    <td>{{ vinculacion.requisitos }}</td>
+                    <td>{{ vinculacion.f_emision }}</td>
+                    <td>{{ vinculacion.f_termino }}</td>
+                    <td scope="row" style="text-align: center;"><a class="bModificar" data-toggle="modal" data-target=".modal-agregar-vinculacion" (click)="accionModificarVinculacionBus(vinculacion.id_vinculacion, vinculacion.placa)"><i class="fas fa-pencil-alt" style="color: green;"></i></a></td>
+                    <td scope="row" style="text-align: center;"><a (click)="accionEliminarVinculacionBus(vinculacion.placa)"><i class="fas fa-trash-alt" style="color: red;"></i></a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- FIN TABLA -->
+</div>

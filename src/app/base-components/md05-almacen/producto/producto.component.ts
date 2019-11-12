@@ -39,7 +39,7 @@ export class ProductoComponent implements OnInit {
 
   ngOnInit() {
     this.service.getProducto().subscribe((data) =>{
-      this.listProducto= data['prod'];
+      this.listProducto= data['LIS_PROD'];
       console.log(this.listProducto);
     })
   }
@@ -47,20 +47,20 @@ export class ProductoComponent implements OnInit {
 
   fillSelectMarca() {
       this.service.getMarca().subscribe((data) => {
-        this.listMarca = data['m'];
+        this.listMarca = data['LIS_MAR'];
         console.log(this.listMarca);
       })
   }
 
   fillSelectCategoria() {
     this.service.getCategoria().subscribe((data) => {
-      this.listCategoria = data['cat'];
+      this.listCategoria = data['LIS_CAT'];
       console.log(this.listCategoria);
     })
   }
   fillSelectUnidadMedida() {
     this.service.getUnidadMedida().subscribe((data) => {
-      this.listUnidadMedida = data['unid_med'];
+      this.listUnidadMedida = data['LIS_UM'];
       console.log(this.listUnidadMedida);
     })
   }
@@ -95,7 +95,7 @@ export class ProductoComponent implements OnInit {
 
   loadProducto(producto: Producto):void {
     this.service.getProductoId(producto.id_producto).subscribe((data)=>{
-      this.loadProductoData = data['lis_prod'];
+      this.loadProductoData = data['LIS_PROD'];
     })
   }
 
@@ -103,11 +103,11 @@ export class ProductoComponent implements OnInit {
     produ.id_categoria=this.selectedCategoriaUpdate;
     produ.id_unidad_medida=this.selectedUnidadMedidaUpdate;
     produ.id_marca=this.selectedMarcaUpdate;
-    this.service.updateProducto(produ).subscribe((data)=>{
-      this.prod=data;
-      alert('Registro modificado correctamente....!');
-      this.ngOnInit();
-    })
+      this.service.updateProducto(produ).subscribe((data)=>{
+        this.prod = data;
+        alert('Registro omdificado correctamente...!');
+        this.ngOnInit();
+      })
   }
   Eliminar(producto: Producto){
     this.service.deleteProducto(producto).subscribe(data =>{
@@ -135,25 +135,25 @@ export class ProductoComponent implements OnInit {
   getInfo(producto:Producto){
     this.toogleDropDownOff;
     this.service.getProductoId(producto.id_producto).subscribe((data)=>{
-      this.loadProductoData = data['lis_prod'];
+      this.loadProductoData = data['LIS_PROD'];
     })
   }
-  getCate(idcategoria: number) {
+  getCategoria(idcategoria: number) {
     console.log(idcategoria)
     this.service.getProductoId(idcategoria).subscribe((data)=>{
-      this.listCategoriaId = data['cat'];
+      this.listCategoriaId = data['LIS_CAT'];
     })
   }
   getUnidad(idunidad:number){
     console.log(idunidad)
     this.service.getUnidadMedidaId(idunidad).subscribe((data)=>{
-      this.listUnidadMedidaId = data['unid_med'];
+      this.listUnidadMedidaId = data['LIS_UM'];
     })
   }
-  getMarcas(idmarc:number){
-    console.log(idmarc)
-    this.service.getMarcaId(idmarc).subscribe((data) =>{
-      this.listMarcaId = data['m'];
+  getMarcas(idmc:number){
+    console.log(idmc)
+    this.service.getMarcaId(idmc).subscribe((data) =>{
+      this.listMarcaId = data['LIS_MAR'];
     })
   }
  

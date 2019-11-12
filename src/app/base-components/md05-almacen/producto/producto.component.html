@@ -1,2 +1,178 @@
+<div class="row">
+   <div class="col-xl-12">
+      <br>
+      <FONT FACE="courier" SIZE=10 style="margin-left:50px;">PRODUCTOS</FONT>
+   </div>
+   <br>
 
-      
+   <!------Buscador y Button------->
+   <br>
+   <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4" id="hola">
+      <div class="input-group">
+         <input type="search" placeholder="Ingrese producto a buscar..." aria-describedby="button-addon1"
+            class="form-control border-0 bg-light">
+         <div class="input-group-append">
+            <button id="button-addon1" type="submit" class="btn btn-link text-primary"><i
+                  class="fa fa-search"></i></button>
+         </div>
+      </div>
+   </div>
+   <br>
+   <div class="container row">
+      <div class="button-7">
+         <div class="eff-7"></div>
+         <a data-toggle="modal" data-target="#addproducto" (click)="fillSelectCategoria()" (click)="fillSelectMarca()"
+            (click)="fillSelectUnidadMedida()">Agregar Producto</a>
+      </div>
+   </div>
+   <!---------Modal Agregar---------------->
+   <div class="modal fade" id="addproducto" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h5 class="modal-title" id="exampleModalLongTitle">Nuevo Producto</h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+               </button>
+            </div>
+            <div class="modal-body">
+               <form>
+                  <div class="form-group">
+                     <label for="nombre" class="col-form-label">Producto:</label>
+                     <input [(ngModel)]="producto.nombre_producto" name="nombre_producto" type="text"
+                        class="form-control">
+                  </div>
+                  <div class="form-group">
+                     <label for="desc" class="col-form-label">Descripción:</label>
+                     <input [(ngModel)]="producto.descripcion" name="descripcion" type="text" class="form-control">
+                  </div>
+                  <div class="form-group">
+                     <label for="nombre_categoria" class="col-form-label">Categoria:</label>
+                     <select class="form-control" (change)="selectCategoria($event)">
+                        <option value="0"> Seleccionar Categoría.. </option>
+                        <option *ngFor="let categoria of listCategoria" value={{categoria.id_categoria}}>
+                           {{categoria.nombre_categoria}}</option>>
+                     </select>
+                  </div>
+                  <div class="form-group">
+                     <label for="LIS_UM" class="col-form-label">Unidad de Medida:</label>
+                     <select class="form-control" (change)="selectUnidadMedida($event)">
+                        <option value="0"> Seleccionar UnidadMedida..</option>
+                        <option *ngFor="let unidadmedida of listUnidadMedida" value={{unidadmedida.id_unidad_medida}}>
+                           {{unidadmedida.unidad_medida}} </option>
+                     </select>
+                  </div>
+                  <div class="form-group">
+                     <label for="cod" class="col-form-label">Código:</label>
+                     <input [ngModel]="producto.codigo" name="codigo" type="text" class="form-control">
+                  </div>
+                  <div class="form-group">
+                     <label for="marca" class="col-form-label">Marca:</label>
+                     <select class="form-control" (change)="selectMarca($event)">
+                        <option value="0"> Seleccionar Marca.. </option>
+                        <option *ngFor="let marca of listMarca" value="{{marca.id_marca}}">{{marca.nombre_marca}}
+                        </option>
+                     </select>
+                  </div>
+               </form>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                  <button type="button" (click)="Guardar()" class="btn btn-primary"
+                     data-dismiss="modal">Guardar</button>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <!---------------END MODAL AGREGAR-------------------->
+
+   <!------------------MODAL MODIFICAR----------->
+   <div class="modal fade" id="editarproductomodal" tabindex="-1" role="dialog"
+      aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+         <div class="modal-content" *ngFor="let prod of loadProductoData" >
+            <div class="modal-header">
+               <h5 class="modal-title" id="exampleModalLongTitle"> Producto</h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+               </button>
+            </div>
+            <div class="modal-body">
+               <form>
+                  <div class="form-group">
+                     <label for="nombre" class="col-form-label">Producto:</label>
+                     <input [(ngModel)]="prod.nombre_producto" name="nombre_producto" type="text" class="form-control">
+                  </div>
+                  <div class="form-group">
+                     <label for="desc" class="col-form-label">Descripción:</label>
+                     <input [(ngModel)]="prod.descripcion" name="descripcion" type="text" class="form-control">
+                  </div>
+                  <div class="form-group">
+                     <label for="nombre_categoria" class="col-form-label">Categoria:</label>
+                     <select class="form-control" (change)="selectCategoriaUpdate($event)">
+                        <option *ngFor="let categoria of listCategoria" value={{categoria.id_categoria}}>
+                           {{categoria.nombre_categoria}}</option>>
+                     </select>
+                  </div>
+                  <div class="form-group">
+                     <label for="LIS_UM" class="col-form-label">Unidad de Medida:</label>
+                     <select class="form-control" (change)="selectUnidadMedidaUpdate($event)">
+                        <option *ngFor="let unidadmedida of listUnidadMedida" value={{unidadmedida.id_unidad_medida}}>
+                           {{unidadmedida.unidad_medida}} </option>
+                     </select>
+                  </div>
+                  <div class="form-group">
+                     <label for="cod" class="col-form-label">Código:</label>
+                     <input [ngModel]="prod.codigo" name="codigo" type="text" class="form-control">
+                  </div>
+                  <div class="form-group">
+                     <label for="marca" class="col-form-label">Marca:</label>
+                     <select class="form-control" (change)="selectMarcaUpdate($event)">
+                        <option *ngFor="let marca of listMarca" value="{{marca.id_marca}}">{{marca.nombre_marca}}
+                        </option>
+                     </select>
+                  </div>
+               </form>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                  <button type="button" (click)="Actualizar(prod)" class="btn btn-primary"
+                     data-dismiss="modal">Guardar</button>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!------------END MODAL MODIFICAR-->
+   <!-- Tabla -->
+   <table class="table table-hover" id="tabla_producto">
+      <thead>
+         <tr>
+            <th scope="col">#</th>
+            <th scope="col">Producto</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">Categoría</th>
+            <th scope="col">U. M.</th>
+            <th scope="col">Código</th>
+            <th scope="col">Marca</th>
+            <th colspan="2">Opción</th>
+         </tr>
+      </thead>
+      <tbody>
+         <tr *ngFor="let producto of listProducto,let i = index">
+            <td>{{i+1}}</td>
+            <td>{{producto.nombre_producto}}</td>
+            <td>{{producto.descripcion}}</td>
+            <td>{{producto.id_categoria}}</td>
+            <td>{{producto.id_unidad_medida}}</td>
+            <td>{{producto.codigo}}</td>
+            <td>{{producto.id_marca}}</td>
+            <td><button class="btn btn-warning far fa-edit" (click)="loadProducto(producto)"
+                  (click)="fillSelectCategoria()" (click)="fillSelectMarca()" (click)="fillSelectUnidadMedida()"
+                  data-toggle="modal" data-target="#editarproductomodal"></button></td>
+            <td><button class="btn btn-danger fas fa-trash-alt" (click)="Eliminar(producto)"></button></td>
+         </tr>
+      </tbody>
+   </table>
+</div>
