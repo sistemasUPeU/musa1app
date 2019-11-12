@@ -6,6 +6,7 @@ import { RegistrarMantenimientoComponent } from './registrar-mantenimiento/regis
 import { RevisionTecnicaComponent } from './revision-tecnica/revision-tecnica.component';
 import { AutorizarPedidoComponent } from './autorizar-pedido/autorizar-pedido.component';
 import { TipoAccionComponent } from './tipo-accion/tipo-accion.component';
+import { PedidoComponent } from './pedido/pedido.component';
 
 
 
@@ -16,7 +17,8 @@ const routes: Routes = [
   {path: 'registrar-mantenimiento', component: RegistrarMantenimientoComponent},
   {path: 'revision-tecnica', component: RevisionTecnicaComponent},
   {path:  'autorizar-pedido', component: AutorizarPedidoComponent},
-  {path:  'tipo-accion',component: TipoAccionComponent} 
+  {path:  'tipo-accion',component: TipoAccionComponent},
+  {path: 'pedido', component: PedidoComponent}
 
 ];
 
