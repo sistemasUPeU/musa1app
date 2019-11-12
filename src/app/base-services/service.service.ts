@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, from } from 'rxjs';
 import { map } from 'rxjs/operators'
 
 import { Persona } from '../base-models/Persona';
@@ -21,6 +21,7 @@ import { UnidadMedida } from '../base-models/UnidadMedida';
 import { TipoAccion } from '../base-models/TipoAccion';
 import { Rol } from '../base-models/Rol';
 import { UsuarioRol } from '../base-models/UsuarioRol';
+<<<<<<< HEAD
 
 import { DetallePedido } from "../base-models/DetallePedido";
 <<<<<<< HEAD
@@ -31,6 +32,12 @@ import {Pedido} from "../base-models/Pedido";
 import {Padron} from "../base-models/Padron";
 >>>>>>> yeiser
 import { RevisionTecnica } from '../base-models/RevisionTecnica';
+=======
+import {DetallePedido} from '../base-models/DetallePedido';
+import { Pedido } from '../base-models/Pedido';
+import { Padron } from '../base-models/Padron';
+import {RevisionTecnica} from '../base-models/RevisionTecnica';
+>>>>>>> yeiser
 
 
 
