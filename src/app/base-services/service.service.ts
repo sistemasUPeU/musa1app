@@ -149,28 +149,24 @@ export class ServiceService {
   }
 
 
-
+  // ----- AUTORIZAR PEDIDO ---- //
+  // ----- AUTORIZAR PEDIDO ---- //
    // ----- AUTORIZAR PEDIDO ---- //
     getPedido(): Observable<Pedido[]> {
       return this.http.get<Pedido[]>(this.pedido);
     }
     getPedidoId(idpedido: number): Observable<Pedido[]> {
-      return this.http.get<Pedido[]>(this.pedido + idpedido);
+      return this.http.get<Pedido[]>(this.pedido + idpedido );
     }
     getDetallePedido(id_pedido: Pedido): Observable<DetallePedido[]> {
-      return this.http.get<DetallePedido[]>(this.pedido+id_pedido)
+      return this.http.get<DetallePedido[]>(this.pedido+id_pedido )
     }
-    deletePedido(pedido: Pedido){
-      return this.http.delete<Pedido>(this.pedido + pedido.id_pedido)
-    }
+    updatePedido(pedido: Pedido){
+      return this.http.put<Pedido>(this.pedido + pedido.id_pedido, pedido);
+    } 
 
 
-
-
-
-
-
-
+    
   // ----- TIPO MANTENIMIENTO  ----//
   //Almacen
    //Producto
