@@ -120,6 +120,9 @@ export class ServiceService {
   getRol(): Observable<Rol[]>{
     return this.http.get<Rol[]>(this.roles)
   }
+  createRol(rol: Rol) {
+    return this.http.post<Rol>(this.roles+'add',rol);
+  }
   createUsuarioRol(usuarioRol: UsuarioRol) {
     return this.http.post<UsuarioRol>(this.seguridad+'add/rol',usuarioRol);
   }
