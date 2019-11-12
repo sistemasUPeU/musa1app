@@ -19,14 +19,12 @@ import { Marca } from '../base-models/Marca';
 import { Categoria } from '../base-models/Categoria';
 import { UnidadMedida } from '../base-models/UnidadMedida';
 import { TipoAccion } from '../base-models/TipoAccion';
-<<<<<<< HEAD
-=======
 import { Rol } from '../base-models/Rol';
 import { UsuarioRol } from '../base-models/UsuarioRol';
 
->>>>>>> 1fdbd69cb8c7f445e47b907b74ad137927b44911
 import { DetallePedido } from "../base-models/DetallePedido";
 import { Pedido } from '../base-models/Pedido';
+import { Padron } from '../base-models/Padron';
 
 
 
@@ -51,6 +49,8 @@ export class ServiceService {
   unidadmedidas= 'http://localhost:8090/unidad_medida/'
   tipoaccion='http://localhost:8090/tipo_accion/'
   pedido='http://localhost:8090/detalle_pedido/'
+
+  mantenimiento2 = 'http://localhost:8090/mantenimiento/'
 
 
   getPersona(): Observable<Persona[]>{
@@ -189,6 +189,13 @@ export class ServiceService {
       }
       getMantenimientoId(idmantenimiento: number): Observable<Mantenimiento[]> {
         return this.http.get<Mantenimiento[]>(this.mantenimiento + idmantenimiento);
+      }
+
+      getObtenerid( padron: String): Observable<Padron[]> {
+        return this.http.get<Padron[]>(this.mantenimiento2 + 'bus/' + padron)
+      }
+      createMantenimiento(mantenimientos: Mantenimiento){
+        return this.http.post<Mantenimiento>(this.mantenimiento2 + 'add',mantenimientos);
       }
 
 

@@ -9,7 +9,7 @@
     <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4" id="hola">
       <div class="input-group">
         <input type="search" placeholder="Ingrese el Padrón a buscar..." aria-describedby="button-addon1"
-          class="form-control border-0 bg-light">
+          class="form-control border-0 bg-light" ng-model="busqueda">
         <div class="input-group-append">
           <button id="button-addon1" type="submit" class="btn btn-link text-primary"><i
               class="fa fa-search"></i></button>
@@ -19,8 +19,10 @@
     <br>
     <div class="button-7">
       <div class="eff-7"></div>
-      <a data-toggle="modal" data-target="#addregistrarmantenimiento">Registrar Mantenimiento</a>
+      <a data-toggle="modal" data-target="#addregistrarmantenimiento" (click)="fillSelect()">Registrar Mantenimiento</a>
     </div>
+
+
     <div class="modal fade bd-example-modal-lg" id="addregistrarmantenimiento" tabindex="-1" role="dialog"
       aria-labelledby="myLargeModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg" role="document">
@@ -36,23 +38,22 @@
 
               <div class="row">
                 <div class="col">
-                  <label for="name" class="col-form-label">Padrón:</label>
-                  <input name="tipo_mantenimiento" type="text" class="form-control">
-                  <br>
-                  <label for="exampleFormControlSelect1">Tipo de Mantenimiento</label>
-                  <select class="form-control" id="exampleFormControlSelect1">
-                    <option>Preventivo</option>
-                    <option>Correctivo</option>
-                    <option>Diario</option>
-                    <option>Tecnica</option>
-                  </select>
+                 
+
+                  <div class="form-group" style="margin-left:15px;">
+                    <label for="tipodoc" class="col-form-label">Tipo de Documento:</label>
+                    <select class="form-control" (change)="selectTipoMantenimiento($event)" style="width:325px;">
+                      <option value="0">Seleccionar...</option>
+                      <option *ngFor="let tipomant of listTipoMantenimiento" value={{tipomant.id_tipo_mantenimiento}}>
+                        {{tipomant.tipo_mantenimiento}}</option>
+                    </select>
+                  </div>
                 </div>
 
                 <div class="col">
-                  <label for="name" class="col-form-label">Placa:</label>
-                  <input disabled name="tipo_mantenimiento" type="text" class="form-control">
+                  <label for="padron" class="col-form-label">Padrón:</label>
+                  <input [(ngModel)]="padron" name="padron" type="text" class="form-control">
                   <br>
-
                 </div>
 
               </div>
@@ -60,7 +61,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+            <button type="button" class="btn btn-primary" (click) = "getid(padron)" data-dismiss="modal">Guardar</button>
           </div>
         </div>
       </div>
