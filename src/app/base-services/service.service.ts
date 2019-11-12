@@ -22,6 +22,7 @@ import { TipoAccion } from '../base-models/TipoAccion';
 import { Rol } from '../base-models/Rol';
 import { UsuarioRol } from '../base-models/UsuarioRol';
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 import { DetallePedido } from "../base-models/DetallePedido";
 <<<<<<< HEAD
@@ -37,6 +38,13 @@ import {DetallePedido} from '../base-models/DetallePedido';
 import { Pedido } from '../base-models/Pedido';
 import { Padron } from '../base-models/Padron';
 import {RevisionTecnica} from '../base-models/RevisionTecnica';
+>>>>>>> yeiser
+=======
+import { DetallePedido } from "../base-models/DetallePedido";
+import { Pedido } from '../base-models/Pedido';
+import { Padron } from '../base-models/Padron';
+import { RevisionTecnica } from '../base-models/RevisionTecnica';
+
 >>>>>>> yeiser
 
 
