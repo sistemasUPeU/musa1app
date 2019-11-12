@@ -19,12 +19,9 @@ import { Marca } from '../base-models/Marca';
 import { Categoria } from '../base-models/Categoria';
 import { UnidadMedida } from '../base-models/UnidadMedida';
 import { TipoAccion } from '../base-models/TipoAccion';
-<<<<<<< HEAD
-=======
 import { Rol } from '../base-models/Rol';
 import { UsuarioRol } from '../base-models/UsuarioRol';
 
->>>>>>> 1fdbd69cb8c7f445e47b907b74ad137927b44911
 import { DetallePedido } from "../base-models/DetallePedido";
 import { Pedido } from '../base-models/Pedido';
 
