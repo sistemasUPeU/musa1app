@@ -10,6 +10,8 @@ import { TipoRequisito } from '../base-models/TipoRequisito';
 import { Usuario } from '../base-models/Usuario';
 import { Bus } from '../base-models/Bus';
 import { TipoMantenimiento } from '../base-models/TipoMantenimiento';
+import { Mantenimiento } from '../base-models/Mantenimiento'
+import { DetalleMantenimiento } from '../base-models/DetalleMantenimiento'
 import { Curso } from '../base-models/Curso';
 import { CursoConductor } from '../base-models/CursoConductor';
 import { Producto } from '../base-models/Producto';
@@ -17,6 +19,8 @@ import { Marca } from '../base-models/Marca';
 import { Categoria } from '../base-models/Categoria';
 import { UnidadMedida } from '../base-models/UnidadMedida';
 import { TipoAccion } from '../base-models/TipoAccion';
+import { Rol } from '../base-models/Rol';
+import { UsuarioRol } from '../base-models/UsuarioRol';
 
 import { DetallePedido } from "../base-models/DetallePedido";
 import { Pedido } from '../base-models/Pedido';
@@ -35,7 +39,9 @@ export class ServiceService {
   requisitos = 'http://localhost:8090/requisito/'
   tipoRequisito = 'http://localhost:8090/tipoRequisito/'
   seguridad = 'http://localhost:8090/seguridad/'
+  roles = 'http://localhost:8090/rol/'
   tipoMantenimiento = 'http://localhost:8090/tipo_mantenimiento/'
+  mantenimiento = 'http://localhost:8090/detalle_mantenimiento/'
   productos= 'http://localhost:8090/producto/'
   marcas= 'http://localhost:8090/marca/'
   categorias= 'http://localhost:8090/categoria/'
@@ -101,12 +107,20 @@ export class ServiceService {
   getCursoConductorId(idcurso: number): Observable<CursoConductor[]> {
     return this.http.get<CursoConductor[]>(this.cursoConductores+idcurso);
   }
+  getRol(): Observable<Rol[]>{
+    return this.http.get<Rol[]>(this.roles)
+  }
+  createUsuarioRol(usuarioRol: UsuarioRol) {
+    return this.http.post<UsuarioRol>(this.seguridad+'add/rol',usuarioRol);
+  }
   getUsuario(): Observable<Usuario[]>{
     return this.http.get<Usuario[]>(this.seguridad);
   }
+  createUsuario(usuario: Usuario) {
+    return this.http.post<Usuario>(this.seguridad+'add',usuario);
+  }
   validarUsuario(usuario: Usuario){
     return this.http.post<Usuario>(this.seguridad+'validar',usuario).pipe(map(data => {
-      console.log(data['usuario']);
       if(data['usuario'].length!=0){
         localStorage.setItem('currentUser', JSON.stringify(data['usuario']))
       }
@@ -142,7 +156,7 @@ export class ServiceService {
     return this.http.post<TipoMantenimiento>(this.tipoMantenimiento + 'add',tipomantenimiento);
   }
   deleteTipoMantenimiento(tipomantenimiento: TipoMantenimiento){
-    return this.http.delete<TipoMantenimiento >(this.tipoMantenimiento + tipomantenimiento.id_tipo_mantenimiento);
+    return this.http.delete<TipoMantenimiento>(this.tipoMantenimiento + tipomantenimiento.id_tipo_mantenimiento);
   }
   updateTipoMantenimiento(tipomantenimiento: TipoMantenimiento){
     return this.http.put<TipoMantenimiento>(this.tipoMantenimiento + tipomantenimiento.id_tipo_mantenimiento, tipomantenimiento);
@@ -165,8 +179,27 @@ export class ServiceService {
       return this.http.put<Pedido>(this.pedido + pedido.id_pedido, pedido);
     } 
 
+     // ----- AUTORIZAR PEDIDO ---- //
 
+      // ----- MANTENIMIENTO ---- //
+      getMantenimiento(): Observable<Mantenimiento[]> {
+        return this.http.get<Mantenimiento[]>(this.mantenimiento);
+      }
+      getMantenimientoId(idmantenimiento: number): Observable<Mantenimiento[]> {
+        return this.http.get<Mantenimiento[]>(this.mantenimiento + idmantenimiento);
+      }
+
+<<<<<<< HEAD
     
+=======
+
+
+
+
+
+      // ----- MANTENIMIENTO ---- //
+
+>>>>>>> 28ad91d379e0e5ed9daed7c166014a4482277476
   // ----- TIPO MANTENIMIENTO  ----//
   //Almacen
    //Producto
