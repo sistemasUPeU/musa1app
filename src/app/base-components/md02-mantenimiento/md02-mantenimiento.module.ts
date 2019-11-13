@@ -11,6 +11,11 @@ import { RevisionTecnicaComponent } from './revision-tecnica/revision-tecnica.co
 import { AutorizarPedidoComponent } from './autorizar-pedido/autorizar-pedido.component';
 import { PedidoComponent } from './pedido/pedido.component';
 import { RevisiondetalleComponent } from './revisiondetalle/revisiondetalle.component';
+<<<<<<< HEAD
+import { ValidarJefeMantenimientoComponent } from './validar-jefe-mantenimiento/validar-jefe-mantenimiento.component';
+=======
+import { SegundaValidacionComponent } from './segunda-validacion/segunda-validacion.component';
+>>>>>>> 35d6f1bfe43b3aab88d4801227201b07bd9c9779
 
 
 
@@ -23,7 +28,12 @@ import { RevisiondetalleComponent } from './revisiondetalle/revisiondetalle.comp
     RevisionTecnicaComponent,
     AutorizarPedidoComponent,
     PedidoComponent,
-    RevisiondetalleComponent],
+    RevisiondetalleComponent,
+<<<<<<< HEAD
+    ValidarJefeMantenimientoComponent],
+=======
+    SegundaValidacionComponent],
+>>>>>>> 35d6f1bfe43b3aab88d4801227201b07bd9c9779
   imports: [
     CommonModule,
     Md02MantenimientoRoutingModule,
