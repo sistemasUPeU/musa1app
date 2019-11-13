@@ -28,6 +28,9 @@ export class UsuarioComponent implements OnInit {
   listRol: Rol[] = [];
   contrasena:string;
   encPassword: string;  
+  oldpass: string;
+  newpass: string;
+  confnewpass: string;
   constructor(private service: ServiceService, private router: Router,private EncrDecr: EncrDecrService) { }
 
   ngOnInit() {
@@ -76,6 +79,10 @@ export class UsuarioComponent implements OnInit {
         this.ngOnInit();
       })
     });
+  }
+  updatePass(oldpass:string,newpass:string,confnewpass:string) {
+    console.log(oldpass,newpass,confnewpass)
+    
   }
 
 }
