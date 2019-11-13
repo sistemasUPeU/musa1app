@@ -32,7 +32,7 @@
               <td>P-001</td>
               <td>01-01-99</td>
               <td>...</td>
-              <td><button (click)="listardetalle(ped.id_pedido)" type="button" class="btn btn-secondary fa fa-eye" data-toggle="modal" data-target="#exampleModal"></button></td>
+              <td><button  type="button" class="btn btn-secondary fa fa-eye" data-toggle="modal" data-target="#exampleModal"></button></td>
               <td><button  type="button" class="btn btn-info far fa-check-circle" data-toggle="modal" data-target="#confirmautorizar"> </button></td>  
               <td><button  type="button" class="btn btn-danger fa fa-stop-circle" data-toggle="modal" data-target="#confirmdenegar"> </button></td>       
             </tr>
@@ -66,9 +66,9 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let det of listdetalle">
-                <td>{{det.nombre_producto}}</td>
-                <td>{{det.cantidad_pedido}}</td>    
+              <tr>
+                <td></td>
+                <td></td>    
               </tr>
             </tbody>
           </table>

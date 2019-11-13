@@ -44,7 +44,7 @@ export class ServiceService {
   buses = 'http://localhost:8090/bus/'
   requisitos = 'http://localhost:8090/requisito/'
   tipoRequisito = 'http://localhost:8090/tipoRequisito/'
-  seguridad = 'http://ec2-3-133-91-152.us-east-2.compute.amazonaws.com:8090/seguridad/'
+  seguridad = 'https://ec2-3-133-91-152.us-east-2.compute.amazonaws.com:8090/seguridad/'
   opciones = 'http://localhost:8090/opcion/'
   roles = 'http://localhost:8090/rol/'
   tipoMantenimiento = 'http://localhost:8090/tipo_mantenimiento/'
