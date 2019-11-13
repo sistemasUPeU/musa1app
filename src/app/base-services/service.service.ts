@@ -193,7 +193,7 @@ export class ServiceService {
         return this.http.get<Mantenimiento[]>(this.mantenimiento);
       }
       getMantenimientoId(idmantenimiento: number): Observable<Mantenimiento[]> {
-        return this.http.get<Mantenimiento[]>(this.mantenimiento + idmantenimiento);
+        return this.http.get<Mantenimiento[]>(this.mantenimiento2 + idmantenimiento);
       }
 
       getObtenerid( padron: String): Observable<Padron[]> {
@@ -203,9 +203,9 @@ export class ServiceService {
         return this.http.post<Mantenimiento>(this.mantenimiento2 + 'add',mantenimientos);
       }
 
-
-
-
+      updateMantenimiento(mantenimientos: Mantenimiento){
+        return this.http.put<Mantenimiento>(this.mantenimiento2 + 'observacion/' + mantenimientos.id_mantenimiento,mantenimientos);
+      }
 
 
       // ----- MANTENIMIENTO ---- //

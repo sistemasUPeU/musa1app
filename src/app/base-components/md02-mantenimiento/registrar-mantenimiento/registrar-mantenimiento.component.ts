@@ -5,6 +5,8 @@ import { DetalleMantenimiento } from 'src/app/base-models/DetalleMantenimiento';
 import { TipoMantenimiento } from 'src/app/base-models/TipoMantenimiento';
 import { Bus } from 'src/app/base-models/Bus';
 import { Padron } from 'src/app/base-models/Padron';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-registrar-mantenimiento',
   templateUrl: './registrar-mantenimiento.component.html',
@@ -17,11 +19,11 @@ export class RegistrarMantenimientoComponent implements OnInit {
   selectedTipoMantenimiento: number = null;
   bus: Bus = new Bus();
   mantenimiento: Mantenimiento = new Mantenimiento();
-
+  loadMantenimientoData: Mantenimiento[] = [];
   padron:String;
   listId: Padron[] = [];
 
-  constructor(private service: ServiceService) { }
+  constructor(private service: ServiceService, private router: Router) { }
 
   ngOnInit() {
     this.service.getMantenimiento().subscribe( (data) => {
@@ -55,10 +57,18 @@ export class RegistrarMantenimientoComponent implements OnInit {
     this.service.getObtenerid(padron).subscribe( (data) => {
       this.listId = data['SALIDA_BUS'];
       this.Guardar();
-    });
-
-    
+    }); 
   }
-
-
+  loadMantenimiento(mantenimiento: Mantenimiento): void {
+    this.service.getMantenimientoId(mantenimiento.id_mantenimiento).subscribe((data) => {
+      this.loadMantenimientoData = data['MANT'];
+    })
+  }
+  Actualizar(mant: Mantenimiento) {
+    this.service.updateMantenimiento(mant).subscribe((data) => {
+      this.mantenimiento = data;
+      alert('Observaciones Registradas Satisfactoriamente...!');
+      this.ngOnInit();
+    })
+  }
 }
