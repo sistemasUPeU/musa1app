@@ -212,6 +212,13 @@ export class ServiceService {
       updateMantenimiento(mantenimientos: Mantenimiento){
         return this.http.put<Mantenimiento>(this.mantenimiento2 + 'observacion/' + mantenimientos.id_mantenimiento,mantenimientos);
       }
+      getDetalleMantenimiento(id_mantenimiento: Mantenimiento): Observable<DetalleMantenimiento[]> {
+        return this.http.get<DetalleMantenimiento[]>(this.mantenimiento+id_mantenimiento)
+      }
+
+      getMantenimientoId2(idmantenimiento: number): Observable<Mantenimiento[]> {
+        return this.http.get<Mantenimiento[]>(this.mantenimiento + idmantenimiento);
+      }
 
 
       // ----- MANTENIMIENTO ---- //
