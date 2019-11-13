@@ -56,7 +56,7 @@ export class ServiceService {
   tipoaccion='http://localhost:8090/tipo_accion/'
   accion= 'http://localhost:8090/accion/'
   empresa= 'http://localhost:8090/empresa/'
-  val2= 'http://localhost:8090/hola/bb'
+  val2= 'http://localhost:8090/mantenimiento/hola/bb'
   pedido='http://localhost:8090/detalle_pedido/'
   revitecnicas= 'http://localhost:8090/revisiontecnica/'
 
@@ -353,7 +353,7 @@ export class ServiceService {
     return this.http.delete<Empresa>(this.empresa + empresa.id_empresa)
   }
     //------------Segunda validacion---------------//
-  getValidacion2(){
+  getval2(){
     return this.http.get<Mantenimiento[]>(this.val2)
   }
 

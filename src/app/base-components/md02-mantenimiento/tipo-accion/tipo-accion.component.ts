@@ -9,14 +9,21 @@ import { TipoAccion } from 'src/app/base-models/TipoAccion';
 })
 export class TipoAccionComponent implements OnInit {
 
-  tipoacc: TipoAccion= new TipoAccion
+  tipoaccion: TipoAccion= new TipoAccion();
+  listartipoaccion: TipoAccion[]=[];
 
   constructor(private service: ServiceService) { }
 
   ngOnInit() {
+    this.service.getTipoAccion().subscribe(data=>{this.listartipoaccion=data['tipa']
+    console.log(this.listartipoaccion)
+  })
+
   }
   guardartipo(){
-    this.service.createTipoAccion(this.tipoacc).subscribe(data=>alert('Se ingreso correctamente'))
+    this.service.createTipoAccion(this.tipoaccion).subscribe(data=>alert('Se ingreso correctamente'))
+    console.log(this.tipoaccion)
+    this.ngOnInit();
   }
 
 }

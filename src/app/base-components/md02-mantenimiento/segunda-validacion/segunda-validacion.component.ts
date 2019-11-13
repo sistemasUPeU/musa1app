@@ -9,12 +9,12 @@ import { Mantenimiento } from 'src/app/base-models/Mantenimiento';
 })
 export class SegundaValidacionComponent implements OnInit {
   mante: Mantenimiento = new Mantenimiento();
-  listamantenimiento:[]=[];
+  listamantenimiento:Mantenimiento[]=[];
 
   constructor(private service: ServiceService) { }
 
   ngOnInit() {
-    this.service.getValidacion2().subscribe( (data) => {
+    this.service.getval2().subscribe( (data) => {
       this.listamantenimiento = data['mant'];
       console.log(this.listamantenimiento);
     });

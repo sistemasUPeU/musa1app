@@ -24,8 +24,11 @@
                     <div class="modal-body">
                         <form>
                             <div class="form-group">
-                                <label class="col-form-label">Tipo de acción:</label>
-                                <h2></h2>
+                                <label for="tipoaccion" class="col-form-label">Tipo de acción:</label>
+                                <select class="form-control" (change)="selectTipoDocUpdate($event)">
+                                    <option *ngFor="let tipoacccion of listartipoaccion" value={{tipoaccion.id_tipo_accion}}>
+                                        {{tipoaccion.nom_tipo_accion}}</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <div class="form-group">
