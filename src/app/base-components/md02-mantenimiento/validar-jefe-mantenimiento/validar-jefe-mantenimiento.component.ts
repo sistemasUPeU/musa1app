@@ -12,6 +12,8 @@ export class ValidarJefeMantenimientoComponent implements OnInit {
 
   listMantenimiento: Mantenimiento[] = [];
   listDetalleMantenimiento: DetalleMantenimiento[] = [];
+  loadMantenimiento: Mantenimiento[] = [];
+  loadMantenimientoData: Mantenimiento[] = [];
   constructor(private service: ServiceService) { }
 
   ngOnInit() {
@@ -26,6 +28,22 @@ export class ValidarJefeMantenimientoComponent implements OnInit {
     this.service.getMantenimientoId2(id).subscribe( (data) => {
         this.listDetalleMantenimiento = data['LIST_ACCIONES_MANT'];
     } );
+  }
+
+  loadMantenimientoUpdate_Positivo(manteni: Mantenimiento): void {
+    manteni.estado=2;
+    console.log(manteni.id_mantenimiento);
+    this.service.updateValidar(manteni).subscribe(data => {  
+      console.log(data);
+      this.ngOnInit();
+    })
+  }
+  loadMantenimientoUpdate_Negativo(manteni: Mantenimiento): void {
+    manteni.estado=0;
+    console.log(manteni.id_mantenimiento);
+    this.service.updateValidar(manteni).subscribe(data => {  
+      this.ngOnInit();
+    })
   }
 
 }

@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
+<<<<<<< HEAD
+  
+import { Observable } from 'rxjs';
+=======
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, from } from 'rxjs';
+>>>>>>> 1cf62d186e6fc8c26af553056dfcf7c6f0226fbb
 import { map } from 'rxjs/operators'
 
 import { Persona } from '../base-models/Persona';
@@ -26,10 +31,14 @@ import { DetallePedido } from "../base-models/DetallePedido";
 import { Pedido } from '../base-models/Pedido';
 import { Padron } from '../base-models/Padron';
 import { RevisionTecnica } from '../base-models/RevisionTecnica';
+<<<<<<< HEAD
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+=======
 import { Opcion } from '../base-models/Opcion';
 import { Accion } from '../base-models/Accion';
 import { Empresa } from '../base-models/Empresa';
 
+>>>>>>> 1cf62d186e6fc8c26af553056dfcf7c6f0226fbb
 
 
 
@@ -247,6 +256,10 @@ export class ServiceService {
 
       updateDetalleMantenimiento(detallemant: DetalleMantenimiento){
         return this.http.put<Mantenimiento>(this.mantenimiento + 'accion/', detallemant);
+      }
+
+      updateValidar(mant: Mantenimiento){
+        return this.http.put<Mantenimiento>(this.mantenimiento2 + 'estado_1/', mant);
       }
       
       // ----- MANTENIMIENTO ---- //
