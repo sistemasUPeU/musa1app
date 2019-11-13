@@ -1,4 +1,4 @@
-$topnav-background-color: rgb(88, 181, 171);
+$topnav-background-color: #222;
 .sidebar {
     border-radius: 0;
     position: fixed;
@@ -28,7 +28,7 @@ $topnav-background-color: rgb(88, 181, 171);
             background: $topnav-background-color;
             border: 0;
             border-radius: 0;
-            color: #000000;
+            color: #999;
             text-decoration: none;
             .fa {
                 margin-right: 10px;
