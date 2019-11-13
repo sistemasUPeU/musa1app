@@ -16,6 +16,18 @@ export class AccionComponent implements OnInit {
   constructor(private service: ServiceService) { }
 
   ngOnInit() {
+    this.service.getAccion().subscribe(data=>{
+      this.listaraccion=data['ac'];
+      console.log(this.accion.nom_accion);
+    })
+  }
+  guardaraccion(){
+    this.accion.id_tipo_accion=this.tipoaccion.id_tipo_accion
+    console.log(this.accion)
+    this.service.createAccion(this.accion).subscribe(data=>{
+      alert('Se registro correctamente ...')
+      this.ngOnInit();
+    })
   }
 
 }

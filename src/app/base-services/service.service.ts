@@ -368,6 +368,9 @@ export class ServiceService {
   getval2(){
     return this.http.get<Mantenimiento[]>(this.val2)
   }
+  update_estado2(){
+
+  }
 
   //----------REVISIONES TECNICAS-----------//
   getRevisionTecnica():Observable<RevisionTecnica[]>{

@@ -27,8 +27,8 @@
           <td>mante.padron</td>
           <td>mante.fecha</td>
           <td>mante.observacion</td>
-          <td><button (click)="listardetalle_mant(mant.id_mantenimiento)" type="button" class="btn btn-info fa fa-eye"
-              data-toggle="modal" data-target="#exampleModal"></button></td>
+          <td><button  type="button" class="btn btn-info fa fa-eye" data-toggle="modal"
+              data-target="#vermecanico"></button></td>
           <td>
             <div class="custom-control custom-checkbox">
               <input type="checkbox" class="custom-control-input" id="customCheck1">
@@ -44,5 +44,51 @@
         </tr>
       </tbody>
     </table>
+
+    <!--Ver validaciones del mecanico-->
+
+    <div class="modal fade bd-example-modal-lg" id="vermecanico" tabindex="-1" role="dialog"
+      aria-labelledby="myLargeModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Registrar Mantenimiento </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="container-fluid">
+
+              <div class="row">
+                <div class="col">
+                  <div class="form-group" style="margin-left:15px;">
+                    <label for="tipodoc" class="col-form-label">Tipo de Documento:</label>
+                    <select class="form-control" (change)="selectTipoMantenimiento($event)" style="width:325px;">
+                      <option value="0">Seleccionar...</option>
+                      <option *ngFor="let tipomant of listTipoMantenimiento" value={{tipomant.id_tipo_mantenimiento}}>
+                        {{tipomant.tipo_mantenimiento}}</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col">
+                  <label for="padron" class="col-form-label">Padrón:</label>
+                  <input [(ngModel)]="padron" name="padron" type="text" class="form-control">
+                  <br>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" (click)="getid(padron)" data-dismiss="modal">Guardar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
   </div>
 </div>

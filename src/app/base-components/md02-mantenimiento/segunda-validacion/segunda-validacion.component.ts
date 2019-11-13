@@ -14,8 +14,8 @@ export class SegundaValidacionComponent implements OnInit {
   constructor(private service: ServiceService) { }
 
   ngOnInit() {
-    this.service.getval2().subscribe( (data) => {
-      this.listamantenimiento = data['mant'];
+    this.service.getval2().subscribe((data) => {
+      this.listamantenimiento = data['LISTA_MANTENIMIENTO'];
       console.log(this.listamantenimiento);
     });
   }
