@@ -12,7 +12,7 @@ const routes: Routes = [
   {path: 'csv', component: CsvComponent},
   {path: 'asignar-bus', component: AsignarBusComponent},
   {path: 'asignar-conductor', component: AsignarConductorComponent},
-  {path: 'generar-reportes', component: ReportesComponent},
+  {path: 'reportes', component: ReportesComponent},
 ];
 
 @NgModule({
