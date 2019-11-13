@@ -11,6 +11,7 @@ import { RevisionTecnicaComponent } from './revision-tecnica/revision-tecnica.co
 import { AutorizarPedidoComponent } from './autorizar-pedido/autorizar-pedido.component';
 import { PedidoComponent } from './pedido/pedido.component';
 import { RevisiondetalleComponent } from './revisiondetalle/revisiondetalle.component';
+import { ValidarJefeMantenimientoComponent } from './validar-jefe-mantenimiento/validar-jefe-mantenimiento.component';
 
 
 
@@ -23,7 +24,8 @@ import { RevisiondetalleComponent } from './revisiondetalle/revisiondetalle.comp
     RevisionTecnicaComponent,
     AutorizarPedidoComponent,
     PedidoComponent,
-    RevisiondetalleComponent],
+    RevisiondetalleComponent,
+    ValidarJefeMantenimientoComponent],
   imports: [
     CommonModule,
     Md02MantenimientoRoutingModule,
