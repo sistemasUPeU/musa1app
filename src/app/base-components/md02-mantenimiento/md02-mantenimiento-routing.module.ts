@@ -7,6 +7,7 @@ import { RevisionTecnicaComponent } from './revision-tecnica/revision-tecnica.co
 import { AutorizarPedidoComponent } from './autorizar-pedido/autorizar-pedido.component';
 import { TipoAccionComponent } from './tipo-accion/tipo-accion.component';
 import { PedidoComponent } from './pedido/pedido.component';
+import { SegundaValidacionComponent } from './segunda-validacion/segunda-validacion.component';
 
 
 
@@ -18,7 +19,8 @@ const routes: Routes = [
   {path: 'revision-tecnica', component: RevisionTecnicaComponent},
   {path:  'autorizar-pedido', component: AutorizarPedidoComponent},
   {path:  'tipo-accion',component: TipoAccionComponent},
-  {path: 'pedido', component: PedidoComponent}
+  {path: 'pedido', component: PedidoComponent},
+  {path: 'segunda-validacion',component: SegundaValidacionComponent}
 
 ];
 
