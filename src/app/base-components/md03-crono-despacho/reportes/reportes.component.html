@@ -15,42 +15,29 @@
             <thead>
               <tr>
                   <th>Nº</th> 
-                  <th>Conductor</th>  
+                  <th>Nombre Conductor</th>  
                   <th>Cargo</th>
                   <th>Fecha</th> 
                   <th>Hora</th> 
                   <th>Carnet de Conductor</th>
+                  <th colspan="2">Opciones</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <th>1</th> 
-                <th>pepito</th>
+                <th><input name="Conductor" type="text" class="form-control"></th>
                 <td>Conductor</td>
-                <td>15/11/2019</td>
-                <td>22:10</td> 
-                <td>456123</td>             
+                <td><input type="date"></td>
+                <td><input type="time"></td> 
+                <td><input type="box"></td> 
+                <td><button type="button" class="btn btn-danger">Enviar</button></td>             
               </tr>
-              <tr >
-                <th>2</th> 
-                <th>Laura</th>
-                <td>Gerente</td>
-                <td>14/11/2019</td>
-                <td>22:10</td> 
-                <td>123789</td>
-              </tr>
-              <tr >
-                  <th>3</th> 
-                  <th>Alex</th>
-                  <td>Conductor</td>
-                  <td>20/11/2019</td>
-                  <td>16:10</td> 
-                  <td>894789</td>
-                </tr>
             </tbody>
           </table>
       </div>
-
+      <!--BODY finally-->
+      <!--BODY-->
       <div class="container">
           <div class="row">
             <div class="col-xl-12">
@@ -70,41 +57,33 @@
               <tr>
                   <th>Nº</th> 
                   <th>Conductor</th>  
-                  <th>Cargo</th>
-                  <th>Fecha</th> 
-                  <th>Hora</th> 
-                  <th>Carnet de Conductor</th>
+                  <th>Telefono</th>
+                  <th>Direccion</th> 
+                  <th>DNI</th> 
+                  <th>Placa Vehicular</th>
+                  <th colspan="2">Opciones</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <th>1</th> 
-                <th>pepito</th>
-                <td>Conductor</td>
-                <td>15/11/2019</td>
-                <td>22:10</td> 
-                <td>456123</td>             
+                <th><input name="Conductor" type="text" class="form-control"></th>
+                <td><input type="box"></td>
+                <td><input type="box"></td>
+                <td><input type="box"></td> 
+                <td>
+                    <select class="form-control  col-6 col-sm-9  "  >
+                        <option selected> </option>
+                        <option multiple *ngFor="let bus of listBus">{{bus.placa}}</option>
+                      </select>
+                </td> 
+                <td><button type="button" class="btn btn-danger">Enviar</button></td>            
               </tr>
-              <tr >
-                <th>2</th> 
-                <th>Laura</th>
-                <td>Gerente</td>
-                <td>14/11/2019</td>
-                <td>22:10</td> 
-                <td>123789</td>
-              </tr>
-              <tr >
-                  <th>3</th> 
-                  <th>Alex</th>
-                  <td>Conductor</td>
-                  <td>20/11/2019</td>
-                  <td>16:10</td> 
-                  <td>894789</td>
-                </tr>
             </tbody>
           </table>
       </div>
-
+      <!--BODY finally-->
+      <!--BODY-->
       <div class="container">
           <div class="row">
             <div class="col-xl-12">
@@ -117,44 +96,32 @@
          </div>
          <tr></tr>
 
-      <!--BODY-->
       <div class="container row">
           <table class="table table-hover" id="tabla_reportes">
             <thead>
               <tr>
                   <th>Nº</th> 
-                  <th>Observacion</th>  
-                  <th>Cargo</th>
+                  <th>Placa</th>  
+                  <th>Tipo Revision</th>
+                  <th>Tipo Mantenimiento</th> 
                   <th>Fecha</th> 
-                  <th>Hora</th> 
-                  <th>Carnet de Conductor</th>
+                  <th colspan="2">Opciones</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <th>1</th> 
-                <th>pepito</th>
-                <td>Conductor</td>
-                <td>15/11/2019</td>
-                <td>22:10</td> 
-                <td>456123</td>             
+                <th>
+                    <select class="form-control  col-6 col-sm-9  "  >
+                        <option selected> </option>
+                        <option multiple *ngFor="let bus of listBus">{{bus.placa}}</option>
+                      </select>
+                </th>
+                <td><input type="box"></td>
+                <td><input type="box"></td>
+                <td><input type="date"></td> 
+                <td><button type="button" class="btn btn-danger">Enviar</button></td>              
               </tr>
-              <tr >
-                <th>2</th> 
-                <th>Laura</th>
-                <td>Gerente</td>
-                <td>14/11/2019</td>
-                <td>22:10</td> 
-                <td>123789</td>
-              </tr>
-              <tr >
-                  <th>3</th> 
-                  <th>Alex</th>
-                  <td>Conductor</td>
-                  <td>20/11/2019</td>
-                  <td>16:10</td> 
-                  <td>894789</td>
-                </tr>
             </tbody>
           </table>
       </div>
