@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, from } from 'rxjs';
 import { map } from 'rxjs/operators'
 
 import { Persona } from '../base-models/Persona';
@@ -24,6 +24,10 @@ import { UsuarioRol } from '../base-models/UsuarioRol';
 
 import { DetallePedido } from "../base-models/DetallePedido";
 import { Pedido } from '../base-models/Pedido';
+import { Padron } from '../base-models/Padron';
+import { RevisionTecnica } from '../base-models/RevisionTecnica';
+import { Opcion } from '../base-models/Opcion';
+
 
 
 
@@ -39,6 +43,7 @@ export class ServiceService {
   requisitos = 'http://localhost:8090/requisito/'
   tipoRequisito = 'http://localhost:8090/tipoRequisito/'
   seguridad = 'http://localhost:8090/seguridad/'
+  opciones = 'http://localhost:8090/opcion/'
   roles = 'http://localhost:8090/rol/'
   tipoMantenimiento = 'http://localhost:8090/tipo_mantenimiento/'
   mantenimiento = 'http://localhost:8090/detalle_mantenimiento/'
@@ -48,6 +53,9 @@ export class ServiceService {
   unidadmedidas= 'http://localhost:8090/unidad_medida/'
   tipoaccion='http://localhost:8090/tipo_accion/'
   pedido='http://localhost:8090/detalle_pedido/'
+  revitecnicas= 'http://localhost:8090/revisiontecnica/'
+
+  mantenimiento2 = 'http://localhost:8090/mantenimiento/'
 
 
   getPersona(): Observable<Persona[]>{
@@ -107,8 +115,14 @@ export class ServiceService {
   getCursoConductorId(idcurso: number): Observable<CursoConductor[]> {
     return this.http.get<CursoConductor[]>(this.cursoConductores+idcurso);
   }
+  getOpcion(): Observable<Opcion[]> {
+    return this.http.get<Opcion[]>(this.opciones);
+  }
   getRol(): Observable<Rol[]>{
     return this.http.get<Rol[]>(this.roles)
+  }
+  createRol(rol: Rol) {
+    return this.http.post<Rol>(this.roles+'add',rol);
   }
   createUsuarioRol(usuarioRol: UsuarioRol) {
     return this.http.post<UsuarioRol>(this.seguridad+'add/rol',usuarioRol);
@@ -196,12 +210,23 @@ export class ServiceService {
         return this.http.get<Mantenimiento[]>(this.mantenimiento);
       }
       getMantenimientoId(idmantenimiento: number): Observable<Mantenimiento[]> {
-        return this.http.get<Mantenimiento[]>(this.mantenimiento + idmantenimiento);
+        return this.http.get<Mantenimiento[]>(this.mantenimiento2 + idmantenimiento);
       }
+<<<<<<< HEAD
      
+=======
 
+      getObtenerid( padron: String): Observable<Padron[]> {
+        return this.http.get<Padron[]>(this.mantenimiento2 + 'bus/' + padron)
+      }
+      createMantenimiento(mantenimientos: Mantenimiento){
+        return this.http.post<Mantenimiento>(this.mantenimiento2 + 'add',mantenimientos);
+      }
+>>>>>>> 6090870e5aafd6ccdfe97e38924963f40e40077d
 
-
+      updateMantenimiento(mantenimientos: Mantenimiento){
+        return this.http.put<Mantenimiento>(this.mantenimiento2 + 'observacion/' + mantenimientos.id_mantenimiento,mantenimientos);
+      }
 
 
       // ----- MANTENIMIENTO ---- //
@@ -288,4 +313,14 @@ export class ServiceService {
     return this.http.delete<TipoAccion>(this.tipoaccion + tipoaccion.id_tipo_accion)
   }
 
+<<<<<<< HEAD
+=======
+  //----------REVISIONES TECNICAS-----------//
+  getRevisionTecnica():Observable<RevisionTecnica[]>{
+    return this.http.get<RevisionTecnica[]>(this.revitecnicas);
+  }
+
+  
+
+>>>>>>> 6090870e5aafd6ccdfe97e38924963f40e40077d
 }

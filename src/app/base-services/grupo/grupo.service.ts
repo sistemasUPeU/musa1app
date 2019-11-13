@@ -37,7 +37,8 @@ export class GrupoService {
   }
 
   update() {
-    return this.http.put<Grupo>(this.grupos +  1, 0);
+    console.log('voy a editar');
+    return this.http.put<Grupo>(this.grupos +  0, 0);
   }
 
   delete(grupo: Grupo) {
@@ -46,6 +47,10 @@ export class GrupoService {
 
   creategrupo(grupo: Grupo) {
     return this.http.post<Grupo>(this.grupos + 'add', grupo);
+  }
+
+  createorden() {
+    return this.http.post<Grupo>(this.grupos + 'addorden', 0);
   }
 
 

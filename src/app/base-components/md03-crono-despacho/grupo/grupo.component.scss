@@ -32,7 +32,7 @@ footer {
 
 .input {
     text-align: center;
-    width: 45px;
+    width: 65px;
     height: 25px;
     margin-left: 50px;
     font-size: 17px;
@@ -62,4 +62,13 @@ footer {
 
 .t {
     text-align: center;
+}
+
+// close //
+.clos {
+    border: none;
+    background: transparent;
+    width: 25px;
+    margin-left: 97%;
+    font-size: 25px;
 }
