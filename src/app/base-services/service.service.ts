@@ -164,8 +164,7 @@ export class ServiceService {
 
 
   // ----- AUTORIZAR PEDIDO ---- //
-  // ----- AUTORIZAR PEDIDO ---- //
-   // ----- AUTORIZAR PEDIDO ---- //
+
     getPedido(): Observable<Pedido[]> {
       return this.http.get<Pedido[]>(this.pedido);
     }
@@ -175,9 +174,20 @@ export class ServiceService {
     getDetallePedido(id_pedido: Pedido): Observable<DetallePedido[]> {
       return this.http.get<DetallePedido[]>(this.pedido+id_pedido )
     }
-    updatePedido(pedido: Pedido){
-      return this.http.put<Pedido>(this.pedido + pedido.id_pedido, pedido);
+    updateStatus(pedido: Pedido){
+      return this.http.put<Pedido>(this.pedido + 'status/' + pedido.id_pedido, pedido);
+
     } 
+    updatePedido(pedido: Pedido){
+      return this.http.get<DetallePedido[]>(this.pedido )
+
+    } 
+
+
+
+
+
+
 
      // ----- AUTORIZAR PEDIDO ---- //
 
@@ -188,10 +198,7 @@ export class ServiceService {
       getMantenimientoId(idmantenimiento: number): Observable<Mantenimiento[]> {
         return this.http.get<Mantenimiento[]>(this.mantenimiento + idmantenimiento);
       }
-
-<<<<<<< HEAD
-    
-=======
+     
 
 
 
@@ -199,7 +206,6 @@ export class ServiceService {
 
       // ----- MANTENIMIENTO ---- //
 
->>>>>>> 28ad91d379e0e5ed9daed7c166014a4482277476
   // ----- TIPO MANTENIMIENTO  ----//
   //Almacen
    //Producto
@@ -281,4 +287,5 @@ export class ServiceService {
   deleteTipoAccion(tipoaccion: TipoAccion){
     return this.http.delete<TipoAccion>(this.tipoaccion + tipoaccion.id_tipo_accion)
   }
+
 }

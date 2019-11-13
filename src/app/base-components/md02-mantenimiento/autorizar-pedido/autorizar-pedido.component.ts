@@ -31,7 +31,6 @@ export class AutorizarPedidoComponent implements OnInit {
 
   ActualizarPedido(pedido: Pedido){
     this.service.updatePedido(pedido).subscribe((data) => {
-      this.pedido = data;
       console.log("hola");
       this.ngOnInit();
     })
