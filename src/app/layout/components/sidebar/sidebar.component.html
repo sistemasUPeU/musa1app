@@ -13,6 +13,12 @@
                             <span>{{ 'Persona' }}</span>
                         </a>
                     </li>
+                    <li>
+                        <a routerLink="/general/empresa" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                            <i class="fa fa-user"></i>&nbsp;
+                            <span>{{ 'Empresa' }}</span>
+                        </a>
+                    </li>
                 </ul>
             </li>
         </div>
@@ -103,6 +109,12 @@
                         <a routerLink="/md02/registrar-mantenimiento" [routerLinkActive]="['router-link-active']" class="list-group-item">
                             <i class="fa fa-user"></i>&nbsp;
                             <span>{{ 'Registrar Mantenimiento' }}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/md02/segunda-validacion" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                            <i class="fa fa-fw fa-table"></i>&nbsp;
+                            <span>{{ 'Segunda validacion de mantenimiento' }}</span>
                         </a>
                     </li>
 
