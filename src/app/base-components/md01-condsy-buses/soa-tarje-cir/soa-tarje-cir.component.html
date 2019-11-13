@@ -1,0 +1,88 @@
+<div class="row">
+  <div class="col col-xl-6 col-lg-12">
+      <div class="mb-3">
+        <h1 class="page-header">
+          Soat/Tarjeta de Circulacion
+        </h1>
+      <div class="card-body table-responsive">
+        <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Bus</th>
+                <th>Url</th>
+                <th colspan="2">Opcion</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Bus nro 1</td>
+                <td>Users/Zero/Downloads/image.png</td>
+                <td><button class="btn btn-warning far fa-edit" (click)="loadCate(cat)" data-target="#updatecat" data-toggle="modal"></button></td>
+                <td><button class="btn btn-danger fas fa-trash-alt" data-toggle="modal" (click)="loadCate(cat)" data-target="#confirmdelete"></button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  <div class="col col-xl-6 col-lg-12">
+    <div class="mb-3">
+      <h1 class="page-header">
+        Imagen del Bus
+      </h1>
+    <div class="card-body table-responsive" >
+      <label class="form-control">Imagen</label>
+      <div id="imagen">
+        <img src="Users/Zero/Downloads/image.png" alt="image">
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <form class="container">
+      <div class="form-group">
+          <label for="bus" class="col-form-label">Bus:</label>
+          <select class="form-control" (change)="selectBus($event)" (click)="listar()">
+            <option value="0">Seleccionar...</option>
+            <option *ngFor="let b of listBus" value={{b.placa}}>{{b.placa}}</option>
+          </select>
+        </div>
+     <div class="row">
+        <div class="col col-xl-6 col-lg-12">
+            <div class="mb-3">
+              <label for="marc" class="col-form-label">Ingrese url1:</label>
+            </div>
+            <div class="mb-3">
+              <label for="marc" class="col-form-label">Ingrese url2:</label>
+            </div>
+          </div>
+          <div class="col col-xl-6 col-lg-12">
+            <div class="mb-3">
+                <div>
+                    <button id="login">
+                        Upload Files to Drive
+                    </button>
+                </div> 
+            </div>
+            <div class="mb-3">
+                <div>
+                    <button id="login">
+                        Upload Files to Drive
+                    </button>
+                </div> 
+            </div>
+          </div>
+      </div>
+      <div class="container row">
+        <div class="col-8">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#agregarcategoria">Agregar</button>
+        </div>
+      </div>
+    </form>
+</div>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

@@ -64,48 +64,54 @@
         </div>
         <div class="modal-body">
           <form>
-            <div class="form-group">
-                <label for="pers" class="col-form-label">Propietario:</label>
-                <select class="form-control" (change)="selectPerson($event)">
-                  <option value="0">Seleccionar...</option>
-                  <option *ngFor="let pers  of listPerson" value={{pers.id_persona}}>{{pers.nombre_persona}}</option>
-                </select>
+            <div class="row">
+              <div class="col col-xl-6 col-lg-12">
+                <div class="form-group">
+                    <label for="pers" class="col-form-label">Propietario:</label>
+                    <select class="form-control" (change)="selectPerson($event)">
+                      <option value="0">Seleccionar...</option>
+                      <option *ngFor="let pers  of listPerson" value={{pers.id_persona}}>{{pers.nombre_persona}}</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="marc" class="col-form-label">Marca:</label>
+                    <input [(ngModel)]="bus.marca" name="marca" class="form-control" type="text">
+                  </div>
+                  <div class="form-group">
+                    <label for="plac">Placa:</label>
+                    <input [(ngModel)]="bus.placa" name="placa" class="form-control" type="text">
+                  </div>
+                  <div class="form-group">
+                    <label for="descrip">Descripcion:</label>
+                    <input [(ngModel)]="bus.descripcion" name="descripcion" class="form-control" type="text">
+                  </div>
+                  <div class="form-group">
+                    <label for="Padro">Padron: </label>
+                    <input [(ngModel)]="bus.padron" name="padron" class="form-control" type="text">
+                  </div> 
               </div>
-            <div class="form-group">
-              <label for="marc" class="col-form-label">Marca:</label>
-              <input [(ngModel)]="bus.marca" name="marca" class="form-control" type="text">
-            </div>
-            <div class="form-group">
-              <label for="plac">Placa:</label>
-              <input [(ngModel)]="bus.placa" name="placa" class="form-control" type="text">
-            </div>
-            <div class="form-group">
-              <label for="descrip">Descripcion:</label>
-              <input [(ngModel)]="bus.descripcion" name="descripcion" class="form-control" type="text">
-            </div>
-            <div class="form-group">
-              <label for="Padro">Padron: </label>
-              <input [(ngModel)]="bus.padron" name="padron" class="form-control" type="text">
-            </div> 
-            <div class="form-group">
-              <label for="Model">Modelo:</label>
-              <input [(ngModel)]="bus.modelo" name="modelo" class="form-control" type="text">
-            </div>
-            <div class="form-group">
-              <label for="nro_mot">Nro Motor:</label>
-              <input [(ngModel)]="bus.nro_motor" name="nro_motor" class="form-control" type="text">
-            </div>
-            <div class="form-group">
-              <label for="anio_fabric">Año Fabricación:</label>
-              <input [(ngModel)]="bus.anio_fabricacion" name="anio_fabricacion" class="form-control" type="text">
-            </div>
-            <div class="form-group">
-              <label for="nro_seri">Nro Serie:</label>
-              <input [(ngModel)]="bus.nro_serie" name="nro_serie" class="form-control" type="text">
-            </div>
-            <div class="form-group">
-              <label for="asientos">Nro Asientos:</label>
-              <input [(ngModel)]="bus.nro_asientos" name="nro_asientos" class="form-control" type="text">
+              <div class="col col-xl-6 col-lg-12">
+                  <div class="form-group">
+                      <label for="Model">Modelo:</label>
+                      <input [(ngModel)]="bus.modelo" name="modelo" class="form-control" type="text">
+                    </div>
+                    <div class="form-group">
+                      <label for="nro_mot">Nro Motor:</label>
+                      <input [(ngModel)]="bus.nro_motor" name="nro_motor" class="form-control" type="text">
+                    </div>
+                    <div class="form-group">
+                      <label for="anio_fabric">Año Fabricación:</label>
+                      <input [(ngModel)]="bus.anio_fabricacion" name="anio_fabricacion" class="form-control" type="text">
+                    </div>
+                    <div class="form-group">
+                      <label for="nro_seri">Nro Serie:</label>
+                      <input [(ngModel)]="bus.nro_serie" name="nro_serie" class="form-control" type="text">
+                    </div>
+                    <div class="form-group">
+                      <label for="asientos">Nro Asientos:</label>
+                      <input [(ngModel)]="bus.nro_asientos" name="nro_asientos" class="form-control" type="text">
+                    </div>
+              </div>  
             </div>
           </form>
         </div>
