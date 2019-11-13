@@ -13,6 +13,7 @@ import { PedidoComponent } from './pedido/pedido.component';
 import { RevisiondetalleComponent } from './revisiondetalle/revisiondetalle.component';
 
 
+
 @NgModule({
   declarations: [
     AccionComponent,

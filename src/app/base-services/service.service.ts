@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, from } from 'rxjs';
 import { map } from 'rxjs/operators'
 
 import { Persona } from '../base-models/Persona';
@@ -26,6 +26,8 @@ import { DetallePedido } from "../base-models/DetallePedido";
 import { Pedido } from '../base-models/Pedido';
 import { Padron } from '../base-models/Padron';
 import { RevisionTecnica } from '../base-models/RevisionTecnica';
+import { Opcion } from '../base-models/Opcion';
+
 
 
 
@@ -41,6 +43,7 @@ export class ServiceService {
   requisitos = 'http://localhost:8090/requisito/'
   tipoRequisito = 'http://localhost:8090/tipoRequisito/'
   seguridad = 'http://localhost:8090/seguridad/'
+  opciones = 'http://localhost:8090/opcion/'
   roles = 'http://localhost:8090/rol/'
   tipoMantenimiento = 'http://localhost:8090/tipo_mantenimiento/'
   mantenimiento = 'http://localhost:8090/detalle_mantenimiento/'
@@ -111,6 +114,9 @@ export class ServiceService {
   }
   getCursoConductorId(idcurso: number): Observable<CursoConductor[]> {
     return this.http.get<CursoConductor[]>(this.cursoConductores+idcurso);
+  }
+  getOpcion(): Observable<Opcion[]> {
+    return this.http.get<Opcion[]>(this.opciones);
   }
   getRol(): Observable<Rol[]>{
     return this.http.get<Rol[]>(this.roles)
