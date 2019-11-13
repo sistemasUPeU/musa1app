@@ -22,6 +22,7 @@ export class RegistrarMantenimientoComponent implements OnInit {
   loadMantenimientoData: Mantenimiento[] = [];
   padron:String;
   listId: Padron[] = [];
+  
 
   constructor(private service: ServiceService, private router: Router) { }
 
@@ -70,5 +71,12 @@ export class RegistrarMantenimientoComponent implements OnInit {
       alert('Observaciones Registradas Satisfactoriamente...!');
       this.ngOnInit();
     })
+  }
+
+  listardetalle_mant(id: number){
+    console.log(id);
+    this.service.getMantenimientoId2(id).subscribe( (data) => {
+        this.listDetalleMantenimiento = data['LIST_ACCIONES_MANT'];
+    } );
   }
 }

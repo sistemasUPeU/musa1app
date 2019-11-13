@@ -5,6 +5,7 @@ import { ClickOutsideDirective } from 'src/app/base-directives/dropdown.directiv
 import { NgInitDirective } from 'src/app/base-directives/oninit.directive';
 import { GeneralRoutingModule } from './general-routing.module';
 import { PersonaComponent } from './persona/persona.component';
+import { EmpresaComponent } from './empresa/empresa.component';
 
 
 
@@ -13,7 +14,8 @@ import { PersonaComponent } from './persona/persona.component';
   declarations: [
     PersonaComponent,
     ClickOutsideDirective,
-    NgInitDirective
+    NgInitDirective,
+    EmpresaComponent
   ],
   imports: [
     CommonModule,

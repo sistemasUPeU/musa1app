@@ -7,7 +7,11 @@ import { RevisionTecnicaComponent } from './revision-tecnica/revision-tecnica.co
 import { AutorizarPedidoComponent } from './autorizar-pedido/autorizar-pedido.component';
 import { TipoAccionComponent } from './tipo-accion/tipo-accion.component';
 import { PedidoComponent } from './pedido/pedido.component';
+<<<<<<< HEAD
 import { ValidarJefeMantenimientoComponent } from "./validar-jefe-mantenimiento/validar-jefe-mantenimiento.component";
+=======
+import { SegundaValidacionComponent } from './segunda-validacion/segunda-validacion.component';
+>>>>>>> 35d6f1bfe43b3aab88d4801227201b07bd9c9779
 
 
 
@@ -20,7 +24,11 @@ const routes: Routes = [
   {path:  'autorizar-pedido', component: AutorizarPedidoComponent},
   {path:  'tipo-accion',component: TipoAccionComponent},
   {path: 'pedido', component: PedidoComponent},
+<<<<<<< HEAD
   {path: 'validar-jefe-mantenimiento', component: ValidarJefeMantenimientoComponent }
+=======
+  {path: 'segunda-validacion',component: SegundaValidacionComponent}
+>>>>>>> 35d6f1bfe43b3aab88d4801227201b07bd9c9779
 
 ];
 
