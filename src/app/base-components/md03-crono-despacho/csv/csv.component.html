@@ -1,3 +1,91 @@
-<p>
-  csv works!
-</p>
+<div class="container-fluid">
+
+    <nav class="margin">
+        <button type="button" class="btn btn-lg btn-success radius" style="margin-right: 25px" data-toggle="modal" data-target="#exampleModal">Nuevo</button>
+
+        <div class="mes">
+            <label class="h4">mes</label>
+        </div>
+    </nav>
+
+    <div class="modal fade" style="margin-top: 150px;" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog " role="document">
+
+            <div class="modal-content  r">
+                <div class="modal-header ">
+                    <h5 class="modal-title " id="exampleModalLabel">Configuración de grupos</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <form action="">
+                        <div class="row m20">
+                            <div class="col-6 t">
+                                <label for="">Mes </label>
+                            </div>
+                            <div class="col-6">
+                                <select class="form-control a" style="height: 29px; padding: 2px; padding-left: 5px;">
+                                <option value="0">Mes</option>
+                                <option  value=""></option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row m20">
+                            <div class="col-6 t"><label>Grupo</label></div>
+                            <div class="col-6"><input name="numero" class="form-control b" type="text"></div>
+                        </div>
+
+                        <div class="row m20">
+                            <div class="col-6"><label>Cantidad de vehiculos</label></div>
+                            <div class="col-6"><input name="cantidad_buses" class="form-control b" type="text"></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6 t m20"><label>Hora Inicio</label></div>
+                            <div class="col-6">
+                                <div class="form-inline">
+                                    <div>
+                                        <small id="emailHelp" class="form-text text-muted">Hora</small>
+                                        <select class="form-control b" style="padding: 2px;padding-left: 5px; height: 25px;">
+                                            <option  value="{{00}}" >00</option>            
+                                            <option  ></option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <small id="emailHelp" class="form-text text-muted">Minuto</small>
+                                        <select class="form-control b" style="padding: 1px; padding-left: 7px; height: 25px; margin-left: 10px;">
+                                                    <option ></option>
+                                            </select>
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+                        <div class="row m20">
+                            <div class="col-6 t"><label>Intervalo</label></div>
+                            <div class="col-6"><input name="intervalo" class="form-control b" type="text"></div>
+                        </div>
+
+
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</div>
