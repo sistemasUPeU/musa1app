@@ -1,4 +1,5 @@
 export class Pedido {
     id_pedido: number;
-    fecha_pedido: String
+    fecha_pesdido: String;
+    estado: String
 }

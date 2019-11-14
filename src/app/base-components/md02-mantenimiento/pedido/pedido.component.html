@@ -20,23 +20,15 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th>1</th> 
-                  <th>1/11/2019</th>
+                <tr *ngFor="let ped of listpedido, let i = index">
+                  <th>{{i+1}}</th> 
+                  <th>{{ped.fecha_pedido}}</th>
                   <td>AAA-123</td>
                   <td>AAA</td>
                   <td>Correctivo</td>
                   <td><button type="button" class="btn btn-success fa fa-bomb" data-toggle="modal" data-target="#exampleModal"></button></td>
                 </tr>
-                <tr>
-                  <th>2</th> 
-                  <th>2/11/2019</th>
-                  <td>BBB-123</td>
-                  <td>BBB</td>
-                  <td>Preventivo</td>
-                  <td><button type="button" class="btn btn-success fa fa-plus" data-toggle="modal" data-target="#exampleModal"></button></td>
-                </tr>
-                <tr>
+                <tr >
                   <th>3</th> 
                   <th>3/11/2019</th>
                   <td>CCC-123</td>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ServiceService } from 'src/app/base-services/service.service';
 import { Pedido } from 'src/app/base-models/Pedido';
 import { DetallePedido } from 'src/app/base-models/DetallePedido';
+import { when } from 'q';
 
 @Component({
   selector: 'app-autorizar-pedido',
@@ -9,6 +10,7 @@ import { DetallePedido } from 'src/app/base-models/DetallePedido';
   styleUrls: ['./autorizar-pedido.component.scss']
 })
 export class AutorizarPedidoComponent implements OnInit {
+  pedido: Pedido = new Pedido();
   listdetalle: DetallePedido[] = [];
   lispedi: Pedido[] = [];
   constructor(private service: ServiceService) { }
@@ -26,14 +28,12 @@ export class AutorizarPedidoComponent implements OnInit {
         this.listdetalle = data['LIST_DETALLE'];
     } );
   }
-  Eliminar(pedido: Pedido) {
-    console.log("estamos por eliminar esto xdxd");
-    console.log(pedido);
-    this.service.deletePedido(pedido).subscribe(data => {
-    alert('Registro eliminado correctamente');
-    this.lispedi = this.lispedi.filter (c => c!=pedido);
-    this.ngOnInit();
-   })
+
+  ActualizarPedido(pedido: Pedido){
+    this.service.updatePedido(pedido).subscribe((data) => {
+      console.log("hola");
+      this.ngOnInit();
+    })
   }
 
 }

@@ -26,13 +26,15 @@
             <tr *ngFor="let ped of lispedi, let i = index">
               <th>{{i+1}}</th>
               <td>{{ped.fecha_pedido}}</td>
-              <td><button (click)="listardetalle(ped.id_pedido)" type="button" class="btn btn-info fa fa-eye" data-toggle="modal" data-target="#exampleModal"></button></td>
-              <td><button  type="button" class="btn btn-warning fa fa-check"> </button></td>  
-              <td><button  type="button" class="btn btn-danger fa fa-stop-circle" (click)="Eliminar(ped)" data-toggle="modal" data-target="#confirmdelete"> </button></td>       
+              <td><button (click)="listardetalle(ped.id_pedido)" type="button" class="btn btn-secondary fa fa-eye" data-toggle="modal" data-target="#exampleModal"></button></td>
+              <td><button  type="button" class="btn btn-info far fa-check-circle" data-toggle="modal" data-target="#confirmautorizar"> </button></td>  
+              <td><button  type="button" class="btn btn-danger fa fa-stop-circle" data-toggle="modal" data-target="#confirmdenegar"> </button></td>       
             </tr>
           </tbody>
         </table>
     </div>
+
+
         <!-- MODAL DETALLE PEDIDO-->
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -48,7 +50,7 @@
           <table class="table">
             <thead class="thead-light">
               <tr>
-                <th colspan="5">LISTA DE PRODUCTOS</th>
+                <th colspan="5">LISTA DE PEDIDOS</th>
               </tr>
             </thead>
             <thead class="thead">
@@ -72,22 +74,40 @@
       </div>
     </div>
   </div>
-   <!-- MODAL DENEGAR PEDIDO-->
-   <div class="modal fade" id="confirmdelete" aria-hidden="true">
+    <!-- MODAL DENEGAR PEDIDO-->
+    <div class="modal fade" id="confirmdenegar" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content" >
+              <div class="modal-header">
+                  <h4 class="modal-title">Denegar</h4>
+              </div>
+              <div class="modal-body">
+                  <label>¿Estás seguro de denegar este pedido?</label>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-danger"
+                  data-dismiss="modal">Denegar</button>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- MODAL AUTORIZAR PEDIDO-->
+  <div class="modal fade" id="confirmautorizar" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content" >
             <div class="modal-header">
-                <h4 class="modal-title">¿Estás seguro de eliminar este pedido? </h4>
+                <h4 class="modal-title">Autorizar</h4>
             </div>
-            <div class="modal-body" *ngFor="let det of listdetalle">
-                <label>Fecha {{ped.fecha_pedido}}</label>
+            <div class="modal-body">
+                <label >¿Estás seguro de autorizar este pedido? </label>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-              <button type="button" (click)="Eliminar(pedido)" class="btn btn-primary"
+              <button type="button" class="btn btn-primary"
                 data-dismiss="modal">Eliminar</button>
             </div>
         </div>
     </div>
-  </div>
-  </div>
+</div>
+</div>

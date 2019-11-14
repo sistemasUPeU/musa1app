@@ -68,6 +68,41 @@
           </div>
         </div>
       </div>
+      <div class="modal fade" id="updatepassmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Actualizar Contraseña</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="alert alert-danger">
+                      <strong>Oh snap!</strong> Change a few things up and try submitting again.
+                  </div>
+                  <div class="form-group">
+                    <label for="name" class="col-form-label">Contraseña actual:</label>
+                    <input [(ngModel)]="oldpass" name="oldpass" type="text" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="name" class="col-form-label">Contraseña nueva:</label>
+                    <input [(ngModel)]="newpass" name="newpass" type="text" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="name" class="col-form-label">Confirmar contraseña nueva:</label>
+                    <input [(ngModel)]="confnewpass" name="confnewpass" type="text" class="form-control">
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="button" (click)="updatePass(oldpass,newpass,confnewpass)" class="btn btn-info" data-dismiss="modal">Guardar</button>
+              </div>
+            </div>
+          </div>
+        </div>
       <table class="table table-bordered">
         <thead>
           <tr>
@@ -86,7 +121,7 @@
             <td>{{usuario.cod_persona}}</td>
             <td>{{usuario.usuario_creacion}}</td>
             <td>{{usuario.fecha_creacion}}</td>
-            <td><button class="btn btn-warning far fa-edit" (click)="fillSelect()" (click)="loadPersona(usuario)" data-toggle="modal" data-target="#editpersonamodal" ></button></td>
+            <td><button class="btn btn-warning far fa-edit" (click)="loadUsuario(usuario)" data-toggle="modal" data-target="#updatepassmodal" ></button></td>
             <td><button class="btn btn-danger fas fa-trash-alt" (click)="Eliminar(usuario)"></button></td>
           </tr>
         </tbody>

@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-xl-12">
+    <br>
+    <FONT FACE="courier" SIZE=10 style="margin-left:400px;">MANTENIMIENTO</FONT>
+    <br>
+    <br>
+    <div>
+      <h1>Lista de mantenimientos</h1>
+    </div>
+    <table class="table table-hover" id="tabla_registrar_mantenimiento">
+      <thead class="thead">
+        <tr>
+          <th>#</th>
+          <th>PLACA</th>
+          <th>PADRÓN</th>
+          <th>FECHA</th>
+          <th>OBSERVACION</th>
+          <th>VER ACCION</th>
+          <th>VALIDAR</th>
+          <th>VALIDAR JEFE DE OPERACIONES</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let mante of listamantenimiento, let i=index">
+          <th>{{i+1}}</th>
+          <td>mante.placa</td>
+          <td>mante.padron</td>
+          <td>mante.fecha</td>
+          <td>mante.observacion</td>
+          <td><button (click)="listardetalle_mant(mant.id_mantenimiento)" type="button" class="btn btn-info fa fa-eye"
+              data-toggle="modal" data-target="#exampleModal"></button></td>
+          <td>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="customCheck1">
+              <label class="custom-control-label" for="customCheck1"></label>
+            </div>
+          </td>
+          <td>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="customCheck1">
+              <label class="custom-control-label" for="customCheck1"></label>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
