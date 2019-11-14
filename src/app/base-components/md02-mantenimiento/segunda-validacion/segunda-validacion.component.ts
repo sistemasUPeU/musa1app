@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceService } from 'src/app/base-services/service.service';
 import { Mantenimiento } from 'src/app/base-models/Mantenimiento';
+import { DetalleMantenimiento } from 'src/app/base-models/DetalleMantenimiento';
 
 @Component({
   selector: 'app-segunda-validacion',
@@ -8,15 +9,35 @@ import { Mantenimiento } from 'src/app/base-models/Mantenimiento';
   styleUrls: ['./segunda-validacion.component.scss']
 })
 export class SegundaValidacionComponent implements OnInit {
-  mante: Mantenimiento = new Mantenimiento();
   listamantenimiento:Mantenimiento[]=[];
+  listadetallemantenimiento: DetalleMantenimiento[]=[];
+  cargarmantenimiento: Mantenimiento[]=[];
+  cargarmantenimientodata: Mantenimiento[]=[];
 
   constructor(private service: ServiceService) { }
 
   ngOnInit() {
-    this.service.getval2().subscribe( (data) => {
-      this.listamantenimiento = data['mant'];
+    /*Lista todo los datos provenientes de Validacion de jefe de mantenimiento*/
+    this.service.getMantenimiento3().subscribe((data) => {
+      this.listamantenimiento = data['LISTA_MANTENIMIENTO'];
       console.log(this.listamantenimiento);
     });
   }
+  loadMantenimientoUpdate_Positivo(mantenimiento: Mantenimiento): void {
+    mantenimiento.estado=2;
+    console.log(mantenimiento.id_mantenimiento);
+    this.service.updateValidar(mantenimiento).subscribe(data => {  
+      console.log(data);
+      alert("¡ Ahora el mecanico esta autorizado para realizar sus pedidos !")
+      this.ngOnInit();
+    })
+  }
+  loadMantenimientoUpdate_Negativo(mantenimiento: Mantenimiento): void {
+    mantenimiento.estado=0;
+    console.log(mantenimiento.id_mantenimiento);
+    this.service.updateValidar(mantenimiento).subscribe(data => {  
+      this.ngOnInit();
+    })
+  }
+
 }

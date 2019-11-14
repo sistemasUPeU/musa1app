@@ -5,7 +5,8 @@
         </h1>
         <div class="container row">
             <div class="col-8">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addaccion">
+                <button type="button" (click)="traertipoaccion()" class="btn btn-primary" data-toggle="modal"
+                    data-target="#addaccion">
                     Agregar acción
                 </button>
             </div>
@@ -23,32 +24,97 @@
                     </div>
                     <div class="modal-body">
                         <form>
+
                             <div class="form-group">
                                 <label for="tipoaccion" class="col-form-label">Tipo de acción:</label>
-                                <select class="form-control" (change)="selectTipoDocUpdate($event)">
-                                    <option *ngFor="let tipoacccion of listartipoaccion" value={{tipoaccion.id_tipo_accion}}>
+                                <select class="form-control" (change)="selectedTipoMan($event)">
+                                    <option value="0">Seleccionar...</option>
+                                    <option *ngFor="let tipoaccion of listartipoaccion"
+                                        value={{tipoaccion.id_tipo_accion}}>
                                         {{tipoaccion.nom_tipo_accion}}</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <div class="form-group">
                                     <label for="name" class="col-form-label">Nombre:</label>
-                                    <input name="tipo_mantenimiento" type="text" class="form-control">
+                                    <input name="nom_accion" [(ngModel)]="accion.nom_accion" type="text"
+                                        class="form-control">
                                 </div>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+                        <button type="button" (click)="guardaraccion()" class="btn btn-info"
+                            data-dismiss="modal">Guardar</button>
                     </div>
                 </div>
             </div>
         </div>
+        <!--Modal para listar accion-->
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nº</th>
+                    <th>TIPO DE ACCION</th>
+                    <th>NOMBRE</th>
+                    <th colspan="2">Opcion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let accion of listaraccion; let i=index; let tipoaccion of listartipoaccion">
+                    <td>{{i+1}}</td>
+                    <td>{{accion.id_tipo_accion}}</td>
+                    <td>{{accion.nom_accion}}</td>
+                    <td><button class="btn btn-warning far fa-edit" (click)="fillSelect()"
+                            (click)="loadPersona(persona)" data-toggle="modal" data-target="#editaraccion"></button>
+                    </td>
+                    <td><button class="btn btn-danger fas fa-trash-alt" (click)="eliminar(accion)"></button></td>
+                </tr>
+            </tbody>
+        </table>
 
+        <!--Editar Accion-->
 
+        <div class="modal fade" id="editaraccion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Nueva acción</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
 
-
+                            <div class="form-group">
+                                <label for="tipoaccion" class="col-form-label">Tipo de acción:</label>
+                                <select class="form-control" (change)="selectedTipoMan($event)">
+                                    <option value="0">Seleccionar...</option>
+                                    <option *ngFor="let tipoaccion of listartipoaccion"
+                                        value={{tipoaccion.id_tipo_accion}}>
+                                        {{tipoaccion.nom_tipo_accion}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-group">
+                                    <label for="name" class="col-form-label">Nombre:</label>
+                                    <input name="nom_accion" [(ngModel)]="accion.nom_accion" type="text"
+                                        class="form-control">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="button" (click)="guardaraccion()" class="btn btn-info"
+                            data-dismiss="modal">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
 </div>

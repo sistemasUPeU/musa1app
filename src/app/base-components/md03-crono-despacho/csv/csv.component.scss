@@ -1,0 +1,84 @@
+.margin {
+    margin-top: 50px;
+}
+
+.m20 {
+    margin-top: 15px;
+}
+
+.radius {
+    border-radius: 15px;
+}
+
+.r {
+    border-radius: 25px;
+    width: 400px;
+    margin: auto;
+}
+
+.card {
+    padding: 25px;
+    border-radius: 25px;
+    background: rgba($color: #f1f1f1, $alpha: 1.0);
+    border: black;
+}
+
+footer {
+    position: fixed;
+    bottom: 10%;
+    text-align: right;
+    width: 100%;
+}
+
+.input {
+    text-align: center;
+    width: 65px;
+    height: 25px;
+    margin-left: 50px;
+    font-size: 17px;
+}
+
+.mes {
+    position: fixed;
+    right: 10%;
+    top: 100px;
+}
+
+// modal
+.a {
+    width: 150px;
+}
+
+.b {
+    width: 50px;
+}
+
+.a,
+.b {
+    height: 25px;
+    border-radius: 25px;
+    text-align: center;
+}
+
+.t {
+    text-align: center;
+}
+
+// close //
+.clos {
+    border: none;
+    background: transparent;
+    width: 25px;
+    margin-left: 97%;
+    font-size: 25px;
+}
+
+/// icon update ///
+.icon {
+    border: none;
+    background: transparent;
+}
+
+.p {
+    width: 70px;
+}

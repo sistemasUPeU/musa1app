@@ -99,11 +99,11 @@ export class ProductoComponent implements OnInit {
     })
   }
 
-  Actualizar(produ: Producto){
-    produ.id_categoria=this.selectedCategoriaUpdate;
-    produ.id_unidad_medida=this.selectedUnidadMedidaUpdate;
-    produ.id_marca=this.selectedMarcaUpdate;
-      this.service.updateProducto(produ).subscribe((data)=>{
+  Actualizar(producto: Producto){
+    producto.id_categoria=this.selectedCategoriaUpdate;
+    producto.id_unidad_medida=this.selectedUnidadMedidaUpdate;
+    producto.id_marca=this.selectedMarcaUpdate;
+      this.service.updateProducto(producto).subscribe((data)=>{
         this.prod = data;
         alert('Registro omdificado correctamente...!');
         this.ngOnInit();

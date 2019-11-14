@@ -4,7 +4,6 @@ import { AsignarBus } from 'src/app/base-models/AsignarBus';
 import { Observable } from 'rxjs';
 import { Bus } from 'src/app/base-models/Bus';
 import { Paradero } from 'src/app/base-models/Paradero';
-import {  DetalleBusGrupo } from 'src/app/base-models/DetalleBusGrupo';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +14,6 @@ export class AsignarbusService {
 
   asignarbuses= 'http://localhost:8090/asignarbus/'
   buses = 'http://localhost:8090/bus/'
-  
 
   getAsignarBus(): Observable <AsignarBus[]>{
     return this.http.get<AsignarBus[]>(this.asignarbuses +"list" );
@@ -28,8 +26,11 @@ export class AsignarbusService {
     return this.http.get<Paradero[]>(this.asignarbuses + "paradero");
 
   }
-  updateDetalleBusGrupo(detalleBusGrupo: DetalleBusGrupo ){
-    return this.http.put<DetalleBusGrupo>(this.asignarbuses + detalleBusGrupo.ID_DETALLE_BUS_GRUPO  ,detalleBusGrupo );
+  updateDetalleBusGrupo(asignarbus: AsignarBus ){
+    return this.http.put<AsignarBus>(this.asignarbuses + asignarbus.id_bus ,asignarbus );
 
-  }   
+  }
+  getfill(num: number): Observable<AsignarBus[]> {
+    return this.http.get<AsignarBus[]>(this.asignarbuses + 'fil/' + num);
+  }
 }

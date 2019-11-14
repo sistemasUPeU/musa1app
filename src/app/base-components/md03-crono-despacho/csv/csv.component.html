@@ -1,7 +1,7 @@
 <div class="container-fluid">
 
     <nav class="margin">
-        <button type="button" class="btn btn-lg btn-success radius" style="margin-right: 25px" data-toggle="modal" data-target="#exampleModal">Nuevo</button>
+        <button type="button" class="btn btn-lg btn-success radius" style="margin-right: 25px" data-toggle="modal" data-target="#exampleModal" (click)="listarmes()">Nuevo</button>
 
         <div class="mes">
             <label class="h4">mes</label>
@@ -13,78 +13,132 @@
 
             <div class="modal-content  r">
                 <div class="modal-header ">
-                    <h5 class="modal-title " id="exampleModalLabel">Configuración de grupos</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                    <form action="">
-                        <div class="row m20">
+
+                    <div class="container-fluid">
+
+                        <div class="row">
                             <div class="col-6 t">
                                 <label for="">Mes </label>
                             </div>
                             <div class="col-6">
-                                <select class="form-control a" style="height: 29px; padding: 2px; padding-left: 5px;">
-                                <option value="0">Mes</option>
-                                <option  value=""></option>
-                                </select>
+                                <select class="form-control a" style="height: 29px; padding: 2px; padding-left: 5px;" (change)="selectmes($event)">
+                                    <option value=" 0 ">Mes</option>
+                                    <option  *ngFor="let m of listmes " value="{{m.id_mes}} ">{{m.mes}}</option>
+                                    </select>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="row m20">
-                            <div class="col-6 t"><label>Grupo</label></div>
-                            <div class="col-6"><input name="numero" class="form-control b" type="text"></div>
+                </div>
+                <div class="modal-body ">
+                    <form action=" ">
+
+
+                        <div class="row m20 ">
+                            <div class="col t "><label>Periodos</label></div>
+
                         </div>
 
-                        <div class="row m20">
-                            <div class="col-6"><label>Cantidad de vehiculos</label></div>
-                            <div class="col-6"><input name="cantidad_buses" class="form-control b" type="text"></div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-6 t m20"><label>Hora Inicio</label></div>
-                            <div class="col-6">
-                                <div class="form-inline">
-                                    <div>
-                                        <small id="emailHelp" class="form-text text-muted">Hora</small>
-                                        <select class="form-control b" style="padding: 2px;padding-left: 5px; height: 25px;">
-                                            <option  value="{{00}}" >00</option>            
-                                            <option  ></option>
-                                        </select>
-                                    </div>
-
-                                    <div>
-                                        <small id="emailHelp" class="form-text text-muted">Minuto</small>
-                                        <select class="form-control b" style="padding: 1px; padding-left: 7px; height: 25px; margin-left: 10px;">
-                                                    <option ></option>
-                                            </select>
-
-                                    </div>
-                                </div>
+                        <div class="row m20 " *ngFor="let p of listperi ">
+                            <div class="col-6 t "><label>Periodo {{p.id_periodo}}</label></div>
+                            <div class="col-4 ">
+                                <input name="cantidad_buses " id="{{p.id_periodo}}" class="form-control b p " type="text " value={{p.nombre_periodo}}>
+                            </div>
+                            <div class="col-2 ">
+                                <button class="icon "><i class="fa fa-pencil-square-o " aria-hidden="true " (click)="edit(p) "></i></button>
 
 
                             </div>
+
                         </div>
 
 
-                        <div class="row m20">
-                            <div class="col-6 t"><label>Intervalo</label></div>
-                            <div class="col-6"><input name="intervalo" class="form-control b" type="text"></div>
-                        </div>
 
 
 
                     </form>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-success" data-dismiss="modal">Guardar</button>
+                <div class="modal-footer ">
+                    <button type="button " class="btn btn-secondary " data-dismiss="modal">Cerrar</button>
+                    <button type="button " class="btn btn-success " data-dismiss="modal " (click)="Guardar() ">Guardar</button>
                 </div>
             </div>
         </div>
     </div>
 
+
+    <div class="container margin ">
+
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <table class="table " style="background: lightgray ">
+                        <thead>
+                            <tr>
+                                <th scope="col ">Grupos</th>
+                                <th scope="col ">Orden</th>
+                                <th scope="col ">Hora</th>
+                                <th scope="col ">Periodo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th rowspan="5 ">1</th>
+                                <td>1</td>
+                                <td>10:20</td>
+                                <td>103</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                    <div>
+
+                        <p> Paradero 1</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <table class="table " style="background: lightgray ">
+                        <thead>
+                            <tr>
+                                <th scope="col ">Grupos</th>
+                                <th scope="col ">Orden</th>
+                                <th scope="col ">Hora</th>
+                                <th scope="col ">Periodo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th rowspan="5 ">1</th>
+                                <td>1</td>
+                                <td>10:20</td>
+                                <td>103</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                    <div>
+
+                        <p> Paradero 1</p>
+                    </div>
+                </div>
+
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+
+
+
+    </div>
 
 
 

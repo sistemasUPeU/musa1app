@@ -21,18 +21,14 @@ import { UnidadMedida } from '../base-models/UnidadMedida';
 import { TipoAccion } from '../base-models/TipoAccion';
 import { Rol } from '../base-models/Rol';
 import { UsuarioRol } from '../base-models/UsuarioRol';
-
+import { Placa } from '../base-models/Placa'
 import { DetallePedido } from "../base-models/DetallePedido";
 import { Pedido } from '../base-models/Pedido';
 import { Padron } from '../base-models/Padron';
 import { RevisionTecnica } from '../base-models/RevisionTecnica';
 import { Opcion } from '../base-models/Opcion';
-<<<<<<< HEAD
-import { Placa } from '../base-models/Placa';
-=======
 import { Accion } from '../base-models/Accion';
 import { Empresa } from '../base-models/Empresa';
->>>>>>> f55927bd6cc8ca2120a28582ac98bc6c088785e9
 
 
 
@@ -60,7 +56,7 @@ export class ServiceService {
   tipoaccion='http://localhost:8090/tipo_accion/'
   accion= 'http://localhost:8090/accion/'
   empresa= 'http://localhost:8090/empresa/'
-  val2= 'http://localhost:8090/mantenimiento/hola/bb'
+  val3= 'http://localhost:8090/mantenimiento/'
   pedido='http://localhost:8090/detalle_pedido/'
   pedidox = 'http://localhost:8090/pedido/'
   revitecnicas= 'http://localhost:8090/revisiontecnica/'
@@ -142,6 +138,9 @@ export class ServiceService {
   }
   createUsuario(usuario: Usuario) {
     return this.http.post<Usuario>(this.seguridad+'add',usuario);
+  }
+  updatePass(usuario: Usuario) {
+    return this.http.put<Usuario>(this.seguridad+'updatePass',usuario);
   }
   validarUsuario(usuario: Usuario){
     return this.http.post<Usuario>(this.seguridad+'validar',usuario).pipe(map(data => {
@@ -369,8 +368,16 @@ export class ServiceService {
     return this.http.delete<Empresa>(this.empresa + empresa.id_empresa)
   }
     //------------Segunda validacion---------------//
-  getval2(){
-    return this.http.get<Mantenimiento[]>(this.val2)
+  
+  /*getreadAllval2 de Mantenimiento_controller*/
+  getMantenimiento3(): Observable<Mantenimiento[]> {
+    return this.http.get<Mantenimiento[]>(this.val3+'/val2/3/');
+  }
+  getMantenimientoId3(idmantenimiento: number): Observable<Mantenimiento[]> {
+    return this.http.get<Mantenimiento[]>(this.val3 + idmantenimiento);
+  }
+  updateValidar3(mantenimiento3: Mantenimiento){
+    return this.http.put<Mantenimiento>(this.val3 + 'estado_1/', mantenimiento3);
   }
 
   //----------REVISIONES TECNICAS-----------//

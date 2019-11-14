@@ -7,7 +7,7 @@
         <div class="modal-content">
             <!-- HEADER -->
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Agregar vinculacion</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Agregar vinculación</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="accionModalCancelar()">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -27,9 +27,9 @@
                         <div class="form-group">
                             <div class="card">
                                 <div class="card-body">
-                                    <h5>Vinculacion</h5>
+                                    <h5>Vinculación</h5>
                                     <div class="form-group">
-                                        <label for="example-date-input" class="">F. Emision: </label>
+                                        <label for="example-date-input" class="">F. Emisión: </label>
                                         <div class="">
                                             <input [(ngModel)]="vinculacion_modal.f_emision" class="form-control" type="date" value="" id="example-date-input">
                                         </div>
@@ -80,7 +80,7 @@
                                     <label for="" class="col-sm-8 col-form-label">{{ bus_modal.placa }}</label>
                                 </div>
                                 <div class="row">
-                                    <label for="" class="col-sm-4 col-form-label">Padron: </label>
+                                    <label for="" class="col-sm-4 col-form-label">Padrón: </label>
                                     <label for="" class="col-sm-8 col-form-label">{{ bus_modal.padron }}</label>
                                 </div>
                                 <div class="row">
@@ -100,7 +100,7 @@
                 </div>
                 <div class="form-group">
                     <div class="card">
-                        <div class="card-header">Requisitos para la vinculacion</div>
+                        <div class="card-header">Requisitos para la vinculación</div>
                         <div class="card-body">
                             <table class="table table-borderless">
                                 <thead>
@@ -190,7 +190,9 @@
 <!-- FIN MODAL CONFIRMACION -->
 
 <div class="container">
-    <h1>Vinculacion Bus</h1>
+    <br>
+    
+    <h1>Vinculación Bus</h1>
 
     <hr>
 
@@ -198,11 +200,11 @@
     <div class="row">
         <div class="form-group col-md-3">
             <button class="btn btn-sm btn-secondary" data-toggle="modal" data-target=".modal-agregar-vinculacion" (click)="cambiarModoModal('crear')">
-                <i class="far fa-file"></i> Agregar vinculacion
+                <i class="far fa-file"></i> Agregar vinculación
             </button>
         </div>
         <div class="col-md-3 float-right">
-            <label for="" class=" col-form-label float-md-right">Buscar vinculacion:</label>
+            <label for="" class=" col-form-label float-md-right">Buscar vinculación:</label>
         </div>
         <div class="col-md-6">
             <div class="input-group mb-3">
@@ -227,7 +229,7 @@
                     <th>Placa</th>
                     <th>Celular</th>
                     <th>Requisitos</th>
-                    <th>Fecha Emision</th>
+                    <th>Fecha Emisión</th>
                     <th>Fecha Termino</th>
                     <th colspan="2">Opciones</th>
                 </tr>
