@@ -11,6 +11,8 @@ import { FilterBusPipe} from 'src/app/Search/filter-bus.pipe';
 import { SoaTarjeCirComponent } from './soa-tarje-cir/soa-tarje-cir.component';
 
 
+
+
  
 @NgModule({
   declarations: [RequisitoComponent, BusesComponent, CursoComponent, ClickOutsideDirective2,FilterBusPipe, SoaTarjeCirComponent],

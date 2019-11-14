@@ -52,7 +52,7 @@
      <div class="row">
         <div class="col col-xl-6 col-lg-12">
             <div class="mb-3">
-              <label for="marc" class="col-form-label">Ingrese url1:</label>
+              <label for="marc" class="col-form-label">Iniciar Sesion:</label>
             </div>
             <div class="mb-3">
               <label for="marc" class="col-form-label">Ingrese url2:</label>
@@ -61,17 +61,13 @@
           <div class="col col-xl-6 col-lg-12">
             <div class="mb-3">
                 <div>
-                    <button id="login">
+                    <button id="login" class="btn btn-primary">
                         Upload Files to Drive
                     </button>
                 </div> 
             </div>
             <div class="mb-3">
-                <div>
-                    <button id="login">
-                        Upload Files to Drive
-                    </button>
-                </div> 
+               
             </div>
           </div>
       </div>
@@ -83,6 +79,16 @@
     </form>
 </div>
 
-
+<div>
+  <input id="files" type="file" name="files[]" multiple/>
+     <button id="upload">Upload</button>
+    <div id="progress-wrp">
+        <div class="progress-bar"></div>
+        <div class="status">0%</div>
+    </div>
+  </div> 
+<div id="result">
+       
+</div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
