@@ -41,7 +41,7 @@
 
 
                   <div class="form-group" style="margin-left:15px;">
-                    <label for="tipodoc" class="col-form-label">Tipo de Documento:</label>
+                    <label for="tipodoc" class="col-form-label">Tipo de Mantenimiento:</label>
                     <select class="form-control" (change)="selectTipoMantenimiento($event)" style="width:325px;">
                       <option value="0">Seleccionar...</option>
                       <option *ngFor="let tipomant of listTipoMantenimiento" value={{tipomant.id_tipo_mantenimiento}}>

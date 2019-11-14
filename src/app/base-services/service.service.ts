@@ -21,7 +21,7 @@ import { UnidadMedida } from '../base-models/UnidadMedida';
 import { TipoAccion } from '../base-models/TipoAccion';
 import { Rol } from '../base-models/Rol';
 import { UsuarioRol } from '../base-models/UsuarioRol';
-
+import { Placa } from '../base-models/Placa'
 import { DetallePedido } from "../base-models/DetallePedido";
 import { Pedido } from '../base-models/Pedido';
 import { Padron } from '../base-models/Padron';
@@ -58,6 +58,7 @@ export class ServiceService {
   empresa= 'http://localhost:8090/empresa/'
   val2= 'http://localhost:8090/mantenimiento/hola/bb'
   pedido='http://localhost:8090/detalle_pedido/'
+  pedidox = 'http://localhost:8090/pedido/'
   revitecnicas= 'http://localhost:8090/revisiontecnica/'
 
   mantenimiento2 = 'http://localhost:8090/mantenimiento/'
@@ -194,16 +195,11 @@ export class ServiceService {
     getDetallePedido(id_pedido: Pedido): Observable<DetallePedido[]> {
       return this.http.get<DetallePedido[]>(this.pedido+id_pedido )
     }
-    updateStatus(pedido: Pedido){
-      return this.http.put<Pedido>(this.pedido + 'status/' + pedido.id_pedido, pedido);
-
+    updateStatus(pedido2: Pedido){
+      return this.http.put<Pedido>(this.pedidox + 'status/', pedido2);
     } 
-    updatePedido(pedido: Pedido){
-      return this.http.get<DetallePedido[]>(this.pedido )
-
-    } 
-
-
+  
+   
 
 
 
@@ -247,6 +243,10 @@ export class ServiceService {
 
       updateDetalleMantenimiento(detallemant: DetalleMantenimiento){
         return this.http.put<Mantenimiento>(this.mantenimiento + 'accion/', detallemant);
+      }
+
+      updateValidar(mant: Mantenimiento){
+        return this.http.put<Mantenimiento>(this.mantenimiento2 + 'estado_1/', mant);
       }
       
       // ----- MANTENIMIENTO ---- //
@@ -374,6 +374,24 @@ export class ServiceService {
     return this.http.get<RevisionTecnica[]>(this.revitecnicas);
   }
 
+  getObteneridplaca( placa: String): Observable<Placa[]>{
+    return this.http.get<Placa[]>(this.revitecnicas + 'bus/' + placa)
+  }
+
+  createRevisionTecnica(revitecnicas: RevisionTecnica){
+    return this.http.post<RevisionTecnica>(this.revitecnicas + 'add',revitecnicas);
+  }
   
+  getRevisionTecnicaId(idrevisiontecnica: number): Observable<RevisionTecnica[]>{
+    return this.http.get<RevisionTecnica[]>(this.revitecnicas + idrevisiontecnica);
+  }
+
+  updateRevisionTecnica(revisionestecnicas: RevisionTecnica){
+    return this.http.put<RevisionTecnica>(this.revitecnicas + revisionestecnicas.id_revision_tecnica, revisionestecnicas);
+  }
+
+  deleteRevisionTecnica(revitecnicas: RevisionTecnica){
+    return this.http.delete<RevisionTecnica>(this.revitecnicas + revitecnicas.id_revision_tecnica);
+  }
 
 }

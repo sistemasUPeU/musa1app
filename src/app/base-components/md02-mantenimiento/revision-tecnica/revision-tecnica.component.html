@@ -5,7 +5,7 @@
     <FONT FACE="courier" SIZE=10 style="margin-left:50px;">REVISIONES TÉCNICAS</FONT>
     
 
-    <img src="assets/images/revision_tecnica.logo.png"  style="margin-left:500px;"id="imgRedonda"/>
+    <img src="assets/images/revision_tecnica.logo.png"  style="margin-left:200px;"id="imgRedonda"/>
     
     <br>
     <br>
@@ -42,33 +42,33 @@
 
               <div class="row">
                 <div class="col">
-                  <label for="name" class="col-form-label">Placa de Bus:</label>
-                  <input name="placa" type="text" class="form-control">
+                  <label for="placa" class="col-form-label">Placa de Bus:</label>
+                  <input [(ngModel)]="placa" name="placa" type="text" class="form-control">
                   <br>
                   <div class="form-group">
                       <label for="example-date-input" class="">Fecha Revisión: </label>
                       <div class="">
-                          <input  class="form-control" type="date" value="" id="example-date-input">
+                          <input [(ngModel)]="revisiones.fecha" class="form-control" type="date" value="" id="example-date-input">
                       </div>
                   </div>
                   <br>
-                  <label for="exampleFormControlSelect1">Resultado:</label>
-                  <input name="resultado" type="text" class="form-control">
+                  <label for="resultado">Resultado:</label>
+                  <input [(ngModel)]="revisiones.resultado_inspeccion" name="resultado" type="text" class="form-control">
                 </div>
 
                 <div class="col">
                   <label for="name" class="col-form-label">Empresa:</label>
-                  <input name="empresa" type="text" class="form-control">
+                  <input [(ngModel)]="revisiones.empresa_de_revision" name="empresa" type="text" class="form-control">
                   <br>
                   <div class="form-group">
                       <label for="example-date-input" class="">Fecha Vigencia: </label>
                       <div class="">
-                          <input  class="form-control" type="date" value="" id="example-date-input">
+                          <input [(ngModel)]="revisiones.fecha_vigencia" class="form-control" type="date" value="" id="example-date-input">
                       </div>
                   </div>
                   <br>
-                  <label for="exampleFormControlSelect1">Observaciones:</label>
-                  <input name="resultado" type="text" class="form-control">
+                  <label for="observaciones">Observaciones:</label>
+                  <input [(ngModel)]="revisiones.observacion" name="observaciones" type="text" class="form-control">
                 </div>
 
               </div>
@@ -76,12 +76,13 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="getidplaca(placa)">Guardar</button>
           </div>
         </div>
       </div>
     </div>
    <!----------listar tabla---------->
+   <div>
     <table class="table table-hover" id="tablarevisiones">
         <thead>
           <tr>
@@ -92,24 +93,27 @@
               <th scope="col">Bus</th>
               <th scope="col">Resultado</th>
               <th scope="col">Imagen</th>
+              <th scope="col">Detalle</th>
               <th colspan="2">Opción</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let revisiontecnica of listRevisionTecnica,let i = index">
+            <tr *ngFor="let   revisiontecnica of listRevisionTecnica,let i = index">
                 <td>{{i+1}}</td>
                 <td>{{revisiontecnica.fecha}}</td>
                 <td>{{revisiontecnica.empresa_de_revision}}</td>
                 <td>{{revisiontecnica.fecha_vigencia}}</td>
                 <td>{{revisiontecnica.id_bus}}</td>
                 <td>{{revisiontecnica.resultado_inspeccion}}</td>
-                <td>{{revisiontecnica.url}}</td>
-                <td><button class="btn btn-warning far fa-edit"
-                      data-toggle="modal" data-target="#modal"></button></td>
-                <td><button class="btn btn-danger fas fa-trash-alt" (click)="Eliminar(revisiontecnica)"></button></td>
+                <td><button class="btn btn-success"><i class="fas fa-camera"></i></button></td>
+                <td><button class="btn btn-info fa fa-eye"  data-toggle="modal" data-target="#detallerevision"></button></td>
+                
+                <td><button class="btn btn-warning far fa-edit" data-toggle="modal" (click)="loadRevisionTecnica(revisiontecnica)" data-target="#updaterevision"></button></td>
+                <td><button class="btn btn-danger fas fa-trash-alt" (click)="EliminarRev(revisiontecnica)"></button></td>
              </tr>
         </tbody>
       </table>
+  </div>
   </div>
 </div>
 
@@ -117,4 +121,102 @@
 <!----------------MODAL DE AGREGAR----->
 
 
-   
+<!--Update modal-->
+
+<div class="modal fade bd-example-modal-lg" id="updaterevision" tabindex="-1" role="dialog"
+      aria-labelledby="myLargeModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content"  *ngFor="let revision of loadRevisionTecnicaData">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Registrar Revisiones Técnicas </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="container-fluid">
+
+              <div class="row">
+                <div class="col">
+                  <label for="placa" class="col-form-label">Placa de Bus:</label>
+                  <input [(ngModel)]="revision.placa" name="placa" type="text" class="form-control">
+                  <br>
+                  <div class="form-group">
+                      <label for="example-date-input" class="">Fecha Revisión: </label>
+                      <div class="">
+                          <input [(ngModel)]="revision.fecha" class="form-control" type="date" value="" id="example-date-input">
+                      </div>
+                  </div>
+                  <br>
+                  <label for="resultado">Resultado:</label>
+                  <input [(ngModel)]="revision.resultado_inspeccion" name="resultado" type="text" class="form-control">
+                </div>
+
+                <div class="col">
+                  <label for="name" class="col-form-label">Empresa:</label>
+                  <input [(ngModel)]="revision.empresa_de_revision" name="empresa" type="text" class="form-control">
+                  <br>
+                  <div class="form-group">
+                      <label for="example-date-input" class="">Fecha Vigencia: </label>
+                      <div class="">
+                          <input [(ngModel)]="revision.fecha_vigencia" class="form-control" type="date" value="" id="example-date-input">
+                      </div>
+                  </div>
+                  <br>
+                  <label for="observaciones">Observaciones:</label>
+                  <input [(ngModel)]="revision.observacion" name="observaciones" type="text" class="form-control">
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="ActualizarRev(revision)" >Guardar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-------------Detalle-------------------->
+
+    <div class="modal fade bd-example-modal-lg" id="detallerevision" tabindex="-1" role="dialog"
+      aria-labelledby="myLargeModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content"  *ngFor="let revisiones of loadRevisionTecnicaData">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Registrar Revisiones Técnicas </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="container-fluid">
+
+              <div class="row">
+                <div class="col">
+                  <label for="" >Placa de Bus: {{revisiones.placa}}</label>
+                  <hr>
+                  <label for="" >Fecha Revision: {{revisiones.fecha}}</label>
+                  <hr>
+                  <label for="" >Resultado: {{revisiones.resultado_inspeccion}}</label>
+                  <hr>
+                
+                <div class="col">
+                  <label for="" >Empresa: {{revisiones.empresa_de_revision}}</label>
+                  <hr>
+                  <label for="" >Fecha Vigencia: {{revisiones.fecha_vigencia}}</label>
+                  <hr>
+                  <label for="" >Observaciones: {{revisiones.observacion}}</label>
+                  <hr>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>

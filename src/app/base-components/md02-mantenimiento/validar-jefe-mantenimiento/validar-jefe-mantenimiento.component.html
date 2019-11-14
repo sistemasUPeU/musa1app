@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-xl-12">
       <h1 class="page-header">
-          MANTENIMIENTOS REALIZADOS
+        MANTENIMIENTOS REALIZADOS
       </h1>
       <br><br>
       <!-- TABLA LISTAR-->
@@ -26,24 +26,27 @@
             </tr>
           </thead>
           <tbody>
-            <tr  *ngFor="let mant of listMantenimiento, let i = index">
+            <tr *ngFor="let mant of listMantenimiento, let i = index">
               <th>{{i+1}}</th>
               <td>{{mant.placa}}</td>
               <td>{{mant.padron}}</td>
               <td>{{mant.fecha}}</td>
               <td>{{mant.observacion}}</td>
-              <td><button  (click)="listardetalle_mant(mant.id_mantenimiento)" type="button" class="btn btn-secondary fa fa-eye"
-                data-toggle="modal" data-target="#exampleModal"></button></td>
-              <td><button  type="button" class="btn btn-info far fa-check-circle" data-toggle="modal" data-target="#confirmautorizar"> </button></td>  
-              <td><button  type="button" class="btn btn-danger fa fa-stop-circle" data-toggle="modal" data-target="#confirmdenegar"> </button></td>       
+              <td><button (click)="listardetalle_mant(mant.id_mantenimiento)" type="button"
+                  class="btn btn-secondary fa fa-eye" data-toggle="modal"
+                  data-target="#exampleModal"></button></td>
+              <td><button type="button" class="btn btn-info far fa-check-circle" data-toggle="modal"
+                  data-target="#confirmautorizar" (click)="loadMantenimientoUpdate_Positivo(mant)"> </button></td>
+              <td><button type="button" class="btn btn-danger fa fa-stop-circle" data-toggle="modal"
+                  data-target="#confirmdenegar" (click)="loadMantenimientoUpdate_Negativo(mant)"> </button></td>
             </tr>
           </tbody>
         </table>
-    </div>
+      </div>
 
 
-        <!-- MODAL DETALLE PEDIDO-->
-        <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog"
+      <!-- MODAL DETALLE PEDIDO-->
+      <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog"
         aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
           <div class="modal-content">
@@ -53,7 +56,7 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-  
+
             <div class="modal-body">
               <table class="table">
                 <thead class="thead-light">
@@ -71,57 +74,56 @@
                 </thead>
                 <tbody>
                   <tr *ngFor="let detalle_mantenimiento of listDetalleMantenimiento, let i = index">
-                      <th>{{i+1}}</th>
+                    <th>{{i+1}}</th>
                     <td>{{detalle_mantenimiento.nom_tipo_accion}}</td>
-                    <td>{{detalle_mantenimiento.nom_accion}}</td>    
+                    <td>{{detalle_mantenimiento.nom_accion}}</td>
+                    <td>{{detalle_mantenimiento.revision}}</td>
                   </tr>
                 </tbody>
               </table>
             </div>
-  
+
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-              <button type="button" class="btn btn-primary" data-dismiss="modal">Guardar</button>
             </div>
           </div>
         </div>
       </div>
 
 
-    <!-- MODAL DENEGAR PEDIDO-->
-    <div class="modal fade" id="confirmdenegar" aria-hidden="true">
-      <div class="modal-dialog">
-          <div class="modal-content" >
-              <div class="modal-header">
-                  <h4 class="modal-title">Denegar</h4>
-              </div>
-              <div class="modal-body">
-                  <label>¿Estás seguro de denegar este pedido?</label>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-danger"
-                  data-dismiss="modal">Denegar</button>
-              </div>
-          </div>
-      </div>
-  </div>
-  <!-- MODAL AUTORIZAR PEDIDO-->
-  <div class="modal fade" id="confirmautorizar" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content" >
+      <!-- MODAL DENEGAR PEDIDO-->
+      <div class="modal fade" id="confirmdenegarx" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Autorizar</h4>
+              <h4 class="modal-title">Denegar</h4>
             </div>
             <div class="modal-body">
-                <label >¿Estás seguro de autorizar este pedido? </label>
+              <label>¿Estás seguro de denegar este pedido?</label>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal" >Cerrar</button>
-              <button type="button" class="btn btn-primary"
-                data-dismiss="modal">Autorizar</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Denegar</button>
             </div>
+          </div>
         </div>
+      </div>
+      <!-- MODAL AUTORIZAR PEDIDO-->
+      <div class="modal fade" id="confirmautorizarx" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Autorizar</h4>
+            </div>
+            <div class="modal-body" >
+              <label>¿Estás seguro de autorizar este pedido? </label>
+            </div>
+            <div class="modal-footer" >
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal"
+              >Autorizar</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
-</div>
