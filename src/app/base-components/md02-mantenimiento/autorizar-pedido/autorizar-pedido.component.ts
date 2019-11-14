@@ -34,13 +34,16 @@ export class AutorizarPedidoComponent implements OnInit {
     pedi.estado=1;
     console.log(pedi.id_pedido);
     this.service.updateStatus(pedi).subscribe(data => {  
+      alert('Registro Autorizado con Éxito');
       this.ngOnInit();
+      
     })
   }
   loadPedidoUpdate_Negativo(pedi: Pedido): void {
     pedi.estado=2;
     console.log(pedi.id_pedido);
     this.service.updateStatus(pedi).subscribe(data => {  
+      alert('Registro Denegado con Éxito');
       this.ngOnInit();
     })
   }
