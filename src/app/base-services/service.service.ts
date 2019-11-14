@@ -248,6 +248,10 @@ export class ServiceService {
       updateDetalleMantenimiento(detallemant: DetalleMantenimiento){
         return this.http.put<Mantenimiento>(this.mantenimiento + 'accion/', detallemant);
       }
+
+      updateValidar(mant: Mantenimiento){
+        return this.http.put<Mantenimiento>(this.mantenimiento2 + 'estado_1/', mant);
+      }
       
       // ----- MANTENIMIENTO ---- //
 

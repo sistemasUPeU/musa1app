@@ -5,6 +5,7 @@ export class Mantenimiento {
     tipo_mantenimiento: String;
     padron: String;
     placa: String;
+    estado: number;
     id_bus: number;
     id_tipo_mantenimiento: number;
 }
