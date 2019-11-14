@@ -25,18 +25,15 @@ export class PersonaComponent implements OnInit {
   ngOnInit() {
     this.service.getPersona().subscribe((data) => {
       this.listPeople = data['pers'];
-      console.log(this.listPeople);
     })
   }
   fillSelect() {
     this.service.getTipoDocumento().subscribe((data) => {
       this.listTipoDoc = data['TIPODOC'];
-      console.log(this.listTipoDoc);
     })
   }
   Guardar() {
     this.persona.id_tipo_documento=this.selectedTipoDoc;
-    console.log(this.persona)
     this.service.createPersona(this.persona).subscribe(data =>{
       alert('Registro guardado correctamente...!');
       this.ngOnInit();
@@ -77,12 +74,10 @@ export class PersonaComponent implements OnInit {
   }
   searchPersona() {
     if(this.input!=''){
-      console.log(this.input);
       this.service.searchPersona(this.input).subscribe((data) => {
       this.searchResult = data['return']
       })
     }else{
-      console.log('Input vacio');
       this.toggleDropDownOff();
     }
   }
@@ -93,7 +88,6 @@ export class PersonaComponent implements OnInit {
     })
   }
   getTipoDoc(idtipodoc:number) {
-    console.log(idtipodoc)
     this.service.getTipoDocumentoId(idtipodoc).subscribe((data) => {
       this.listTipoDocId = data['TIPODOC'];
     })

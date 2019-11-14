@@ -82,7 +82,7 @@
                   </div>
                   <div class="form-group">
                       <label for="obligatorio" class="col-form-label">Obligatorio:</label>
-                      <select class="form-control" (change)="selectObligatorio($event)">
+                      <select class="form-control" (change)="selectObligatorioUpdate($event)">
                         <option value="2">Seleccionar...</option>
                         <option value="1">Si</option>
                         <option value="0">No</option>
@@ -116,10 +116,27 @@
             <td>{{requisito.id_tipo_requisito}}</td>
             <td>{{requisito.obligatorio}}</td>
             <td><button class="btn btn-warning far fa-edit" (click)="fillSelect()" (click)="loadRequisito(requisito)" data-toggle="modal" data-target="#editreqmodal" ></button></td>
-            <td><button class="btn btn-danger fas fa-trash-alt" (click)="Eliminar(requisito)"></button></td>
+            <td><button class="btn btn-danger fas fa-trash-alt" (click)="loadRequisito(requisito)" data-toggle="modal" data-target="#confirmdelete"></button></td>
           </tr>
         </tbody>
       </table>
+      <div class="modal fade" id="confirmdelete" aria-hidden="true">
+          <div class="modal-dialog">
+              <div class="modal-content" *ngFor="let requisito of loadReqData">
+                  <div class="modal-header">
+                      <h4 class="modal-title" style="color: red;">Eliminar Requisito {{requisito.nombre_requisito}}</h4>
+                  </div>
+                  <div class="modal-body">
+                      <label>¿Estás seguro de eliminar el registro?</label>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="button" (click)="Eliminar(requisito)" class="btn btn-danger"
+                      data-dismiss="modal">Eliminar</button>
+                  </div>
+              </div>
+          </div>
+        </div>
     </div>
   </div>
   

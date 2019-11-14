@@ -113,7 +113,7 @@
                               </div>
                               <div class="form-group">
                                   <div class="input-group datepicker-input">
-                                      <label for="apemat" class="col-form-label">Fecha de Inicio:</label>
+                                      <label for="apemat" class="col-form-label">Fecha de Fin:</label>
                                       <input class="form-control" placeholder="yyyy-mm-dd"
                                           name="dpf" [(ngModel)]="fecha_f" ngbDatepicker #df="ngbDatepicker" >
                                       <button class="input-group-addon" (click)="df.toggle()" type="button">
@@ -154,7 +154,7 @@
                   </div>
                   <div class="form-group">
                       <div class="input-group datepicker-input">
-                          <label for="apemat" class="col-form-label">Fecha de Inicio:</label>
+                          <label for="apemat" class="col-form-label">Fecha de Emisión:</label>
                           <input class="form-control" placeholder="yyyy-mm-dd"
                               name="dpi" [(ngModel)]="fecha_emision" ngbDatepicker #di="ngbDatepicker" >
                           <button class="input-group-addon" (click)="di.toggle()" type="button">
@@ -164,7 +164,7 @@
                   </div>
                   <div class="form-group">
                       <div class="input-group datepicker-input">
-                          <label for="apemat" class="col-form-label">Fecha de Inicio:</label>
+                          <label for="apemat" class="col-form-label">Fecha de Vencimiento:</label>
                           <input class="form-control" placeholder="yyyy-mm-dd"
                               name="dpf" [(ngModel)]="fecha_caducidad" ngbDatepicker #df="ngbDatepicker" >
                           <button class="input-group-addon" (click)="df.toggle()" type="button">
@@ -195,7 +195,7 @@
                 <th>Fecha Fin</th>
                 <th>Estado</th>
                 <th>Codigo de Carnet</th>
-                <th colspan="2">Opcion</th>
+                <th>Opcion</th>
               </tr>
             </thead>
             <tbody>
@@ -209,7 +209,6 @@
                 <td>{{cursoConductor.estado}}</td>
                 <td>{{cursoConductor.carnet_c}}</td>
                 <td><button class="btn btn-warning far fa-edit" (click)="loadCursoConductor(cursoConductor)" data-toggle="modal" data-target="#editcursomodal" ></button></td>
-                <td><button class="btn btn-danger fas fa-trash-alt" (click)="Eliminar(cursoConductor)"></button></td>
               </tr>
             </tbody>
           </table>
@@ -226,7 +225,7 @@
                 <th>Fecha Fin</th>
                 <th>Estado</th>
                 <th>Codigo de Carnet</th>
-                <th colspan="2">Opcion</th>
+                <th>Opcion</th>
               </tr>
             </thead>
             <tbody>
@@ -240,7 +239,6 @@
                 <td>{{cursoConductor.estado}}</td>
                 <td>{{cursoConductor.carnet_c}}</td>
                 <td><button class="btn btn-warning far fa-edit" (click)="loadCursoConductor(cursoConductor)" data-toggle="modal" data-target="#editcursomodal" ></button></td>
-                <td><button class="btn btn-danger fas fa-trash-alt" (click)="Eliminar(cursoConductor)"></button></td>
               </tr>
             </tbody>
           </table>
