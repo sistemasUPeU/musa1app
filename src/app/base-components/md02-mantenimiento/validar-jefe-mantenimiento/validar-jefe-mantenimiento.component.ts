@@ -34,6 +34,7 @@ export class ValidarJefeMantenimientoComponent implements OnInit {
     manteni.estado=2;
     console.log(manteni.id_mantenimiento);
     this.service.updateValidar(manteni).subscribe(data => {  
+      alert('Registro Autorizado con Éxito');
       console.log(data);
       this.ngOnInit();
     })
@@ -42,6 +43,7 @@ export class ValidarJefeMantenimientoComponent implements OnInit {
     manteni.estado=0;
     console.log(manteni.id_mantenimiento);
     this.service.updateValidar(manteni).subscribe(data => {  
+      alert('Registro Denegado con Éxito');
       this.ngOnInit();
     })
   }
