@@ -21,7 +21,7 @@ import { UnidadMedida } from '../base-models/UnidadMedida';
 import { TipoAccion } from '../base-models/TipoAccion';
 import { Rol } from '../base-models/Rol';
 import { UsuarioRol } from '../base-models/UsuarioRol';
-
+import { Placa } from '../base-models/Placa'
 import { DetallePedido } from "../base-models/DetallePedido";
 import { Pedido } from '../base-models/Pedido';
 import { Padron } from '../base-models/Padron';
