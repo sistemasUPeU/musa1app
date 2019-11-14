@@ -6,6 +6,7 @@ import { Mantenimiento } from 'src/app/base-models/Mantenimiento';
 import {Padron} from 'src/app/base-models/Padron';
 import {DetalleMantenimiento} from 'src/app/base-models/DetalleMantenimiento';
 import {Bus} from 'src/app/base-models/Bus';
+import {DetallePedido} from 'src/app/base-models/DetallePedido';
 
 @Component({
   selector: 'app-pedido',
@@ -17,6 +18,7 @@ export class PedidoComponent implements OnInit {
   listDetalleMantenimiento: DetalleMantenimiento[] = [];
   tipomantenimiento : TipoMantenimiento = new TipoMantenimiento();
   listMantenimiento: Mantenimiento[] = [];
+  listdetalle: DetallePedido[] = [];
   listTipoMantenimiento : TipoMantenimiento [] = [];
   selectedTipoMantenimiento: number = null;
 
@@ -64,5 +66,12 @@ getid(padron: String) {
     this.listId = data['SALIDA_BUS'];
     this.Guardar();
   });
+}
+
+listardetalle(id: number){
+  console.log(id);
+  this.service.getPedidoId(id).subscribe( (data) => {
+      this.listdetalle = data['LIST_DETALLE'];
+  } );
 }
 }
