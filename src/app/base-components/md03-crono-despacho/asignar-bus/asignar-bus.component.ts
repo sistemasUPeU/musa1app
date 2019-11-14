@@ -40,12 +40,12 @@ export class AsignarBusComponent implements OnInit {
   }
   
 
-  /*onSelect(val){
+  onSelect(val){
     console.log(val);
   this.listparadero.filter(x => x.id_paradero==val);
  
   }
-*/
+
 
   /* Actualizar(pers: Persona) {
     pers.id_tipo_documento=this.selectedTipoDocUpdate;
