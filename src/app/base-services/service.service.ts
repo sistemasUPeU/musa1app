@@ -27,6 +27,8 @@ import { Pedido } from '../base-models/Pedido';
 import { Padron } from '../base-models/Padron';
 import { RevisionTecnica } from '../base-models/RevisionTecnica';
 import { Opcion } from '../base-models/Opcion';
+import { Accion } from '../base-models/Accion';
+import { Empresa } from '../base-models/Empresa';
 
 
 
@@ -52,6 +54,9 @@ export class ServiceService {
   categorias= 'http://localhost:8090/categoria/'
   unidadmedidas= 'http://localhost:8090/unidad_medida/'
   tipoaccion='http://localhost:8090/tipo_accion/'
+  accion= 'http://localhost:8090/accion/'
+  empresa= 'http://localhost:8090/empresa/'
+  val2= 'http://localhost:8090/mantenimiento/hola/bb'
   pedido='http://localhost:8090/detalle_pedido/'
   revitecnicas= 'http://localhost:8090/revisiontecnica/'
 
@@ -163,6 +168,7 @@ export class ServiceService {
     return this.http.get<TipoMantenimiento[]>(this.tipoMantenimiento);
   }
   
+  
   getTipoMantenimientoId(id_tipo_mantenimiento: number): Observable<TipoMantenimiento[]> {
     return this.http.get<TipoMantenimiento[]>(this.tipoMantenimiento+id_tipo_mantenimiento);
   }
@@ -209,6 +215,11 @@ export class ServiceService {
       getMantenimiento(): Observable<Mantenimiento[]> {
         return this.http.get<Mantenimiento[]>(this.mantenimiento);
       }
+      getMantenimiento2(): Observable<Mantenimiento[]> {
+        return this.http.get<Mantenimiento[]>(this.mantenimiento+'1/');
+      }
+
+      
       getMantenimientoId(idmantenimiento: number): Observable<Mantenimiento[]> {
         return this.http.get<Mantenimiento[]>(this.mantenimiento2 + idmantenimiento);
       }
@@ -304,9 +315,9 @@ export class ServiceService {
   //Almacen END
   }
 
-  // -- tipo de accion -- //
+  //------------Tipo_accion---------------//
 
-  getTipoAccion(){
+  getTipoAccion(): Observable<TipoAccion[]>{
     return this.http.get<TipoAccion[]>(this.tipoaccion)
   }
   getTipoAccionId(id_tipo_accion: number){
@@ -320,6 +331,42 @@ export class ServiceService {
   }
   deleteTipoAccion(tipoaccion: TipoAccion){
     return this.http.delete<TipoAccion>(this.tipoaccion + tipoaccion.id_tipo_accion)
+  }
+    //------------Accion---------------//
+  getAccion(): Observable<Accion[]>{
+    return this.http.get<Accion[]>(this.accion)
+  }
+  getAccionId(id_accion: number){
+    return this.http.get<Accion>(this.accion + id_accion)
+  }
+  createAccion(accion: Accion){
+    return this.http.post<Accion>(this.accion+"add",accion)
+  }
+  updateAccion(accion: Accion){
+    return this.http.put<Accion>(this.accion + accion.id_accion,accion)
+  }
+  deleteAccion(accion: Accion){
+    return this.http.delete<Accion>(this.accion + accion.id_accion)
+  }
+    //------------Empresa---------------//
+  getEmpresa(): Observable<Empresa[]>{
+    return this.http.get<Empresa[]>(this.empresa)
+  }
+  getEmpresaId(id_empresa: Number){
+    return this.http.get<Empresa>(this.empresa + id_empresa)
+  }
+  createEmpresa(empresa: Empresa){
+    return this.http.post<Empresa>(this.empresa+"add",empresa)
+  }
+  updateEmpresa(empresa: Empresa){
+    return this.http.put<Empresa>(this.empresa + empresa.id_empresa, empresa)
+  }
+  deleteEmpresa(empresa: Empresa){
+    return this.http.delete<Empresa>(this.empresa + empresa.id_empresa)
+  }
+    //------------Segunda validacion---------------//
+  getval2(){
+    return this.http.get<Mantenimiento[]>(this.val2)
   }
 
   //----------REVISIONES TECNICAS-----------//

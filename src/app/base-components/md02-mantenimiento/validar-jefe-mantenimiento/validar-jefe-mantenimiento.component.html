@@ -26,13 +26,14 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th>1</th>
-              <td>xxx</td>
-              <td>P-001</td>
-              <td>01-01-99</td>
-              <td>...</td>
-              <td><button (click)="listardetalle(ped.id_pedido)" type="button" class="btn btn-secondary fa fa-eye" data-toggle="modal" data-target="#exampleModal"></button></td>
+            <tr  *ngFor="let mant of listMantenimiento, let i = index">
+              <th>{{i+1}}</th>
+              <td>{{mant.placa}}</td>
+              <td>{{mant.padron}}</td>
+              <td>{{mant.fecha}}</td>
+              <td>{{mant.observacion}}</td>
+              <td><button  (click)="listardetalle_mant(mant.id_mantenimiento)" type="button" class="btn btn-secondary fa fa-eye"
+                data-toggle="modal" data-target="#exampleModal"></button></td>
               <td><button  type="button" class="btn btn-info far fa-check-circle" data-toggle="modal" data-target="#confirmautorizar"> </button></td>  
               <td><button  type="button" class="btn btn-danger fa fa-stop-circle" data-toggle="modal" data-target="#confirmdenegar"> </button></td>       
             </tr>
@@ -42,44 +43,51 @@
 
 
         <!-- MODAL DETALLE PEDIDO-->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">PRODUCTOS</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-         <!-- MODAL BODY -->
-        <div class="modal-body">
-          <table class="table">
-            <thead class="thead-light">
-              <tr>
-                <th colspan="5">LISTA DE PRODUCTOS</th>
-              </tr>
-            </thead>
-            <thead class="thead">
-              <tr>
-                <th scope="col">Producto</th>
-                <th scope="col">Cantidad</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let det of listdetalle">
-                <td>{{det.nombre_producto}}</td>
-                <td>{{det.cantidad_pedido}}</td>    
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <!-- MODAL FOOTER -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog"
+        aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Registrar Mantenimiento </h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+  
+            <div class="modal-body">
+              <table class="table">
+                <thead class="thead-light">
+                  <tr>
+                    <th colspan="5">LISTA DE ACCIONES</th>
+                  </tr>
+                </thead>
+                <thead class="thead">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Tipo Accion</th>
+                    <th scope="col">Accion</th>
+                    <th scope="col">Revisión</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let detalle_mantenimiento of listDetalleMantenimiento, let i = index">
+                      <th>{{i+1}}</th>
+                    <td>{{detalle_mantenimiento.nom_tipo_accion}}</td>
+                    <td>{{detalle_mantenimiento.nom_accion}}</td>    
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+  
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
+
+
     <!-- MODAL DENEGAR PEDIDO-->
     <div class="modal fade" id="confirmdenegar" aria-hidden="true">
       <div class="modal-dialog">
