@@ -44,7 +44,7 @@ export class ServiceService {
   buses = 'http://localhost:8090/bus/'
   requisitos = 'http://localhost:8090/requisito/'
   tipoRequisito = 'http://localhost:8090/tipoRequisito/'
-  seguridad = 'https://ec2-3-133-91-152.us-east-2.compute.amazonaws.com:8090/seguridad/'
+  seguridad = 'http://localhost:8090/seguridad/'
   opciones = 'http://localhost:8090/opcion/'
   roles = 'http://localhost:8090/rol/'
   tipoMantenimiento = 'http://localhost:8090/tipo_mantenimiento/'
@@ -168,6 +168,7 @@ export class ServiceService {
     return this.http.get<TipoMantenimiento[]>(this.tipoMantenimiento);
   }
   
+  
   getTipoMantenimientoId(id_tipo_mantenimiento: number): Observable<TipoMantenimiento[]> {
     return this.http.get<TipoMantenimiento[]>(this.tipoMantenimiento+id_tipo_mantenimiento);
   }
@@ -214,6 +215,11 @@ export class ServiceService {
       getMantenimiento(): Observable<Mantenimiento[]> {
         return this.http.get<Mantenimiento[]>(this.mantenimiento);
       }
+      getMantenimiento2(): Observable<Mantenimiento[]> {
+        return this.http.get<Mantenimiento[]>(this.mantenimiento+'1/');
+      }
+
+      
       getMantenimientoId(idmantenimiento: number): Observable<Mantenimiento[]> {
         return this.http.get<Mantenimiento[]>(this.mantenimiento2 + idmantenimiento);
       }
