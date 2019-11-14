@@ -27,12 +27,8 @@ import { Pedido } from '../base-models/Pedido';
 import { Padron } from '../base-models/Padron';
 import { RevisionTecnica } from '../base-models/RevisionTecnica';
 import { Opcion } from '../base-models/Opcion';
-<<<<<<< HEAD
-import { Placa } from '../base-models/Placa';
-=======
 import { Accion } from '../base-models/Accion';
 import { Empresa } from '../base-models/Empresa';
->>>>>>> f55927bd6cc8ca2120a28582ac98bc6c088785e9
 
 
 
