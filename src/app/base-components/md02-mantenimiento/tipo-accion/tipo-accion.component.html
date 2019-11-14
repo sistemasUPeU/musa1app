@@ -26,22 +26,37 @@
               <div class="form-group">
                 <div class="form-group">
                   <label for="name" class="col-form-label">Nombre:</label>
-                  <input name="tipo_accion" [(ngModel)]="tipoacc.tipo_accion" type="text" class="form-control">
+                  <input name="tipo_accion" [(ngModel)]="tipoaccion.nom_tipo_accion" type="text" class="form-control">
                 </div>
               </div>
             </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            <button type="button" (click)="guardartipo()"  class="btn btn-primary" data-dismiss="modal">Guardar</button>
+            <button type="button" (click)="guardartipo()" class="btn btn-primary" data-dismiss="modal">Guardar</button>
           </div>
         </div>
       </div>
     </div>
-
-
-
-
-
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Nº</th>
+          <th>NOMBRE</th>
+          <th>ESTADO</th>
+          <th colspan="2">Opcion</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let tipoaccion of listartipoaccion; let i=index">
+          <td>{{i+1}}</td>
+          <td>{{tipoaccion.nom_tipo_accion}}</td>
+          <td>{{tipoaccion.estado}}</td>
+          <td><button class="btn btn-warning far fa-edit" (click)="fillSelect()" (click)="loadPersona(persona)"
+              data-toggle="modal" data-target="#editpersonamodal"></button></td>
+          <td><button class="btn btn-danger fas fa-trash-alt" (click)="Eliminar(persona)"></button></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>

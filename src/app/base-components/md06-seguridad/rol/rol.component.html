@@ -10,6 +10,10 @@
           <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addrolmodal">
             Agregar Rol
           </button>
+          <h1></h1>
+          <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addopcionrolmodal">
+            Vincular Opciones a Rol
+          </button>
         </div>
         <div class="col-4">
             <form class="">
@@ -42,6 +46,42 @@
           </div>
         </div>
       </div>
+      <!------
+      <div class="modal fade" id="addopcionrolmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Vincular Opciones</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                      <label for="tipodoc" class="col-form-label">Rol:</label>
+                      <select class="form-control" (change)="selectRol($event)">
+                        <option value="0">Seleccionar...</option>
+                        <option *ngFor="let rol of listRoles" value={{rol.id_rol}}>{{rol.nom_rol}}</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="tipodoc" class="col-form-label">Opcion:</label>
+                        <select class="form-control" (change)="selectOpcion($event)">
+                          <option value="0">Seleccionar...</option>
+                          <option *ngFor="let opcion of listOpcion" value={{opcion.id_opcion}}>{{opcion.nom_opcion}}</option>
+                        </select>
+                      </div>
+                  </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+              <button type="button" (click)="Guardar()" class="btn btn-info" data-dismiss="modal">Guardar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      ------>
       <table class="table table-bordered">
         <thead>
           <tr>
