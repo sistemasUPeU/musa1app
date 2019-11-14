@@ -1,3 +1,103 @@
-<p>
-  empresa works!
-</p>
+<div class="row">
+  <div class="col-xl-12">
+    <h1 class="page-header">
+      Empresa
+    </h1>
+    <div class="container row">
+      <div class="col-8">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addempresa">
+          Agregar empresa
+        </button>
+      </div>
+    </div>
+    <!--Modal para agregar empresa-->
+    <div class="modal fade bd-example-modal-lg" id="addempresa" tabindex="-1" role="dialog"
+      aria-labelledby="myLargeModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Registrar Empresa </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="container-fluid">
+              <!--1 row-->
+              <div class="row">
+                <div class="col">
+                  <label for="padron" class="col-form-label">Razón social:</label>
+                  <input [(ngModel)]="padron" name="padron" type="text" class="form-control">
+                  <br>
+                </div>
+                <div class="col">
+                  <label for="padron" class="col-form-label">RUC:</label>
+                  <input [(ngModel)]="padron" name="padron" type="text" class="form-control">
+                  <br>
+                </div>
+              </div>
+              <!--1 end row-->
+
+              <!--2 row-->
+              <div class="row">
+                <div class="col">
+                  <label for="padron" class="col-form-label">Responsable social:</label>
+                  <input [(ngModel)]="padron" name="padron" type="text" class="form-control">
+                  <br>
+                </div>
+                <div class="col">
+                  <div class="form-group" style="margin-left:15px;">
+                    <label for="empresa" class="col-form-label">Ubigeo:</label>
+                    <select class="form-control" (change)="selectTipoMantenimiento($event)" style="width:325px;">
+                      <option value="0">Seleccionar...</option>
+                      <option *ngFor="let empresa of listarempresa" value={{empresa.id_empresa}}>
+                        {{empresa.tipo_mantenimiento}}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <!--2 end row-->
+
+
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" (click)="guardarempresa()"
+              data-dismiss="modal">Guardar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Modal para listar empresa-->
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Nº</th>
+          <th>Razón social</th>
+          <th>RUC</th>
+          <th>Responsable social</th>
+          <th>Ubigeo</th>
+          <th colspan="2">Opcion</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let empresa of listarempresa; let i=index">
+          <td>{{i+1}}</td>
+          <td>{{empresa.razon_social}}</td>
+          <td>{{empresa.ruc}}</td>
+          <td>{{empresa.responsable_legal}}</td>
+          <td>{{empresa.id_ubigeo}}</td>
+          <td><button class="btn btn-warning far fa-edit" (click)="fillSelect()" (click)="loadPersona(persona)"
+              data-toggle="modal" data-target="#editaraccion"></button>
+          </td>
+          <td><button class="btn btn-danger fas fa-trash-alt" (click)="eliminar(accion)"></button></td>
+        </tr>
+      </tbody>
+    </table>
+
+
+
+
+  </div>
+</div>

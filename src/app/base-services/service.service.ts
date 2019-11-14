@@ -1,11 +1,6 @@
 import { Injectable } from '@angular/core';
-<<<<<<< HEAD
-  
-import { Observable } from 'rxjs';
-=======
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, from } from 'rxjs';
->>>>>>> 1cf62d186e6fc8c26af553056dfcf7c6f0226fbb
 import { map } from 'rxjs/operators'
 
 import { Persona } from '../base-models/Persona';
@@ -31,14 +26,10 @@ import { DetallePedido } from "../base-models/DetallePedido";
 import { Pedido } from '../base-models/Pedido';
 import { Padron } from '../base-models/Padron';
 import { RevisionTecnica } from '../base-models/RevisionTecnica';
-<<<<<<< HEAD
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-=======
 import { Opcion } from '../base-models/Opcion';
 import { Accion } from '../base-models/Accion';
 import { Empresa } from '../base-models/Empresa';
 
->>>>>>> 1cf62d186e6fc8c26af553056dfcf7c6f0226fbb
 
 
 
@@ -65,7 +56,7 @@ export class ServiceService {
   tipoaccion='http://localhost:8090/tipo_accion/'
   accion= 'http://localhost:8090/accion/'
   empresa= 'http://localhost:8090/empresa/'
-  val2= 'http://localhost:8090/mantenimiento/hola/bb'
+  val3= 'http://localhost:8090/mantenimiento/'
   pedido='http://localhost:8090/detalle_pedido/'
   revitecnicas= 'http://localhost:8090/revisiontecnica/'
 
@@ -378,11 +369,16 @@ export class ServiceService {
     return this.http.delete<Empresa>(this.empresa + empresa.id_empresa)
   }
     //------------Segunda validacion---------------//
-  getval2(){
-    return this.http.get<Mantenimiento[]>(this.val2)
+  
+  /*getreadAllval2 de Mantenimiento_controller*/
+  getMantenimiento3(): Observable<Mantenimiento[]> {
+    return this.http.get<Mantenimiento[]>(this.val3+'/val2/3/');
   }
-  update_estado2(){
-
+  getMantenimientoId3(idmantenimiento: number): Observable<Mantenimiento[]> {
+    return this.http.get<Mantenimiento[]>(this.val3 + idmantenimiento);
+  }
+  updateValidar3(mantenimiento3: Mantenimiento){
+    return this.http.put<Mantenimiento>(this.val3 + 'estado_1/', mantenimiento3);
   }
 
   //----------REVISIONES TECNICAS-----------//

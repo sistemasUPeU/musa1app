@@ -1,94 +1,101 @@
-<div class="row">
-  <div class="col-xl-12">
-    <br>
-    <FONT FACE="courier" SIZE=10 style="margin-left:400px;">MANTENIMIENTO</FONT>
-    <br>
-    <br>
-    <div>
-      <h1>Lista de mantenimientos</h1>
-    </div>
-    <table class="table table-hover" id="tabla_registrar_mantenimiento">
-      <thead class="thead">
-        <tr>
-          <th>#</th>
-          <th>PLACA</th>
-          <th>PADRÓN</th>
-          <th>FECHA</th>
-          <th>OBSERVACION</th>
-          <th>VER ACCION</th>
-          <th>VALIDAR</th>
-          <th>VALIDAR JEFE DE OPERACIONES</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let mante of listamantenimiento, let i=index">
-          <th>{{i+1}}</th>
-          <td>mante.placa</td>
-          <td>mante.padron</td>
-          <td>mante.fecha</td>
-          <td>mante.observacion</td>
-          <td><button  type="button" class="btn btn-info fa fa-eye" data-toggle="modal"
-              data-target="#vermecanico"></button></td>
-          <td>
-            <div class="custom-control custom-checkbox">
-              <input type="checkbox" class="custom-control-input" id="customCheck1">
-              <label class="custom-control-label" for="customCheck1"></label>
+<div class="container">
+
+  <div class="row">
+    <div class="col-xl-12">
+      <br>
+      <FONT FACE="courier" SIZE=10 style="margin-left:400px;">MANTENIMIENTO</FONT>
+      <br>
+      <br>
+      <div>
+        <h1>Lista de mantenimientos</h1>
+      </div>
+      <table class="table table-hover" id="tabla_registrar_mantenimiento">
+        <thead class="thead">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">PLACA</th>
+            <th scope="col">PADRÓN</th>
+            <th scope="col">FECHA</th>
+            <th scope="col">OBSERVACION</th>
+            <th scope="col">VER ACCION</th>
+            <th scope="col">VALIDADO POR J.M</th>
+            <th scope="col">VALIDAR JEFE DE OPERACIONES</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let mante of listamantenimiento, let i=index">
+            <th>{{i+1}}</th>
+            <td>{{mante.placa}}</td>
+            <td>{{mante.padron}}</td>
+            <td>{{mante.fecha}}</td>
+            <td>{{mante.observacion}}</td>
+            <td><button type="button" class="btn btn-info fa fa-eye" data-toggle="modal"
+                data-target="#vermecanico"></button></td>
+
+            <td>
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="customCheck1" checked disable>
+                <label class="custom-control-label" for="customCheck1"></label>
+              </div>
+            </td>
+
+            <td><button type="button" class="btn btn-info far fa-check-circle" data-toggle="modal"
+                data-target="#confirmautorizar" (click)="loadMantenimientoUpdate_Positivo(mante)"> </button></td>
+
+            <td><button type="button" class="btn btn-danger fa fa-stop-circle" data-toggle="modal"
+                data-target="#confirmdenegar" (click)="loadMantenimientoUpdate_Negativo(mante)"> </button></td>
+          </tr>
+        </tbody>
+      </table>
+
+
+
+
+      <!--Ver validaciones del mecanico-->
+
+      <div class="modal fade bd-example-modal-lg" id="vermecanico" tabindex="-1" role="dialog"
+        aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Registrar Mantenimiento </h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+              </button>
             </div>
-          </td>
-          <td>
-            <div class="custom-control custom-checkbox">
-              <input type="checkbox" class="custom-control-input" id="customCheck1">
-              <label class="custom-control-label" for="customCheck1"></label>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+            <div class="modal-body">
+              <div class="container-fluid">
+                <!--1row-->
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group" style="margin-left:15px;">
+                      <label for="tipodoc" class="col-form-label">Tipo de Documento:</label>
+                      <select class="form-control" (change)="selectTipoMantenimiento($event)" style="width:325px;">
+                        <option value="0">Seleccionar...</option>
+                        <option *ngFor="let tipomant of listTipoMantenimiento" value={{tipomant.id_tipo_mantenimiento}}>
+                          {{tipomant.tipo_mantenimiento}}</option>
+                      </select>
+                    </div>
+                  </div>
 
-    <!--Ver validaciones del mecanico-->
-
-    <div class="modal fade bd-example-modal-lg" id="vermecanico" tabindex="-1" role="dialog"
-      aria-labelledby="myLargeModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Registrar Mantenimiento </h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-
-            </button>
-          </div>
-          <div class="modal-body">
-            <div class="container-fluid">
-
-              <div class="row">
-                <div class="col">
-                  <div class="form-group" style="margin-left:15px;">
-                    <label for="tipodoc" class="col-form-label">Tipo de Documento:</label>
-                    <select class="form-control" (change)="selectTipoMantenimiento($event)" style="width:325px;">
-                      <option value="0">Seleccionar...</option>
-                      <option *ngFor="let tipomant of listTipoMantenimiento" value={{tipomant.id_tipo_mantenimiento}}>
-                        {{tipomant.tipo_mantenimiento}}</option>
-                    </select>
+                  <div class="col">
+                    <label for="padron" class="col-form-label">Padrón:</label>
+                    <input [(ngModel)]="padron" name="padron" type="text" class="form-control">
+                    <br>
                   </div>
                 </div>
-
-                <div class="col">
-                  <label for="padron" class="col-form-label">Padrón:</label>
-                  <input [(ngModel)]="padron" name="padron" type="text" class="form-control">
-                  <br>
-                </div>
-
               </div>
             </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary" (click)="getid(padron)" data-dismiss="modal">Guardar</button>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-primary" (click)="getid(padron)"
+                data-dismiss="modal">Guardar</button>
+            </div>
           </div>
         </div>
       </div>
+
+
     </div>
-
-
   </div>
 </div>
