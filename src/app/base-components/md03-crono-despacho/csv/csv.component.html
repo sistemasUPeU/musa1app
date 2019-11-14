@@ -1,7 +1,7 @@
 <div class="container-fluid">
 
     <nav class="margin">
-        <button type="button" class="btn btn-lg btn-success radius" style="margin-right: 25px" data-toggle="modal" data-target="#exampleModal">Nuevo</button>
+        <button type="button" class="btn btn-lg btn-success radius" style="margin-right: 25px" data-toggle="modal" data-target="#exampleModal" (click)="listarmes()">Nuevo</button>
 
         <div class="mes">
             <label class="h4">mes</label>
@@ -21,31 +21,31 @@
                                 <label for="">Mes </label>
                             </div>
                             <div class="col-6">
-                                <select class="form-control a" style="height: 29px; padding: 2px; padding-left: 5px;">
-                                    <option value="0">Mes</option>
-                                    <option  value=""></option>
+                                <select class="form-control a" style="height: 29px; padding: 2px; padding-left: 5px;" (change)="selectmes($event)">
+                                    <option value=" 0 ">Mes</option>
+                                    <option  *ngFor="let m of listmes " value="{{m.id_mes}} ">{{m.mes}}</option>
                                     </select>
                             </div>
                         </div>
                     </div>
 
                 </div>
-                <div class="modal-body">
-                    <form action="">
+                <div class="modal-body ">
+                    <form action=" ">
 
 
-                        <div class="row m20">
-                            <div class="col t"><label>Periodos</label></div>
+                        <div class="row m20 ">
+                            <div class="col t "><label>Periodos</label></div>
 
                         </div>
 
-                        <div class="row m20">
-                            <div class="col-6 t"><label>Periodo</label></div>
-                            <div class="col-4">
-                                <input name="cantidad_buses" class="form-control b" type="text">
+                        <div class="row m20 " *ngFor="let p of listperi ">
+                            <div class="col-6 t "><label>Periodo {{p.id_periodo}}</label></div>
+                            <div class="col-4 ">
+                                <input name="cantidad_buses " id="{{p.id_periodo}}" class="form-control b p " type="text " value={{p.nombre_periodo}}>
                             </div>
-                            <div class="col-2">
-                                <button class="icon"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                            <div class="col-2 ">
+                                <button class="icon "><i class="fa fa-pencil-square-o " aria-hidden="true " (click)="edit(p) "></i></button>
 
 
                             </div>
@@ -58,33 +58,32 @@
 
                     </form>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-success" data-dismiss="modal">Guardar</button>
+                <div class="modal-footer ">
+                    <button type="button " class="btn btn-secondary " data-dismiss="modal">Cerrar</button>
+                    <button type="button " class="btn btn-success " data-dismiss="modal " (click)="Guardar() ">Guardar</button>
                 </div>
             </div>
         </div>
     </div>
 
 
-    <div class="container margin">
+    <div class="container margin ">
 
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-
-                    <table class="table" style="background: lightgray">
+                    <table class="table " style="background: lightgray ">
                         <thead>
                             <tr>
-                                <th scope="col">Grupos</th>
-                                <th scope="col">Orden</th>
-                                <th scope="col">Hora</th>
-                                <th scope="col">Periodo</th>
+                                <th scope="col ">Grupos</th>
+                                <th scope="col ">Orden</th>
+                                <th scope="col ">Hora</th>
+                                <th scope="col ">Periodo</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <th rowspan="5">1</th>
+                                <th rowspan="5 ">1</th>
                                 <td>1</td>
                                 <td>10:20</td>
                                 <td>103</td>
@@ -97,74 +96,22 @@
 
                         <p> Paradero 1</p>
                     </div>
-
                 </div>
                 <div class="carousel-item">
-                    <table class="table" style="background: lightgray">
+                    <table class="table " style="background: lightgray ">
                         <thead>
                             <tr>
-                                <th scope="col">Grupos</th>
-                                <th scope="col">Orden</th>
-                                <th scope="col">Hora</th>
-                                <th scope="col">Periodo</th>
-                                <th scope="col">Periodo</th>
-                                <th scope="col">Periodo</th>
-                                <th scope="col">Periodo</th>
+                                <th scope="col ">Grupos</th>
+                                <th scope="col ">Orden</th>
+                                <th scope="col ">Hora</th>
+                                <th scope="col ">Periodo</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <th>1</th>
+                                <th rowspan="5 ">1</th>
                                 <td>1</td>
                                 <td>10:20</td>
-                                <td>103</td>
-                                <td>103</td>
-                                <td>103</td>
-                                <td>103</td>
-                            </tr>
-                            <tr>
-                                <th>1</th>
-                                <td>1</td>
-                                <td>10:20</td>
-                                <td>103</td>
-                                <td>103</td>
-                                <td>103</td>
-                                <td>103</td>
-                            </tr>
-                            <tr>
-                                <th>1</th>
-                                <td>1</td>
-                                <td>10:20</td>
-                                <td>103</td>
-                                <td>103</td>
-                                <td>103</td>
-                                <td>103</td>
-                            </tr>
-                            <tr>
-                                <th>1</th>
-                                <td>1</td>
-                                <td>10:20</td>
-                                <td>103</td>
-                                <td>103</td>
-                                <td>103</td>
-                                <td>103</td>
-                            </tr>
-                            <tr>
-                                <th>1</th>
-                                <td>1</td>
-                                <td>10:20</td>
-                                <td>103</td>
-                                <td>103</td>
-                                <td>103</td>
-                                <td>103</td>
-                            </tr>
-                            <tr>
-                                <th>1</th>
-                                <td>1</td>
-                                <td>10:20</td>
-                                <td>103</td>
-                                <td>103</td>
-                                <td>103</td>
                                 <td>103</td>
                             </tr>
 
@@ -173,10 +120,8 @@
 
                     <div>
 
-                        <p> Paradero</p>
-                        <a href=""><i class="fa fa-reply" aria-hidden="true"></i></a>
+                        <p> Paradero 1</p>
                     </div>
-
                 </div>
 
             </div>
@@ -189,6 +134,7 @@
                 <span class="sr-only">Next</span>
             </a>
         </div>
+
 
 
 
