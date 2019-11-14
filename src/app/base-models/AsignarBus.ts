@@ -3,4 +3,7 @@ export class AsignarBus{
     numero:   number;
     oden:     number;
     hora_inicio:  String;
+    fijo: number;
+    id_paradero: number;
+    id_bus: number;
 }
