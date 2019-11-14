@@ -139,6 +139,9 @@ export class ServiceService {
   createUsuario(usuario: Usuario) {
     return this.http.post<Usuario>(this.seguridad+'add',usuario);
   }
+  updatePass(usuario: Usuario) {
+    return this.http.put<Usuario>(this.seguridad+'updatePass',usuario);
+  }
   validarUsuario(usuario: Usuario){
     return this.http.post<Usuario>(this.seguridad+'validar',usuario).pipe(map(data => {
       if(data['usuario'].length!=0){
