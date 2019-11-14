@@ -26,9 +26,12 @@
             <tr *ngFor="let ped of lispedi, let i = index">
               <th>{{i+1}}</th>
               <td>{{ped.fecha_pedido}}</td>
-              <td><button (click)="listardetalle(ped.id_pedido)" type="button" class="btn btn-secondary fa fa-eye" data-toggle="modal" data-target="#exampleModal"></button></td>
-              <td><button  type="button" class="btn btn-info far fa-check-circle" data-toggle="modal" data-target="#confirmautorizar"> </button></td>  
-              <td><button  type="button" class="btn btn-danger fa fa-stop-circle" data-toggle="modal" data-target="#confirmdenegar"> </button></td>       
+              <td><button (click)="listardetalle(ped.id_pedido)" type="button" 
+                class="btn btn-secondary fa fa-eye" data-toggle="modal" data-target="#exampleModal"></button></td>
+              <td><button  type="button" class="btn btn-info far fa-check-circle" data-toggle="modal" 
+                data-target="#confirmautorizar" (click)="loadPedidoUpdate_Positivo(ped)" > </button></td>  
+              <td><button  type="button" class="btn btn-danger fa fa-stop-circle" data-toggle="modal"
+                 data-target="#confirmdenegar"(click)="loadPedidoUpdate_Negativo(ped)" > </button></td>       
             </tr>
           </tbody>
         </table>
@@ -75,7 +78,7 @@
     </div>
   </div>
     <!-- MODAL DENEGAR PEDIDO-->
-    <div class="modal fade" id="confirmdenegar" aria-hidden="true">
+    <div class="modal fade" id="confirmdenegarx" aria-hidden="true">
       <div class="modal-dialog">
           <div class="modal-content" >
               <div class="modal-header">
@@ -93,7 +96,7 @@
       </div>
   </div>
   <!-- MODAL AUTORIZAR PEDIDO-->
-  <div class="modal fade" id="confirmautorizar" aria-hidden="true">
+  <div class="modal fade" id="confirmautorizarx" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content" >
             <div class="modal-header">
