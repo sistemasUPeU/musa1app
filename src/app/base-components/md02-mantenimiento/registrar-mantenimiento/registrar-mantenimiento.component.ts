@@ -78,15 +78,13 @@ export class RegistrarMantenimientoComponent implements OnInit {
   }
   loadDetalleMantenimientoBueno(detalle_mantenimiento: DetalleMantenimiento): void {
     detalle_mantenimiento.revision="Bueno"
-    this.service.updateDetalleMantenimiento(detalle_mantenimiento).subscribe(data => {
-      alert("Actualizado")
+    this.service.updateDetalleMantenimiento(detalle_mantenimiento).subscribe(data => {  
       this.ngOnInit();
     })
   }
   loadDetalleMantenimientoMalo(detalle_mantenimiento: DetalleMantenimiento): void {
     detalle_mantenimiento.revision="Malo"
     this.service.updateDetalleMantenimiento(detalle_mantenimiento).subscribe(data => {
-      alert("Actualizado")
       this.ngOnInit();
     })
   }
