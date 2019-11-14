@@ -67,6 +67,7 @@ export class ServiceService {
   empresa= 'http://localhost:8090/empresa/'
   val2= 'http://localhost:8090/mantenimiento/hola/bb'
   pedido='http://localhost:8090/detalle_pedido/'
+  pedidox = 'http://localhost:8090/pedido/'
   revitecnicas= 'http://localhost:8090/revisiontecnica/'
 
   mantenimiento2 = 'http://localhost:8090/mantenimiento/'
@@ -203,16 +204,11 @@ export class ServiceService {
     getDetallePedido(id_pedido: Pedido): Observable<DetallePedido[]> {
       return this.http.get<DetallePedido[]>(this.pedido+id_pedido )
     }
-    updateStatus(pedido: Pedido){
-      return this.http.put<Pedido>(this.pedido + 'status/' + pedido.id_pedido, pedido);
-
+    updateStatus(pedido2: Pedido){
+      return this.http.put<Pedido>(this.pedidox + 'status/', pedido2);
     } 
-    updatePedido(pedido: Pedido){
-      return this.http.get<DetallePedido[]>(this.pedido )
-
-    } 
-
-
+  
+   
 
 
 
