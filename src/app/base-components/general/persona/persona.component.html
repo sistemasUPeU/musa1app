@@ -1,5 +1,6 @@
 <div class="row">
   <div class="col-xl-12">
+    <hr>
     <h1 class="page-header">
       Persona
     </h1>
@@ -34,33 +35,35 @@
           </div>
           <div class="modal-body">
             <form>
-              <div class="form-group">
-                <label for="name" class="col-form-label">Nombre:</label>
-                <h1>{{per.nombre_persona}}</h1>
-              </div>
-              <div class="form-group">
-                <label for="apepat" class="col-form-label">Apellido Paterno:</label>
-                <h2>{{per.apellido_paterno}}</h2>
-              </div>
-              <div class="form-group">
-                <label for="apemat" class="col-form-label">Apellido Materno:</label>
-                <h2>{{per.apellido_materno}}</h2>
-              </div>
-              <div class="form-group">
-                <label for="tipodoc" class="col-form-label">Tipo de Documento:</label>
-                <h2 *ngFor="let tipodoc of listTipoDocId">{{tipodoc.NOMBRE_DOCUMENTO}}</h2>
-              </div>
-              <div class="form-group">
-                <label for="nrodoc" class="col-form-label">Numero de Documento:</label>
-                <h2>{{per.nro_documento}}</h2>
-              </div>
-              <div class="form-group">
-                <label for="cel" class="col-form-label">Celular:</label>
-                <h2>{{per.celular}}</h2>
-              </div>
+                <div class="form-group">
+                  <label for="name" class="col-form-label">Nombre:</label>
+                  <h1>{{per.nombre_persona}}</h1>
+                </div>
+                <div class="form-group">
+                  <label for="apepat" class="col-form-label">Apellido Paterno:</label>
+                  <h2>{{per.apellido_paterno}}</h2>
+                </div>
+                <div class="form-group">
+                  <label for="apemat" class="col-form-label">Apellido Materno:</label>
+                  <h2>{{per.apellido_materno}}</h2>
+                </div>
+                <div class="form-group">
+                  <label for="tipodoc" class="col-form-label">Tipo de Documento:</label>
+                  <h2 *ngFor="let tipodoc of listTipoDocId">{{tipodoc.NOMBRE_DOCUMENTO}}</h2>
+                </div>
+                <div class="form-group">
+                  <label for="nrodoc" class="col-form-label">Numero de Documento:</label>
+                  <h2>{{per.nro_documento}}</h2>
+                </div>
+                <div class="form-group">
+                  <label for="cel" class="col-form-label">Celular:</label>
+                  <h2>{{per.celular}}</h2>
+                </div>
             </form>
           </div>
           <div class="modal-footer">
+            <button class="btn btn-warning far fa-edit" (click)="fillSelect()" (click)="loadPersona(per)" data-toggle="modal" data-target="#editpersonamodal"></button>
+            <button class="btn btn-danger fas fa-trash-alt" (click)="loadPersona(per)" data-toggle="modal" data-target="#confirmdelete"></button>
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
             <button type="button" class="btn btn-info" data-dismiss="modal">Aceptar</button>
           </div>
@@ -123,7 +126,7 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content" *ngFor="let per of loadPersonaData">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Nueva Persona</h5>
+            <h5 class="modal-title" id="exampleModalLongTitle">Editar Persona</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -188,11 +191,27 @@
           <td>{{persona.id_tipo_documento}}</td>
           <td>{{persona.nro_documento}}</td>
           <td>{{persona.celular}}</td>
-          <td><button class="btn btn-warning far fa-edit" (click)="fillSelect()" (click)="loadPersona(persona)"
-              data-toggle="modal" data-target="#editpersonamodal"></button></td>
-          <td><button class="btn btn-danger fas fa-trash-alt" (click)="Eliminar(persona)"></button></td>
+          <td><button class="btn btn-warning far fa-edit" (click)="fillSelect()" (click)="loadPersona(persona)" data-toggle="modal" data-target="#editpersonamodal"></button></td>
+          <td><button class="btn btn-danger fas fa-trash-alt" (click)="loadPersona(persona)" data-toggle="modal" data-target="#confirmdelete"></button></td>
         </tr>
       </tbody>
     </table>
+    <div class="modal fade" id="confirmdelete" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" *ngFor="let persona of loadPersonaData">
+                <div class="modal-header">
+                    <h4 class="modal-title" style="color: red;">Eliminar Persona {{persona.nombre_persona}} {{persona.apellido_paterno}} {{persona.apellido_materno}}</h4>
+                </div>
+                <div class="modal-body">
+                    <label>¿Estás seguro de eliminar el registro?</label>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                  <button type="button" (click)="Eliminar(persona)" class="btn btn-danger"
+                    data-dismiss="modal">Eliminar</button>
+                </div>
+            </div>
+        </div>
+      </div>
   </div>
 </div>
