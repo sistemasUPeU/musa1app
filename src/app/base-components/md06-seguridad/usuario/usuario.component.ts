@@ -14,9 +14,12 @@ import { UsuarioRol } from 'src/app/base-models/UsuarioRol';
   styleUrls: ['./usuario.component.scss']
 })
 export class UsuarioComponent implements OnInit {
+  oldPassFail: boolean;
+  newpassConfirm: boolean;
   name: any;
   castedUser: any;
   usuario: Usuario = new Usuario();
+  usuarioUpdate: Usuario = new Usuario();
   usuarioRol: UsuarioRol = new UsuarioRol();
   persona: Persona = new Persona();
   rol: Rol = new Rol();
@@ -28,6 +31,10 @@ export class UsuarioComponent implements OnInit {
   listRol: Rol[] = [];
   contrasena:string;
   encPassword: string;  
+  oldpassreceived: string;
+  oldpass: string;
+  newpass: string;
+  confnewpass: string;
   constructor(private service: ServiceService, private router: Router,private EncrDecr: EncrDecrService) { }
 
   ngOnInit() {
@@ -77,5 +84,31 @@ export class UsuarioComponent implements OnInit {
       })
     });
   }
-
+  loadUsuario(usuario: Usuario) {
+    this.oldpassreceived=this.EncrDecr.get('123456$#@$^@1ERF', usuario.contrasena);
+    this.usuario=usuario;
+  }
+  clearUpdatePass(){
+    this.oldpass = '';
+    this.newpass = '';
+    this.confnewpass = '';
+  }
+  updatePass(oldpass:string,newpass:string,confnewpass:string,iduser:number) {
+    if(oldpass==this.oldpassreceived) {
+      this.oldPassFail=false;
+      if(confnewpass==newpass){
+        this.newpassConfirm=false;
+        this.usuarioUpdate.contrasena=this.EncrDecr.set('123456$#@$^@1ERF',confnewpass);
+        this.usuarioUpdate.id_usuario=iduser;
+        this.service.updatePass(this.usuarioUpdate).subscribe((data)=> {
+          alert('Contraseña actualizada correctamente')
+          window.location.reload();
+        })
+      }else{
+        this.newpassConfirm=true;
+      }
+    }else{
+      this.oldPassFail=true;
+    }
+  }
 }

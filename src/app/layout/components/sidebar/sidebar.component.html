@@ -38,7 +38,7 @@
                         <div class="nested-menu">
                             <a class="list-group-item" (click)="addExpandSubModulos('vinculacion')">
                                 <i class="fa fa-plus"></i>&nbsp;
-                                <span>{{ 'Vinculacion' }}</span>
+                                <span>Vinculación</span>
                             </a>
                             <li class="nested" [class.expand]="showSubModulos[0] === 'vinculacion'">
                                 <ul class="submenu">
@@ -65,7 +65,7 @@
                             <i class="fas fa-bus"></i>&nbsp;
                             <span>{{ 'Buses' }}</span>
                         </a>
-                        <a routerLink="/md01/buses" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                        <a routerLink="/md01/soat" [routerLinkActive]="['router-link-active']" class="list-group-item">
                             <i class="fa fa-user"></i>&nbsp;
                             <span>{{ 'Soat/Circulacion' }}</span>
                         </a>
@@ -158,13 +158,13 @@
                 <ul class="submenu">
                         <li>
                                 <a routerLink="/md03/asignar-bus" [routerLinkActive]="['router-link-active']" class="list-group-item">
-                                    <i class="fa fa-fw fa-edit"></i>&nbsp;
+                                    <i class="fas fa-bus"></i>&nbsp;
                                     <span>{{ 'Asignar Bus' }}</span>
                                 </a>
                             </li>
                             <li>
                                     <a routerLink="/md03/asignar-conductor" [routerLinkActive]="['router-link-active']" class="list-group-item">
-                                        <i class="fa fa-fw fa-edit"></i>&nbsp;
+                                        <i class="fas fa-user-tie"></i>&nbsp;
                                         <span>{{ 'Asignar Conductor' }}</span>
                                     </a>
                                 </li>
@@ -194,7 +194,7 @@
         </div>
         <!-- FIN MODULO 3 DESPACHO -->
         <!-- MODULO 4 VENTAS -->
-        <div class="nested-menu">
+        <!-- <div class="nested-menu">
             <a class="list-group-item" (click)="addExpandModulos('md04')">
                 <i class="fa fa-plus"></i>&nbsp;
                 <span>{{ 'MD04' | translate }}</span>
@@ -245,7 +245,7 @@
                     </li>
                 </ul>
             </li>
-        </div>
+        </div> -->
         <!-- FIN MODULO 4 VENTAS -->
         <!-- MODULO  5 ALMACEN -->
         <div class="nested-menu">
@@ -332,7 +332,7 @@
         </div>
         <!-- FIN MODULO 6 SEGURIDAD -->
         <!-- MODULO 7 REPORTES -->
-        <div class="nested-menu">
+        <!-- <div class="nested-menu">
             <a class="list-group-item" (click)="addExpandModulos('md07')">
                 <i class="fa fa-plus"></i>&nbsp;
                 <span>{{ 'MD07' | translate }}</span>
@@ -383,10 +383,10 @@
                     </li>
                 </ul>
             </li>
-        </div>
+        </div> -->
         <!-- MODULO 7 REPORTES -->
         <!-- MODULO 8 CONFIGURACION -->
-        <div class="nested-menu">
+        <!-- <div class="nested-menu">
             <a class="list-group-item" (click)="addExpandModulos('md08')">
                 <i class="fa fa-plus"></i>&nbsp;
                 <span>{{ 'MD08' | translate }}</span>
@@ -437,10 +437,10 @@
                     </li>
                 </ul>
             </li>
-        </div>
+        </div> -->
         <!-- FIN MODULO 8 CONFIGURACION -->
 
-        <div class="nested-menu">
+        <!-- <div class="nested-menu">
             <a class="list-group-item" (click)="addExpandClass('pages')">
                 <i class="fa fa-plus"></i>&nbsp;
                 <span>{{ 'Plantilla' }}</span>
@@ -491,7 +491,7 @@
                     </li>
                 </ul>
             </li>
-        </div>
+        </div> -->
     </div>
     <div class="toggle-button" [ngClass]="{collapsed: collapsed}" (click)="toggleCollapsed()">
         <i class="fa fa-fw fa-angle-double-{{collapsed?'right':'left'}}"></i>&nbsp;

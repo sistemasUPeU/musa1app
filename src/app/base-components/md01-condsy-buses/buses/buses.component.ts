@@ -19,6 +19,7 @@ export class BusesComponent implements OnInit {
   searchPerson: number = null;
   showDropDown=false;
   input:String;
+  afterestadobus: string = '0';
   bu: Bus = new Bus();
   searchResult: Persona[] = [];
   selectedPerson: number= null;
@@ -51,8 +52,11 @@ export class BusesComponent implements OnInit {
   }
   Eliminar(bus : Bus){
     console.log("estamos en el metodo eliminar = > " +bus);
-    this.service.DeleteBus(bus).subscribe((data)=>{
+    bus.estado=this.afterestadobus;
+    this.service.UpdateBus(bus,).subscribe((data)=>{
       alert("Registro eliminado correctamente");
+      this.per = data;
+      console.log("la data llego+",this.per.estado);
       this.ngOnInit();
     })
   }
@@ -87,5 +91,9 @@ export class BusesComponent implements OnInit {
       console.log(data);
       this.loadBusDataSI= data['pers'];
     })
+  }
+
+  
+  clearAdd(){
   }
 }

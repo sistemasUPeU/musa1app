@@ -8,15 +8,34 @@ import { TipoAccion } from 'src/app/base-models/TipoAccion';
   styleUrls: ['./tipo-accion.component.scss']
 })
 export class TipoAccionComponent implements OnInit {
-
-  tipoacc: TipoAccion= new TipoAccion
+  selectedTipoAccion: number=null;
+  tipoaccion: TipoAccion= new TipoAccion();
+  listartipoaccion: TipoAccion[]=[];
+  loadtipoacciondata: TipoAccion[]=[];
 
   constructor(private service: ServiceService) { }
 
   ngOnInit() {
+    this.service.getTipoAccion().subscribe(data=>{this.listartipoaccion=data['tipa']
+    console.log(this.listartipoaccion)
+  })
+
   }
   guardartipo(){
-    this.service.createTipoAccion(this.tipoacc).subscribe(data=>alert('Se ingreso correctamente'))
+    this.service.createTipoAccion(this.tipoaccion).subscribe(data=>alert('Se ingreso correctamente'))
+    console.log(this.tipoaccion)
+    this.ngOnInit();
   }
-
+  /*cargar los datos en el Modal, en el input text*/
+  loadtipoaccion(tipoaccion: TipoAccion): void{
+    this.service.getTipoAccionId(tipoaccion.id_tipo_accion).subscribe(data=>{
+      this.listartipoaccion = data['tipa'];
+    })
+  }
+  eliminar(tipoaccion: TipoAccion){
+    this.service.deleteTipoAccion(tipoaccion).subscribe(data => {
+      alert('Registro eliminado correctamente');
+      this.ngOnInit();
+    })
+  }
 }

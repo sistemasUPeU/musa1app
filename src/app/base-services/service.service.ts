@@ -21,13 +21,14 @@ import { UnidadMedida } from '../base-models/UnidadMedida';
 import { TipoAccion } from '../base-models/TipoAccion';
 import { Rol } from '../base-models/Rol';
 import { UsuarioRol } from '../base-models/UsuarioRol';
-
+import { Placa } from '../base-models/Placa'
 import { DetallePedido } from "../base-models/DetallePedido";
 import { Pedido } from '../base-models/Pedido';
 import { Padron } from '../base-models/Padron';
 import { RevisionTecnica } from '../base-models/RevisionTecnica';
 import { Opcion } from '../base-models/Opcion';
-import { Placa } from '../base-models/Placa';
+import { Accion } from '../base-models/Accion';
+import { Empresa } from '../base-models/Empresa';
 
 
 
@@ -53,7 +54,11 @@ export class ServiceService {
   categorias= 'http://localhost:8090/categoria/'
   unidadmedidas= 'http://localhost:8090/unidad_medida/'
   tipoaccion='http://localhost:8090/tipo_accion/'
+  accion= 'http://localhost:8090/accion/'
+  empresa= 'http://localhost:8090/empresa/'
+  val3= 'http://localhost:8090/mantenimiento/'
   pedido='http://localhost:8090/detalle_pedido/'
+  pedidox = 'http://localhost:8090/pedido/'
   revitecnicas= 'http://localhost:8090/revisiontecnica/'
 
   mantenimiento2 = 'http://localhost:8090/mantenimiento/'
@@ -134,6 +139,9 @@ export class ServiceService {
   createUsuario(usuario: Usuario) {
     return this.http.post<Usuario>(this.seguridad+'add',usuario);
   }
+  updatePass(usuario: Usuario) {
+    return this.http.put<Usuario>(this.seguridad+'updatePass',usuario);
+  }
   validarUsuario(usuario: Usuario){
     return this.http.post<Usuario>(this.seguridad+'validar',usuario).pipe(map(data => {
       if(data['usuario'].length!=0){
@@ -164,6 +172,7 @@ export class ServiceService {
     return this.http.get<TipoMantenimiento[]>(this.tipoMantenimiento);
   }
   
+  
   getTipoMantenimientoId(id_tipo_mantenimiento: number): Observable<TipoMantenimiento[]> {
     return this.http.get<TipoMantenimiento[]>(this.tipoMantenimiento+id_tipo_mantenimiento);
   }
@@ -189,16 +198,11 @@ export class ServiceService {
     getDetallePedido(id_pedido: Pedido): Observable<DetallePedido[]> {
       return this.http.get<DetallePedido[]>(this.pedido+id_pedido )
     }
-    updateStatus(pedido: Pedido){
-      return this.http.put<Pedido>(this.pedido + 'status/' + pedido.id_pedido, pedido);
-
+    updateStatus(pedido2: Pedido){
+      return this.http.put<Pedido>(this.pedidox + 'status/', pedido2);
     } 
-    updatePedido(pedido: Pedido){
-      return this.http.get<DetallePedido[]>(this.pedido )
-
-    } 
-
-
+  
+   
 
 
 
@@ -210,6 +214,11 @@ export class ServiceService {
       getMantenimiento(): Observable<Mantenimiento[]> {
         return this.http.get<Mantenimiento[]>(this.mantenimiento);
       }
+      getMantenimiento2(): Observable<Mantenimiento[]> {
+        return this.http.get<Mantenimiento[]>(this.mantenimiento+'1/');
+      }
+
+      
       getMantenimientoId(idmantenimiento: number): Observable<Mantenimiento[]> {
         return this.http.get<Mantenimiento[]>(this.mantenimiento2 + idmantenimiento);
       }
@@ -231,8 +240,18 @@ export class ServiceService {
       getMantenimientoId2(idmantenimiento: number): Observable<Mantenimiento[]> {
         return this.http.get<Mantenimiento[]>(this.mantenimiento + idmantenimiento);
       }
+      getDetalleMantenimientoId(iddetallemantenimiento: number): Observable<DetalleMantenimiento[]> {
+        return this.http.get<DetalleMantenimiento[]>(this.mantenimiento + iddetallemantenimiento);
+      }
 
+      updateDetalleMantenimiento(detallemant: DetalleMantenimiento){
+        return this.http.put<Mantenimiento>(this.mantenimiento + 'accion/', detallemant);
+      }
 
+      updateValidar(mant: Mantenimiento){
+        return this.http.put<Mantenimiento>(this.mantenimiento2 + 'estado_1/', mant);
+      }
+      
       // ----- MANTENIMIENTO ---- //
 
   // ----- TIPO MANTENIMIENTO  ----//
@@ -299,9 +318,9 @@ export class ServiceService {
   //Almacen END
   }
 
-  // -- tipo de accion -- //
+  //------------Tipo_accion---------------//
 
-  getTipoAccion(){
+  getTipoAccion(): Observable<TipoAccion[]>{
     return this.http.get<TipoAccion[]>(this.tipoaccion)
   }
   getTipoAccionId(id_tipo_accion: number){
@@ -315,6 +334,50 @@ export class ServiceService {
   }
   deleteTipoAccion(tipoaccion: TipoAccion){
     return this.http.delete<TipoAccion>(this.tipoaccion + tipoaccion.id_tipo_accion)
+  }
+    //------------Accion---------------//
+  getAccion(): Observable<Accion[]>{
+    return this.http.get<Accion[]>(this.accion)
+  }
+  getAccionId(id_accion: number){
+    return this.http.get<Accion>(this.accion + id_accion)
+  }
+  createAccion(accion: Accion){
+    return this.http.post<Accion>(this.accion+"add",accion)
+  }
+  updateAccion(accion: Accion){
+    return this.http.put<Accion>(this.accion + accion.id_accion,accion)
+  }
+  deleteAccion(accion: Accion){
+    return this.http.delete<Accion>(this.accion + accion.id_accion)
+  }
+    //------------Empresa---------------//
+  getEmpresa(): Observable<Empresa[]>{
+    return this.http.get<Empresa[]>(this.empresa)
+  }
+  getEmpresaId(id_empresa: Number){
+    return this.http.get<Empresa>(this.empresa + id_empresa)
+  }
+  createEmpresa(empresa: Empresa){
+    return this.http.post<Empresa>(this.empresa+"add",empresa)
+  }
+  updateEmpresa(empresa: Empresa){
+    return this.http.put<Empresa>(this.empresa + empresa.id_empresa, empresa)
+  }
+  deleteEmpresa(empresa: Empresa){
+    return this.http.delete<Empresa>(this.empresa + empresa.id_empresa)
+  }
+    //------------Segunda validacion---------------//
+  
+  /*getreadAllval2 de Mantenimiento_controller*/
+  getMantenimiento3(): Observable<Mantenimiento[]> {
+    return this.http.get<Mantenimiento[]>(this.val3+'/val2/3/');
+  }
+  getMantenimientoId3(idmantenimiento: number): Observable<Mantenimiento[]> {
+    return this.http.get<Mantenimiento[]>(this.val3 + idmantenimiento);
+  }
+  updateValidar3(mantenimiento3: Mantenimiento){
+    return this.http.put<Mantenimiento>(this.val3 + 'estado_1/', mantenimiento3);
   }
 
   //----------REVISIONES TECNICAS-----------//

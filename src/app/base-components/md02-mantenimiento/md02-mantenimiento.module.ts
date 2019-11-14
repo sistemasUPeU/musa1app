@@ -12,6 +12,7 @@ import { AutorizarPedidoComponent } from './autorizar-pedido/autorizar-pedido.co
 import { PedidoComponent } from './pedido/pedido.component';
 import { RevisiondetalleComponent } from './revisiondetalle/revisiondetalle.component';
 import { SegundaValidacionComponent } from './segunda-validacion/segunda-validacion.component';
+import { ValidarJefeMantenimientoComponent } from './validar-jefe-mantenimiento/validar-jefe-mantenimiento.component'
 
 
 
@@ -25,7 +26,8 @@ import { SegundaValidacionComponent } from './segunda-validacion/segunda-validac
     AutorizarPedidoComponent,
     PedidoComponent,
     RevisiondetalleComponent,
-    SegundaValidacionComponent],
+    SegundaValidacionComponent,
+    ValidarJefeMantenimientoComponent],
   imports: [
     CommonModule,
     Md02MantenimientoRoutingModule,

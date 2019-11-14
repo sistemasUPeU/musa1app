@@ -8,6 +8,7 @@ import { AutorizarPedidoComponent } from './autorizar-pedido/autorizar-pedido.co
 import { TipoAccionComponent } from './tipo-accion/tipo-accion.component';
 import { PedidoComponent } from './pedido/pedido.component';
 import { SegundaValidacionComponent } from './segunda-validacion/segunda-validacion.component';
+import { ValidarJefeMantenimientoComponent } from "./validar-jefe-mantenimiento/validar-jefe-mantenimiento.component";
 
 
 
@@ -20,7 +21,8 @@ const routes: Routes = [
   {path:  'autorizar-pedido', component: AutorizarPedidoComponent},
   {path:  'tipo-accion',component: TipoAccionComponent},
   {path: 'pedido', component: PedidoComponent},
-  {path: 'segunda-validacion',component: SegundaValidacionComponent}
+  {path: 'segunda-validacion',component: SegundaValidacionComponent},
+  {path:  'validar-jefe-mantenimiento',component:ValidarJefeMantenimientoComponent}
 
 ];
 

@@ -14,8 +14,12 @@ export class RolComponent implements OnInit {
   constructor(private service: ServiceService, private router: Router) { }
 
   ngOnInit() {
-    this.service.getRol().subscribe(data => {
-      this.listRoles=data['rols']
+    this.loadRol()
+  }
+  loadRol() {
+    this.service.getRol().subscribe((data) => {
+      this.listRoles = data['rols']
+      console.log(this.listRoles)
     })
   }
   Guardar() {

@@ -1,64 +1,67 @@
-
-
 <div class="filtrar pt-3 ">
 
-  <select class="browser-default custom-select col-6 col-sm-1 mr-3 ml-5">
-    <option selected></option>
-    
+    <select class="form-control  col-6 col-sm-2  para " (change)="selectnum($event)">
+        <option [value] = "0" > </option>
+        <option *ngFor="let n of this.numeroma" [value]="n">{{n}}</option>
+      
+      </select>
+
+    <select class="form-control  col-6 col-sm-2  para  " (change)="selectpa($event)">
+    <option > </option>
+    <option *ngFor="let pa of listparadero" [value]="pa.id_paradero">{{pa.paradero}}</option>  
   </select>
 
-
-  <select class="browser-default custom-select col-6 col-sm-1 ml-1  ">
-    <option selected></option>
-    <option value="1"></option>
-  
-  </select>
-
-  <button class="btn btn-btn ml-5 bot">Filtrar</button>
+    <button class="btn btn-success" (click)="filtrar()">Filtrar</button>
 </div>
 
 
 
 <div class="container pt-5">
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">GRUPO</th>
-        <th scope="col">PARADERO</th>
-        <th scope="col">ORDEN</th>
-        <th scope="col">FIJO</th>
-        <th scope="col">BUS</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr  >
-        <th scope="row"  >1</th>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td><div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-          <label class="form-check-label" for="inlineCheckbox2"></label>
-        </div></td>
-        <td >
-                <select class="form-control  col-6 col-sm-9  "  >
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">GRUPO</th>
+                <th scope="col">PARADERO</th>
+                <th scope="col">ORDEN</th>
+                <th scope="col">HORA</th>
+                <th scope="col">FIJO</th>
+                <th scope="col">BUS</th>
+                <th scope="col">OK</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let ls of Listasignarbus;let i = index">
+                <th id="row" scope="row">{{i+1}}</th>
+                <td>{{ls.numero}}</td>
+                <td>{{parade}}</td>
+                <td>{{ls.orden}}</td>
+                <td>{{ls.hora_inicio}}</td>
+                <td>
+                    <div class="form-check  " >
+                        <input  class="form-check-input"  type="checkbox" id="{{ls.id_orden_grupo}}" name="a" value="ls.Listasignarbus" >
+
+                    </div>
+                </td>
+                <td>
+                    <select class="form-control  col-6 col-sm-9 " (change)="selectbus($event)">
                     <option selected> </option>
-                    <option multiple *ngFor="let bus of listBus">{{bus.placa}}</option>
+                    <option  *ngFor="let bu of listBus" value="{{bu.id_bus}}" >{{bu.padron}}</option>
                   </select>
-           
-             </td>
-        
-      </tr>
-     
-    </tbody>
-  </table>
+
+                </td>
+                <td><button class="icon"><i class="fa fa-check" aria-hidden="true" (click)="actualizar(ls.id_orden_grupo)"></i>
+                </button> </td>
+
+            </tr>
+
+        </tbody>
+    </table>
 </div>
 
 <div class="container 2">
 
-  <button type="button" class="btn btn-btn vol ">VOLVER</button>
+    <button type="button" class="btn btn-btn vol ">VOLVER</button>
 
-  <button type="button" class="btn btn-btn gua ">GUARDAR</button>
+    <button type="button" class="btn btn-btn gua ">GUARDAR</button>
 </div>
-
