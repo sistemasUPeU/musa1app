@@ -15,7 +15,6 @@ export class AsignarbusService {
 
   asignarbuses= 'http://localhost:8090/asignarbus/'
   buses = 'http://localhost:8090/bus/'
-  
 
   getAsignarBus(): Observable <AsignarBus[]>{
     return this.http.get<AsignarBus[]>(this.asignarbuses +"list" );
@@ -31,5 +30,8 @@ export class AsignarbusService {
   updateDetalleBusGrupo(detalleBusGrupo: DetalleBusGrupo ){
     return this.http.put<DetalleBusGrupo>(this.asignarbuses + detalleBusGrupo.ID_DETALLE_BUS_GRUPO  ,detalleBusGrupo );
 
-  }   
+  }
+  getfill(num: number): Observable<AsignarBus[]> {
+    return this.http.get<AsignarBus[]>(this.asignarbuses + 'fil/' + num);
+  }
 }

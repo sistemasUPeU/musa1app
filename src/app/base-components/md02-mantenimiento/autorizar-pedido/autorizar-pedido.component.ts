@@ -13,6 +13,8 @@ export class AutorizarPedidoComponent implements OnInit {
   pedido: Pedido = new Pedido();
   listdetalle: DetallePedido[] = [];
   lispedi: Pedido[] = [];
+  loadPedido: Pedido[] = [];
+
   constructor(private service: ServiceService) { }
 
   ngOnInit() {
@@ -28,12 +30,21 @@ export class AutorizarPedidoComponent implements OnInit {
         this.listdetalle = data['LIST_DETALLE'];
     } );
   }
-
-  ActualizarPedido(pedido: Pedido){
-    this.service.updatePedido(pedido).subscribe((data) => {
-      console.log("hola");
+  loadPedidoUpdate_Positivo(pedi: Pedido): void {
+    pedi.estado=1;
+    console.log(pedi.id_pedido);
+    this.service.updateStatus(pedi).subscribe(data => {  
       this.ngOnInit();
     })
   }
+  loadPedidoUpdate_Negativo(pedi: Pedido): void {
+    pedi.estado=2;
+    console.log(pedi.id_pedido);
+    this.service.updateStatus(pedi).subscribe(data => {  
+      this.ngOnInit();
+    })
+  }
+
+  
 
 }
