@@ -19,7 +19,9 @@ export class RegistrarMantenimientoComponent implements OnInit {
   selectedTipoMantenimiento: number = null;
   bus: Bus = new Bus();
   mantenimiento: Mantenimiento = new Mantenimiento();
+  detallemantenimiento: DetalleMantenimiento = new DetalleMantenimiento();
   loadMantenimientoData: Mantenimiento[] = [];
+  loadDetalleMantenimientoData: DetalleMantenimiento[] = [];
   padron:String;
   listId: Padron[] = [];
   
@@ -65,18 +67,35 @@ export class RegistrarMantenimientoComponent implements OnInit {
       this.loadMantenimientoData = data['MANT'];
     })
   }
-  Actualizar(mant: Mantenimiento) {
-    this.service.updateMantenimiento(mant).subscribe((data) => {
-      this.mantenimiento = data;
-      alert('Observaciones Registradas Satisfactoriamente...!');
-      this.ngOnInit();
-    })
-  }
+  
+ 
 
   listardetalle_mant(id: number){
     console.log(id);
     this.service.getMantenimientoId2(id).subscribe( (data) => {
         this.listDetalleMantenimiento = data['LIST_ACCIONES_MANT'];
     } );
+  }
+  loadDetalleMantenimientoBueno(detalle_mantenimiento: DetalleMantenimiento): void {
+    detalle_mantenimiento.revision="Bueno"
+    this.service.updateDetalleMantenimiento(detalle_mantenimiento).subscribe(data => {
+      alert("Actualizado")
+      this.ngOnInit();
+    })
+  }
+  loadDetalleMantenimientoMalo(detalle_mantenimiento: DetalleMantenimiento): void {
+    detalle_mantenimiento.revision="Malo"
+    this.service.updateDetalleMantenimiento(detalle_mantenimiento).subscribe(data => {
+      alert("Actualizado")
+      this.ngOnInit();
+    })
+  }
+
+  Actualizar(mant: Mantenimiento) {
+    this.service.updateMantenimiento(mant).subscribe((data) => {
+      this.mantenimiento = data;
+      alert('Observaciones Registradas Satisfactoriamente...!');
+      this.ngOnInit();
+    })
   }
 }
