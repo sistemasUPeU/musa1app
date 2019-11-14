@@ -1,7 +1,7 @@
 export class AsignarBus{
     id_orden_grupo: number;
     numero:   number;
-    oden:     number;
+    orden:     number;
     hora_inicio:  String;
     fijo: number;
     id_paradero: number;

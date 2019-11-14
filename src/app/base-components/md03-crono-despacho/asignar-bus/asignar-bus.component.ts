@@ -28,6 +28,7 @@ export class AsignarBusComponent implements OnInit {
   numeroma: number[] = [];
   snum: number;
 
+  check : any;
 
   constructor(private service: AsignarbusService, private router: Router) { }
 
@@ -48,9 +49,9 @@ export class AsignarBusComponent implements OnInit {
   }
 
   listartodo() {
-    console.log("llege")
+   // console.log("llege")
     this.service.getAsignarBus().subscribe((data) => {
-      console.log('listar todo ' + data);
+   //   console.log('listar todo ' + data);
        this.Listasignarbus = data['CU'];
      });
   }
@@ -105,10 +106,10 @@ export class AsignarBusComponent implements OnInit {
 
   actualizar(id: number) {
     alert("hola");
-
-    let element = <HTMLInputElement> document.getElementById('checkbox');
-    console.log(element.checked);
-    if (element.checked === true) {
+    this.check = id;
+   // let element = (<HTMLInputElement> document.getElementById(this.check));
+    
+    if ((<HTMLInputElement> document.getElementById(this.check)).checked === true) {
       this.asignarbus.fijo = 1;
     } else {
       this.asignarbus.fijo = 0;
@@ -117,17 +118,18 @@ export class AsignarBusComponent implements OnInit {
     this.asignarbus.id_orden_grupo = id;
     this.asignarbus.id_paradero = this.id_paradero;
     this.asignarbus.id_bus = this.id_bus;
-    console.log(this.asignarbus);
+  
+   
+console.log(this.asignarbus);
+   
+ 
+   this.service.updateDetalleBusGrupo(this.asignarbus).subscribe((data)=>{
+      this.asignarbus.id_bus=this.id_bus;
+      alert("se registro satisfactoriamente");
+   })
 
   }
 
-  /* Actualizar(pers: Persona) {
-    pers.id_tipo_documento=this.selectedTipoDocUpdate;
-    this.service.updatePersona(pers).subscribe((data) => {
-      this.per = data;
-      alert('');
-      this.ngOnInit();
-    })
-  }
-  */
+
+
   }
