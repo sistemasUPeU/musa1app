@@ -1,11 +1,6 @@
 import { Injectable } from '@angular/core';
-<<<<<<< HEAD
-  
-import { Observable } from 'rxjs';
-=======
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, from } from 'rxjs';
->>>>>>> 1cf62d186e6fc8c26af553056dfcf7c6f0226fbb
 import { map } from 'rxjs/operators'
 
 import { Persona } from '../base-models/Persona';
@@ -31,14 +26,14 @@ import { DetallePedido } from "../base-models/DetallePedido";
 import { Pedido } from '../base-models/Pedido';
 import { Padron } from '../base-models/Padron';
 import { RevisionTecnica } from '../base-models/RevisionTecnica';
-<<<<<<< HEAD
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-=======
 import { Opcion } from '../base-models/Opcion';
+<<<<<<< HEAD
+import { Placa } from '../base-models/Placa';
+=======
 import { Accion } from '../base-models/Accion';
 import { Empresa } from '../base-models/Empresa';
+>>>>>>> f55927bd6cc8ca2120a28582ac98bc6c088785e9
 
->>>>>>> 1cf62d186e6fc8c26af553056dfcf7c6f0226fbb
 
 
 
@@ -383,6 +378,24 @@ export class ServiceService {
     return this.http.get<RevisionTecnica[]>(this.revitecnicas);
   }
 
+  getObteneridplaca( placa: String): Observable<Placa[]>{
+    return this.http.get<Placa[]>(this.revitecnicas + 'bus/' + placa)
+  }
+
+  createRevisionTecnica(revitecnicas: RevisionTecnica){
+    return this.http.post<RevisionTecnica>(this.revitecnicas + 'add',revitecnicas);
+  }
   
+  getRevisionTecnicaId(idrevisiontecnica: number): Observable<RevisionTecnica[]>{
+    return this.http.get<RevisionTecnica[]>(this.revitecnicas + idrevisiontecnica);
+  }
+
+  updateRevisionTecnica(revisionestecnicas: RevisionTecnica){
+    return this.http.put<RevisionTecnica>(this.revitecnicas + revisionestecnicas.id_revision_tecnica, revisionestecnicas);
+  }
+
+  deleteRevisionTecnica(revitecnicas: RevisionTecnica){
+    return this.http.delete<RevisionTecnica>(this.revitecnicas + revitecnicas.id_revision_tecnica);
+  }
 
 }
