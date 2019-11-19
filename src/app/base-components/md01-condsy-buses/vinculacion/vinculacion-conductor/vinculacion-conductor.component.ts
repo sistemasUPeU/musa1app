@@ -52,9 +52,13 @@ export class VinculacionConductorComponent implements OnInit {
     });
   }
   AddUrl(index) {
-    this.divBody = index;
+    this.divBody = -1;
+    document.getElementById(index).classList.remove('bg-warning');
+    document.getElementById(index).classList.add('bg-success');
   }
   openUrl(index) {
     this.divBody = index;
+    document.getElementById(index).classList.remove('bg-success');
+    document.getElementById(index).classList.add('bg-warning');
   }
 }
