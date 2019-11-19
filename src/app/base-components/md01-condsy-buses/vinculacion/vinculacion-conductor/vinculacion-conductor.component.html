@@ -1,66 +1,246 @@
 <div class="row">
-        <div class="col-xl-12">
-          <h1 class="page-header">
-            Vinculacion Conductor
-          </h1>
-          <!----------
-          <hr>
-          <div class="container row">
-            <div class="col-8">
-              <button (click)="fillSelect()" type="button" class="btn btn-info" data-toggle="modal" data-target="#addvinculacionmodal">
-                Agregar Vinculacion
-              </button>
-            </div>
-            <div class="col-4">
-                
+  <div class="col-xl-12">
+    <h1 class="page-header">
+      Vinculacion Conductor
+    </h1>
+    <hr />
+    <div class="container row">
+      <div class="col-8">
+        <button
+          type="button"
+          class="btn btn-info"
+          data-toggle="modal"
+          data-target="#searchPersonamodal"
+        >
+          Agregar Vinculacion
+        </button>
+      </div>
+      <div class="col-4"></div>
+    </div>
+    <br /><br />
+    <div
+      class="modal fade"
+      id="searchPersonamodal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">
+              Buscar Persona
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form class="">
+              <input
+                clickOutside
+                (clickOutside)="toggleDropDownOff()"
+                (click)="toggleDropDown()"
+                (keyup)="searchPersona()"
+                [(ngModel)]="input"
+                autocomplete="off"
+                name="inputSearch"
+                class="form-control mr-sm-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+            </form>
+            <div *ngIf="showDropDown" class="state-container-dropdown">
+              <div class="return" *ngFor="let cursoConductor of searchResult">
+                <ul
+                  (click)="loadInput(cursoConductor.nombre_persona)"
+                  (click)="storePersona(cursoConductor)"
+                >
+                  {{
+                    cursoConductor.nombre_persona
+                  }}
+                </ul>
+              </div>
             </div>
           </div>
-          <br><br>
-          <div class="modal fade" id="addvinculacionmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Nueva Vinculacion</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                    
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-info" data-dismiss="modal">Guardar</button>
-                </div>
-                </div>
-            </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Cerrar
+            </button>
+            <button
+              (click)="cargarRequisitosVinculacionConductor()"
+              type="button"
+              class="btn btn-info"
+              data-dismiss="modal"
+              data-toggle="modal"
+              data-target="#addvinculacionmodal"
+            >
+              Agregar
+            </button>
           </div>
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th>Conductor</th>
-                <th>Nro de Documento</th>
-                <th>Inicio de Vinculacion</th>
-                <th>Termino de Vinculacion</th>
-                <th>Estado</th>
-                <th colspan="2">Opcion</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>{{persona.nombre_persona}}</td>
-                <td>{{persona.apellido_paterno}}</td>
-                <td>{{persona.apellido_materno}}</td>
-                <td>{{persona.id_tipo_documento}}</td>
-                <td>{{persona.nro_documento}}</td>
-                <td><button class="btn btn-warning far fa-edit" (click)="loadPersona(persona)"
-                    data-toggle="modal" data-target="#editpersonamodal"></button></td>
-                <td><button class="btn btn-danger fas fa-trash-alt" (click)="Eliminar(persona)"></button></td>
-              </tr>
-            </tbody>
-          </table>
-          ----->
         </div>
       </div>
+    </div>
+    <div
+      class="modal fade"
+      id="addvinculacionmodal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalScrollableTitle"
+      aria-hidden="true"
+    >
+      <div
+        class="modal-dialog modal-dialog-scrollable modal-lg"
+        role="document"
+      >
+        <div class="modal-content" *ngFor="let per of loadPersonaData">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalScrollableTitle">
+              Modal title
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="container col-md-12">
+              <div class="row">
+                <div class="col-sm">
+                  <form>
+                    <div class="form-group">
+                      <label for="name" class="col-form-label">Nombre:</label>
+                      <h1>{{ per.nombre_persona }}</h1>
+                    </div>
+                    <div class="form-group">
+                      <label for="apepat" class="col-form-label"
+                        >Apellido Paterno:</label
+                      >
+                      <h2>{{ per.apellido_paterno }}</h2>
+                    </div>
+                    <div class="form-group">
+                      <label for="apemat" class="col-form-label"
+                        >Apellido Materno:</label
+                      >
+                      <h2>{{ per.apellido_materno }}</h2>
+                    </div>
+                    <div class="form-group">
+                      <label for="nrodoc" class="col-form-label"
+                        >Numero de Documento:</label
+                      >
+                      <h2>{{ per.nro_documento }}</h2>
+                    </div>
+                  </form>
+                </div>
+                <div class="col-sm">
+                  <form>
+                    <ng-container
+                      *ngFor="let requisito of loadReqsData; let i = index"
+                    >
+                      <div
+                        class="card text-white bg-warning mb-3"
+                        style="max-width: 18rem;"
+                      >
+                        <div class="card-header" (click)="openUrl(i)">
+                          {{ requisito.nombre_requisito }}
+                        </div>
+                        <div
+                          class="card-body"
+                          [attr.id]="'divBody' + i"
+                          *ngIf="divBody === i"
+                        >
+                          <div class="input-group mb-3">
+                            <input
+                              type="text"
+                              class="form-control"
+                              placeholder="URL"
+                              aria-label="Recipient's username"
+                              aria-describedby="basic-addon2"
+                            />
+                            <div class="input-group-append">
+                              <button
+                                class="btn btn-outline-secondary"
+                                type="button"
+                                (click)="AddUrl(i)"
+                              >
+                                Guardar
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </ng-container>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-------
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Conductor</th>
+          <th>Nro de Documento</th>
+          <th>Requisitos</th>
+          <th>Inicio de Vinculacion</th>
+          <th>Termino de Vinculacion</th>
+          <th>Estado</th>
+          <th colspan="2">Opcion</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ persona.nombre_persona }}</td>
+          <td>{{ persona.apellido_paterno }}</td>
+          <td>{{ persona.apellido_materno }}</td>
+          <td>{{ persona.id_tipo_documento }}</td>
+          <td>{{ persona.id_tipo_documento }}</td>
+          <td>{{ persona.nro_documento }}</td>
+          <td>
+            <button
+              class="btn btn-warning far fa-edit"
+              (click)="loadPersona(persona)"
+              data-toggle="modal"
+              data-target="#editpersonamodal"
+            ></button>
+          </td>
+          <td>
+            <button
+              class="btn btn-danger fas fa-trash-alt"
+              (click)="Eliminar(persona)"
+            ></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    ---->
+  </div>
+</div>

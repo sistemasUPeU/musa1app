@@ -116,7 +116,7 @@
                                     <tr *ngFor="let requisito of requisito_modal; let i = index">
                                         <th>{{ i+1 }}</th>
                                         <th scope="row" style="text-align: center;">{{ mostrarEstado(vreqs_modal[i].estado) }}</th>
-                                        <td>{{requisito.NOMBRE_REQUISITO}}</td>
+                                        <td>{{requisito.nombre_requisito}}</td>
                                         <td>
                                             <input class="form-control" type="date" value="" id="" [(ngModel)]="vreqs_modal[i].fecha_vencimiento_doc">
                                         </td>

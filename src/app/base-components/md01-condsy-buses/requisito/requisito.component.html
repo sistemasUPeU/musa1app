@@ -13,7 +13,7 @@
         </div>
         <div class="col-4">
             <form class="">
-                <input  name="inputSearch"  class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <input autocomplete="off" name="inputSearch"  class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             </form>
         </div>
     </div>
@@ -31,7 +31,7 @@
               <form>
                 <div class="form-group">
                   <label for="name" class="col-form-label">Nombre:</label>
-                  <input [(ngModel)]="requisito.nombre_requisito" name="nombre_req" type="text" class="form-control" >
+                  <input [(ngModel)]="requisito.nombre_requisito" autocomplete="off" name="nombre_req" type="text" class="form-control" >
                 </div>
                 <div class="form-group">
                   <label for="tiporeq" class="col-form-label">Tipo de Requisito:</label>
@@ -71,7 +71,7 @@
                 <form>
                   <div class="form-group">
                     <label for="name" class="col-form-label">Nombre:</label>
-                    <input [(ngModel)]="req.nombre_requisito" name="nombre_req" type="text" class="form-control" >
+                    <input [(ngModel)]="req.nombre_requisito" autocomplete="off" name="nombre_req" type="text" class="form-control" >
                   </div>
                   <div class="form-group">
                     <label for="tiporeq" class="col-form-label">Tipo de Requisito:</label>

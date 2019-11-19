@@ -28,7 +28,7 @@
             </div>
             <br>
             <form class="">
-                <input name="inputSearch"  class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <input name="inputSearch" autocomplete="off" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             </form>
         </div>
       </div>
@@ -43,7 +43,7 @@
               </div>
               <div class="modal-body">
                   <form class="">
-                      <input clickOutside (clickOutside)="toggleDropDownOff()" (click)="toggleDropDown()" (keyup)="searchPersona()" [(ngModel)]="input" name="inputSearch"  class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" >
+                      <input clickOutside (clickOutside)="toggleDropDownOff()" autocomplete="off" (click)="toggleDropDown()" (keyup)="searchPersona()" [(ngModel)]="input" name="inputSearch"  class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" >
                   </form>
                   <div *ngIf="showDropDown" class="state-container-dropdown">
                       <div class="return" *ngFor="let persona of searchResult">
@@ -150,7 +150,7 @@
                   </div>
                   <div class="form-group">
                     <label for="apepat" class="col-form-label">Numero de Carnet:</label>
-                    <input [(ngModel)]="cursoConductor.carnet_c" name="apellido_paterno" type="text" class="form-control">
+                    <input [(ngModel)]="cursoConductor.carnet_c" name="apellido_paterno" autocomplete="off" type="text" class="form-control">
                   </div>
                   <div class="form-group">
                       <div class="input-group datepicker-input">
