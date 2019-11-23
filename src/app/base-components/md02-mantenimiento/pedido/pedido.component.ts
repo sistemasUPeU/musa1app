@@ -29,16 +29,11 @@ export class PedidoComponent implements OnInit {
   constructor(private service: ServiceService) { }
 
   ngOnInit() {
-    this.service.getPedido().subscribe((data)=>{
-      this.listpedido = data['LIST_FECHA'];
-      console.log(this.listpedido);
-    
-  })
-  this.service.getTipoMantenimiento().subscribe((data) => {
-    this.listTipoMantenimiento = data['TIPO_MANT'];
-    console.log(this.listTipoMantenimiento);
-  })
-}
+    this.service.getMantenimiento().subscribe( (data) => {
+      this.listMantenimiento = data['LISTA_MANTENIMIENTO'];
+      console.log(this.listMantenimiento);
+    });
+  }
 
 
 fillSelect() {

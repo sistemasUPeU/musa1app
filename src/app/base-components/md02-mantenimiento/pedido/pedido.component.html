@@ -17,15 +17,17 @@
                     <th>Padrón</th>
                     <th>Tipo Mantenimiento</th> 
                     <th colspan="2">Opciones</th>
+                    
                 </tr>
               </thead>
+              
               <tbody>
-                <tr *ngFor="let ped of listpedido, let i = index">
+                <tr *ngFor="let mant of listMantenimiento, let i = index">
                   <th>{{i+1}}</th> 
-                  <th>{{ped.fecha_pedido}}</th>
-                  <td>AAA-123</td>
-                  <td>AAA</td>
-                  <td>Correctivo</td>
+                  <th>{{mant.fecha}}</th>
+                  <td>{{mant.placa}}</td>
+                  <td>{{mant.padron}}</td>
+                  <td>{{mant.tipo_mantenimiento}}</td>
                   <td><button type="button" class="btn btn-success fa fa-bomb" data-toggle="modal" data-target="#exampleModal"></button></td>
                 </tr>
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ServiceService } from 'src/app/base-services/service.service';
 import { Pedido } from 'src/app/base-models/Pedido';
 import { DetallePedido } from 'src/app/base-models/DetallePedido';
+import { Mantenimiento } from 'src/app/base-models/Mantenimiento';
 import { when } from 'q';
 
 @Component({
@@ -14,13 +15,14 @@ export class AutorizarPedidoComponent implements OnInit {
   listdetalle: DetallePedido[] = [];
   lispedi: Pedido[] = [];
   loadPedido: Pedido[] = [];
+  listMantenimiento: Mantenimiento[] = [];
 
   constructor(private service: ServiceService) { }
 
   ngOnInit() {
-    this.service.getPedido().subscribe( (data) => {
-      this.lispedi = data['LIST_FECHA'];
-      console.log(this.lispedi);
+    this.service.getMantenimiento().subscribe( (data) => {
+      this.listMantenimiento = data['LISTA_MANTENIMIENTO'];
+      console.log(this.listMantenimiento);
     });
   }
 

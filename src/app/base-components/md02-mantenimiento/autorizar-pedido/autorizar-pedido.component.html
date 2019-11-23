@@ -23,9 +23,9 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let ped of lispedi, let i = index">
+            <tr *ngFor="let mant of listMantenimiento, let i = index">
               <th>{{i+1}}</th>
-              <td>{{ped.fecha_pedido}}</td>
+              <td>{{mant.fecha}}</td>
               <td><button (click)="listardetalle(ped.id_pedido)" type="button" 
                 class="btn btn-secondary fa fa-eye" data-toggle="modal" data-target="#exampleModal"></button></td>
               <td><button  type="button" class="btn btn-info far fa-check-circle" data-toggle="modal" 
