@@ -3,7 +3,7 @@ import { ServiceService } from 'src/app/base-services/service.service';
 import { Pedido } from 'src/app/base-models/Pedido';
 import { DetallePedido } from 'src/app/base-models/DetallePedido';
 import { Mantenimiento } from 'src/app/base-models/Mantenimiento';
-import { when } from 'q';
+import { Producto } from 'src/app/base-models/Producto';
 
 @Component({
   selector: 'app-autorizar-pedido',
@@ -16,6 +16,9 @@ export class AutorizarPedidoComponent implements OnInit {
   lispedi: Pedido[] = [];
   loadPedido: Pedido[] = [];
   listMantenimiento: Mantenimiento[] = [];
+  loadProductoData: Producto[] =[];
+  listProducto: Producto[] = [];
+  showDropDown= false;
 
   constructor(private service: ServiceService) { }
 
@@ -24,6 +27,10 @@ export class AutorizarPedidoComponent implements OnInit {
       this.listMantenimiento = data['LISTA_MANTENIMIENTO'];
       console.log(this.listMantenimiento);
     });
+    this.service.getProducto().subscribe((data) =>{
+      this.listProducto= data['LIS_PROD'];
+      console.log(this.listProducto);
+    })
   }
 
   listardetalle(id: number){
@@ -50,6 +57,23 @@ export class AutorizarPedidoComponent implements OnInit {
     })
   }
 
-  
+  loadProducto(producto: Producto):void {
+    this.service.getProductoId(producto.id_producto).subscribe((data)=>{
+      this.loadProductoData = data['LIS_PROD'];
+    })
+  }
+  toggleDropDown(){
+    this.showDropDown=!this.showDropDown;
+  }
+  toogleDropDownOff(){
+    this.showDropDown=false;
+  }
+
+  getInfo(producto:Producto){
+    this.toogleDropDownOff;
+    this.service.getProductoId(producto.id_producto).subscribe((data)=>{
+      this.loadProductoData = data['LIS_PROD'];
+    })
+  }
 
 }
