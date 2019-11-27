@@ -99,7 +99,7 @@ export class ProductoComponent implements OnInit {
     })
   }
 
-  Actualizar(producto: Producto){
+  ActualizarProd(producto: Producto){
     producto.id_categoria=this.selectedCategoriaUpdate;
     producto.id_unidad_medida=this.selectedUnidadMedidaUpdate;
     producto.id_marca=this.selectedMarcaUpdate;
