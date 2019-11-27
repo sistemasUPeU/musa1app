@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ServiceService } from 'src/app/base-services/service.service';
 import { Persona } from 'src/app/base-models/Persona';
 import { TipoDocumento } from 'src/app/base-models/TipoDocumento';
+import { runInThisContext } from 'vm';
 @Component({
   selector: 'app-persona',
   templateUrl: './persona.component.html',
@@ -18,26 +19,23 @@ export class PersonaComponent implements OnInit {
   listTipoDoc: TipoDocumento[] = [];
   listTipoDocId: TipoDocumento[] = [];
   loadPersonaData: Persona[] = [];
-  showDropDown=false;
-  input:String;
+  showDropDown = false;
+  input: String;
   searchResult: Persona[] = [];
-  constructor(private service: ServiceService, private router: Router) { }
+  constructor(private service: ServiceService, private router: Router) {}
   ngOnInit() {
-    this.service.getPersona().subscribe((data) => {
+    this.service.getPersona().subscribe(data => {
       this.listPeople = data['pers'];
-      console.log(this.listPeople);
-    })
+    });
   }
   fillSelect() {
-    this.service.getTipoDocumento().subscribe((data) => {
+    this.service.getTipoDocumento().subscribe(data => {
       this.listTipoDoc = data['TIPODOC'];
-      console.log(this.listTipoDoc);
-    })
+    });
   }
   Guardar() {
-    this.persona.id_tipo_documento=this.selectedTipoDoc;
-    console.log(this.persona)
-    this.service.createPersona(this.persona).subscribe(data =>{
+    this.persona.id_tipo_documento = this.selectedTipoDoc;
+    this.service.createPersona(this.persona).subscribe(data => {
       alert('Registro guardado correctamente...!');
       this.ngOnInit();
     });
@@ -48,54 +46,52 @@ export class PersonaComponent implements OnInit {
   selectTipoDocUpdate(event: any) {
     this.selectedTipoDocUpdate = event.target.value;
   }
-  
+
   loadPersona(persona: Persona): void {
-    this.service.getPersonaId(persona.id_persona).subscribe((data) => {
+    this.service.getPersonaId(persona.id_persona).subscribe(data => {
       this.loadPersonaData = data['pers'];
-    })
+    });
   }
-  
+
   Actualizar(pers: Persona) {
-    pers.id_tipo_documento=this.selectedTipoDocUpdate;
-    this.service.updatePersona(pers).subscribe((data) => {
+    pers.id_tipo_documento = this.selectedTipoDocUpdate;
+    this.service.updatePersona(pers).subscribe(data => {
       this.per = data;
       alert('Registro modificado correctamente...!');
       this.ngOnInit();
-    })
+    });
   }
   Eliminar(persona: Persona) {
     this.service.deletePersona(persona).subscribe(data => {
       alert('Registro eliminado correctamente');
       this.ngOnInit();
-    })
+    });
   }
   toggleDropDown() {
-    this.showDropDown=!this.showDropDown;
+    this.showDropDown = !this.showDropDown;
   }
   toggleDropDownOff() {
-    this.showDropDown=false;
+    this.showDropDown = false;
   }
   searchPersona() {
-    if(this.input!=''){
-      console.log(this.input);
-      this.service.searchPersona(this.input).subscribe((data) => {
-      this.searchResult = data['return']
-      })
-    }else{
-      console.log('Input vacio');
-      this.toggleDropDownOff();
+    if (this.input != '') {
+      this.showDropDown = true;
+      this.service.searchPersona(this.input).subscribe(data => {
+        this.searchResult = data['return'];
+      });
+    } else {
+      this.toggleDropDown();
     }
   }
-  getInfo(persona:Persona) {
+  getInfo(persona: Persona) {
     this.toggleDropDownOff;
-    this.service.getPersonaId(persona.id_persona).subscribe((data) => {
+    this.service.getPersonaId(persona.id_persona).subscribe(data => {
       this.loadPersonaData = data['pers'];
-    })
+    });
   }
-  getTipoDoc(idtipodoc:number) {
-    console.log(idtipodoc)
-    this.service.getTipoDocumentoId(idtipodoc).subscribe((data) => {
+  getTipoDoc(idtipodoc: number) {
+    this.service.getTipoDocumentoId(idtipodoc).subscribe(data => {
       this.listTipoDocId = data['TIPODOC'];
-    })
+    });
   }
 }

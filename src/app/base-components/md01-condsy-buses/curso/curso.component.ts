@@ -37,29 +37,21 @@ export class CursoComponent implements OnInit {
 
   ngOnInit() {
     this.changeView();
-    console.log(this.buttonText)
   }
   changeView() {
     this.showViewConductor=!this.showViewConductor;
-    console.log(this.showViewConductor)
     if(this.showViewConductor!=this.showViewPersona){
-      console.log(this.showViewConductor)
-      console.log(this.showViewPersona)
       this.sortbyCurso();
       this.buttonText = 'Por Persona'
-      console.log(this.buttonText)
     }else{
-      console.log(this.showViewPersona)
       this.showViewPersona=!this.showViewPersona;
       this.sortbyPersona();
       this.buttonText = 'Por Curso'
-      console.log(this.buttonText)
     }
   }
   sortbyCurso() {
     this.service.getCurso().subscribe((data) => {
       this.listCursos = data['cur']
-      console.table(this.listCursos)
       // ensure to call the getCursoConductor() when you retrieved the data
       this.getCursoConductor()
     })
@@ -82,7 +74,6 @@ export class CursoComponent implements OnInit {
   sortbyPersona() {
     this.service.getPersona().subscribe((data) => {
       this.listPersona = data['pers']
-      console.log(this.listPersona)
     })
     this.getCursoConductorPersona()
   }
@@ -99,7 +90,6 @@ export class CursoComponent implements OnInit {
         return {...persona, listCursoConductorPersona: listCursoConductorPersona.filter(item => item.id_persona === persona.id_persona)};
       });
       this.listPersona = updatedListPersona.filter(item => !!item.listCursoConductorPersona && item.listCursoConductorPersona.length > 0);
-      console.log(updatedListPersona)
     })
   }
   toggleDropDown() {
@@ -110,20 +100,17 @@ export class CursoComponent implements OnInit {
   }
   searchPersona() {
     if(this.input!=''){
-      console.log(this.input);
       this.service.searchPersona(this.input).subscribe((data) => {
       this.searchResult = data['return']
       })
     }else{
-      console.log('Input vacio');
       this.toggleDropDownOff();
     }
   }
   loadInput(nombre:String) {
     this.toggleDropDownOff;
     this.input=nombre
-    console.log(this.input);
-  }
+    }
   fillCursoSelect() {
     this.service.getCurso().subscribe((data) => {
       this.selectCursos=data['cur']
@@ -146,7 +133,6 @@ export class CursoComponent implements OnInit {
     this.cursoConductor.f_fin=this.parseFecha(this.fecha_f);
     this.cursoConductor.id_persona=idpersona;
     this.cursoConductor.id_curso=this.selectedCurso;
-    console.log(this.cursoConductor)
     this.service.createCursoConductor(this.cursoConductor).subscribe(data =>{
       alert('Registro guardado correctamente...!');
       this.sortbyCurso();
@@ -171,7 +157,6 @@ export class CursoComponent implements OnInit {
     delete cursoConductor.id_persona
     delete cursoConductor.nombre_curso
     delete cursoConductor.nombre_persona
-    console.log(cursoConductor)
     this.service.updateCursoConductor(cursoConductor).subscribe((data) => {
       this.cursoConductor = data;
       alert('Registro modificado correctamente...!');

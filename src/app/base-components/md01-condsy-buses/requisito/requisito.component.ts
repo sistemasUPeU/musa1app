@@ -39,7 +39,6 @@ export class RequisitoComponent implements OnInit {
     }else{
       this.requisito.obligatorio='No Obligatorio'
     }
-    console.log(this.requisito)
     this.service.createRequisito(this.requisito).subscribe(data =>{
       alert('Registro guardado correctamente...!');
       this.ngOnInit();
@@ -50,7 +49,6 @@ export class RequisitoComponent implements OnInit {
   }
   selectTipoReqUpdate(event: any) {
     this.selectedTipoReqUpdate = event.target.value;
-    console.log(this.selectedTipoReqUpdate)
   }
   selectObligatorio(event: any) {
     this.selectedObligatorio = event.target.value;
@@ -65,18 +63,12 @@ export class RequisitoComponent implements OnInit {
   }
   Actualizar(reqs: Requisito) {
     reqs.id_tipo_requisito=this.selectedTipoReqUpdate;
-    console.log(reqs.id_tipo_requisito);
-    if(this.selectedObligatorioUpdate==1){
-      this.requisito.obligatorio='Obligatorio'
-    }else{
-      this.requisito.obligatorio='No Obligatorio'
-    }
-    console.log(reqs)
     this.service.updateRequisito(reqs).subscribe((data) => {
       this.requisito=data;
       alert('Registro modificado correctamente...!');
       this.ngOnInit();
     })
+
   }
   Eliminar(requisito: Requisito) {
     this.service.deleteRequisito(requisito).subscribe(data => {

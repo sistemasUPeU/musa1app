@@ -55,13 +55,11 @@ export class UsuarioComponent implements OnInit {
   loadPersona() {
     this.service.getPersona().subscribe((data) => {
       this.listPersona = data['pers']
-      console.log(this.listPersona)
     })
   }
   loadRol() {
     this.service.getRol().subscribe((data) => {
       this.listRol = data['rols']
-      console.log(this.listRol)
     })
   }
   selectSuperUser(event: any) {

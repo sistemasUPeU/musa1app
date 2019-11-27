@@ -19,7 +19,6 @@ export class RolComponent implements OnInit {
   loadRol() {
     this.service.getRol().subscribe((data) => {
       this.listRoles = data['rols']
-      console.log(this.listRoles)
     })
   }
   Guardar() {

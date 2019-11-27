@@ -6,6 +6,9 @@ import { Mantenimiento } from 'src/app/base-models/Mantenimiento';
 import {Padron} from 'src/app/base-models/Padron';
 import {DetalleMantenimiento} from 'src/app/base-models/DetalleMantenimiento';
 import {Bus} from 'src/app/base-models/Bus';
+import {DetallePedido} from 'src/app/base-models/DetallePedido';
+import { Producto } from 'src/app/base-models/Producto';
+import { Marca } from 'src/app/base-models/Marca';
 
 @Component({
   selector: 'app-pedido',
@@ -17,8 +20,15 @@ export class PedidoComponent implements OnInit {
   listDetalleMantenimiento: DetalleMantenimiento[] = [];
   tipomantenimiento : TipoMantenimiento = new TipoMantenimiento();
   listMantenimiento: Mantenimiento[] = [];
+  listdetalle: DetallePedido[] = [];
   listTipoMantenimiento : TipoMantenimiento [] = [];
   selectedTipoMantenimiento: number = null;
+  selectedMarca: number = null;
+  loadProductoData: Producto[] =[];
+  showDropDown= false;
+  listProducto: Producto[] = [];
+  marca: Marca = new Marca();
+  listMarca: Marca[]=[];
 
   padron:String;
   listId: Padron[] = [];
@@ -27,16 +37,16 @@ export class PedidoComponent implements OnInit {
   constructor(private service: ServiceService) { }
 
   ngOnInit() {
-    this.service.getPedido().subscribe((data)=>{
-      this.listpedido = data['LIST_FECHA'];
-      console.log(this.listpedido);
-    
-  })
-  this.service.getTipoMantenimiento().subscribe((data) => {
-    this.listTipoMantenimiento = data['TIPO_MANT'];
-    console.log(this.listTipoMantenimiento);
-  })
-}
+    this.service.getMantenimiento().subscribe( (data) => {
+      this.listMantenimiento = data['LISTA_MANTENIMIENTO'];
+      console.log(this.listMantenimiento);
+    });
+    this.service.getProducto().subscribe((data) =>{
+      this.listProducto= data['LIS_PROD'];
+      console.log(this.listProducto);
+    })
+
+  }
 
 
 fillSelect() {
@@ -64,5 +74,36 @@ getid(padron: String) {
     this.listId = data['SALIDA_BUS'];
     this.Guardar();
   });
+}
+
+listardetalle(id: number){
+  console.log(id);
+  this.service.getPedidoId(id).subscribe( (data) => {
+      this.listdetalle = data['LIST_DETALLE'];
+  } );
+}
+loadProducto(producto: Producto):void {
+  this.service.getProductoId(producto.id_producto).subscribe((data)=>{
+    this.loadProductoData = data['LIS_PROD'];
+  })
+}
+toggleDropDown(){
+  this.showDropDown=!this.showDropDown;
+}
+toogleDropDownOff(){
+  this.showDropDown=false;
+}
+getInfo(producto:Producto){
+  this.toogleDropDownOff;
+  this.service.getProductoId(producto.id_producto).subscribe((data)=>{
+    this.loadProductoData = data['LIS_PROD'];
+  })
+}
+
+fillSelectMarca() {
+  this.service.getMarca().subscribe((data) => {
+    this.listMarca = data['LIS_MAR'];
+    console.log(this.listMarca);
+  })
 }
 }
