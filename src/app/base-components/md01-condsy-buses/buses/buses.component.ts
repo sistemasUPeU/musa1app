@@ -53,7 +53,7 @@ export class BusesComponent implements OnInit {
   Eliminar(bus : Bus){
     console.log("estamos en el metodo eliminar = > " +bus);
     bus.estado=this.afterestadobus;
-    this.service.UpdateBus(bus,).subscribe((data)=>{
+    this.service.UpdateBus(bus).subscribe((data)=>{
       alert("Registro eliminado correctamente");
       this.per = data;
       console.log("la data llego+",this.per.estado);

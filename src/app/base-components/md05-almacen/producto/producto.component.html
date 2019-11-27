@@ -64,8 +64,8 @@
                      </select>
                   </div>
                   <div class="form-group">
-                     <label for="cod" class="col-form-label">Código:</label>
-                     <input [ngModel]="producto.codigo" name="codigo" type="text" class="form-control">
+                     <label for="cod" class="col-form-label" >Código:</label>
+                     <input [ngModel]="producto.codigo" name="codigo" type="text" class="form-control" disabled>
                   </div>
                   <div class="form-group">
                      <label for="marca" class="col-form-label">Marca:</label>
@@ -117,7 +117,7 @@
                      </select>
                   </div>
                   <div class="form-group">
-                     <label for="LIS_UM" class="col-form-label">Unidad de Medida:</label>
+                     <label for="unidad_medida" class="col-form-label">Unidad de Medida:</label>
                      <select class="form-control" (change)="selectUnidadMedidaUpdate($event)">
                         <option *ngFor="let unidadmedida of listUnidadMedida" value={{unidadmedida.id_unidad_medida}}>
                            {{unidadmedida.unidad_medida}} </option>
@@ -125,10 +125,10 @@
                   </div>
                   <div class="form-group">
                      <label for="codigo" class="col-form-label">Código:</label>
-                     <input [ngModel]="prod.codigo" name="codigo" type="text" class="form-control">
+                     <input [ngModel]="prod.codigo" name="codigo" type="text" class="form-control" disabled>
                   </div>
                   <div class="form-group">
-                     <label for="marca" class="col-form-label">Marca:</label>
+                     <label for="nombre_marca" class="col-form-label">Marca:</label>
                      <select class="form-control" (change)="selectMarcaUpdate($event)">
                         <option *ngFor="let marca of listMarca" value="{{marca.id_marca}}">{{marca.nombre_marca}}
                         </option>
@@ -145,6 +145,26 @@
       </div>
    </div>
    <!------------END MODAL MODIFICAR-->
+
+   <!---------ELIMINAR MODAL----------->
+   <div class="modal fade" id="eliminarprod" aria-hidden="true">
+         <div class="modal-dialog">
+             <div class="modal-content" *ngFor="let producto of loadProductoData" >
+                 <div class="modal-header">
+                     <h4 class="modal-title">Eliminar Producto {{producto.nombre_producto}}</h4>
+                 </div>
+                 <div class="modal-body">
+                     <label>¿Estás seguro de eliminar el registro?</label>
+                 </div>
+                 <div class="modal-footer">
+                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                   <button type="button" class="btn btn-primary"
+                     data-dismiss="modal" (click)="Eliminar(producto)">Eliminar</button>
+                 </div>
+             </div>
+         </div>
+       </div>
+   <!--------END ELIMINAR MODAL-->
    <!-- Tabla -->
    <table class="table table-hover" id="tabla_producto">
       <thead>
@@ -171,7 +191,8 @@
             <td><button class="btn btn-warning far fa-edit" (click)="loadProducto(producto)"
                   (click)="fillSelectCategoria()" (click)="fillSelectMarca()" (click)="fillSelectUnidadMedida()"
                   data-toggle="modal" data-target="#editarproductomodal"></button></td>
-            <td><button class="btn btn-danger fas fa-trash-alt" (click)="Eliminar(producto)"></button></td>
+            <td><button class="btn btn-danger fas fa-trash-alt" 
+               data-toggle="modal" data-target="#eliminarprod" (click)="loadProducto(producto)"></button></td>
          </tr>
       </tbody>
    </table>

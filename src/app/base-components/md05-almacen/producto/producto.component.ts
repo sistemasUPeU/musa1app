@@ -95,6 +95,7 @@ export class ProductoComponent implements OnInit {
 
   loadProducto(producto: Producto):void {
     this.service.getProductoId(producto.id_producto).subscribe((data)=>{
+      console.log(producto);
       this.loadProductoData = data['LIS_PROD'];
     })
   }
@@ -110,6 +111,7 @@ export class ProductoComponent implements OnInit {
       })
   }
   Eliminar(producto: Producto){
+    console.log(producto);
     this.service.deleteProducto(producto).subscribe(data =>{
       alert('Registro eliminado correctamente');
       this.ngOnInit();
