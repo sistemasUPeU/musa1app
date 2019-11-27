@@ -6,12 +6,12 @@
       
       </select>
 
-    <select class="form-control  col-6 col-sm-2  para  " (change)="selectpa($event)">
+    <select class="form-control  col-6 col-sm-2  para1  " (change)="selectpa($event)">
     <option > </option>
     <option *ngFor="let pa of listparadero" [value]="pa.id_paradero">{{pa.paradero}}</option>  
   </select>
 
-    <button class="btn btn-success" (click)="filtrar()">Filtrar</button>
+    <button class="btn btn-success bt1" (click)="filtrar()">Filtrar</button>
 </div>
 
 
@@ -61,7 +61,7 @@
 
 <div class="container 2">
 
-    <button type="button" class="btn btn-btn vol ">VOLVER</button>
+  
 
-    <button type="button" class="btn btn-btn gua ">GUARDAR</button>
+   
 </div>
