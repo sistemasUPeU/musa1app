@@ -114,7 +114,8 @@
 
             <td><button class="btn btn-warning far fa-edit" data-toggle="modal"
                 (click)="loadRevisionTecnica(revisiontecnica)" data-target="#updaterevision"></button></td>
-            <td><button class="btn btn-danger fas fa-trash-alt" (click)="EliminarRev(revisiontecnica)"></button></td>
+            <td><button class="btn btn-danger fas fa-trash-alt" 
+              data-toggle="modal" data-target="#eliminartec" (click)="loadRevisionTecnica(revisiontecnica)"></button></td>
           </tr>
         </tbody>
       </table>
@@ -214,7 +215,7 @@
     </div>
   </div>
 </div>
-
+<!-------------End update modal----->
 
 <!-------------Detalle-------------------->
 
@@ -263,3 +264,22 @@
 
 <!--------------MODAL PARA FOTOS----------------->
 
+<!------------ELIMINAR MODAL--------->
+<div class="modal fade" id="eliminartec" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" *ngFor="let  revisiontecnica of listRevisionTecnica" >
+            <div class="modal-header">
+                <h4 class="modal-title">Eliminar Revisión Técnica {{revisiontecnica.id_bus}}</h4>
+            </div>
+            <div class="modal-body">
+                <label>¿Estás seguro que desea eliminar?</label>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-primary"
+                data-dismiss="modal" (click)="EliminarRev(revisiontecnica)">Eliminar</button>
+            </div>
+        </div>
+    </div>
+  </div>
+<!-----------END ELIMINAR MODAL--->
