@@ -16,6 +16,7 @@ import { GrupoService } from 'src/app/base-services/grupo/grupo.service';
 import { FilterBusPipe } from './Search/filter-bus.pipe';
 import { FilterTipoMantenimientoPipe } from './Search/filter-tipo-mantenimiento.pipe';
 import { FilterMantenimientoPipe } from './Search/filter-mantenimiento.pipe';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 

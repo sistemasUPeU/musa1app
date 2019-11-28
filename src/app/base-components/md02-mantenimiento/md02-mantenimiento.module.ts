@@ -15,6 +15,9 @@ import { SegundaValidacionComponent } from './segunda-validacion/segunda-validac
 import { ValidarJefeMantenimientoComponent } from './validar-jefe-mantenimiento/validar-jefe-mantenimiento.component';
 import { FilterTipoMantenimientoPipe } from 'src/app/Search/filter-tipo-mantenimiento.pipe';
 import { FilterMantenimientoPipe } from 'src/app/Search/filter-mantenimiento.pipe';
+import { NgxPaginationModule } from 'ngx-pagination';
+
+
 
 
 
@@ -34,7 +37,7 @@ import { FilterMantenimientoPipe } from 'src/app/Search/filter-mantenimiento.pip
   ],
   imports: [
     CommonModule,
-    Md02MantenimientoRoutingModule,
+    Md02MantenimientoRoutingModule,NgxPaginationModule,
     FormsModule
   ]
 })
