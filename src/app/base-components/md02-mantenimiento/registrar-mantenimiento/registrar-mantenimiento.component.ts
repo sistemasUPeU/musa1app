@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
   templateUrl: './registrar-mantenimiento.component.html',
   styleUrls: ['./registrar-mantenimiento.component.scss']
 })
+
 export class RegistrarMantenimientoComponent implements OnInit {
   listDetalleMantenimiento: DetalleMantenimiento[] = [];
   listMantenimiento: Mantenimiento[] = [];
@@ -25,9 +26,13 @@ export class RegistrarMantenimientoComponent implements OnInit {
   padron:String;
   listId: Padron[] = [];
   
+  
+
 
   constructor(private service: ServiceService, private router: Router) { }
-
+  p: number = 1;
+  p2: number = 1;
+  
   ngOnInit() {
     this.service.getMantenimiento().subscribe( (data) => {
       this.listMantenimiento = data['LISTA_MANTENIMIENTO'];
@@ -35,6 +40,7 @@ export class RegistrarMantenimientoComponent implements OnInit {
     });
   }
   filterMantenimientoHtml = ''; 
+
   fillSelect() {
     this.service.getTipoMantenimiento().subscribe((data) => {
       this.listTipoMantenimiento = data['TIPO_MANT'];

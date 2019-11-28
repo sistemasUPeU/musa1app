@@ -3,7 +3,8 @@
     <br>
     <FONT FACE="courier" SIZE=10 style="margin-left:50px;">MANTENIMIENTO</FONT>
     <img src="assets/images/bus_logo.png" style="margin-left:590px;" id="imgRedonda" />
-    
+    <br>
+
     <div class="button-7">
       <div class="eff-7"></div>
       <a data-toggle="modal" data-target="#addregistrarmantenimiento" (click)="fillSelect()">Registrar Mantenimiento</a>
@@ -130,7 +131,8 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let detalle_mantenimiento of listDetalleMantenimiento, let i = index">
+                <tr
+                  *ngFor="let detalle_mantenimiento of listDetalleMantenimiento| paginate: {itemsPerPage: 5, currentPage: p2}; let i = index">
                   <th>{{i+1}}</th>
                   <td>{{detalle_mantenimiento.nom_tipo_accion}}</td>
                   <td>{{detalle_mantenimiento.nom_accion}}</td>
@@ -142,6 +144,9 @@
                 </tr>
               </tbody>
             </table>
+            <pagination-controls directionLinks="true" (pageChange)="p2 = $event" previousLabel="Anterior"
+              nextLabel="Siguiente"></pagination-controls>
+
           </div>
 
           <div class="modal-footer">
@@ -153,30 +158,32 @@
 
 
     <br><br>
-    <table class="table table-hover" id="tabla_registrar_mantenimiento">
-      <thead class="thead">
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Fecha</th>
-          <th scope="col">Tipo Mantenimiento</th>
-          <th scope="col">Padrón</th>
-          <th scope="col">Placa</th>
-          <th colspan="3">Opciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let mant of listMantenimiento| filterMantenimiento:filterMantenimientoHtml, let i = index ">
-          <th>{{i+1}}</th>
-          <td>{{mant.fecha}}</td>
-          <td>{{mant.tipo_mantenimiento}}</td>
-          <td>{{mant.padron}}</td>
-          <td>{{mant.placa}}</td>
-          <td><button (click)="listardetalle_mant(mant.id_mantenimiento)" type="button" class="btn btn-info fa fa-eye"
-              data-toggle="modal" data-target="#exampleModal"></button></td>
-          <td><button class="btn btn-warning far fa-edit" data-toggle="modal" data-target="#editar_observacion"
-              (click)="loadMantenimiento(mant)"></button></td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="row">
+      <table class="table table-hover" id="tabla_registrar_mantenimiento">
+        <thead class="thead">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Tipo Mantenimiento</th>
+            <th scope="col">Padrón</th>
+            <th scope="col">Placa</th>
+            <th colspan="3">Opciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let mant of listMantenimiento| filterMantenimiento:filterMantenimientoHtml ; let i = index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{mant.fecha}}</td>
+            <td>{{mant.tipo_mantenimiento}}</td>
+            <td>{{mant.padron}}</td>
+            <td>{{mant.placa}}</td>
+            <td><button (click)="listardetalle_mant(mant.id_mantenimiento)" type="button" class="btn btn-info fa fa-eye"
+                data-toggle="modal" data-target="#exampleModal"></button></td>
+            <td><button class="btn btn-warning far fa-edit" data-toggle="modal" data-target="#editar_observacion"
+                (click)="loadMantenimiento(mant)"></button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
