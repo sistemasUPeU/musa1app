@@ -6,10 +6,11 @@ import { Md05AlmacenRoutingModule } from './md05-almacen-routing.module';
 import { CategoriaComponent } from './categoria/categoria.component';
 import { FormsModule } from '@angular/forms';
 import { NgbDate, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FilterProductoPipe } from 'src/app/Search/filter-producto.pipe';
 
 
 @NgModule({
-  declarations: [ProductoComponent, CategoriaComponent],
+  declarations: [ProductoComponent,FilterProductoPipe ,CategoriaComponent],
   imports: [
     CommonModule,
     Md05AlmacenRoutingModule,

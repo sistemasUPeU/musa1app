@@ -14,6 +14,8 @@ import { ServiceService } from 'src/app/base-services/service.service';
 import {EncrDecrService} from 'src/app/base-services/encr-decr.service';
 import { GrupoService } from 'src/app/base-services/grupo/grupo.service';
 import { FilterBusPipe } from './Search/filter-bus.pipe';
+import { FilterProductoPipe } from './search/filter-producto.pipe';
+import { FilterRevisionPipe } from './search/filter-revision.pipe';
 
 
 
