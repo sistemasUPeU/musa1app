@@ -149,6 +149,9 @@
                 </div>
                 <div class="col-sm">
                   <form>
+                    <div class="form-group">
+                      <h2>Requisitos:</h2>
+                    </div>
                     <ng-container
                       *ngFor="let requisito of loadReqsData; let i = index"
                     >
@@ -168,6 +171,8 @@
                           <div class="input-group mb-3">
                             <input
                               type="text"
+                              [(ngModel)]="url[i]"
+                              name="url"
                               class="form-control"
                               placeholder="URL"
                               aria-label="Recipient's username"
