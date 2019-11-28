@@ -12,12 +12,8 @@ import { AutorizarPedidoComponent } from './autorizar-pedido/autorizar-pedido.co
 import { PedidoComponent } from './pedido/pedido.component';
 import { RevisiondetalleComponent } from './revisiondetalle/revisiondetalle.component';
 import { SegundaValidacionComponent } from './segunda-validacion/segunda-validacion.component';
-import { ValidarJefeMantenimientoComponent } from './validar-jefe-mantenimiento/validar-jefe-mantenimiento.component';
-import { FilterTipoMantenimientoPipe } from 'src/app/Search/filter-tipo-mantenimiento.pipe';
-import { FilterMantenimientoPipe } from 'src/app/Search/filter-mantenimiento.pipe';
-import { NgxPaginationModule } from 'ngx-pagination';
-
-
+import { ValidarJefeMantenimientoComponent } from './validar-jefe-mantenimiento/validar-jefe-mantenimiento.component'
+import { FilterRevisionPipe } from 'src/app/search/filter-revision.pipe';
 
 
 
@@ -33,11 +29,11 @@ import { NgxPaginationModule } from 'ngx-pagination';
     PedidoComponent,
     RevisiondetalleComponent,
     SegundaValidacionComponent,
-    ValidarJefeMantenimientoComponent,FilterTipoMantenimientoPipe,FilterMantenimientoPipe,
-  ],
+    FilterRevisionPipe,
+    ValidarJefeMantenimientoComponent],
   imports: [
     CommonModule,
-    Md02MantenimientoRoutingModule,NgxPaginationModule,
+    Md02MantenimientoRoutingModule,
     FormsModule
   ]
 })

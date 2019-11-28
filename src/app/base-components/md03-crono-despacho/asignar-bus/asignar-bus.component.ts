@@ -87,11 +87,11 @@ export class AsignarBusComponent implements OnInit {
     this.id_paradero = event.target.value;
   }
   filtrar() {
-    console.log('numero' + this.snum );
+   // console.log('numero' + this.snum );
     if ( this.snum < 1) {
       this.ngOnInit();
     } else {
-      console.log('estoy aqui')
+     // console.log('estoy aqui')
     this.service.getfill(this.snum).subscribe( (data) => {
       this.Listasignarbus = data['Fil'];
     });
@@ -105,7 +105,8 @@ export class AsignarBusComponent implements OnInit {
   }
 
   actualizar(id: number) {
-    alert("hola");
+    
+    
     this.check = id;
    // let element = (<HTMLInputElement> document.getElementById(this.check));
     
