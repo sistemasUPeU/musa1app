@@ -296,8 +296,7 @@ export class ServiceService {
   // ----- MANTENIMIENTO ---- //
 
   // ----- TIPO MANTENIMIENTO  ----//
-  //Almacen
-  //Producto
+ 
   getProducto(): Observable<Producto[]> {
     return this.http.get<Producto[]>(this.productos);
   }
@@ -319,6 +318,7 @@ export class ServiceService {
       producto
     );
   }
+    // ----- TIPO MANTENIMIENTO  ----//
 
   //------------Marca---------------//
   getMarca(): Observable<Marca[]> {
@@ -431,10 +431,7 @@ export class ServiceService {
     return this.http.get<Mantenimiento[]>(this.val3 + idmantenimiento);
   }
   updateValidar3(mantenimiento3: Mantenimiento) {
-    return this.http.put<Mantenimiento>(
-      this.val3 + 'estado_1/',
-      mantenimiento3
-    );
+    return this.http.put<Mantenimiento>(this.val3 + 'estado_1/',mantenimiento3);
   }
 
   //----------REVISIONES TECNICAS-----------//

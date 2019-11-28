@@ -34,7 +34,7 @@ export class RegistrarMantenimientoComponent implements OnInit {
       console.log(this.listMantenimiento);
     });
   }
-  
+  filterMantenimientoHtml = ''; 
   fillSelect() {
     this.service.getTipoMantenimiento().subscribe((data) => {
       this.listTipoMantenimiento = data['TIPO_MANT'];
