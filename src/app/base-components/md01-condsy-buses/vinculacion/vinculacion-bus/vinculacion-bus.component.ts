@@ -237,6 +237,7 @@ export class VinculacionBusComponent implements OnInit {
   accionModificarVinculacionBus(id: number, placa: string) {
     // console.log(this.vreqs_modal)
     this.cambiarModoModal("modificar");
+    console.log("placa: " + placa + " , id_vinculacion: " + id);
     this.cargarInvolucrados(placa);
     this.cargarElementosVinculacionBus(id);
   }
