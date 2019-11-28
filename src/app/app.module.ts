@@ -17,6 +17,7 @@ import { FilterBusPipe } from './Search/filter-bus.pipe';
 <<<<<<< HEAD
 import { FilterTipoMantenimientoPipe } from './Search/filter-tipo-mantenimiento.pipe';
 import { FilterMantenimientoPipe } from './Search/filter-mantenimiento.pipe';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
