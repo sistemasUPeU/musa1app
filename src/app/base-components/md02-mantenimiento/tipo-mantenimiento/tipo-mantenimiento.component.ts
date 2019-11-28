@@ -19,7 +19,7 @@ export class TipoMantenimientoComponent implements OnInit {
       console.log(this.listTipoMantenimiento);
     })
   }
-  
+  filterTipoMantenimientoHtml = ''; 
   Guardar() {
     console.log(this.tipomantenimiento)
     this.service.createTipoMantenimiento(this.tipomantenimiento).subscribe(data =>{
@@ -29,7 +29,9 @@ export class TipoMantenimientoComponent implements OnInit {
   }
   loadTipoMantenimiento(tipomantenimiento: TipoMantenimiento): void {
     this.service.getTipoMantenimientoId(tipomantenimiento.id_tipo_mantenimiento).subscribe((data) => {
+      console.log(tipomantenimiento.id_tipo_mantenimiento);
       this.loadTipoMantenimientoData = data['TIPO_MANT'];
+      
     })
   }
   Eliminar(tipomantenimiento: TipoMantenimiento) {

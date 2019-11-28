@@ -3,26 +3,17 @@
     <br>
     <FONT FACE="courier" SIZE=10 style="margin-left:50px;">MANTENIMIENTO</FONT>
     <img src="assets/images/bus_logo.png" style="margin-left:590px;" id="imgRedonda" />
-    <br>
-
-    <br>
-    <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4" id="hola">
-      <div class="input-group">
-        <input type="search" placeholder="Ingrese el Padrón a buscar..." aria-describedby="button-addon1"
-          class="form-control border-0 bg-light" ng-model="busqueda">
-        <div class="input-group-append">
-          <button id="button-addon1" type="submit" class="btn btn-link text-primary"><i
-              class="fa fa-search"></i></button>
-        </div>
-      </div>
-    </div>
-    <br>
+    
     <div class="button-7">
       <div class="eff-7"></div>
       <a data-toggle="modal" data-target="#addregistrarmantenimiento" (click)="fillSelect()">Registrar Mantenimiento</a>
     </div>
-
-
+    <div class="col-4">
+      <form class="">
+        <input name="inputSearch" style="margin-left:65px;width: 900px;" class="form-control mr-sm-2" type="text"
+          placeholder="Ingrese la placa a buscar... " name="filterMantenimiento" [(ngModel)]="filterMantenimientoHtml">
+      </form>
+    </div>
     <div class="modal fade bd-example-modal-lg" id="addregistrarmantenimiento" tabindex="-1" role="dialog"
       aria-labelledby="myLargeModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg" role="document">
@@ -30,7 +21,7 @@
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLongTitle">Registrar Mantenimiento </h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              
+
             </button>
           </div>
           <div class="modal-body">
@@ -68,7 +59,7 @@
     </div>
 
 
-    
+
 
 
     <!-- MODAL EDITAR OBSERVACION APERTURA-->
@@ -80,17 +71,17 @@
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLongTitle">Registrar Observaciones</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-             
+
             </button>
           </div>
           <div class="modal-body">
             <form>
               <div class="form-group">
                 <div class="form-group">
-                    <label for="exampleFormControlTextarea1"></label>
-                  <textarea [(ngModel)]="mante.observacion" name="observacion" 
-                  type="text" placeholder="Ingrese sus Observaciones..." 
-                  class="form-control" style="width:460px; height: 200px;"></textarea>
+                  <label for="exampleFormControlTextarea1"></label>
+                  <textarea [(ngModel)]="mante.observacion" name="observacion" type="text"
+                    placeholder="Ingrese sus Observaciones..." class="form-control"
+                    style="width:460px; height: 200px;"></textarea>
                 </div>
               </div>
             </form>
@@ -118,7 +109,7 @@
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLongTitle">Registrar Acciones </h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-       
+
             </button>
           </div>
 
@@ -138,14 +129,16 @@
                   <th colspan="2">Revision</th>
                 </tr>
               </thead>
-              <tbody> 
+              <tbody>
                 <tr *ngFor="let detalle_mantenimiento of listDetalleMantenimiento, let i = index">
-                    <th>{{i+1}}</th>
+                  <th>{{i+1}}</th>
                   <td>{{detalle_mantenimiento.nom_tipo_accion}}</td>
-                  <td>{{detalle_mantenimiento.nom_accion}}</td>  
-                  <td>{{detalle_mantenimiento.revision}}</td>  
-                  <td><button type="button" class="btn btn-success fas fa-check-circle" (click)="loadDetalleMantenimientoBueno(detalle_mantenimiento)"></button></td>
-                  <td><button type="button" class="btn btn-danger fas fa-times-circle" (click)="loadDetalleMantenimientoMalo(detalle_mantenimiento)"></button></td>
+                  <td>{{detalle_mantenimiento.nom_accion}}</td>
+                  <td>{{detalle_mantenimiento.revision}}</td>
+                  <td><button type="button" class="btn btn-success fas fa-check-circle"
+                      (click)="loadDetalleMantenimientoBueno(detalle_mantenimiento)"></button></td>
+                  <td><button type="button" class="btn btn-danger fas fa-times-circle"
+                      (click)="loadDetalleMantenimientoMalo(detalle_mantenimiento)"></button></td>
                 </tr>
               </tbody>
             </table>
@@ -153,14 +146,13 @@
 
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary" data-dismiss="modal">Guardar</button>
           </div>
         </div>
       </div>
     </div>
 
 
-    <br><br><br><br>
+    <br><br>
     <table class="table table-hover" id="tabla_registrar_mantenimiento">
       <thead class="thead">
         <tr>
@@ -173,7 +165,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let mant of listMantenimiento, let i = index">
+        <tr *ngFor="let mant of listMantenimiento| filterMantenimiento:filterMantenimientoHtml, let i = index ">
           <th>{{i+1}}</th>
           <td>{{mant.fecha}}</td>
           <td>{{mant.tipo_mantenimiento}}</td>
@@ -181,8 +173,8 @@
           <td>{{mant.placa}}</td>
           <td><button (click)="listardetalle_mant(mant.id_mantenimiento)" type="button" class="btn btn-info fa fa-eye"
               data-toggle="modal" data-target="#exampleModal"></button></td>
-          <td><button class="btn btn-warning far fa-edit" data-toggle="modal"
-              data-target="#editar_observacion" (click)="loadMantenimiento(mant)"></button></td>
+          <td><button class="btn btn-warning far fa-edit" data-toggle="modal" data-target="#editar_observacion"
+              (click)="loadMantenimiento(mant)"></button></td>
         </tr>
       </tbody>
     </table>
