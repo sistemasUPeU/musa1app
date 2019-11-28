@@ -87,7 +87,7 @@ export class VinculacionBusComponent implements OnInit {
       this.requisito_modal = data["reqs"];
       for (let i = 0; i < this.requisito_modal.length; i++) {
         this.vreqs_modal[i] = new VinculacionRequisito();
-        this.vreqs_modal[i].id_requisito = this.requisito_modal[i].ID_REQUISITO;
+        this.vreqs_modal[i].id_requisito = this.requisito_modal[i].id_requisito;
         //agregar estado
         this.vreqs_modal[i].estado = "2";
         this.vreqs_modal[i].url = "url";
