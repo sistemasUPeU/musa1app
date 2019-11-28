@@ -63,9 +63,9 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let producto of listProducto,let i = index">
-                <td>{{producto.nombre_producto}}</td>
-                <td>20</td>    
+              <tr *ngFor="let det of listdetalle">
+                <td>{{det.nombre_producto}}</td>
+                <td>{{det.cantidad_pedido}}</td>    
               </tr>
             </tbody>
           </table>
