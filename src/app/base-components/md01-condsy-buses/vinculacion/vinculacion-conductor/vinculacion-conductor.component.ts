@@ -19,6 +19,7 @@ export class VinculacionConductorComponent implements OnInit {
   loadPersonaData: Persona[] = [];
   loadReqsData: Requisito[] = [];
   divBody = -1;
+  url: any[] = [];
 
   ngOnInit() {}
   toggleDropDown() {
@@ -55,6 +56,8 @@ export class VinculacionConductorComponent implements OnInit {
     this.divBody = -1;
     document.getElementById(index).classList.remove('bg-warning');
     document.getElementById(index).classList.add('bg-success');
+    console.log(this.url[index]);
+    console.log(this.url);
   }
   openUrl(index) {
     this.divBody = index;
