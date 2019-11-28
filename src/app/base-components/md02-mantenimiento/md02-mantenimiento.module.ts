@@ -12,14 +12,8 @@ import { AutorizarPedidoComponent } from './autorizar-pedido/autorizar-pedido.co
 import { PedidoComponent } from './pedido/pedido.component';
 import { RevisiondetalleComponent } from './revisiondetalle/revisiondetalle.component';
 import { SegundaValidacionComponent } from './segunda-validacion/segunda-validacion.component';
-<<<<<<< HEAD
-import { ValidarJefeMantenimientoComponent } from './validar-jefe-mantenimiento/validar-jefe-mantenimiento.component';
-import { FilterTipoMantenimientoPipe } from 'src/app/Search/filter-tipo-mantenimiento.pipe';
-import { FilterMantenimientoPipe } from 'src/app/Search/filter-mantenimiento.pipe';
-=======
 import { ValidarJefeMantenimientoComponent } from './validar-jefe-mantenimiento/validar-jefe-mantenimiento.component'
 import { FilterRevisionPipe } from 'src/app/search/filter-revision.pipe';
->>>>>>> prueba
 
 
 
@@ -35,13 +29,8 @@ import { FilterRevisionPipe } from 'src/app/search/filter-revision.pipe';
     PedidoComponent,
     RevisiondetalleComponent,
     SegundaValidacionComponent,
-<<<<<<< HEAD
-    ValidarJefeMantenimientoComponent,FilterTipoMantenimientoPipe,FilterMantenimientoPipe,
-  ],
-=======
     FilterRevisionPipe,
     ValidarJefeMantenimientoComponent],
->>>>>>> prueba
   imports: [
     CommonModule,
     Md02MantenimientoRoutingModule,

@@ -1,18 +1,23 @@
-<div class="filtrar pt-3 ">
-
+<div class="filtrar mt-4 ">
+    <label id="gru">GRUPO: </label>
     <select class="form-control  col-6 col-sm-2  para " (change)="selectnum($event)">
         <option [value] = "0" > </option>
         <option *ngFor="let n of this.numeroma" [value]="n">{{n}}</option>
       
       </select>
+    </div>
 
+    <div class="filtrar1 pt-5 ">
+    <label for="">PARADERO: </label>
     <select class="form-control  col-6 col-sm-2  para1  " (change)="selectpa($event)">
     <option > </option>
     <option *ngFor="let pa of listparadero" [value]="pa.id_paradero">{{pa.paradero}}</option>  
+    
   </select>
-
-    <button class="btn btn-success bt1" (click)="filtrar()">Filtrar</button>
 </div>
+    <button class="btn btn-success bt1" (click)="filtrar()">Filtrar</button>
+   
+
 
 
 
