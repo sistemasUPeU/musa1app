@@ -44,6 +44,7 @@ export class ProductoComponent implements OnInit {
     })
   }
 
+  filterProductoHtml = '';
 
   fillSelectMarca() {
       this.service.getMarca().subscribe((data) => {
@@ -106,7 +107,7 @@ export class ProductoComponent implements OnInit {
     producto.id_marca=this.selectedMarcaUpdate;
       this.service.updateProducto(producto).subscribe((data)=>{
         this.prod = data;
-        alert('Registro omdificado correctamente...!');
+        alert('Registro modificado correctamente...!');
         this.ngOnInit();
       })
   }

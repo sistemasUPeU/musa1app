@@ -28,6 +28,8 @@ export class RevisionTecnicaComponent implements OnInit {
     })
   }
 
+  filterRevisionHtml = '';
+  
   getidplaca(placa: String){
     console.log('placa' + placa);
     this.service.getObteneridplaca(placa).subscribe((data)=>{
