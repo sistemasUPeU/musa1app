@@ -60,15 +60,6 @@ export class VinculacionBusComponent implements OnInit {
               // console.log(' *creo_vinculacion '+(i+1))
             });
         }
-<<<<<<< HEAD
-        this.ngOnInit();
-      });
-  }
-  actualizarVinculacion() {
-    this.vinculacionService
-      .modificarVinculacionBus(this.vinculacion_modal)
-      .subscribe(data => {});
-=======
         alert("Vinculación creada correctamente.");
         this.ngOnInit();
       });
@@ -79,7 +70,6 @@ export class VinculacionBusComponent implements OnInit {
       .subscribe(data => {
         alert("Vinculacion modificada correctamente.");
       });
->>>>>>> current
     for (let i = 0; i < this.vreqs_modal.length; i++) {
       this.vinculacionService
         .modificarVrequisitoBus(this.vreqs_modal[i])
@@ -112,21 +102,12 @@ export class VinculacionBusComponent implements OnInit {
       //agregar estado vinculacion
       this.actualizarEstadoVinculacion();
     });
-<<<<<<< HEAD
   }
   cargarTablaVinculacionBus() {
     this.vinculacionService.listarVistaVinculacionBus().subscribe(data => {
       this.vinculaciones = data["vcs"];
     });
   }
-=======
-  }
-  cargarTablaVinculacionBus() {
-    this.vinculacionService.listarVistaVinculacionBus().subscribe(data => {
-      this.vinculaciones = data["vcs"];
-    });
-  }
->>>>>>> current
   cargarInvolucrados(placa: string) {
     //Cargar bus
     this.vinculacionService.listarInvolucradosBus(placa).subscribe(data => {
@@ -263,20 +244,11 @@ export class VinculacionBusComponent implements OnInit {
   // METODOS BUSCAR
 
   accionBuscarVinculacion() {
-<<<<<<< HEAD
-    console.log("accionBuscarVinculacion:");
-=======
     // console.log("accionBuscarVinculacion:");
->>>>>>> current
     let placa = this.iBuscarPlaca.nativeElement.value;
     let id;
     let i;
     this.iBuscarPlaca.nativeElement.value = "";
-<<<<<<< HEAD
-=======
-    console.log("Lista de vinculaciones activas:");
-    console.log(this.vinculaciones);
->>>>>>> current
     for (i = 0; i < this.vinculaciones.length; i++) {
       if (this.vinculaciones[i].placa === placa) {
         id = this.vinculaciones[i].id_vinculacion;
