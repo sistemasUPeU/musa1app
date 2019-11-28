@@ -60,6 +60,7 @@ export class VinculacionBusComponent implements OnInit {
               // console.log(' *creo_vinculacion '+(i+1))
             });
         }
+<<<<<<< HEAD
         this.ngOnInit();
       });
   }
@@ -67,6 +68,18 @@ export class VinculacionBusComponent implements OnInit {
     this.vinculacionService
       .modificarVinculacionBus(this.vinculacion_modal)
       .subscribe(data => {});
+=======
+        alert("Vinculación creada correctamente.");
+        this.ngOnInit();
+      });
+  }
+  actualizarVinculacion() {
+    this.vinculacionService
+      .modificarVinculacionBus(this.vinculacion_modal)
+      .subscribe(data => {
+        alert("Vinculacion modificada correctamente.");
+      });
+>>>>>>> current
     for (let i = 0; i < this.vreqs_modal.length; i++) {
       this.vinculacionService
         .modificarVrequisitoBus(this.vreqs_modal[i])
@@ -99,12 +112,21 @@ export class VinculacionBusComponent implements OnInit {
       //agregar estado vinculacion
       this.actualizarEstadoVinculacion();
     });
+<<<<<<< HEAD
   }
   cargarTablaVinculacionBus() {
     this.vinculacionService.listarVistaVinculacionBus().subscribe(data => {
       this.vinculaciones = data["vcs"];
     });
   }
+=======
+  }
+  cargarTablaVinculacionBus() {
+    this.vinculacionService.listarVistaVinculacionBus().subscribe(data => {
+      this.vinculaciones = data["vcs"];
+    });
+  }
+>>>>>>> current
   cargarInvolucrados(placa: string) {
     //Cargar bus
     this.vinculacionService.listarInvolucradosBus(placa).subscribe(data => {
@@ -241,17 +263,27 @@ export class VinculacionBusComponent implements OnInit {
   // METODOS BUSCAR
 
   accionBuscarVinculacion() {
+<<<<<<< HEAD
     console.log("accionBuscarVinculacion:");
+=======
+    // console.log("accionBuscarVinculacion:");
+>>>>>>> current
     let placa = this.iBuscarPlaca.nativeElement.value;
     let id;
     let i;
     this.iBuscarPlaca.nativeElement.value = "";
+<<<<<<< HEAD
+=======
+    console.log("Lista de vinculaciones activas:");
+    console.log(this.vinculaciones);
+>>>>>>> current
     for (i = 0; i < this.vinculaciones.length; i++) {
       if (this.vinculaciones[i].placa === placa) {
         id = this.vinculaciones[i].id_vinculacion;
         break;
       }
     }
+
     if (i === this.vinculaciones.length) {
       alert("No se encontro el numero de placa");
     } else {
@@ -263,5 +295,29 @@ export class VinculacionBusComponent implements OnInit {
     //obtener placa
     //buscar vinculacion que tenga esa numero de placa
     //funcion accionModificaraVinculacionBus(,)
+  }
+  verificarVinculacion(placa: string): boolean {
+    let estado = false;
+    let i;
+    for (i = 0; i < this.vinculaciones.length; i++) {
+      if (this.placa_modal === this.vinculaciones[i].placa) {
+        estado = false;
+        break;
+      }
+    }
+    if (i === this.vinculaciones.length) {
+      estado = true;
+    }
+    console.log("estado:");
+    console.log(estado);
+    return estado;
+  }
+  botonBuscarModal(placa: string) {
+    if (this.verificarVinculacion(placa)) {
+      this.cargarInvolucrados(placa);
+    } else {
+      alert("No se puede crear vinculacion. Bus ya vinculado");
+      this.placa_modal = "";
+    }
   }
 }
