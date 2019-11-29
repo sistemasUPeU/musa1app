@@ -19,9 +19,9 @@ export class AutorizarPedidoComponent implements OnInit {
   constructor(private service: ServiceService) { }
 
   ngOnInit() {
-    this.service.getMantenimiento().subscribe( (data) => {
-      this.listMantenimiento = data['LISTA_MANTENIMIENTO'];
-      console.log(this.listMantenimiento);
+    this.service.getPedido().subscribe( (data) => {
+      this.lispedi = data['LIST_FECHA'];
+      console.log(this.lispedi);
     });
   }
 

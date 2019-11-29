@@ -225,7 +225,10 @@ export class ServiceService {
     return this.http.get<DetallePedido[]>(this.pedido + id_pedido);
   }
   updateStatus(pedido2: Pedido) {
-    return this.http.put<Pedido>(this.pedidox + 'status/', pedido2);
+    return this.http.put<Pedido>(
+      this.pedidox + 'status/' + pedido2.id_pedido,
+      pedido2
+    );
   }
 
   // ----- AUTORIZAR PEDIDO ---- //
