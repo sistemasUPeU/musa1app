@@ -16,8 +16,12 @@ export class CsvService {
     return this.http.get<Periodo[]>(this.crono);
   }
 
-  getcro(para: number, peri: number): Observable<CronoBus[]> {
-    return this.http.get<CronoBus[]>(this.crono + para  + peri);
+  getcro( peri: number): Observable<CronoBus[]> {
+    return this.http.get<CronoBus[]>(this.crono + peri);
+  }
+
+  getcroC( per: number): Observable<CronoBus[]> {
+    return this.http.get<CronoBus[]>(this.crono + 'C/' + per);
   }
 
   create(cr: CronoBus) {

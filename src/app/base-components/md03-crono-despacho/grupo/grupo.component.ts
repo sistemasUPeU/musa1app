@@ -62,7 +62,6 @@ export class GrupoComponent implements OnInit {
     this.service.update().subscribe( (data) => {
       this.grupo = data;
     });
-    alert('se act');
   }
 
   fillSelec() {
@@ -97,7 +96,7 @@ export class GrupoComponent implements OnInit {
     this.service.creategrupo(this.newgrupo).subscribe(data => {
       alert('El grupo h asido creado correctamente...!!');
     });
-    this.listar();
+    this.ngOnInit();
   }
 
 

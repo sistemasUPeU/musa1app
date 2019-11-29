@@ -60,7 +60,7 @@
                 </div>
                 <div class="modal-footer ">
                     <button type="button " class="btn btn-secondary " data-dismiss="modal">Cerrar</button>
-                    <button type="button " class="btn btn-success " data-dismiss="modal " (click)="Guardar() ">Guardar</button>
+                    <button type="button " class="btn btn-success " (click)="Guardar() " data-dismiss="modal">Guardar</button>
                 </div>
             </div>
         </div>
@@ -72,21 +72,25 @@
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <table class="table " style="background: lightgray ">
+                    <table class="table table-striped">
                         <thead>
                             <tr>
                                 <th scope="col ">Grupos</th>
                                 <th scope="col ">Orden</th>
                                 <th scope="col ">Hora</th>
-                                <th scope="col ">Periodo</th>
+                                <th *ngFor="let p of periodos">{{p}}</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody *ngFor="let lisap of listacsv">
                             <tr>
-                                <th rowspan="5 ">1</th>
-                                <td>1</td>
-                                <td>10:20</td>
-                                <td>103</td>
+                                <th>{{lisap.numero}}</th>
+                                <th>{{lisap.orden}}</th>
+                                <th>{{lisap.hora}}</th>
+                                <th>{{lisap.padron}}</th>
+                                <th>{{lisap.padron2}}</th>
+                                <th>{{lisap.padron3}}</th>
+                                <th>{{lisap.padron4}}</th>
+
                             </tr>
 
                         </tbody>
@@ -94,25 +98,30 @@
 
                     <div>
 
-                        <p> Paradero 1</p>
+                        <p> Paradero Apurimac</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <table class="table " style="background: lightgray ">
+                    <table class="table table-striped">
                         <thead>
                             <tr>
                                 <th scope="col ">Grupos</th>
                                 <th scope="col ">Orden</th>
                                 <th scope="col ">Hora</th>
-                                <th scope="col ">Periodo</th>
+                                <th *ngFor="let p of periodos">{{p}}</th>
+
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody *ngFor="let lisape of listacsvC">
                             <tr>
-                                <th rowspan="5 ">1</th>
-                                <td>1</td>
-                                <td>10:20</td>
-                                <td>103</td>
+                                <th>{{lisape.numero}}</th>
+                                <th>{{lisape.orden}}</th>
+                                <th>{{lisape.hora}}</th>
+                                <th>{{lisape.padron}}</th>
+                                <th>{{lisape.padron2}}</th>
+                                <th>{{lisape.padron3}}</th>
+                                <th>{{lisape.padron4}}</th>
+
                             </tr>
 
                         </tbody>
@@ -120,14 +129,14 @@
 
                     <div>
 
-                        <p> Paradero 1</p>
+                        <p> Paradero Cieneguilla</p>
                     </div>
                 </div>
 
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <a id="act" class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
+
             </a>
             <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>

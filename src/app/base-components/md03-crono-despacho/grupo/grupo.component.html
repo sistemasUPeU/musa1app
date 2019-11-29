@@ -2,7 +2,7 @@
 
     <nav class="margin">
         <button type="button" (click)="fillSelec(); mostrar = true" class="btn btn-lg btn-success radius" style="margin-right: 25px" data-toggle="modal" data-target="#exampleModal">Nuevo</button>
-        <button (click)="mostrar = false" class="btn btn-secondary btn-lg radius" data-toggle="modal" data-target="#exampleModal">Agregar</button>
+        <button (click)="mostrar = false ; fillSelec() " class="btn btn-secondary btn-lg radius" data-toggle="modal" data-target="#exampleModal">Agregar</button>
 
         <div class="mes">
             <label class="h4">{{varmes}}</label>
@@ -73,6 +73,10 @@
                         <div class="row m20">
                             <div class="col-6 t"><label>Intervalo</label></div>
                             <div class="col-6"><input [(ngModel)]="newgrupo.intervalo" name="intervalo" class="form-control b" type="text"></div>
+                        </div>
+
+                        <div *ngIf="mostrar" class="row m20" style="color: red; text-align: center; margin-left: 5px;">
+                            <p> Al guardar se eliminara los grupos ya existentes </p>
                         </div>
 
 
@@ -175,13 +179,7 @@
 
     </div>
 
-    <footer class="footer ">
-        <div class="container">
-            <button type="button" class="btn btn-lg btn-secondary radius" style="margin-right: 25px">Cancelar</button>
-            <button type="button" class="btn btn-success btn-lg radius">Guardar</button>
 
-        </div>
-    </footer>
 
 
 </div>
