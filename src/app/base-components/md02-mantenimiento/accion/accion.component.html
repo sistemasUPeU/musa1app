@@ -52,7 +52,7 @@
             </div>
         </div>
         <!--Modal para listar accion-->
-        <table class="table table-striped">
+        <table class="table table-striped" id="datatable1">
             <thead>
                 <tr>
                     <th>Nº</th>
@@ -75,7 +75,6 @@
         </table>
 
         <!--Editar Accion-->
-
         <div class="modal fade" id="editaraccion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -115,6 +114,12 @@
                 </div>
             </div>
         </div>
+
+        <script>
+            $(document).ready(function () {
+                $('#datatable1').DataTable();
+            });
+        </script>
 
     </div>
 </div>

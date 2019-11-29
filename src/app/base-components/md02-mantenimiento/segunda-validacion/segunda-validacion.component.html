@@ -1,7 +1,8 @@
 <div class="container">
-
   <div class="row">
     <div class="col-xl-12">
+
+
       <br>
       <FONT FACE="courier" SIZE=10 style="margin-left:400px;">MANTENIMIENTO</FONT>
       <br>
@@ -23,7 +24,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let mante of listamantenimiento, let i=index">
+          <tr *ngFor="let mante of listamantenimiento, let i=index" id="fila">
             <th>{{i+1}}</th>
             <td>{{mante.placa}}</td>
             <td>{{mante.padron}}</td>
@@ -40,7 +41,7 @@
             </td>
 
             <td><button type="button" class="btn btn-info far fa-check-circle" data-toggle="modal"
-                data-target="#confirmautorizar" (click)="loadMantenimientoUpdate_Positivo(mante)"> </button></td>
+                data-target="#confirmautorizar" (click)="loadMantenimientoUpdate_Positivo(mante)"></button></td>
 
             <td><button type="button" class="btn btn-danger fa fa-stop-circle" data-toggle="modal"
                 data-target="#confirmdenegar" (click)="loadMantenimientoUpdate_Negativo(mante)"> </button></td>
