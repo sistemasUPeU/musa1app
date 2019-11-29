@@ -22,7 +22,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let ac of Listasignarconductor| filterasignarconductor:filterasignarconductorHtml ;let i = index">
+        <tr *ngFor="let ac of Listasignarconductor| paginate: {itemsPerPage: 5, currentPage: p2} |filterasignarconductor:filterasignarconductorHtml ;let i = index">
           <th id="row" scope="row">{{i+1}}</th>
           <th>{{ac.nombre_persona}}</th>
           <th>{{ac.apellido_paterno}}&nbsp;&nbsp; {{ac.apellido_materno}}</th>
@@ -39,12 +39,15 @@
             <option *ngFor="let bu of listarbus">{{bu.padron}}</option>
         
           </select></td>
-          
+          <td><button class="icon"><i class="fa fa-check" aria-hidden="true" (click)="actualizar()"></i>
+          </button> </td>
         </tr>
       
        
       </tbody>
     </table>
+    <pagination-controls directionLinks="true" (pageChange)="p2 = $event" previousLabel="Anterior"
+    nextLabel="Siguiente"></pagination-controls>
   </div>
   
   <div class="container 2">

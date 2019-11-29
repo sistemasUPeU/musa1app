@@ -10,14 +10,14 @@ import { AsignarBusComponent } from './asignar-bus/asignar-bus.component';
 import { AsignarConductorComponent } from './asignar-conductor/asignar-conductor.component';
 import { ReportesComponent } from './reportes/reportes.component';
 import { FilterasignarconductorPipe } from 'src/app/Search/filterasignarconductor.pipe';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [GrupoComponent, CsvComponent, AsignarBusComponent, AsignarConductorComponent, ReportesComponent , FilterasignarconductorPipe],
   imports: [
     FormsModule,
     CommonModule,
-    Md03CronoDespachoRoutingModule
+    Md03CronoDespachoRoutingModule,NgxPaginationModule
   ]
 })
 export class Md03CronoDespachoModule { }

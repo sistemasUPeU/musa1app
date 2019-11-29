@@ -36,7 +36,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let ls of Listasignarbus ;let i = index">
+            <tr *ngFor="let ls of Listasignarbus | paginate: {itemsPerPage: 5, currentPage: p2};let i = index">
                 <th id="row" scope="row">{{i+1}}</th>
                 <td>{{ls.numero}}</td>
                 <td>{{parade}}</td>
@@ -62,11 +62,9 @@
 
         </tbody>
     </table>
+    <pagination-controls directionLinks="true" (pageChange)="p2 = $event" previousLabel="Anterior"
+    nextLabel="Siguiente"></pagination-controls>
+
+    
 </div>
 
-<div class="container 2">
-
-  
-
-   
-</div>
