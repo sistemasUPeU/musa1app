@@ -4,6 +4,7 @@ import { VistaVinculacion } from '../base-models/VistaVinculacionBus';
 import { Observable } from 'rxjs';
 import { Vinculacion } from '../base-models/Vinculacion';
 import { VinculacionRequisito } from '../base-models/VinculacionRequisito';
+import { TipoRequisito } from '../base-models/TipoRequisito';
 
 @Injectable({
   providedIn: 'root'
@@ -49,4 +50,15 @@ export class VinculacionService {
   modificarVrequisitoBus(vRequisito: VinculacionRequisito): Observable<number>{
     return this.http.post<number>(this.URL + 'bus/update-vrequisito', vRequisito);
   }
+
+  url2="http://localhost:8090/bus/";
+  
+  ListRequest(): Observable<TipoRequisito[]> {
+    return this.http.get<TipoRequisito[]>(this.url2+'buscar2');
+  }
+
+  addRequiVincu(vinculacionRequisito: VinculacionRequisito) {
+    return this.http.post<VinculacionRequisito>(this.url2+'addVin', vinculacionRequisito)
+  }
+
 }
