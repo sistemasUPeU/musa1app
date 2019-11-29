@@ -107,7 +107,7 @@
         <div class="modal-content" *ngFor="let per of loadPersonaData">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalScrollableTitle">
-              Modal title
+              Vincular Conductor
             </h5>
             <button
               type="button"
@@ -188,10 +188,73 @@
                               </button>
                             </div>
                           </div>
+                          <div class="form-group">
+                            <div class="input-group datepicker-input">
+                              <input
+                                class="form-control"
+                                placeholder="Fecha de caducidad"
+                                name="dpf"
+                                [(ngModel)]="fecha_caducidad[i]"
+                                ngbDatepicker
+                                #df="ngbDatepicker"
+                              />
+                              <button
+                                class="input-group-addon"
+                                (click)="df.toggle()"
+                                type="button"
+                              >
+                                <span class="fa fa-calendar"></span>
+                              </button>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </ng-container>
                   </form>
+                  <div class="form-group">
+                    <h3>Fecha de Emision</h3>
+                    <div class="form-group">
+                      <div class="input-group datepicker-input">
+                        <input
+                          class="form-control"
+                          placeholder="yyyy-mm-dd"
+                          name="dpf"
+                          [(ngModel)]="fecha - emision"
+                          ngbDatepicker
+                          #df="ngbDatepicker"
+                        />
+                        <button
+                          class="input-group-addon"
+                          (click)="df.toggle()"
+                          type="button"
+                        >
+                          <span class="fa fa-calendar"></span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <h3>Fecha de Termino</h3>
+                    <div class="form-group">
+                      <div class="input-group datepicker-input">
+                        <input
+                          class="form-control"
+                          placeholder="yyyy-mm-dd"
+                          name="dpf"
+                          [(ngModel)]="fecha_termino"
+                          ngbDatepicker
+                          #df="ngbDatepicker"
+                        />
+                        <button
+                          class="input-group-addon"
+                          (click)="df.toggle()"
+                          type="button"
+                        >
+                          <span class="fa fa-calendar"></span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -202,9 +265,16 @@
               class="btn btn-secondary"
               data-dismiss="modal"
             >
-              Close
+              Cerrar
             </button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-dismiss="modal"
+              (click)="Guardar()"
+            >
+              Guardar
+            </button>
           </div>
         </div>
       </div>
