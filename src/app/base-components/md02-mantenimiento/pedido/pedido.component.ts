@@ -23,12 +23,15 @@ export class PedidoComponent implements OnInit {
   listdetalle: DetallePedido[] = [];
   listTipoMantenimiento : TipoMantenimiento [] = [];
   selectedTipoMantenimiento: number = null;
+  detallemantenimiento: DetalleMantenimiento = new DetalleMantenimiento();
   selectedMarca: number = null;
   loadProductoData: Producto[] =[];
   showDropDown= false;
   listProducto: Producto[] = [];
   marca: Marca = new Marca();
   listMarca: Marca[]=[];
+  loadMantenimientoData: Mantenimiento[] = [];
+  loadDetalleMantenimientoData: DetalleMantenimiento[] = [];
 
   padron:String;
   listId: Padron[] = [];
@@ -106,4 +109,9 @@ fillSelectMarca() {
     console.log(this.listMarca);
   })
 }
+
+ mensaje(){
+    alert("Se envio correctamente");
+  }
+
 }

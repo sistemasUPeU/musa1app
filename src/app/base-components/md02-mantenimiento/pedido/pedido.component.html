@@ -28,70 +28,65 @@
                   <td>{{mant.placa}}</td>
                   <td>{{mant.padron}}</td>
                   <td>{{mant.tipo_mantenimiento}}</td>
-                  <td><button type="button" class="btn btn-success fa fa-bomb" data-toggle="modal" data-target="#exampleModal"></button></td>
+                  <td><button type="button" class="btn btn-warning far fa-edit" data-toggle="modal" data-target="#exampleModal"></button></td>
                 </tr>
 
               </tbody>
             </table>
 
-                    <!-- MODAL -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">REGISTRAR PRODUCTOS</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-           <!-- MODAL BODY -->
-          <div class="modal-body">
-            <table class="table">   
-              <thead class="thead-light">
-                <tr>
-                    <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4" id="hello">
-                        <div class="input-group"> 
-                          <input type="search" placeholder="Buscar producto"  aria-describedby="button-addon1"
-                            class="form-control border-0 bg-light" >
-                          <div class="input-group-append">
-                            <button id="button-addon1" type="submit" class="btn btn-link text-primary"><i
-                                class="fa fa-search"></i></button>
-                                
-                          </div>
-                        </div>
-                      </div>
-                      <td><button type="button" class="btn btn-success">Agregar</button></td>
-                </tr>
-              </thead>
-              <thead class="thead">
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Producto</th>
-                  <th scope="col">Precio</th>
-                  <th scope="col">Marca</th>
-                  <th scope="col">Cantidad</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr  *ngFor="let producto of listProducto,let i = index">
-                  <th>{{i+1}}</th>
-                  <td>{{producto.nombre_producto}}</td>
-                  <td>15</td>
-                  <td>{{producto.id_marca}}</td>   
-                  <td><input class="form-control mr-sm-5" type="box" placeholder="" ></td>  
-                </tr>
 
-              </tbody>
-            </table>
-          </div>
-          <!-- MODAL FOOTER -->
-          <div class="modal-footer">
-            <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-success" data-dismiss="modal">Registrar</button>
-          </div>
+            <!-- MODAL DETALLE MANTENIMIENTO-->
+    <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog"
+    aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">REGISTRAR PRODUCTOS</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+          </button>
         </div>
+
+        <div class="modal-body">
+          <table class="table">
+            <thead class="thead-light">
+              <tr>
+                <th colspan="5">LISTA DE PRODUCTOS</th>
+              </tr>
+            </thead>
+            <thead class="thead">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Producto</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Marca</th>
+                <th colspan="2">Cantidad</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr  *ngFor="let producto of listProducto| paginate: {itemsPerPage: 5, currentPage: p2}; let i = index">
+                
+                <th>{{i+1}}</th>
+                <td>{{producto.nombre_producto}}</td>
+                <td>15</td>
+                <td>{{producto.id_marca}}</td> 
+                <td><input class="form-control mr-sm-5" type="box" placeholder="" ></td>
+                <td><button type="button" class="btn btn-success fas fa-check-circle"
+                (click)="mensaje()"></button></td>
+              </tr>
+              
+            </tbody>
+          </table>
+          <pagination-controls directionLinks="true" (pageChange)="p2 = $event" previousLabel="Anterior"
+            nextLabel="Siguiente"></pagination-controls>
+        </div>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+        
       </div>
     </div>
+  </div>
+
   </div>
 
   
