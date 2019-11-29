@@ -25,6 +25,7 @@ export class VinculacionBusComponent implements OnInit {
   }
 
   vinculaciones: VistaVinculacion[];
+  pageIndex: number = 1;
 
   //MODAL
   requisito_modal = []; //Guarda requisitos para la vinculacion
@@ -293,4 +294,6 @@ export class VinculacionBusComponent implements OnInit {
       this.placa_modal = "";
     }
   }
+
+  //paginacion
 }

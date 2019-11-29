@@ -14,6 +14,7 @@ import { GrupoService } from "src/app/base-services/grupo/grupo.service";
 import { FilterBusPipe } from "./Search/filter-bus.pipe";
 import { FilterProductoPipe } from "./search/filter-producto.pipe";
 import { FilterRevisionPipe } from "./search/filter-revision.pipe";
+import { NgxPaginationModule } from "ngx-pagination";
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import { FilterRevisionPipe } from "./search/filter-revision.pipe";
     BrowserAnimationsModule,
     HttpClientModule,
     LanguageTranslationModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgxPaginationModule
   ],
   declarations: [AppComponent],
   providers: [AuthGuard, ServiceService, GrupoService, EncrDecrService],
