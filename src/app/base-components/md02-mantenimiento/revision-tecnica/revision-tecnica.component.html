@@ -175,7 +175,7 @@
           <div class="row">
             <div class="col">
               <label for="placa" class="col-form-label"  >Placa de Bus:</label>
-              <input [(ngModel)]="revision.id_bus" name="placa" type="text" class="form-control" disabled>
+              <input [(ngModel)]="revision.placa" name="placa" type="text" class="form-control" disabled>
               <br>
               <div class="form-group">
                 <label for="example-date-input" class="">Fecha Revisión: </label>
@@ -234,7 +234,7 @@
 
           <div class="row">
             <div class="col">
-              <label for="">Placa de Bus: {{revisiones.id_bus}}</label>
+              <label for="">Placa de Bus: {{revisiones.placa}}</label>
               <hr>
               <label for="">Fecha Revision: {{revisiones.fecha}}</label>
               <hr>
@@ -267,7 +267,7 @@
 <!------------ELIMINAR MODAL--------->
 <div class="modal fade" id="eliminartec" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content" *ngFor="let  revisiontecnica of listRevisionTecnica" >
+        <div class="modal-content" *ngFor="let  revisiontecnica of loadRevisionTecnicaData" >
             <div class="modal-header">
                 <h4 class="modal-title">Eliminar Revisión Técnica {{revisiontecnica.id_revision_tecnica}}</h4>
             </div>
@@ -275,7 +275,7 @@
                 <label>¿Estás seguro que desea eliminar?</label>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Crar</button>
               <button type="button" class="btn btn-primary"
                 data-dismiss="modal" (click)="EliminarRev(revisiontecnica)">Eliminar</button>
             </div>
