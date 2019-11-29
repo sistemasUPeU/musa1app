@@ -1,94 +1,72 @@
 <div class="row">
-  <div class="col col-xl-6 col-lg-12">
-      <div class="mb-3">
-        <h1 class="page-header">
-          Soat/Tarjeta de Circulacion
-        </h1>
-      <div class="card-body table-responsive">
-        <table class="table table-bordered">
-            <thead>
+  <div class="col-xl-12">
+    <h1>
+      Validad Soat-Tarjeta de Circulacion
+    </h1>
+    <div class="modal-header">
+      <div class="form-group">
+        <label for="pers" class="col-form-label">Bus:</label>
+        <select class="form-control" (change)="selectedVincu($event)">
+          <option value="0">Seleccionar...</option>
+          <option *ngFor="let vinculacion  of vinculaciones" value={{vinculacion.id_vinculacion}}>{{vinculacion.placa}}</option>
+        </select>
+      </div>
+  </div>
+    <div class="card-body">
+      <table class="table table-borderless">
+          <thead>
               <tr>
-                <th>Bus</th>
-                <th>Url</th>
-                <th colspan="2">Opcion</th>
+                  <th scope="col">#</th>
+                  <th scope="col">Requisito</th>
+                  <th scope="col">Fecha Vencimiento</th>
+                  <th scope="col">URL</th>
               </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Bus nro 1</td>
-                <td>Users/Zero/Downloads/image.png</td>
-                <td><button class="btn btn-warning far fa-edit" (click)="loadCate(cat)" data-target="#updatecat" data-toggle="modal"></button></td>
-                <td><button class="btn btn-danger fas fa-trash-alt" data-toggle="modal" (click)="loadCate(cat)" data-target="#confirmdelete"></button></td>
-              </tr>
-            </tbody>
-          </table>
+          </thead>
+          <tbody>
+            <tr *ngFor="let requisito of requisito_modal; let i = index">
+              <th>{{ i+1 }}</th>
+              <td> <input [(ngModel)]="vreqs_modal[i].id_requisito"  style="display:none" type="">{{requisito.nombre_requisito}}</td>
+              <td>
+                  <input class="form-control" type="date" value="" id="" [(ngModel)]="vreqs_modal[i].fecha_vencimiento_doc">
+              </td>
+              <td>
+                 <input class="form-control" type="text" [(ngModel)]="vreqs_modal[i].url" placeholder="URL">
+              </td>
+          </tr>
+          </tbody>
+      </table>
+      <div class="col-12 ">
+        <button  type="button" class="btn btn-primary" (click)="validar()">
+          Validar
+        </button>
+      </div>
+  </div>
+  </div>
+</div>
+<!-- Modal -->
+<!--<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <h1>Charge File</h1>
+            <div _ngcontent-qmd-c1>
+                <input type="file"  _ngcontent-xse-c1 (change)="onfileseleted($event)" name="file"/><br><br>
+            </div>  
+            <input type="submit" _ngcontent-xse-c1 (click)=uploadfiles() value="Cargar"/>
         </div>
+        
       </div>
-    </div>
-  <div class="col col-xl-6 col-lg-12">
-    <div class="mb-3">
-      <h1 class="page-header">
-        Imagen del Bus
-      </h1>
-    <div class="card-body table-responsive" >
-      <label class="form-control">Imagen</label>
-      <div id="imagen">
-        <img src="Users/Zero/Downloads/image.png" alt="image">
-      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
-</div>
-
-<div class="row">
-  <form class="container">
-      <div class="form-group">
-          <label for="bus" class="col-form-label">Bus:</label>
-          <select class="form-control" (change)="selectBus($event)" (click)="listar()">
-            <option value="0">Seleccionar...</option>
-            <option *ngFor="let b of listBus" value={{b.placa}}>{{b.placa}}</option>
-          </select>
-        </div>
-     <div class="row">
-        <div class="col col-xl-6 col-lg-12">
-            <div class="mb-3">
-              <label for="marc" class="col-form-label">Iniciar Sesion:</label>
-            </div>
-            <div class="mb-3">
-              <label for="marc" class="col-form-label">Ingrese url2:</label>
-            </div>
-          </div>
-          <div class="col col-xl-6 col-lg-12">
-            <div class="mb-3">
-                <div>
-                    <button id="login" class="btn btn-primary">
-                        Upload Files to Drive
-                    </button>
-                </div> 
-            </div>
-            <div class="mb-3">
-               
-            </div>
-          </div>
-      </div>
-      <div class="container row">
-        <div class="col-8">
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#agregarcategoria">Agregar</button>
-        </div>
-      </div>
-    </form>
-</div>
-
-<div>
-  <input id="files" type="file" name="files[]" multiple/>
-     <button id="upload">Upload</button>
-    <div id="progress-wrp">
-        <div class="progress-bar"></div>
-        <div class="status">0%</div>
-    </div>
-  </div> 
-<div id="result">
-       
-</div>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</div>-->
