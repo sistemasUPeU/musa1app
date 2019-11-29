@@ -1,14 +1,13 @@
- <!--<div class="input-group  col-sm-7 pb-4 pt-4  buscar-caja ">
+ <div class="input-group  col-sm-7 pb-4 pt-4  buscar-caja ">
+   
     <label class="mr-3 pt-2">Buscar Conductores: </label>
-    <input type="text" name="" class="buscar-txt" placeholder="Buscar..."/>
-     <a   class=""><i class="fa fa-search lupa  "></i></a>
+    <input type="text"  style="height: 40px;" class="buscar-txt" placeholder="Buscar..." name="filterasignarconductor" [(ngModel)]= "filterasignarconductorHtml" />
+     <a   class=""><i class="fa fa-search lupa  "  ></i></a>
   
-     <div class="btbus">
-       <button class="btn btn-btn bus">Buscar</button>
-     </div>
+
   
   </div>
--->
+
   
   <div class="container " style="margin-top: 50px;">
     <table class="table">
@@ -18,25 +17,26 @@
           <th scope="col">Nombre</th>
           <th scope="col">Apellidos</th>
           <th scope="col">Carnet</th>
-          <th scope="col">N° DE BUS</th>
+          <th scope="col">N°DE BUS</th>
           <th scope="col">N° DE BUS</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <th></th>
-          <th></th>
-          <th></th>         
+        <tr *ngFor="let ac of Listasignarconductor| filterasignarconductor:filterasignarconductorHtml ;let i = index">
+          <th id="row" scope="row">{{i+1}}</th>
+          <th>{{ac.nombre_persona}}</th>
+          <th>{{ac.apellido_paterno}}&nbsp;&nbsp; {{ac.apellido_materno}}</th>
+          <th>{{ac.carnet_c}}</th> 
+               
          
-          <td><select class="browser-default custom-select col-6 col-sm-5">
+          <td><select style="width: 160px;" class="browser-default custom-select col-6 col-sm-5">
             <option selected></option>
-            <option value="1"></option>
+            <option *ngFor="let bu of listarbus" >{{bu.padron}}</option>
            
           </select></td>
-          <td><select class="browser-default custom-select col-6 col-sm-5">
+          <td><select style="width: 160px;" class="browser-default custom-select col-6 col-sm-5">
             <option selected></option>
-            <option value="1"></option>
+            <option *ngFor="let bu of listarbus">{{bu.padron}}</option>
         
           </select></td>
           

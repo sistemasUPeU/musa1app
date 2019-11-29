@@ -12,7 +12,7 @@ export class AsignarbusService {
 
   constructor(private http: HttpClient) { }
 
-  asignarbuses= 'http://localhost:8090/asignarbus/'
+   asignarbuses= 'http://localhost:8090/asignarbus/'
   buses = 'http://localhost:8090/bus/'
 
   getAsignarBus(): Observable <AsignarBus[]>{

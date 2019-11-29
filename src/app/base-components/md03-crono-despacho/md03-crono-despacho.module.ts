@@ -9,9 +9,11 @@ import { CsvComponent } from './csv/csv.component';
 import { AsignarBusComponent } from './asignar-bus/asignar-bus.component';
 import { AsignarConductorComponent } from './asignar-conductor/asignar-conductor.component';
 import { ReportesComponent } from './reportes/reportes.component';
+import { FilterasignarconductorPipe } from 'src/app/Search/filterasignarconductor.pipe';
+
 
 @NgModule({
-  declarations: [GrupoComponent, CsvComponent, AsignarBusComponent, AsignarConductorComponent, ReportesComponent],
+  declarations: [GrupoComponent, CsvComponent, AsignarBusComponent, AsignarConductorComponent, ReportesComponent , FilterasignarconductorPipe],
   imports: [
     FormsModule,
     CommonModule,

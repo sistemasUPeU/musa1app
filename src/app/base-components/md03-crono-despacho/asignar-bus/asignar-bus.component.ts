@@ -19,7 +19,7 @@ export class AsignarBusComponent implements OnInit {
   Listasignarbus: AsignarBus[] = [];
   id_bus: number ;
 
-  paradero: Paradero= new Paradero();
+  paradero: Paradero = new Paradero();
   listparadero: Paradero[] = [];
   id_paradero: number;
   parade: String;
@@ -46,7 +46,7 @@ export class AsignarBusComponent implements OnInit {
             this.listparadero = data['LS'];
 
      });
-  }
+    }
 
   listartodo() {
    // console.log("llege")

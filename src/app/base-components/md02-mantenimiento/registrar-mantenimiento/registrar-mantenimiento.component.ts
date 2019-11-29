@@ -40,7 +40,7 @@ export class RegistrarMantenimientoComponent implements OnInit {
     });
   }
   filterMantenimientoHtml = ''; 
-
+  
   fillSelect() {
     this.service.getTipoMantenimiento().subscribe((data) => {
       this.listTipoMantenimiento = data['TIPO_MANT'];

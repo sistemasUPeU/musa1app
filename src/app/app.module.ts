@@ -16,6 +16,7 @@ import { FilterProductoPipe } from "./search/filter-producto.pipe";
 import { FilterRevisionPipe } from "./search/filter-revision.pipe";
 import { NgxPaginationModule } from "ngx-pagination";
 
+
 @NgModule({
   imports: [
     CommonModule,
