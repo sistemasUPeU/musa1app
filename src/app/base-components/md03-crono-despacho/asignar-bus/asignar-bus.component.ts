@@ -31,7 +31,7 @@ export class AsignarBusComponent implements OnInit {
   check : any;
 
   constructor(private service: AsignarbusService, private router: Router) { }
-
+  p2:number=2;
   ngOnInit() {
     this.service.getBus().subscribe((data) => {
       this.listBus = data['b'];

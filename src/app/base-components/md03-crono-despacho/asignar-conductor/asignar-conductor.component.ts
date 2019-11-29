@@ -17,7 +17,7 @@ export class AsignarConductorComponent implements OnInit {
   Listasignarconductor: AsignarConductor[] = [];
 
   constructor(private service: AsignarconductorService , private router: Router) { }
-
+  p2:number=1;
   ngOnInit() {
     this.service.getBus().subscribe((data) => {
       this.listarbus = data['b'];
@@ -26,7 +26,9 @@ export class AsignarConductorComponent implements OnInit {
     this.listartodo();
   
   }
-
+  actualizar(){
+    alert("se guardo");
+  }
 
   listartodo() {
     // console.log("llege")
