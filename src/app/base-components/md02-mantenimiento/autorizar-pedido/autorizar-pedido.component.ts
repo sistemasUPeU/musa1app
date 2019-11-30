@@ -10,6 +10,7 @@ import { Mantenimiento } from 'src/app/base-models/Mantenimiento';
   styleUrls: ['./autorizar-pedido.component.scss']
 })
 export class AutorizarPedidoComponent implements OnInit {
+  p: number = 1;
   pedido: Pedido = new Pedido();
   listdetalle: DetallePedido[] = [];
   lispedi: Pedido[] = [];
