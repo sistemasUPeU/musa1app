@@ -22,6 +22,7 @@
       <table class="table table-bordered">
           <thead>
             <tr>
+              <th>N°</th>
               <th>Marca</th>
               <th>Placa</th>
               <th>Padron</th>
@@ -33,7 +34,9 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let bus of listBus | filterBus:filterBusHtml">
+            <tr *ngFor="let bus of listBus | paginate: {itemsPerPage: 6, currentPage: p2} ;let i=index">
+              <!-- #region filterBus:filterBusHtml -->
+              <td>{{i+1}}</td>
               <td>{{bus.marca}}</td>
               <td>{{bus.placa}}</td>
               <td>{{bus.padron}}</td>
@@ -47,6 +50,8 @@
             </tr>
           </tbody>
         </table>
+        <pagination-controls directionLinks="true" (pageChange)="p2 = $event" previousLabel="Anterior"
+            nextLabel="Siguiente"></pagination-controls>
     </div>
     </div>
   </div>
