@@ -71,29 +71,23 @@ export class SoaTarjeCirComponent implements OnInit {
     });
   }*/
   cargar(){
-    console.log("si entraste");
     this.service2.listarVistaVinculacionBus().subscribe((data) => {
       this.vinculaciones = data['vcs']
-      console.log(this.vinculaciones);
     })
   }
   selectedVincu(event:any){
     this.selectedVincu2 = event.target.value;
-    console.log(this.selectedVincu2);
   }
 
   chargeRequest(){
-    console.log("estamos en si")
     this.service2.ListRequest().subscribe((data)=>{
       this.requisitos = data['tr']
-      console.log(this.requisitos)
     })
   }
 
   validar() {
     this.Vinculac.id_vinculacion=this.selectedVincu2;
     this.Vinculac.estado=this.estados;
-    console.log("ya estas dentro:"+this.Vinculac.id_vinculacion)
     //this.service2.addRequiVincu(this.Vinculac).subscribe(data=>{
       for (let i = 0; i < this.vreqs_modal.length; i++) {
         this.Vinculac.fecha_vencimiento_doc=this.vreqs_modal[i].fecha_vencimiento_doc;

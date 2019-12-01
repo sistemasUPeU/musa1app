@@ -9,7 +9,7 @@ import { ClickOutsideDirective2 } from 'src/app/base-directives/dropdown2.0.dire
 import { NgbDate, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FilterBusPipe} from 'src/app/Search/filter-bus.pipe';
 import { SoaTarjeCirComponent } from './soa-tarje-cir/soa-tarje-cir.component';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -20,7 +20,8 @@ import { SoaTarjeCirComponent } from './soa-tarje-cir/soa-tarje-cir.component';
     CommonModule,
     FormsModule,
     MD01CondsyBusesRoutingModule,
-    NgbModule
+    NgbModule,
+    NgxPaginationModule
   ]
 
 })
