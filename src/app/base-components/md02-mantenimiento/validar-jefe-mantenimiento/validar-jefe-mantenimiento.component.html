@@ -73,7 +73,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let detalle_mantenimiento of listDetalleMantenimiento, let i = index">
+                  <tr *ngFor="let detalle_mantenimiento of listDetalleMantenimiento| paginate: {itemsPerPage: 6, currentPage: p}; let i = index">
                     <th>{{i+1}}</th>
                     <td>{{detalle_mantenimiento.nom_tipo_accion}}</td>
                     <td>{{detalle_mantenimiento.nom_accion}}</td>
@@ -81,6 +81,8 @@
                   </tr>
                 </tbody>
               </table>
+              <pagination-controls style="text-align: center;" directionLinks="true" (pageChange)="p = $event" previousLabel="Anterior"
+              nextLabel="Siguiente"></pagination-controls>
             </div>
 
             <div class="modal-footer">

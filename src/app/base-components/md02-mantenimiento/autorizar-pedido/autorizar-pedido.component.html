@@ -23,7 +23,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let ped of lispedi, let i = index">
+            <tr *ngFor="let ped of lispedi| paginate: {itemsPerPage: 6, currentPage: p}; let i = index">
               <th>{{i+1}}</th>
               <td>{{ped.fecha_pedido}}</td>
               <td><button (click)="listardetalle(ped.id_pedido)" type="button" 
@@ -35,6 +35,8 @@
             </tr>
           </tbody>
         </table>
+        <pagination-controls style="margin-left: 300px;" directionLinks="true" (pageChange)="p = $event" previousLabel="Anterior"
+              nextLabel="Siguiente"></pagination-controls>
     </div>
 
 

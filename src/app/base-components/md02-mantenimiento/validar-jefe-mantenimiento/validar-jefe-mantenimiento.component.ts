@@ -9,7 +9,7 @@ import { DetalleMantenimiento } from "src/app/base-models/DetalleMantenimiento";
   styleUrls: ['./validar-jefe-mantenimiento.component.scss']
 })
 export class ValidarJefeMantenimientoComponent implements OnInit {
-
+  p: number = 1;
   listMantenimiento: Mantenimiento[] = [];
   listDetalleMantenimiento: DetalleMantenimiento[] = [];
   loadMantenimiento: Mantenimiento[] = [];
