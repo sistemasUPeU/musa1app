@@ -20,7 +20,7 @@ export class RevisionTecnicaComponent implements OnInit {
   revs: RevisionTecnica = new RevisionTecnica();
 
   constructor(private service: ServiceService, private router: Router) { }
-
+  p2: number = 1;
   ngOnInit() {
     this.service.getRevisionTecnica().subscribe((data)=> {
       this.listRevisionTecnica = data['REV'];

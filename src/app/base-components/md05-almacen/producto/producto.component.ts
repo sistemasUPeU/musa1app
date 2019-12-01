@@ -37,6 +37,8 @@ export class ProductoComponent implements OnInit {
 
   constructor(private service: ServiceService, private router: Router) { }
 
+  p2: number = 1;
+
   ngOnInit() {
     this.service.getProducto().subscribe((data) =>{
       this.listProducto= data['LIS_PROD'];

@@ -7,6 +7,7 @@ import { CategoriaComponent } from './categoria/categoria.component';
 import { FormsModule } from '@angular/forms';
 import { NgbDate, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FilterProductoPipe } from 'src/app/Search/filter-producto.pipe';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -14,7 +15,7 @@ import { FilterProductoPipe } from 'src/app/Search/filter-producto.pipe';
   imports: [
     CommonModule,
     Md05AlmacenRoutingModule,
-    FormsModule,
+    FormsModule,NgxPaginationModule,
     NgbModule]
 })
 export class Md05AlmacenModule { }

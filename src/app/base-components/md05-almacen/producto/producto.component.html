@@ -1,26 +1,23 @@
 <div class="row">
    <div class="col-xl-12">
-      <br>
-      <FONT FACE="courier" SIZE=10 style="margin-left:50px;">PRODUCTOS</FONT>
+      <FONT FACE="courier" SIZE=10 style="margin-left:18px;">PRODUCTOS</FONT>
    </div>
-   <br>
-
-   <!------Buscador y Button------->
-   <br>
+  <!------Buscador y Button------->
+   <div class="container row">
+    <div class="button-7">
+       <div class="eff-7"></div>
+       <a data-toggle="modal" data-target="#addproducto" (click)="fillSelectCategoria()" (click)="fillSelectMarca()"
+          (click)="fillSelectUnidadMedida()">Agregar Producto</a>
+    </div>
+   </div>
    <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4" id="hola">
       <div class="input-group">
-         <input name="inputSearch" type="text"  placeholder=" Buscar: Ingrese producto a buscar..." 
+         <input name="inputSearch" type="text"  placeholder=" Buscar: Ingrese código de producto a buscar..." 
             class="form-control border-0 bg-light"  [(ngModel)]="filterProductoHtml"> 
       </div>
    </div>
-   <br>
-   <div class="container row">
-      <div class="button-7">
-         <div class="eff-7"></div>
-         <a data-toggle="modal" data-target="#addproducto" (click)="fillSelectCategoria()" (click)="fillSelectMarca()"
-            (click)="fillSelectUnidadMedida()">Agregar Producto</a>
-      </div>
-   </div>
+
+
    <!---------Modal Agregar---------------->
    <!--------------MODAL.2 AGREGAR------->
    <div class="modal fade bd-example-modal-lg" id="addproducto" tabindex="-1" role="dialog"
@@ -189,7 +186,7 @@
          </tr>
       </thead>
       <tbody>
-         <tr *ngFor="let producto of listProducto | filterProducto:filterProductoHtml,let i = index">
+         <tr *ngFor="let producto of listProducto | filterProducto:filterProductoHtml | paginate: {itemsPerPage: 3, currentPage: p2}; let i = index">
             <td>{{i+1}}</td>
             <td>{{producto.nombre_producto}}</td>
             <td>{{producto.descripcion}}</td>
@@ -205,4 +202,6 @@
          </tr>
       </tbody>
    </table>
+   <pagination-controls directionLinks="true" (pageChange)="p2 = $event" previousLabel="Anterior"
+              nextLabel="Siguiente"></pagination-controls>
 </div>

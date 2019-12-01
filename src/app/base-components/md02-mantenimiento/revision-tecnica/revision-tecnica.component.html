@@ -1,31 +1,19 @@
 <div class="row">
   <div class="col-xl-12">
-    <br>
-
-    <FONT FACE="courier" SIZE=10 style="margin-left:50px;">REVISIONES TÉCNICAS</FONT>
-
-
-    <img src="assets/images/revision_tecnica.logo.png" style="margin-left:200px;" id="imgRedonda" />
-
-    <br>
-    <br>
-    <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4" id="hola">
-      <div class="input-group">
-        <input name="inputSearch" type="text" placeholder="Ingrese Placa a buscar..." aria-describedby="button-addon1"
-          class="form-control border-0 bg-light"  [(ngModel)]="filterRevisionHtml">
-        <div class="input-group-append">
-          <button id="button-addon1" type="submit" class="btn btn-link text-primary"><i
-              class="fa fa-search"></i></button>
-        </div>
-      </div>
-    </div>
+    <FONT FACE="courier" SIZE=8 style="margin-left:50px;">REVISIONES TÉCNICAS</FONT>
+    <img src="assets/images/revision_tecnica.logo.png" style="margin-left:150px;" id="imgRedonda" />
     <br>
     <div class="button-7">
       <div class="eff-7"></div>
       <a data-toggle="modal" data-target="#addrevisiontecnica">Registrar Revisión </a>
     </div>
-    <br><br><br><br>
-
+    <div class="col-4">
+      <form class="">
+        <input name="inputSearch" id="hola" class="form-control mr-sm-2" type="text"
+        placeholder="Buscar: Ingrese placa de carro a buscar ..." name="filterRevision" [(ngModel)]="filterRevisionHtml">
+      </form>
+    </div>
+    <br>
     <!-------MODAL Agregar Revision------->
     <div class="modal fade bd-example-modal-lg" id="addrevisiontecnica" tabindex="-1" role="dialog"
       aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -102,7 +90,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let   revisiontecnica of listRevisionTecnica | filterRevision:filterRevisionHtml ,let i = index">
+          <tr *ngFor="let   revisiontecnica of listRevisionTecnica | filterRevision:filterRevisionHtml | paginate: {itemsPerPage: 4, currentPage: p2}; let i = index">
             <td>{{i+1}}</td>
             <td>{{revisiontecnica.fecha}}</td>
             <td>{{revisiontecnica.empresa_de_revision}}</td>
@@ -119,6 +107,8 @@
           </tr>
         </tbody>
       </table>
+      <pagination-controls directionLinks="true" (pageChange)="p2 = $event" previousLabel="Anterior"
+              nextLabel="Siguiente"></pagination-controls>
     </div>
   </div>
 </div>
