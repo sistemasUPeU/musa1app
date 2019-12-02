@@ -50,7 +50,6 @@ export class CategoriaComponent implements OnInit {
   }
 
   Eliminar(categoria : Categoria){
-    console.log("estamos en el metodo eliminar = > " +categoria);
     this.service.deleteCategoria(categoria).subscribe((data)=>{
       alert("Registro eliminado correctamente");
       this.listarCategoria();

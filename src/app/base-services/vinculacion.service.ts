@@ -61,4 +61,11 @@ export class VinculacionService {
     return this.http.post<VinculacionRequisito>(this.url2+'addVin', vinculacionRequisito)
   }
 
+  ListSTC(): Observable<VinculacionRequisito[]>{
+    return this.http.get<VinculacionRequisito[]>(this.url2+'STC')
+  }
+
+  deletevr(vr: VinculacionRequisito){
+    return this.http.delete<VinculacionRequisito>(this.url2+'stc/'+vr.id_vinculacion_requisito);
+  }
 }
