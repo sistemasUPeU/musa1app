@@ -1,40 +1,101 @@
 <div class="row">
   <div class="col-xl-12">
-    <h1>
-      Validad Soat-Tarjeta de Circulacion
+    <h1 class="page-header">
+      Soat-Tarjeta Circulacion
     </h1>
-    <div class="modal-header">
-      <div class="form-group">
-        <label for="pers" class="col-form-label">Bus:</label>
-        <select class="form-control" (change)="selectedVincu($event)">
-          <option value="0">Seleccionar...</option>
-          <option *ngFor="let vinculacion  of vinculaciones" value={{vinculacion.id_vinculacion}}>{{vinculacion.placa}}</option>
-        </select>
+    <div class="container row">
+      <div class="col-8">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addSTC">Agregar</button>
       </div>
-  </div>
-    <div class="card-body">
-      <table class="table table-borderless">
-          <thead>
-              <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Requisito</th>
-                  <th scope="col">Fecha Vencimiento</th>
-                  <th scope="col">URL</th>
-              </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let requisito of requisito_modal; let i = index">
-              <th>{{ i+1 }}</th>
-              <td> <input [(ngModel)]="vreqs_modal[i].id_requisito"  style="display:none" type="">{{requisito.nombre_requisito}}</td>
-              <td>
-                  <input class="form-control" type="date" value="" id="" [(ngModel)]="vreqs_modal[i].fecha_vencimiento_doc">
-              </td>
-              <td>
-                 <input class="form-control" type="text" [(ngModel)]="vreqs_modal[i].url" placeholder="URL">
-              </td>
+    </div>
+  <div class="card-body table-responsive">
+    <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Nro</th>
+            <th>Nombre</th>
+            <th>URL</th>
+            <th>Fecha de Vencimiento</th>
+            <th>Opcion</th>
           </tr>
-          </tbody>
+        </thead>
+        <tbody>
+          <tr *ngFor="let v of vr | paginate: {itemsPerPage: 6, currentPage: p2} ;let i=index">
+            <td>{{i+1}}</td>
+            <td>{{v.nombre_requisito}}</td>
+            <td>{{v.url}}</td>
+            <td>{{v.fecha_vencimiento_doc}}</td>
+            <td><button class="btn btn-danger fas fa-trash-alt" (click)="Eliminar(v)"></button></td>
+          </tr>
+        </tbody>
       </table>
+      <pagination-controls directionLinks="true" (pageChange)="p2 = $event" previousLabel="Anterior"
+      nextLabel="Siguiente"></pagination-controls>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="modal fade bd-example-modal-lg" id="addSTC" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+          <div class="modal-header">
+            <div class="form-group">
+              <label for="pers" class="col-form-label">Bus:</label>
+              <select class="form-control" (change)="selectedVincu($event)">
+                <option value="0">Seleccionar...</option>
+                <option *ngFor="let vinculacion  of vinculaciones" value={{vinculacion.id_vinculacion}}>{{vinculacion.placa}}</option>
+              </select>
+            </div>
+          </div>
+          <table class="table table-borderless">
+              <thead>
+                  <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Requisito</th>
+                      <th scope="col">Fecha Vencimiento</th>
+                      <th scope="col">URL</th>
+                  </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let requisito of requisito_modal; let i = index">
+                  <th>{{ i+1 }}</th>
+                  <td> <input [(ngModel)]="vreqs_modal[i].id_requisito"  style="display:none" type="">{{requisito.nombre_requisito}}</td>
+                  <td>
+                      <input class="form-control" type="date" value="" id="" [(ngModel)]="vreqs_modal[i].fecha_vencimiento_doc">
+                  </td>
+                  <td>
+                     <input class="form-control" type="text" [(ngModel)]="vreqs_modal[i].url" placeholder="URL">
+                  </td>
+              </tr>
+              </tbody>
+          </table>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+              <button type="button"(click)="validar()" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+          </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<!--<div class="row">
+  <div class="col-xl-12">
+    <h1>
+   
+    </h1>
+    
+    <div class="card-body">
+      
       <div class="col-12 ">
         <button  type="button" class="btn btn-primary" (click)="validar()">
           Validar
@@ -42,7 +103,7 @@
       </div>
   </div>
   </div>
-</div>
+</div>-->
 <!-- Modal -->
 <!--<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">

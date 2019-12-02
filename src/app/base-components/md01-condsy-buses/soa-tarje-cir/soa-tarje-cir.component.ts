@@ -23,6 +23,7 @@ export class SoaTarjeCirComponent implements OnInit {
   fileupload :File =null;
   uploadedFilePath: string = null;
   vinculaciones: VistaVinculacion[];
+  vr: VinculacionRequisito[];
   requisitos: Requisito[];
   selectedVincu2: number= null;
   Vincu: Vinculacion=new Vinculacion();
@@ -35,6 +36,7 @@ export class SoaTarjeCirComponent implements OnInit {
   ngOnInit() {
     this.cargar();
     this.cargarRequisitosVinculacionBus();
+    this.listSTC();
   }
   
   /*onfileseleted(event){
@@ -70,6 +72,8 @@ export class SoaTarjeCirComponent implements OnInit {
       this.ngOnInit();
     });
   }*/
+  
+
   cargar(){
     this.service2.listarVistaVinculacionBus().subscribe((data) => {
       this.vinculaciones = data['vcs']
@@ -93,20 +97,31 @@ export class SoaTarjeCirComponent implements OnInit {
         this.Vinculac.fecha_vencimiento_doc=this.vreqs_modal[i].fecha_vencimiento_doc;
         this.Vinculac.url=this.vreqs_modal[i].url;
         this.Vinculac.id_requisito=this.vreqs_modal[i].id_requisito;
-        if (this.Vinculac.url==null || this.Vinculac.fecha_vencimiento_doc==null) {
-            alert("Ingrese URL  o Fecha de Vencimiento");
-            break;
+        if (this.vreqs_modal[i].url==null || this.vreqs_modal[i].fecha_vencimiento_doc==null) {
+           // break;
         } else {
         console.log(this.vreqs_modal[i].fecha_vencimiento_doc+" url ::" +this.vreqs_modal[i].url+"id"+this.vreqs_modal[i].id_requisito)
         this.service2.addRequiVincu(this.Vinculac).subscribe(data1 => {
             alert("Validacion registrada correctamente")
           });
         }
-        break;
       }
       this.ngOnInit();
+      this.listSTC();
   }
-
+  listSTC(){
+    this.service2.ListSTC().subscribe((data)=>{
+        this.vr = data['STC'];
+        console.log(this.vr);
+    })
+  }
+  Eliminar(vr : VinculacionRequisito){
+    console.log("Estamoe en eliminar"+vr);
+    this.service2.deletevr(vr).subscribe((data)=>{
+      alert("Registro eliminado correctamente");
+      this.listSTC();
+    })
+  }
   cargarRequisitosVinculacionBus() {
     this.service2.ListRequest().subscribe(data => {
       this.requisito_modal = data["tr"];

@@ -90,12 +90,13 @@
                     <label for="descrip">Descripcion:</label>
                     <input [(ngModel)]="bus.descripcion" name="descripcion" class="form-control" type="text">
                   </div>
-              </div>
-              <div class="col col-xl-6 col-lg-12">
                   <div class="form-group">
                       <label for="Model">Modelo:</label>
                       <input [(ngModel)]="bus.modelo" name="modelo" class="form-control" type="text">
                     </div>
+              </div>
+              <div class="col col-xl-6 col-lg-12">
+                  
                     <div class="form-group">
                       <label for="nro_mot">Nro Motor:</label>
                       <input [(ngModel)]="bus.nro_motor" name="nro_motor" class="form-control" type="text">
@@ -137,6 +138,8 @@
         </div>
         <div class="modal-body">
           <form action="">
+            <div class="row">
+            <div class="col col-xl-6 col-lg-12">
               <div class="form-group">
                   <label for="marc" class="col-form-label">Marca:</label>
                   <input [(ngModel)]="bus.marca" name="marca" class="form-control" type="text">
@@ -166,6 +169,9 @@
                   <label for="Model">Modelo:</label>
                   <input [(ngModel)]="bus.modelo" name="modelo" class="form-control" type="text">
                 </div>
+            </div>  
+                <!--hASTA AQUI-->
+                <div class="col col-xl-6 col-lg-12">
                 <div class="form-group">
                   <label for="nro_mot">Nro Motor:</label>
                   <input [(ngModel)]="bus.nro_motor" name="nro_motor" class="form-control" type="text">
@@ -182,6 +188,8 @@
                   <label for="asientos">Nro Asientos:</label>
                   <input [(ngModel)]="bus.nro_asientos" name="nro_asientos" class="form-control" type="text">
                 </div>
+              </div>
+            </div>
           </form>
         </div>
         <div class="modal-footer">
